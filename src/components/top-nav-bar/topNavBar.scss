@@ -1,0 +1,28 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 1px 1px 1px 1px gainsboro; 
+
+  $button-height: 3em;
+
+  #sign-in {
+    height: $button-height;
+  }
+
+  #create-account {
+    height: $button-height;
+    border: 1px solid white;
+  }
+
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
