@@ -17,6 +17,11 @@ import './components/library-view/library-view.scss';
 import libraryViewHtml from './components/library-view/libraryViewTmpl.html'
 import libraryViewCtrl from './components/library-view/libraryViewCtrl'
 
+// Recorder view
+import './components/recorder-view/recorder-view.scss';
+import recorderViewHtml from './components/recorder-view/recorder-view-tmpl.html'
+import recorderViewCtrl from './components/recorder-view/recorderViewCtrl.js'
+
 // Nav bar directive
 import topNavBar from './components/top-nav-bar-directive/topNavBarDirective';
 
@@ -52,5 +57,11 @@ angular.module( 'songJamApp', [ uiRouter, 'ngMaterial' ] )
                 , parent: 'main-view'
                 , template: libraryViewHtml
                 , controller: libraryViewCtrl
+            } )
+            .state( 'recorder', {
+                url: '/recorder'
+                , parent: 'main-view'
+                , template: recorderViewHtml
+                , controller: recorderViewCtrl
             } )
     } );
