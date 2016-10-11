@@ -6,7 +6,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 1px 1px 1px 1px gainsboro; 
+  box-shadow: 1px 1px 1px 1px gainsboro;
 
   $button-height: 3em;
 
@@ -16,7 +16,7 @@ nav {
 
   #create-account {
     height: $button-height;
-    border: 1px solid white;
+    // border: 1px solid white;
   }
 
 }

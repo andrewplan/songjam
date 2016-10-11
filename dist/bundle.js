@@ -7795,7 +7795,7 @@
 	        controller: _landingPageCtrl2.default,
 	        url: '/',
 	        template: _landingPageTmpl2.default
-	    });
+	    }).state('library-view', {});
 	});
 
 	// Custom directives
@@ -81794,7 +81794,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n  font-family: 'Montserrat', sans-serif; }\n\nnav {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  box-shadow: 1px 1px 1px 1px gainsboro; }\n  nav #sign-in {\n    height: 3em; }\n  nav #create-account {\n    height: 3em;\n    border: 1px solid white; }\n\nh1 {\n  font-size: 2em;\n  font-weight: 900;\n  letter-spacing: 1px; }\n", ""]);
+	exports.push([module.id, "* {\n  font-family: 'Montserrat', sans-serif; }\n\nnav {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  box-shadow: 1px 1px 1px 1px gainsboro; }\n  nav #sign-in {\n    height: 3em; }\n  nav #create-account {\n    height: 3em; }\n\nh1 {\n  font-size: 2em;\n  font-weight: 900;\n  letter-spacing: 1px; }\n", ""]);
 
 	// exports
 
@@ -82148,7 +82148,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n  text-align: center; }\n\n.landing-page-wrapper {\n  height: 100vh;\n  width: 100%; }\n\nmain {\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n", ""]);
+	exports.push([module.id, "* {\n  text-align: center; }\n\n.landing-page-wrapper {\n  height: 100vh;\n  width: 100%; }\n\nmain {\n  height: 84vh;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n", ""]);
 
 	// exports
 

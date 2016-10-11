@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server -d"
+    "start": "webpack-dev-server -w -d"
   },
   "keywords": [
     "music",
