@@ -1,0 +1,22 @@
+.recorder-view-wrapper {
+    height: 84vh;
+    padding: 0 1.2em;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+}
+
+.recorder-record-button {
+    font-size: 48px;
+}
+
+#save {
+    text-decoration: none;
+    color: grey;
+    cursor: default;
+}
+
+#save:hover {
+    color: black;
+    cursor: pointer;
+}

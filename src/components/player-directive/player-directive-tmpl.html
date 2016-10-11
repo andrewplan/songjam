@@ -1,8 +1,21 @@
 <div
   class="player-directive-wrapper"
   layout="row"
+  layout-align="center center"
 >
-    <div layout="center center">
+    <div
+        class="player-directive-audio-info"
+        flex="30"
+    >
+        <p>SongJam 10.10.16 07:16 PM</p>
+    </div>
+
+    <div
+        class="player-directive-player-buttons"
+        flex="40"
+        layout="row"
+        layout-align="center center"
+    >
         <md-button class="md-icon-button">
             <md-icon
               md-font-icon="replay_30"
@@ -43,5 +56,12 @@
                 forward_30
               </md-icon>
         </md-button>
+    </div>
+
+    <div
+        class="player-directive-audio-info"
+        flex="30"
+    >
+        <p>Next up: <br/> SongJam 10.10.16 07:16 PM</p>
     </div>
 </div>

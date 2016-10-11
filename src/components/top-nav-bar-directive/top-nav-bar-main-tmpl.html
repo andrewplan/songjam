@@ -1,12 +1,62 @@
-<nav>
-  <h1 ui-sref="landing-page">SONGJAM</h1>
+<div>
+  <nav>
+    <h1 ui-sref="landing-page">SONGJAM</h1>
 
-  <div>
-      <md-button
-        class="md-raised md-primary"
-        ui-sref="recorder"
-      >
-        RECORD
-      </md-button>
-  </div>
-</nav>
+    <div>
+        <md-button
+          class="md-raised md-primary"
+          ui-sref="recorder"
+        >
+          RECORD
+        </md-button>
+        <md-menu md-position-mode="target-right target">
+            <md-button
+            class="md-icon-button"
+            ng-click="$mdOpenMenu( $event )"
+            >
+                <md-icon
+                  md-font-icon="account_circle"
+                  md-font-set="material-icons"
+                  md-menu-origin=""
+                >
+                  account_circle
+                </md-icon>
+            </md-button>
+            <md-menu-content width="2">
+                <md-menu-item>
+                    <p class="md-title">Signed in as Andrew Plan</p>
+                </md-menu-item>
+
+                <md-menu-divider></md-menu-divider>
+
+                <md-menu-item>
+                    <md-button ui-sref="library-view">Library</md-button>
+                </md-menu-item>
+
+                <md-menu-item>
+                    <md-button>Account Settings</md-button>
+                </md-menu-item>
+            </md-menu-content>
+
+        </md-menu>
+    </div>
+  </nav>
+
+  <md-sidenav class="md-sidenav-right" md-component-id="right" md-disable-backdrop="" md-whiteframe="4">
+
+        <md-toolbar class="md-theme-indigo">
+          <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+        </md-toolbar>
+
+        <md-content layout-margin="">
+          <p>
+            This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+          </p>
+          <md-button ng-click="toggleRight()" class="md-accent">
+            Close this Sidenav
+          </md-button>
+        </md-content>
+
+  </md-sidenav>
+
+</div>

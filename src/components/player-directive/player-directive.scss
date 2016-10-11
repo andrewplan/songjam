@@ -1,7 +1,9 @@
 .player-directive-wrapper {
     height: 5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid gainsboro;
+    width: 100%;
+    border-top: 1.5px solid gainsboro;
+}
+
+.player-directive-audio-info {
+    text-align: center;
 }

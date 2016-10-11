@@ -4,7 +4,13 @@ import 'angular-animate';
 import 'angular-aria';
 import 'angular-material';
 
-// Landing page view]
+// angular-recorder
+import './components/angular-recorder/dist/angular-audio-recorder.js'
+
+// wavesurfer
+// import './node_modules/wavesurfer.js/dist/wavesurfer.js'
+
+// Landing page view
 import './components/landing-page-view/landing-page.scss';
 import landingPageHtml from './components/landing-page-view/landingPageTmpl.html'
 import landingPageCtrl from './components/landing-page-view/landingPageCtrl'
@@ -31,10 +37,17 @@ import audioDir from './components/audio-directive/audioDirective'
 // Player directive
 import playerDir from './components/player-directive/playerDirective'
 
-angular.module( 'songJamApp', [ uiRouter, 'ngMaterial' ] )
+angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', 'angularAudioRecorder' ] )
     .directive( 'topNavBar', topNavBar )
     .directive( 'audioDir', audioDir )
     .directive( 'playerDir', playerDir )
+    .filter( 'secondsToDateTime', [function() {
+        return seconds => {
+            let d = new Date( '0, 0, 0, 0, 0, 0, 0' );
+            d.setSeconds( seconds );
+            return d;
+        }
+    }] )
     .config( function( $stateProvider, $urlRouterProvider, $mdThemingProvider ) {
         $mdThemingProvider.theme( 'default' )
             .primaryPalette( 'deep-orange' )
