@@ -2,11 +2,12 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-nav {
+nav, md-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 1px 1px 1px 1px gainsboro;
+  // background-color: white;
 
   h1 {
     padding-left: 0.6em;

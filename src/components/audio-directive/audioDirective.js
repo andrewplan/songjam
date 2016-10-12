@@ -1,13 +1,23 @@
 import './audio-directive.scss'
 
-import audioDirectiveHtml from './audio-directive-tmpl.html'
+import audioDirectiveLibraryViewHtml from './audio-directive-library-view-tmpl.html';
+import audioDirectivePlaybackViewHtml from './audio-directive-playback-view-tmpl.html';
 
-function audioDir() {
+function recordingDir() {
     return {
         restrict: 'EA'
         , replace: true
-        , template: audioDirectiveHtml
+        , template: ( elem, attr ) => {
+              if ( attr.type === "library-view" ) {
+                  return audioDirectiveLibraryViewHtml;
+              }
+              else if ( attr.type === "playback-view" ) {
+                  return audioDirectivePlaybackViewHtml;
+              }
+
+        }
+
     }
 }
 
-export default audioDir;
+export default recordingDir;

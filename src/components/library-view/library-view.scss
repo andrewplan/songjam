@@ -1,7 +1,8 @@
 .library-view-wrapper {
     height: 86vh;
     background-image: url( './andrew_plan.jpg' );
-    background-size: cover;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
 }
 
 .library-view-library-audio-wrapper {

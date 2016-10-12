@@ -28,18 +28,23 @@ import './components/recorder-view/recorder-view.scss';
 import recorderViewHtml from './components/recorder-view/recorder-view-tmpl.html'
 import recorderViewCtrl from './components/recorder-view/recorderViewCtrl.js'
 
+// Playback view
+import './components/playback-view/playback-view.scss';
+import playbackViewHtml from './components/playback-view/playback-view-tmpl.html'
+import playbackViewCtrl from './components/playback-view/playbackViewCtrl.js'
+
 // Nav bar directive
 import topNavBar from './components/top-nav-bar-directive/topNavBarDirective';
 
 // Audio directive
-import audioDir from './components/audio-directive/audioDirective'
+import recordingDir from './components/audio-directive/audioDirective'
 
 // Player directive
 import playerDir from './components/player-directive/playerDirective'
 
 angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', 'angularAudioRecorder' ] )
     .directive( 'topNavBar', topNavBar )
-    .directive( 'audioDir', audioDir )
+    .directive( 'recordingDir', recordingDir )
     .directive( 'playerDir', playerDir )
     .filter( 'secondsToDateTime', [function() {
         return seconds => {
@@ -76,5 +81,11 @@ angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', 'angularAudioRecorder' ]
                 , parent: 'main-view'
                 , template: recorderViewHtml
                 , controller: recorderViewCtrl
+            } )
+            .state( 'playback-view', {
+                url: '/playback'
+                , parent: 'main-view'
+                , template: playbackViewHtml
+                // , controller: playbackViewCtrl
             } )
     } );
