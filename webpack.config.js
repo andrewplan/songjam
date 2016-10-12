@@ -16,12 +16,20 @@ module.exports = {
                 , loader: "style!css"
             }
             , {
+                test: /\.jpg/
+                , loader: "file-loader?name=/img/[name].[ext]"
+            }
+            , {
                 test: /\.scss$/
                 , loader: 'style!css!sass'
             }
             , {
                 test: /\html$/
                 , loader: "html"
+            }
+            , {
+                test: /\.mp3$/
+                , loader: 'file'
             }
         ]
     }
