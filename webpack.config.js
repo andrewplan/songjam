@@ -1,8 +1,5 @@
 module.exports = {
-    entry: [
-       "webpack-dev-server/client?http://localhost:8080"
-       , "./src/app.js"
-    ]
+    entry: "./src/app.js"
     , module: {
         loaders: [
             {
@@ -17,7 +14,7 @@ module.exports = {
             }
             , {
                 test: /\.jpg/
-                , loader: "file-loader?name=/img/[name].[ext]"
+                , loader: "file-loader?name=./assets/images/[name].[ext]"
             }
             , {
                 test: /\.scss$/
@@ -40,7 +37,7 @@ module.exports = {
         path: __dirname + "/dist"
         , filename: "bundle.js"
     }
-    , devServer: {
-        contentBase: './dist'
-    }
+    // , devServer: {
+    //     contentBase: './dist'
+    // }
 };

@@ -6,6 +6,7 @@ import 'angular-material';
 
 // angular-recorder
 import './components/angular-recorder/dist/angular-audio-recorder.js'
+import 'lamejs';
 
 // wavesurfer
 // import './node_modules/wavesurfer.js/dist/wavesurfer.js'
@@ -53,10 +54,13 @@ angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', 'angularAudioRecorder' ]
             return d;
         }
     }] )
-    .config( function( $stateProvider, $urlRouterProvider, $mdThemingProvider ) {
+    .config( function( $stateProvider, $urlRouterProvider, $mdThemingProvider, recorderServiceProvider ) {
         $mdThemingProvider.theme( 'default' )
             .primaryPalette( 'deep-orange' )
             .accentPalette( 'yellow' )
+
+        recorderServiceProvider.withMp3Conversion( true, { bitRate: 192 } );
+        // recorderServiceProvider.withMp3Conversion( true, { lameJsUrl: lameJs, bitRate: 192 } );
 
         $urlRouterProvider.otherwise( '/' );
 
