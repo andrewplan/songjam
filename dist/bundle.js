@@ -74593,7 +74593,7 @@
   \**********************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"library-view-wrapper\">\n\n    <div class=\"library-view-library-audio-wrapper\">\n        <div\n          ng-if=\"audioUrl\"\n        >\n          <recording-dir\n            type=\"library-view\"\n            audio-url=\"audioUrl\"\n          >\n\n          </recording-dir>\n\n        </div>\n\n    </div>\n\n    <player-dir></player-dir>\n\n</div>\n";
+	module.exports = "<div class=\"library-view-wrapper\">\n\n    <div class=\"library-view-library-audio-wrapper\">\n        <div\n          ng-if=\"audioUrl\"\n        >\n          <recording-dir\n            type=\"library-view\"\n            audio-url=\"audioUrl\"\n            bookmarks=\"bookmarks\"\n          >\n\n          </recording-dir>\n\n        </div>\n\n    </div>\n\n    <player-dir></player-dir>\n\n</div>\n";
 
 /***/ },
 /* 22 */
@@ -74610,7 +74610,7 @@
 	function libraryViewCtrl($scope) {
 	    // function init() {
 	    $scope.audioUrl = 'https://s3-us-west-2.amazonaws.com/songjam-recordings/demo.mp3';
-	
+	    $scope.bookmarks = [2, 3, 5];
 	    // }
 	}
 	
@@ -78716,7 +78716,8 @@
 	        restrict: 'EA',
 	        replace: true,
 	        scope: {
-	            audioUrl: '='
+	            audioUrl: '=',
+	            bookmarks: '='
 	        }
 	        // , controller: libraryViewCtrl
 	        , template: function template(elem, attr) {
@@ -78729,7 +78730,9 @@
 	        link: function link(scope, elem, attr) {
 	            scope.wavesurfer = WaveSurfer.create({
 	                container: '.waveform',
-	                scrollParent: true
+	                scrollParent: true,
+	                barWidth: 4,
+	                waveColor: '#fc5830'
 	            });
 	            console.log(attr);
 	            scope.wavesurfer.load(scope.audioUrl);
@@ -78794,7 +78797,7 @@
   \*******************************************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<md-card\n  class=\"audio-directive-library-view-wrapper\"\n  layout=\"row\"\n>\n    <div id=\"card-recording-info\" layout-align=\"start-center\">\n\n      <md-card-title ui-sref=\"playback-view\">\n          <md-card-title-text>\n              <span class=\"md-headline\">\n                SongJam 10.10.16 07:16 PM\n              </span>\n          </md-card-title-text>\n      </md-card-title>\n\n      <md-card-content\n      >\n        <p>Waveform goes here...</p>\n        <div class=\"waveform\"></div>\n        <div ng-click=\"wavesurfer.play()\">Play</div>\n      </md-card-content>\n\n    </div>\n\n    <md-card-actions\n        layout=\"row\"\n        layout-align=\"end start\"\n    >\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"favorite\"\n                md-font-set=\"material-icons\"\n              >\n                favorite\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"description\"\n                md-font-set=\"material-icons\"\n              >\n                description\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"share\"\n                md-font-set=\"material-icons\"\n              >\n                share\n              </md-icon>\n        </md-button>\n    </md-card-actions>\n\n</md-card>\n";
+	module.exports = "<md-card\n  class=\"audio-directive-library-view-wrapper\"\n  layout=\"row\"\n>\n    <div id=\"card-recording-info\" layout-align=\"start-center\">\n\n      <md-card-title ui-sref=\"playback-view\">\n          <md-card-title-text>\n              <span class=\"md-headline\">\n                SongJam 10.10.16 07:16 PM\n              </span>\n          </md-card-title-text>\n      </md-card-title>\n\n      <md-card-content\n      >\n        <!-- <p>Waveform goes here...</p> -->\n        <div class=\"waveform\"></div>\n        <div ng-click=\"wavesurfer.play()\">Play</div>\n        <span ng-repeat=\"bookmark in bookmarks\">\n          <button ng-click=\"wavesurfer.play( bookmark )\">{{ bookmark }}</button>\n        </span>\n      </md-card-content>\n\n    </div>\n\n    <md-card-actions\n        layout=\"row\"\n        layout-align=\"end start\"\n    >\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"favorite\"\n                md-font-set=\"material-icons\"\n              >\n                favorite\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"description\"\n                md-font-set=\"material-icons\"\n              >\n                description\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"share\"\n                md-font-set=\"material-icons\"\n              >\n                share\n              </md-icon>\n        </md-button>\n    </md-card-actions>\n\n</md-card>\n";
 
 /***/ },
 /* 49 */

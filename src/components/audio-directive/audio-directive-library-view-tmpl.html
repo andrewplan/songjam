@@ -14,9 +14,12 @@
 
       <md-card-content
       >
-        <p>Waveform goes here...</p>
+        <!-- <p>Waveform goes here...</p> -->
         <div class="waveform"></div>
         <div ng-click="wavesurfer.play()">Play</div>
+        <span ng-repeat="bookmark in bookmarks">
+          <button ng-click="wavesurfer.play( bookmark )">{{ bookmark }}</button>
+        </span>
       </md-card-content>
 
     </div>

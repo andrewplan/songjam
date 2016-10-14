@@ -10,6 +10,7 @@ function recordingDir() {
         , replace: true
         , scope: {
             audioUrl: '='
+            , bookmarks: '='
         }
         // , controller: libraryViewCtrl
         , template: ( elem, attr ) => {
@@ -25,6 +26,8 @@ function recordingDir() {
             scope.wavesurfer = WaveSurfer.create( {
                 container: '.waveform'
                 , scrollParent: true
+                , barWidth: 4
+                , waveColor: '#fc5830'
             } );
             console.log( attr );
             scope.wavesurfer.load( scope.audioUrl );
