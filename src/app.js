@@ -5,8 +5,8 @@ import 'angular-aria';
 import 'angular-material';
 
 // angular-recorder
-import './components/angular-recorder/dist/angular-audio-recorder.js'
-import 'lamejs';
+// import './components/angular-recorder/dist/angular-audio-recorder.js'
+// import 'lamejs';
 
 // wavesurfer
 // import './node_modules/wavesurfer.js/dist/wavesurfer.js'

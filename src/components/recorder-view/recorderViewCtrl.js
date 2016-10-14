@@ -7,8 +7,8 @@ function recorderViewCtrl ($scope, $interval, $window, recorderService ){
   $scope.bookmarks = recorderService.getBookmarks();
 
   client.on( 'stream', ( stream, meta ) => {
+      const parts = [];
       if ( meta.type === 'transcription' ) {
-        const parts = [];
         stream.on( 'data', data => {
             parts.push( data );
             console.log( parts );
