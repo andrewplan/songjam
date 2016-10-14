@@ -43,7 +43,7 @@ import recordingDir from './components/audio-directive/audioDirective'
 // Player directive
 import playerDir from './components/player-directive/playerDirective'
 
-angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', 'angularAudioRecorder' ] )
+angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', ] )
     .directive( 'topNavBar', topNavBar )
     .directive( 'recordingDir', recordingDir )
     .directive( 'playerDir', playerDir )
@@ -54,13 +54,10 @@ angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', 'angularAudioRecorder' ]
             return d;
         }
     }] )
-    .config( function( $stateProvider, $urlRouterProvider, $mdThemingProvider, recorderServiceProvider ) {
+    .config( function( $stateProvider, $urlRouterProvider, $mdThemingProvider ) {
         $mdThemingProvider.theme( 'default' )
             .primaryPalette( 'deep-orange' )
             .accentPalette( 'yellow' )
-
-        recorderServiceProvider.withMp3Conversion( true, { bitRate: 192 } );
-        // recorderServiceProvider.withMp3Conversion( true, { lameJsUrl: lameJs, bitRate: 192 } );
 
         $urlRouterProvider.otherwise( '/' );
 

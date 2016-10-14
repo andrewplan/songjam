@@ -3,29 +3,28 @@ const BinaryServer = require( 'binaryjs' ).BinaryServer;
 const fs = require( 'fs' );
 const path = require( 'path' );
 const { json } = require( 'body-parser' );
+
 const googleSpeechConfig = require( './server/configs/googleSpeechConfig' );
+const Speech = require('google-cloud/node_modules/@google-cloud/speech');
+const projectId = googleSpeechConfig.project_id;
+process.env.GOOGLE_APPLICATION_CREDENTIALS = './server/configs/googleSpeechCredentials.json';
+
 const wav = require( 'wav' );
 const lame = require( 'lame' );
 const outFile = 'demo.wav';
 
-// Imports the Google Cloud client library
-const Speech = require('google-cloud/node_modules/@google-cloud/speech');
-
-// Your Google Cloud Platform project ID
-const projectId = googleSpeechConfig.project_id;
-
-process.env.GOOGLE_APPLICATION_CREDENTIALS = './server/configs/googleSpeechCredentials.json';
-
 const port = 4000;
 
 const app = express();
-
-app.use( json() );
-app.use( express.static( `${ __dirname }/dist` ) );
+// const server = require( 'http' ).createServer( app );
+// const io = require( 'socket.io' ).listen( server );
 
 app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
 
-binaryServer = BinaryServer({port: 9000});
+app.use( json() );
+app.use( express.static( `${ __dirname }` ) );
+
+binaryServer = BinaryServer( { port: 9001 } );
 
 binaryServer.on('connection', function(client) {
   console.log('new connection');
@@ -36,7 +35,7 @@ binaryServer.on('connection', function(client) {
     bitDepth: 16
   });
 
-  client.on('stream', function(stream, meta) {
+  client.on( 'stream', function(stream, meta) {
     console.log('new stream');
     let streamClone = require( 'stream' );
 
@@ -64,14 +63,14 @@ binaryServer.on('connection', function(client) {
         };
 
         // Detects speech in the audio file
-        // speechClient.recognize(fileName, options, (err, result) => {
-        //   if (err) {
-        //     console.error(err);
-        //     return;
-        //   }
-        //
-        //   console.log(`Transcription: ${result}`);
-        // });
+        speechClient.recognize(fileName, options, (err, result) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+
+          console.log(`Transcription: ${result}`);
+        });
     });
 
     stream2
