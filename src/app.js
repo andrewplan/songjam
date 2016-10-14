@@ -5,8 +5,8 @@ import 'angular-aria';
 import 'angular-material';
 
 // angular-recorder
-import './components/angular-recorder/dist/angular-audio-recorder.js'
-import 'lamejs';
+// import './components/angular-recorder/dist/angular-audio-recorder.js'
+// import 'lamejs';
 
 // wavesurfer
 // import './node_modules/wavesurfer.js/dist/wavesurfer.js'
@@ -28,6 +28,7 @@ import libraryViewCtrl from './components/library-view/libraryViewCtrl'
 import './components/recorder-view/recorder-view.scss';
 import recorderViewHtml from './components/recorder-view/recorder-view-tmpl.html'
 import recorderViewCtrl from './components/recorder-view/recorderViewCtrl.js'
+import recorderService from './services/recorderService.js'
 
 // Playback view
 import './components/playback-view/playback-view.scss';
@@ -43,7 +44,8 @@ import recordingDir from './components/audio-directive/audioDirective'
 // Player directive
 import playerDir from './components/player-directive/playerDirective'
 
-angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', 'angularAudioRecorder' ] )
+angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', ] )
+    .service( 'recorderService', recorderService )
     .directive( 'topNavBar', topNavBar )
     .directive( 'recordingDir', recordingDir )
     .directive( 'playerDir', playerDir )
@@ -54,13 +56,10 @@ angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', 'angularAudioRecorder' ]
             return d;
         }
     }] )
-    .config( function( $stateProvider, $urlRouterProvider, $mdThemingProvider, recorderServiceProvider ) {
+    .config( function( $stateProvider, $urlRouterProvider, $mdThemingProvider ) {
         $mdThemingProvider.theme( 'default' )
             .primaryPalette( 'deep-orange' )
             .accentPalette( 'yellow' )
-
-        recorderServiceProvider.withMp3Conversion( true, { bitRate: 192 } );
-        // recorderServiceProvider.withMp3Conversion( true, { lameJsUrl: lameJs, bitRate: 192 } );
 
         $urlRouterProvider.otherwise( '/' );
 

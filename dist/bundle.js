@@ -63,63 +63,63 @@
 	
 	__webpack_require__(/*! angular-material */ 8);
 	
-	__webpack_require__(/*! ./components/angular-recorder/dist/angular-audio-recorder.js */ 10);
+	__webpack_require__(/*! ./components/landing-page-view/landing-page.scss */ 10);
 	
-	__webpack_require__(/*! lamejs */ 11);
-	
-	__webpack_require__(/*! ./components/landing-page-view/landing-page.scss */ 12);
-	
-	var _landingPageTmpl = __webpack_require__(/*! ./components/landing-page-view/landingPageTmpl.html */ 17);
+	var _landingPageTmpl = __webpack_require__(/*! ./components/landing-page-view/landingPageTmpl.html */ 15);
 	
 	var _landingPageTmpl2 = _interopRequireDefault(_landingPageTmpl);
 	
-	var _landingPageCtrl = __webpack_require__(/*! ./components/landing-page-view/landingPageCtrl */ 18);
+	var _landingPageCtrl = __webpack_require__(/*! ./components/landing-page-view/landingPageCtrl */ 16);
 	
 	var _landingPageCtrl2 = _interopRequireDefault(_landingPageCtrl);
 	
-	var _mainViewTmpl = __webpack_require__(/*! ./components/main-view/mainViewTmpl.html */ 19);
+	var _mainViewTmpl = __webpack_require__(/*! ./components/main-view/mainViewTmpl.html */ 17);
 	
 	var _mainViewTmpl2 = _interopRequireDefault(_mainViewTmpl);
 	
-	__webpack_require__(/*! ./components/library-view/library-view.scss */ 20);
+	__webpack_require__(/*! ./components/library-view/library-view.scss */ 18);
 	
-	var _libraryViewTmpl = __webpack_require__(/*! ./components/library-view/libraryViewTmpl.html */ 23);
+	var _libraryViewTmpl = __webpack_require__(/*! ./components/library-view/libraryViewTmpl.html */ 21);
 	
 	var _libraryViewTmpl2 = _interopRequireDefault(_libraryViewTmpl);
 	
-	var _libraryViewCtrl = __webpack_require__(/*! ./components/library-view/libraryViewCtrl */ 24);
+	var _libraryViewCtrl = __webpack_require__(/*! ./components/library-view/libraryViewCtrl */ 22);
 	
 	var _libraryViewCtrl2 = _interopRequireDefault(_libraryViewCtrl);
 	
-	__webpack_require__(/*! ./components/recorder-view/recorder-view.scss */ 25);
+	__webpack_require__(/*! ./components/recorder-view/recorder-view.scss */ 23);
 	
-	var _recorderViewTmpl = __webpack_require__(/*! ./components/recorder-view/recorder-view-tmpl.html */ 27);
+	var _recorderViewTmpl = __webpack_require__(/*! ./components/recorder-view/recorder-view-tmpl.html */ 25);
 	
 	var _recorderViewTmpl2 = _interopRequireDefault(_recorderViewTmpl);
 	
-	var _recorderViewCtrl = __webpack_require__(/*! ./components/recorder-view/recorderViewCtrl.js */ 28);
+	var _recorderViewCtrl = __webpack_require__(/*! ./components/recorder-view/recorderViewCtrl.js */ 26);
 	
 	var _recorderViewCtrl2 = _interopRequireDefault(_recorderViewCtrl);
 	
-	__webpack_require__(/*! ./components/playback-view/playback-view.scss */ 29);
+	var _recorderService = __webpack_require__(/*! ./services/recorderService.js */ 35);
 	
-	var _playbackViewTmpl = __webpack_require__(/*! ./components/playback-view/playback-view-tmpl.html */ 31);
+	var _recorderService2 = _interopRequireDefault(_recorderService);
+	
+	__webpack_require__(/*! ./components/playback-view/playback-view.scss */ 36);
+	
+	var _playbackViewTmpl = __webpack_require__(/*! ./components/playback-view/playback-view-tmpl.html */ 38);
 	
 	var _playbackViewTmpl2 = _interopRequireDefault(_playbackViewTmpl);
 	
-	var _playbackViewCtrl = __webpack_require__(/*! ./components/playback-view/playbackViewCtrl.js */ 32);
+	var _playbackViewCtrl = __webpack_require__(/*! ./components/playback-view/playbackViewCtrl.js */ 39);
 	
 	var _playbackViewCtrl2 = _interopRequireDefault(_playbackViewCtrl);
 	
-	var _topNavBarDirective = __webpack_require__(/*! ./components/top-nav-bar-directive/topNavBarDirective */ 33);
+	var _topNavBarDirective = __webpack_require__(/*! ./components/top-nav-bar-directive/topNavBarDirective */ 40);
 	
 	var _topNavBarDirective2 = _interopRequireDefault(_topNavBarDirective);
 	
-	var _audioDirective = __webpack_require__(/*! ./components/audio-directive/audioDirective */ 38);
+	var _audioDirective = __webpack_require__(/*! ./components/audio-directive/audioDirective */ 45);
 	
 	var _audioDirective2 = _interopRequireDefault(_audioDirective);
 	
-	var _playerDirective = __webpack_require__(/*! ./components/player-directive/playerDirective */ 43);
+	var _playerDirective = __webpack_require__(/*! ./components/player-directive/playerDirective */ 50);
 	
 	var _playerDirective2 = _interopRequireDefault(_playerDirective);
 	
@@ -131,27 +131,18 @@
 	// Playback view
 	
 	
-	// Library view
+	// Recorder view
 	
 	
-	// wavesurfer
-	// import './node_modules/wavesurfer.js/dist/wavesurfer.js'
-	
-	// Landing page view
-	
-	
-	// angular-recorder
-	_angular2.default.module('songJamApp', [_angularUiRouter2.default, 'ngMaterial', 'angularAudioRecorder']).directive('topNavBar', _topNavBarDirective2.default).directive('recordingDir', _audioDirective2.default).directive('playerDir', _playerDirective2.default).filter('secondsToDateTime', [function () {
+	// Main view
+	_angular2.default.module('songJamApp', [_angularUiRouter2.default, 'ngMaterial']).service('recorderService', _recorderService2.default).directive('topNavBar', _topNavBarDirective2.default).directive('recordingDir', _audioDirective2.default).directive('playerDir', _playerDirective2.default).filter('secondsToDateTime', [function () {
 	    return function (seconds) {
 	        var d = new Date('0, 0, 0, 0, 0, 0, 0');
 	        d.setSeconds(seconds);
 	        return d;
 	    };
-	}]).config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, recorderServiceProvider) {
+	}]).config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
 	    $mdThemingProvider.theme('default').primaryPalette('deep-orange').accentPalette('yellow');
-	
-	    recorderServiceProvider.withMp3Conversion(true, { bitRate: 192 });
-	    // recorderServiceProvider.withMp3Conversion( true, { lameJsUrl: lameJs, bitRate: 192 } );
 	
 	    $urlRouterProvider.otherwise('/');
 	
@@ -186,10 +177,17 @@
 	// Nav bar directive
 	
 	
-	// Recorder view
+	// Library view
 	
 	
-	// Main view
+	// angular-recorder
+	// import './components/angular-recorder/dist/angular-audio-recorder.js'
+	// import 'lamejs';
+	
+	// wavesurfer
+	// import './node_modules/wavesurfer.js/dist/wavesurfer.js'
+	
+	// Landing page view
 
 /***/ },
 /* 1 */
@@ -74127,2673 +74125,6 @@
 
 /***/ },
 /* 10 */
-/*!************************************************************************!*\
-  !*** ./src/components/angular-recorder/dist/angular-audio-recorder.js ***!
-  \************************************************************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
-	// import lamejs from 'lamejs/lame.all.js';
-	
-	(function () {
-	  'use strict';
-	
-	  window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame;
-	
-	  window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
-	
-	  angular.module('angularAudioRecorder', ['angularAudioRecorder.config', 'angularAudioRecorder.services', 'angularAudioRecorder.controllers', 'angularAudioRecorder.directives']);
-	  angular.module('angularAudioRecorder.config', []).constant('recorderScriptUrl', function () {
-	    var scripts = document.getElementsByTagName('script');
-	    var myUrl = scripts[scripts.length - 1].getAttribute('src');
-	    var path = myUrl.substr(0, myUrl.lastIndexOf('/') + 1);
-	    var a = document.createElement('a');
-	    a.href = path;
-	    return a.href;
-	  }()).constant('recorderPlaybackStatus', {
-	    STOPPED: 0,
-	    PLAYING: 1,
-	    PAUSED: 2
-	  });
-	  angular.module('angularAudioRecorder.controllers', ['angularAudioRecorder.config', 'angularAudioRecorder.services']);
-	  var createReadOnlyVersion = function createReadOnlyVersion(object) {
-	    var obj = {};
-	    for (var property in object) {
-	      if (object.hasOwnProperty(property)) {
-	        Object.defineProperty(obj, property, {
-	          get: function (a) {
-	            var p = a;
-	            return function () {
-	              return object[p];
-	            };
-	          }(property),
-	          enumerable: true,
-	          configurable: true
-	        });
-	      }
-	    }
-	    return obj;
-	  };
-	
-	  var blobToDataURL = function blobToDataURL(blob, callback) {
-	    var a = new FileReader();
-	    a.onload = function (e) {
-	      callback(e.target.result);
-	    };
-	    a.readAsDataURL(blob);
-	  };
-	
-	  var RecorderController = function RecorderController(element, service, recorderUtils, $scope, $timeout, $interval, PLAYBACK) {
-	    //used in NON-Angular Async process
-	    var scopeApply = function scopeApply(fn) {
-	      var phase = $scope.$root.$$phase;
-	      if (phase !== '$apply' && phase !== '$digest') {
-	        return $scope.$apply(fn);
-	      }
-	    };
-	
-	    var control = this,
-	        cordovaMedia = {
-	      recorder: null,
-	      url: null,
-	      player: null
-	    },
-	        timing = null,
-	        audioObjId = 'recorded-audio-' + control.id,
-	        status = {
-	      isRecording: false,
-	      playback: PLAYBACK.STOPPED,
-	      isDenied: null,
-	      isSwfLoaded: null,
-	      isConverting: false,
-	      get isPlaying() {
-	        return status.playback === PLAYBACK.PLAYING;
-	      },
-	      get isStopped() {
-	        return status.playback === PLAYBACK.STOPPED;
-	      },
-	      get isPaused() {
-	        return status.playback === PLAYBACK.PAUSED;
-	      }
-	    },
-	        shouldConvertToMp3 = angular.isDefined(control.convertMp3) ? !!control.convertMp3 : service.shouldConvertToMp3(),
-	        mp3Converter = shouldConvertToMp3 ? new MP3Converter(service.getMp3Config()) : null;
-	    ;
-	
-	    control.timeLimit = control.timeLimit || 0;
-	    control.status = createReadOnlyVersion(status);
-	    control.isAvailable = service.isAvailable();
-	    control.elapsedTime = 0;
-	    //Sets ID for the element if ID doesn't exists
-	    if (!control.id) {
-	      control.id = recorderUtils.generateUuid();
-	      element.attr("id", control.id);
-	    }
-	
-	    if (!service.isHtml5 && !service.isCordova) {
-	      status.isSwfLoaded = service.swfIsLoaded();
-	      $scope.$watch(function () {
-	        return service.swfIsLoaded();
-	      }, function (n) {
-	        status.isSwfLoaded = n;
-	      });
-	    }
-	
-	    //register controller with service
-	    service.setController(control.id, this);
-	
-	    var playbackOnEnded = function playbackOnEnded() {
-	      status.playback = PLAYBACK.STOPPED;
-	      control.onPlaybackComplete();
-	      scopeApply();
-	    };
-	
-	    var playbackOnPause = function playbackOnPause() {
-	      status.playback = PLAYBACK.PAUSED;
-	      control.onPlaybackPause();
-	    };
-	
-	    var playbackOnStart = function playbackOnStart() {
-	      status.playback = PLAYBACK.PLAYING;
-	      control.onPlaybackStart();
-	    };
-	
-	    var playbackOnResume = function playbackOnResume() {
-	      status.playback = PLAYBACK.PLAYING;
-	      control.onPlaybackResume();
-	    };
-	
-	    var embedPlayer = function embedPlayer(blob) {
-	      if (document.getElementById(audioObjId) == null) {
-	        element.append('<audio type="audio/mp3" id="' + audioObjId + '"></audio>');
-	
-	        var audioPlayer = document.getElementById(audioObjId);
-	        if (control.showPlayer) {
-	          audioPlayer.setAttribute('controls', '');
-	        }
-	
-	        audioPlayer.addEventListener("ended", playbackOnEnded);
-	        audioPlayer.addEventListener("pause", function (e) {
-	          if (this.duration !== this.currentTime) {
-	            playbackOnPause();
-	            scopeApply();
-	          }
-	        });
-	
-	        audioPlayer.addEventListener("playing", function (e) {
-	          if (status.isPaused) {
-	            playbackOnResume();
-	          } else {
-	            playbackOnStart();
-	          }
-	          scopeApply();
-	        });
-	      }
-	
-	      if (blob) {
-	        blobToDataURL(blob, function (url) {
-	          document.getElementById(audioObjId).src = url;
-	        });
-	      } else {
-	        document.getElementById(audioObjId).removeAttribute('src');
-	      }
-	    };
-	
-	    var doMp3Conversion = function doMp3Conversion(blobInput, successCallback) {
-	      if (mp3Converter) {
-	        status.isConverting = true;
-	        mp3Converter.convert(blobInput, function (mp3Blob) {
-	          status.isConverting = false;
-	          if (successCallback) {
-	            successCallback(mp3Blob);
-	          }
-	          scopeApply(control.onConversionComplete);
-	        }, function () {
-	          status.isConverting = false;
-	        });
-	        //call conversion started
-	        control.onConversionStart();
-	      }
-	    };
-	
-	    control.getAudioPlayer = function () {
-	      return service.isCordova ? cordovaMedia.player : document.getElementById(audioObjId);
-	    };
-	
-	    control.startRecord = function () {
-	      if (!service.isAvailable()) {
-	        return;
-	      }
-	
-	      if (status.isPlaying) {
-	        control.playbackPause();
-	        //indicate that this is not paused.
-	        status.playback = PLAYBACK.STOPPED;
-	      }
-	
-	      //clear audio previously recorded
-	      control.audioModel = null;
-	
-	      var id = control.id,
-	          recordHandler = service.getHandler();
-	      //Record initiation based on browser type
-	      var start = function start() {
-	        if (service.isCordova) {
-	          cordovaMedia.url = recorderUtils.cordovaAudioUrl(control.id);
-	          //mobile app needs wav extension to save recording
-	          cordovaMedia.recorder = new Media(cordovaMedia.url, function () {
-	            console.log('Media successfully played');
-	          }, function (err) {
-	            console.log('Media could not be launched' + err.code, err);
-	          });
-	          console.log('CordovaRecording');
-	          cordovaMedia.recorder.startRecord();
-	        } else if (service.isHtml5) {
-	          //HTML5 recording
-	          if (!recordHandler) {
-	            return;
-	          }
-	          console.log('HTML5Recording');
-	          recordHandler.clear();
-	          recordHandler.record();
-	        } else {
-	          //Flash recording
-	          if (!service.isReady) {
-	            //Stop recording if the flash object is not ready
-	            return;
-	          }
-	          console.log('FlashRecording');
-	          recordHandler.record(id, 'audio.wav');
-	        }
-	
-	        status.isRecording = true;
-	        control.onRecordStart();
-	        control.elapsedTime = 0;
-	        timing = $interval(function () {
-	          ++control.elapsedTime;
-	          if (control.timeLimit && control.timeLimit > 0 && control.elapsedTime >= control.timeLimit) {
-	            control.stopRecord();
-	          }
-	        }, 1000);
-	      };
-	
-	      if (service.isCordova || recordHandler) {
-	        start();
-	      } else if (!status.isDenied) {
-	        //probably permission was never asked
-	        service.showPermission({
-	          onDenied: function onDenied() {
-	            status.isDenied = true;
-	            $scope.$apply();
-	          },
-	          onAllowed: function onAllowed() {
-	            status.isDenied = false;
-	            recordHandler = service.getHandler();
-	            start();
-	            scopeApply();
-	          }
-	        });
-	      }
-	    };
-	
-	    control.stopRecord = function () {
-	      var id = control.id;
-	      if (!service.isAvailable() || !status.isRecording) {
-	        return false;
-	      }
-	
-	      var recordHandler = service.getHandler();
-	      var completed = function completed(blob) {
-	        $interval.cancel(timing);
-	        status.isRecording = false;
-	        var finalize = function finalize(inputBlob) {
-	          control.audioModel = inputBlob;
-	          embedPlayer(inputBlob);
-	        };
-	
-	        if (shouldConvertToMp3) {
-	          doMp3Conversion(blob, finalize);
-	        } else {
-	          finalize(blob);
-	        }
-	
-	        embedPlayer(null);
-	        control.onRecordComplete();
-	      };
-	
-	      //To stop recording
-	      if (service.isCordova) {
-	        cordovaMedia.recorder.stopRecord();
-	        window.resolveLocalFileSystemURL(cordovaMedia.url, function (entry) {
-	          entry.file(function (blob) {
-	            completed(blob);
-	          });
-	        }, function (err) {
-	          console.log('Could not retrieve file, error code:', err.code);
-	        });
-	      } else if (service.isHtml5) {
-	        recordHandler.stop();
-	        recordHandler.getBuffer(function () {
-	          recordHandler.exportWAV(function (blob) {
-	            completed(blob);
-	            scopeApply();
-	          });
-	        });
-	      } else {
-	        recordHandler.stopRecording(id);
-	        completed(recordHandler.getBlob(id));
-	      }
-	    };
-	
-	    control.playbackRecording = function () {
-	      if (status.isPlaying || !service.isAvailable() || status.isRecording || !control.audioModel) {
-	        return false;
-	      }
-	
-	      if (service.isCordova) {
-	        cordovaMedia.player = new Media(cordovaMedia.url, playbackOnEnded, function () {
-	          console.log('Playback failed');
-	        });
-	        cordovaMedia.player.play();
-	        playbackOnStart();
-	      } else {
-	        control.getAudioPlayer().play();
-	      }
-	    };
-	
-	    control.playbackPause = function () {
-	      if (!status.isPlaying || !service.isAvailable() || status.isRecording || !control.audioModel) {
-	        return false;
-	      }
-	
-	      control.getAudioPlayer().pause();
-	      if (service.isCordova) {
-	        playbackOnPause();
-	      }
-	    };
-	
-	    control.playbackResume = function () {
-	      if (status.isPlaying || !service.isAvailable() || status.isRecording || !control.audioModel) {
-	        return false;
-	      }
-	
-	      if (status.isPaused) {
-	        //previously paused, just resume
-	        control.getAudioPlayer().play();
-	        if (service.isCordova) {
-	          playbackOnResume();
-	        }
-	      } else {
-	        control.playbackRecording();
-	      }
-	    };
-	
-	    control.save = function (fileName) {
-	      console.log('save is activated');
-	      if (!service.isAvailable() || status.isRecording || !control.audioModel) {
-	        return false;
-	      }
-	
-	      if (!fileName) {
-	        fileName = 'audio_recording_' + control.id + (control.audioModel.type.indexOf('mp3') > -1 ? '.mp3' : '.wav');
-	      }
-	
-	      var blobUrl = window.URL.createObjectURL(control.audioModel);
-	      console.log('blobUrl is ', blobUrl);
-	      // var a = window.document.createElement('a');
-	      var a = document.getElementById("save");
-	      a.href = blobUrl;
-	      a.target = '_blank';
-	      a.download = fileName;
-	      console.log('fileName is ', fileName);
-	      var click = document.createEvent("Event");
-	      click.initEvent("click", true, true);
-	      a.dispatchEvent(click);
-	    };
-	
-	    control.isHtml5 = function () {
-	      return service.isHtml5;
-	    };
-	
-	    if (control.autoStart) {
-	      $timeout(function () {
-	        control.startRecord();
-	      }, 1000);
-	    }
-	
-	    element.on('$destroy', function () {
-	      $interval.cancel(timing);
-	    });
-	  };
-	
-	  RecorderController.$inject = ['$element', 'recorderService', 'recorderUtils', '$scope', '$timeout', '$interval', 'recorderPlaybackStatus'];
-	
-	  angular.module('angularAudioRecorder.controllers').controller('recorderController', RecorderController);
-	  angular.module('angularAudioRecorder.directives', ['angularAudioRecorder.config', 'angularAudioRecorder.services', 'angularAudioRecorder.controllers']);
-	  angular.module('angularAudioRecorder.directives').directive('ngAudioRecorderAnalyzer', ['recorderService', 'recorderUtils', function (service, utils) {
-	
-	    var link = function link(scope, element, attrs, recorder) {
-	      if (!service.isHtml5) {
-	        scope.hide = true;
-	        return;
-	      }
-	
-	      var canvasWidth,
-	          canvasHeight,
-	          rafID,
-	          analyserContext,
-	          props = service.$html5AudioProps;
-	
-	      function updateAnalysers(time) {
-	
-	        if (!analyserContext) {
-	          var canvas = element.find("canvas")[0];
-	
-	          if (attrs.width && !isNaN(attrs.width)) {
-	            canvas.width = attrs.width;
-	          }
-	
-	          if (attrs.height && !isNaN(attrs.height)) {
-	            canvas.height = parseInt(attrs.height);
-	          }
-	
-	          canvasWidth = canvas.width;
-	          canvasHeight = canvas.height;
-	          analyserContext = canvas.getContext('2d');
-	        }
-	
-	        // analyzer draw code here
-	        {
-	          var SPACING = 12;
-	          var BAR_WIDTH = 8;
-	          var numBars = Math.round(canvasWidth / SPACING);
-	          var freqByteData = new Uint8Array(props.analyserNode.frequencyBinCount);
-	
-	          props.analyserNode.getByteFrequencyData(freqByteData);
-	
-	          analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-	          //analyserContext.fillStyle = '#F6D565';
-	          analyserContext.lineCap = 'round';
-	          var multiplier = props.analyserNode.frequencyBinCount / numBars;
-	
-	          // Draw rectangle for each frequency bin.
-	          for (var i = 0; i < numBars; ++i) {
-	            var magnitude = 0;
-	            var offset = Math.floor(i * multiplier);
-	            // gotta sum/average the block, or we miss narrow-bandwidth spikes
-	            for (var j = 0; j < multiplier; j++) {
-	              magnitude += freqByteData[offset + j];
-	            }magnitude = magnitude / multiplier;
-	            var magnitude2 = freqByteData[i * multiplier];
-	            if (attrs.waveColor) analyserContext.fillStyle = attrs.waveColor;else analyserContext.fillStyle = "hsl( " + Math.round(i * 360 / numBars) + ", 100%, 50%)";
-	            analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
-	          }
-	        }
-	
-	        rafID = window.requestAnimationFrame(updateAnalysers);
-	      }
-	
-	      function cancelAnalyserUpdates() {
-	        window.cancelAnimationFrame(rafID);
-	        rafID = null;
-	      }
-	
-	      element.on('$destroy', function () {
-	        cancelAnalyserUpdates();
-	      });
-	
-	      recorder.onRecordStart = function (original) {
-	        return function () {
-	          original.apply();
-	          updateAnalysers();
-	        };
-	      }(recorder.onRecordStart);
-	
-	      utils.appendActionToCallback(recorder, 'onRecordStart', updateAnalysers, 'analyzer');
-	      utils.appendActionToCallback(recorder, 'onRecordComplete', cancelAnalyserUpdates, 'analyzer');
-	    };
-	
-	    return {
-	      restrict: 'E',
-	      require: '^ngAudioRecorder',
-	      template: '<div ng-if="!hide" class="audioRecorder-analyzer">' + '<canvas class="analyzer" width="1200" height="400" style="max-width: 100%;"></canvas>' + '</div>',
-	      link: link
-	    };
-	  }]);
-	  angular.module('angularAudioRecorder.directives').directive('ngAudioRecorderWaveView', ['recorderService', 'recorderUtils', '$log', function (service, utils, $log) {
-	
-	    return {
-	      restrict: 'E',
-	      require: '^ngAudioRecorder',
-	      link: function link(scope, $element, attrs, recorder) {
-	        if (!window.WaveSurfer) {
-	          $log.warn('WaveSurfer was found.');
-	          return;
-	        }
-	
-	        var audioPlayer;
-	        $element.html('<div class="waveSurfer"></div>');
-	        var options = angular.extend({ container: $element.find('div')[0] }, attrs);
-	        var waveSurfer = WaveSurfer.create(options);
-	        waveSurfer.setVolume(0);
-	        utils.appendActionToCallback(recorder, 'onPlaybackStart|onPlaybackResume', function () {
-	          waveSurfer.play();
-	        }, 'waveView');
-	        utils.appendActionToCallback(recorder, 'onPlaybackComplete|onPlaybackPause', function () {
-	          waveSurfer.pause();
-	        }, 'waveView');
-	
-	        utils.appendActionToCallback(recorder, 'onRecordComplete', function () {
-	          if (!audioPlayer) {
-	            audioPlayer = recorder.getAudioPlayer();
-	            audioPlayer.addEventListener('seeking', function (e) {
-	              var progress = audioPlayer.currentTime / audioPlayer.duration;
-	              waveSurfer.seekTo(progress);
-	            });
-	          }
-	        }, 'waveView');
-	
-	        scope.$watch(function () {
-	          return recorder.audioModel;
-	        }, function (newBlob) {
-	          if (newBlob instanceof Blob) {
-	            waveSurfer.loadBlob(newBlob);
-	          }
-	        });
-	      }
-	    };
-	  }]);
-	  angular.module('angularAudioRecorder.directives').directive('ngAudioRecorder', ['recorderService', '$timeout', function (recorderService, $timeout) {
-	    return {
-	      restrict: 'EA',
-	      scope: {
-	        audioModel: '=',
-	        id: '@',
-	        onRecordStart: '&',
-	        onRecordComplete: '&',
-	        onPlaybackComplete: '&',
-	        onPlaybackStart: '&',
-	        onPlaybackPause: '&',
-	        onPlaybackResume: '&',
-	        onConversionStart: '&',
-	        onConversionComplete: '&',
-	        showPlayer: '=?',
-	        autoStart: '=?',
-	        convertMp3: '=?',
-	        timeLimit: '=?'
-	      },
-	      controllerAs: 'recorder',
-	      bindToController: true,
-	      template: function template(element, attrs) {
-	        return '<div class="audioRecorder">' + '<div style="width: 250px; margin: 0 auto;"><div id="audioRecorder-fwrecorder"></div></div>' + element.html() + '</div>';
-	      },
-	      controller: 'recorderController',
-	      link: function link(scope, element, attrs) {
-	        $timeout(function () {
-	          if (recorderService.isAvailable && !(recorderService.isHtml5 || recorderService.isCordova)) {
-	            var params = {
-	              'allowscriptaccess': 'always'
-	            },
-	                attrs = {
-	              'id': 'recorder-app',
-	              'name': 'recorder-app'
-	            },
-	                flashVars = {
-	              'save_text': ''
-	            };
-	            swfobject.embedSWF(recorderService.getSwfUrl(), "audioRecorder-fwrecorder", "0", "0", "11.0.0", "", flashVars, params, attrs);
-	          }
-	        }, 100);
-	      }
-	    };
-	  }]);
-	
-	  angular.module('angularAudioRecorder.services', ['angularAudioRecorder.config']);
-	  angular.module('angularAudioRecorder.services').provider('recorderService', ['recorderScriptUrl', function (scriptPath) {
-	    var handler = null,
-	        service = { isHtml5: false, isReady: false },
-	        permissionHandlers = { onDenied: null, onClosed: null, onAllow: null },
-	        _forceSwf = false,
-	
-	    /*this path is relative to the dist path:*/
-	    swfUrl = scriptPath + '../lib/recorder.swf',
-	        utils,
-	        mp3Covert = false,
-	
-	    // mp3Config = {bitRate: 92}
-	    mp3Config = { bitRate: 92, lameJsUrl: scriptPath + '../lib/lame.min.js' };
-	
-	    var swfHandlerConfig = {
-	      isAvailable: false,
-	      loaded: false,
-	      configureMic: function configureMic() {
-	        if (!FWRecorder.isReady) {
-	          return;
-	        }
-	        FWRecorder.configure(44, 100, 0, 2000);
-	        FWRecorder.setUseEchoSuppression(false);
-	        FWRecorder.setLoopBack(false);
-	      },
-	      allowed: false,
-	      externalEvents: function externalEvents(eventName) {
-	        //Actions based on user interaction with flash
-	        var name = arguments[1];
-	        switch (arguments[0]) {
-	          case "ready":
-	            var width = parseInt(arguments[1]);
-	            var height = parseInt(arguments[2]);
-	            FWRecorder.connect('recorder-app', 0);
-	            FWRecorder.recorderOriginalWidth = 1;
-	            FWRecorder.recorderOriginalHeight = 1;
-	            swfHandlerConfig.loaded = true;
-	            break;
-	
-	          case "microphone_user_request":
-	            FWRecorder.showPermissionWindow({ permanent: true });
-	            break;
-	
-	          case "microphone_connected":
-	            console.log('Permission to use MIC granted');
-	            swfHandlerConfig.allowed = true;
-	            break;
-	
-	          case "microphone_not_connected":
-	            console.log('Permission to use MIC denied');
-	            swfHandlerConfig.allowed = false;
-	            break;
-	
-	          case "permission_panel_closed":
-	            if (swfHandlerConfig.allowed) {
-	              swfHandlerConfig.setAllowed();
-	            } else {
-	              swfHandlerConfig.setDeclined();
-	            }
-	            FWRecorder.defaultSize();
-	            if (angular.isFunction(permissionHandlers.onClosed)) {
-	              permissionHandlers.onClosed();
-	            }
-	            break;
-	
-	          case "recording":
-	            FWRecorder.hide();
-	            break;
-	
-	          case "recording_stopped":
-	            FWRecorder.hide();
-	            break;
-	
-	          case "playing":
-	
-	            break;
-	
-	          case "playback_started":
-	
-	            var latency = arguments[2];
-	            break;
-	
-	          case "save_pressed":
-	            FWRecorder.updateForm();
-	            break;
-	
-	          case "saving":
-	            break;
-	
-	          case "saved":
-	            var data = $.parseJSON(arguments[2]);
-	            if (data.saved) {} else {}
-	            break;
-	
-	          case "save_failed":
-	            var errorMessage = arguments[2];
-	            break;
-	
-	          case "save_progress":
-	            var bytesLoaded = arguments[2];
-	            var bytesTotal = arguments[3];
-	            break;
-	
-	          case "stopped":
-	          case "playing_paused":
-	          case "no_microphone_found":
-	          case "observing_level":
-	          case "microphone_level":
-	          case "microphone_activity":
-	          case "observing_level_stopped":
-	          default:
-	            //console.log('Event Received: ', arguments);
-	            break;
-	        }
-	      },
-	      isInstalled: function isInstalled() {
-	        return swfobject.getFlashPlayerVersion().major > 0;
-	      },
-	      init: function init() {
-	        //Flash recorder external events
-	        service.isHtml5 = false;
-	        if (!swfHandlerConfig.isInstalled()) {
-	          console.log('Flash is not installed, application cannot be initialized');
-	          return;
-	        }
-	        swfHandlerConfig.isAvailable = true;
-	        //handlers
-	        window.fwr_event_handler = swfHandlerConfig.externalEvents;
-	        window.configureMicrophone = swfHandlerConfig.configureMic;
-	      },
-	      setAllowed: function setAllowed() {
-	        service.isReady = true;
-	        handler = FWRecorder;
-	        if (angular.isFunction(permissionHandlers.onAllowed)) {
-	          permissionHandlers.onAllowed();
-	        }
-	      },
-	      setDeclined: function setDeclined() {
-	        service.isReady = false;
-	        handler = null;
-	        if (angular.isFunction(permissionHandlers.onDenied)) {
-	          permissionHandlers.onDenied();
-	        }
-	      },
-	      getPermission: function getPermission() {
-	        if (swfHandlerConfig.isAvailable) {
-	          if (!FWRecorder.isMicrophoneAccessible()) {
-	            FWRecorder.showPermissionWindow({ permanent: true });
-	          } else {
-	            swfHandlerConfig.allowed = true;
-	            setTimeout(function () {
-	              swfHandlerConfig.setAllowed();
-	            }, 100);
-	          }
-	        }
-	      }
-	    };
-	
-	    var html5AudioProps = {
-	      audioContext: null,
-	      inputPoint: null,
-	      audioInput: null,
-	      audioRecorder: null,
-	      analyserNode: null
-	    };
-	
-	    var html5HandlerConfig = {
-	      gotStream: function gotStream(stream) {
-	        var audioContext = html5AudioProps.audioContext;
-	        // Create an AudioNode from the stream.
-	        html5AudioProps.audioInput = audioContext.createMediaStreamSource(stream);
-	        html5AudioProps.audioInput.connect(html5AudioProps.inputPoint = audioContext.createGain());
-	
-	        //analyser
-	        html5AudioProps.analyserNode = audioContext.createAnalyser();
-	        html5AudioProps.analyserNode.fftSize = 2048;
-	        html5AudioProps.inputPoint.connect(html5AudioProps.analyserNode);
-	        html5AudioProps.audioRecorder = new Recorder(html5AudioProps.audioInput);
-	
-	        //create Gain
-	        var zeroGain = audioContext.createGain();
-	        zeroGain.gain.value = 0.0;
-	        html5AudioProps.inputPoint.connect(zeroGain);
-	        zeroGain.connect(audioContext.destination);
-	
-	        //service booted
-	        service.isReady = true;
-	        handler = html5AudioProps.audioRecorder;
-	
-	        if (angular.isFunction(permissionHandlers.onAllowed)) {
-	          if (window.location.protocol == 'https:') {
-	            //to store permission for https websites
-	            localStorage.setItem("permission", "given");
-	          }
-	          permissionHandlers.onAllowed();
-	        }
-	      },
-	      failStream: function failStream(data) {
-	        if (angular.isDefined(permissionHandlers.onDenied)) {
-	          permissionHandlers.onDenied();
-	        }
-	      },
-	      getPermission: function getPermission() {
-	        navigator.getUserMedia({
-	          "audio": true
-	        }, html5HandlerConfig.gotStream, html5HandlerConfig.failStream);
-	      },
-	      init: function init() {
-	        service.isHtml5 = true;
-	        var AudioContext = window.AudioContext || window.webkitAudioContext;
-	        if (AudioContext && !html5AudioProps.audioContext) {
-	          html5AudioProps.audioContext = new AudioContext();
-	        }
-	
-	        if (localStorage.getItem("permission") !== null) {
-	          //to get permission from browser cache for returning user
-	          html5HandlerConfig.getPermission();
-	        }
-	      }
-	    };
-	
-	    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-	
-	    service.isCordova = false;
-	
-	    var init = function init() {
-	      if ('cordova' in window) {
-	        service.isCordova = true;
-	      } else if (!_forceSwf && navigator.getUserMedia) {
-	        html5HandlerConfig.init();
-	      } else {
-	        swfHandlerConfig.init();
-	      }
-	    };
-	
-	    var controllers = {};
-	
-	    service.controller = function (id) {
-	      return controllers[id];
-	    };
-	
-	    service.getSwfUrl = function () {
-	      return swfUrl;
-	    };
-	
-	    service.setController = function (id, controller) {
-	      controllers[id] = controller;
-	    };
-	
-	    service.isAvailable = function () {
-	      if (service.isCordova) {
-	        if (!('Media' in window)) {
-	          throw new Error('The Media plugin for cordova is required for this library, add plugin using "cordova plugin add cordova-plugin-media"');
-	        }
-	        return true;
-	      }
-	
-	      return service.isHtml5 || swfHandlerConfig.isInstalled();
-	    };
-	
-	    service.getHandler = function () {
-	      return handler;
-	    };
-	
-	    service.showPermission = function (listeners) {
-	      if (!service.isAvailable()) {
-	        console.warn("Neither HTML5 nor SWF is supported.");
-	        return;
-	      }
-	
-	      if (listeners) {
-	        angular.extend(permissionHandlers, listeners);
-	      }
-	
-	      if (service.isHtml5) {
-	        html5HandlerConfig.getPermission();
-	      } else {
-	        swfHandlerConfig.getPermission();
-	      }
-	    };
-	
-	    service.swfIsLoaded = function () {
-	      return swfHandlerConfig.loaded;
-	    };
-	
-	    service.shouldConvertToMp3 = function () {
-	      return mp3Covert;
-	    };
-	
-	    service.getMp3Config = function () {
-	      return mp3Config;
-	    };
-	
-	    service.$html5AudioProps = html5AudioProps;
-	
-	    var provider = {
-	      $get: ['recorderUtils', function (recorderUtils) {
-	        utils = recorderUtils;
-	        init();
-	        return service;
-	      }],
-	      forceSwf: function forceSwf(value) {
-	        _forceSwf = value;
-	        return provider;
-	      },
-	      setSwfUrl: function setSwfUrl(path) {
-	        swfUrl = path;
-	        return provider;
-	      },
-	      withMp3Conversion: function withMp3Conversion(bool, config) {
-	        mp3Covert = !!bool;
-	        mp3Config = angular.extend(mp3Config, config || {});
-	        return provider;
-	      }
-	    };
-	
-	    return provider;
-	  }]);
-	  angular.module('angularAudioRecorder.services').factory('recorderUtils', [
-	  /**
-	   * @ngdoc service
-	   * @name recorderUtils
-	   *
-	   */
-	  function () {
-	
-	    // Generates UUID
-	    var factory = {
-	      generateUuid: function generateUuid() {
-	        function _p8(s) {
-	          var p = (Math.random().toString(16) + "000000000").substr(2, 8);
-	          return s ? "-" + p.substr(0, 4) + "-" + p.substr(4, 4) : p;
-	        }
-	
-	        return _p8() + _p8(true) + _p8(true) + _p8();
-	      },
-	      cordovaAudioUrl: function cordovaAudioUrl(id) {
-	        if (!window.cordova) {
-	          return 'record-audio' + id + '.wav';
-	        }
-	
-	        var url = cordova.file.tempDirectory || cordova.file.externalApplicationStorageDirectory || cordova.file.sharedDirectory;
-	
-	        url += Date.now() + '_recordedAudio_' + id.replace('/[^A-Za-z0-9_-]+/gi', '-');
-	        switch (window.cordova.platformId) {
-	          case 'ios':
-	            url += '.wav';
-	            break;
-	
-	          case 'android':
-	            url += '.amr';
-	            break;
-	
-	          case 'wp':
-	            url += '.wma';
-	            break;
-	
-	          default:
-	            url += '.mp3';
-	        }
-	
-	        return url;
-	      }
-	    };
-	
-	    factory.appendActionToCallback = function (object, callbacks, action, track) {
-	
-	      callbacks.split(/\|/).forEach(function (callback) {
-	        if (!angular.isObject(object) || !angular.isFunction(action) || !(callback in object) || !angular.isFunction(object[callback])) {
-	          throw new Error('One or more parameter supplied is not valid');
-	        }
-	        ;
-	
-	        if (!('$$appendTrackers' in object)) {
-	          object.$$appendTrackers = [];
-	        }
-	
-	        var tracker = callback + '|' + track;
-	        if (object.$$appendTrackers.indexOf(tracker) > -1) {
-	          console.log('Already appended: ', tracker);
-	          return;
-	        }
-	
-	        object[callback] = function (original) {
-	          return function () {
-	            //console.trace('Calling Callback : ', tracker);
-	            original.apply(object, arguments);
-	            action.apply(object, arguments);
-	          };
-	        }(object[callback]);
-	
-	        object.$$appendTrackers.push(tracker);
-	      });
-	    };
-	
-	    return factory;
-	  }]);
-	})();
-	(function (global) {
-	  'use strict';
-	
-	  var Recorder,
-	      RECORDED_AUDIO_TYPE = "audio/wav";
-	
-	  Recorder = {
-	    recorder: null,
-	    recorderOriginalWidth: 0,
-	    recorderOriginalHeight: 0,
-	    uploadFormId: null,
-	    uploadFieldName: null,
-	    isReady: false,
-	
-	    connect: function connect(name, attempts) {
-	      if (navigator.appName.indexOf("Microsoft") != -1) {
-	        Recorder.recorder = window[name];
-	      } else {
-	        Recorder.recorder = document[name];
-	      }
-	
-	      if (attempts >= 40) {
-	        return;
-	      }
-	
-	      // flash app needs time to load and initialize
-	      if (Recorder.recorder && Recorder.recorder.init) {
-	        Recorder.recorderOriginalWidth = Recorder.recorder.width;
-	        Recorder.recorderOriginalHeight = Recorder.recorder.height;
-	        if (Recorder.uploadFormId && $) {
-	          var frm = $(Recorder.uploadFormId);
-	          Recorder.recorder.init(frm.attr('action').toString(), Recorder.uploadFieldName, frm.serializeArray());
-	        }
-	        return;
-	      }
-	
-	      setTimeout(function () {
-	        Recorder.connect(name, attempts + 1);
-	      }, 100);
-	    },
-	
-	    playBack: function playBack(name) {
-	      // TODO: Rename to `playback`
-	      Recorder.recorder.playBack(name);
-	    },
-	
-	    pausePlayBack: function pausePlayBack(name) {
-	      // TODO: Rename to `pausePlayback`
-	      Recorder.recorder.pausePlayBack(name);
-	    },
-	
-	    playBackFrom: function playBackFrom(name, time) {
-	      // TODO: Rename to `playbackFrom`
-	      Recorder.recorder.playBackFrom(name, time);
-	    },
-	
-	    record: function record(name, filename) {
-	      Recorder.recorder.record(name, filename);
-	    },
-	
-	    stopRecording: function stopRecording() {
-	      Recorder.recorder.stopRecording();
-	    },
-	
-	    stopPlayBack: function stopPlayBack() {
-	      // TODO: Rename to `stopPlayback`
-	      Recorder.recorder.stopPlayBack();
-	    },
-	
-	    observeLevel: function observeLevel() {
-	      Recorder.recorder.observeLevel();
-	    },
-	
-	    stopObservingLevel: function stopObservingLevel() {
-	      Recorder.recorder.stopObservingLevel();
-	    },
-	
-	    observeSamples: function observeSamples() {
-	      Recorder.recorder.observeSamples();
-	    },
-	
-	    stopObservingSamples: function stopObservingSamples() {
-	      Recorder.recorder.stopObservingSamples();
-	    },
-	
-	    resize: function resize(width, height) {
-	      Recorder.recorder.width = width + "px";
-	      Recorder.recorder.height = height + "px";
-	    },
-	
-	    defaultSize: function defaultSize() {
-	      Recorder.resize(Recorder.recorderOriginalWidth, Recorder.recorderOriginalHeight);
-	    },
-	
-	    show: function show() {
-	      Recorder.recorder.show();
-	    },
-	
-	    hide: function hide() {
-	      Recorder.recorder.hide();
-	    },
-	
-	    duration: function duration(name) {
-	      // TODO: rename to `getDuration`
-	      return Recorder.recorder.duration(name || Recorder.uploadFieldName);
-	    },
-	
-	    getBase64: function getBase64(name) {
-	      var data = Recorder.recorder.getBase64(name);
-	      return 'data:' + RECORDED_AUDIO_TYPE + ';base64,' + data;
-	    },
-	
-	    getBlob: function getBlob(name) {
-	      var base64Data = Recorder.getBase64(name).split(',')[1];
-	      return base64toBlob(base64Data, RECORDED_AUDIO_TYPE);
-	    },
-	
-	    getCurrentTime: function getCurrentTime(name) {
-	      return Recorder.recorder.getCurrentTime(name);
-	    },
-	
-	    isMicrophoneAccessible: function isMicrophoneAccessible() {
-	      return Recorder.recorder.isMicrophoneAccessible();
-	    },
-	
-	    updateForm: function updateForm() {
-	      var frm = $(Recorder.uploadFormId);
-	      Recorder.recorder.update(frm.serializeArray());
-	    },
-	
-	    showPermissionWindow: function showPermissionWindow(options) {
-	      Recorder.resize(240, 160);
-	      // need to wait until app is resized before displaying permissions screen
-	      var permissionCommand = function permissionCommand() {
-	        if (options && options.permanent) {
-	          Recorder.recorder.permitPermanently();
-	        } else {
-	          Recorder.recorder.permit();
-	        }
-	      };
-	      setTimeout(permissionCommand, 1);
-	    },
-	
-	    configure: function configure(rate, gain, silenceLevel, silenceTimeout) {
-	      rate = parseInt(rate || 22);
-	      gain = parseInt(gain || 100);
-	      silenceLevel = parseInt(silenceLevel || 0);
-	      silenceTimeout = parseInt(silenceTimeout || 4000);
-	      switch (rate) {
-	        case 44:
-	        case 22:
-	        case 11:
-	        case 8:
-	        case 5:
-	          break;
-	        default:
-	          throw "invalid rate " + rate;
-	      }
-	
-	      if (gain < 0 || gain > 100) {
-	        throw "invalid gain " + gain;
-	      }
-	
-	      if (silenceLevel < 0 || silenceLevel > 100) {
-	        throw "invalid silenceLevel " + silenceLevel;
-	      }
-	
-	      if (silenceTimeout < -1) {
-	        throw "invalid silenceTimeout " + silenceTimeout;
-	      }
-	
-	      Recorder.recorder.configure(rate, gain, silenceLevel, silenceTimeout);
-	    },
-	
-	    setUseEchoSuppression: function setUseEchoSuppression(val) {
-	      if (typeof val != 'boolean') {
-	        throw "invalid value for setting echo suppression, val: " + val;
-	      }
-	
-	      Recorder.recorder.setUseEchoSuppression(val);
-	    },
-	
-	    setLoopBack: function setLoopBack(val) {
-	      if (typeof val != 'boolean') {
-	        throw "invalid value for setting loop back, val: " + val;
-	      }
-	
-	      Recorder.recorder.setLoopBack(val);
-	    }
-	  };
-	
-	  function base64toBlob(b64Data, contentType, sliceSize) {
-	    contentType = contentType || '';
-	    sliceSize = sliceSize || 512;
-	
-	    var byteCharacters = atob(b64Data);
-	    var byteArrays = [];
-	
-	    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-	      var slice = byteCharacters.slice(offset, offset + sliceSize);
-	
-	      var byteNumbers = new Array(slice.length);
-	      for (var i = 0; i < slice.length; i++) {
-	        byteNumbers[i] = slice.charCodeAt(i);
-	      }
-	
-	      var byteArray = new Uint8Array(byteNumbers);
-	      byteArrays.push(byteArray);
-	    }
-	
-	    return new Blob(byteArrays, { type: contentType });
-	  }
-	
-	  global.FWRecorder = Recorder;
-	})(window);
-	/**
-	 * This script adds a new function to a function prototype,
-	 * which allows a function to be converted to a web worker.
-	 *
-	 * Please note that this method copies the function's source code into a Blob, so references to variables
-	 * outside the function's own scope will be invalid.
-	 *
-	 * You can however pass variables that can be serialized into JSON, to this function using the params parameter
-	 *
-	 * @usage
-	 * ```
-	 * myFunction.toWorker({param1: p1, param2: p2...})
-	 *```
-	 *
-	 */
-	(function () {
-	  'use strict';
-	
-	  var workerToBlobUrl = function workerToBlobUrl(fn, params) {
-	    if (typeof fn !== 'function') {
-	      throw "The specified parameter must be a valid function";
-	    }
-	    var fnString = fn.toString();
-	    if (fnString.match(/\[native\s*code\]/i)) {
-	      throw "You cannot bind a native function to a worker";
-	    }
-	    ;
-	
-	    params = params || {};
-	    if ((typeof params === 'undefined' ? 'undefined' : _typeof(params)) !== 'object') {
-	      console.warn('Params must be an object that is serializable with JSON.stringify, specified is: ' + (typeof params === 'undefined' ? 'undefined' : _typeof(params)));
-	    }
-	
-	    var blobURL = window.URL.createObjectURL(new Blob(['(', fnString, ')(this,', JSON.stringify(params), ')'], { type: 'application/javascript' }));
-	
-	    return blobURL;
-	  };
-	
-	  Function.prototype.toWorker = function (params) {
-	    var url = workerToBlobUrl(this, params);
-	    return new Worker(url);
-	  };
-	})();
-	/*License (MIT)
-	  Copyright © 2013 Matt Diamond
-	  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-	 documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-	 the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
-	 to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-	  The above copyright notice and this permission notice shall be included in all copies or substantial portions of
-	 the Software.
-	  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
-	 THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-	 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-	 DEALINGS IN THE SOFTWARE.
-	 */
-	
-	(function (win) {
-	  'use strict';
-	
-	  var RecorderWorker = function RecorderWorker(me) {
-	    var recLength = 0,
-	        recBuffersL = [],
-	        recBuffersR = [],
-	        bits = 16,
-	        sampleRate;
-	
-	    me.onmessage = function (e) {
-	      switch (e.data.command) {
-	        case 'init':
-	          init(e.data.config);
-	          break;
-	        case 'record':
-	          record(e.data.buffer);
-	          break;
-	        case 'exportWAV':
-	          exportWAV(e.data.type);
-	          break;
-	        case 'getBuffer':
-	          getBuffer();
-	          break;
-	        case 'clear':
-	          clear();
-	          break;
-	      }
-	    };
-	
-	    function init(config) {
-	      sampleRate = config.sampleRate;
-	    }
-	
-	    function record(inputBuffer) {
-	      recBuffersL.push(inputBuffer[0]);
-	      //recBuffersR.push(inputBuffer[1]);
-	      recLength += inputBuffer[0].length;
-	    }
-	
-	    function exportWAV(type) {
-	      var bufferL = mergeBuffers(recBuffersL, recLength);
-	      var dataview = encodeWAV(bufferL);
-	      var audioBlob = new Blob([dataview], { type: type });
-	
-	      me.postMessage(audioBlob);
-	    }
-	
-	    function getBuffer() {
-	      var buffers = [];
-	      buffers.push(mergeBuffers(recBuffersL, recLength));
-	      buffers.push(mergeBuffers(recBuffersR, recLength));
-	      me.postMessage(buffers);
-	    }
-	
-	    function clear() {
-	      recLength = 0;
-	      recBuffersL = [];
-	      recBuffersR = [];
-	    }
-	
-	    function mergeBuffers(recBuffers, recLength) {
-	      var result = new Float32Array(recLength);
-	      var offset = 0;
-	      for (var i = 0; i < recBuffers.length; i++) {
-	        result.set(recBuffers[i], offset);
-	        offset += recBuffers[i].length;
-	      }
-	      return result;
-	    }
-	
-	    //function interleave(inputL, inputR) {
-	    //  var length = inputL.length + inputR.length;
-	    //  var result = new Float32Array(length);
-	    //
-	    //  var index = 0,
-	    //    inputIndex = 0;
-	    //
-	    //  while (index < length) {
-	    //    result[index++] = inputL[inputIndex];
-	    //    result[index++] = inputR[inputIndex];
-	    //    inputIndex++;
-	    //  }
-	    //  return result;
-	    //}
-	
-	    function floatTo16BitPCM(output, offset, input) {
-	      for (var i = 0; i < input.length; i++, offset += 2) {
-	        var s = Math.max(-1, Math.min(1, input[i]));
-	        output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
-	      }
-	    }
-	
-	    function writeString(view, offset, string) {
-	      for (var i = 0; i < string.length; i++) {
-	        view.setUint8(offset + i, string.charCodeAt(i));
-	      }
-	    }
-	
-	    function encodeWAV(samples) {
-	      var buffer = new ArrayBuffer(44 + samples.length * 2);
-	      var view = new DataView(buffer);
-	
-	      /* RIFF identifier */
-	      writeString(view, 0, 'RIFF');
-	      /* file length */
-	      view.setUint32(4, 32 + samples.length * 2, true);
-	      /* RIFF type */
-	      writeString(view, 8, 'WAVE');
-	      /* format chunk identifier */
-	      writeString(view, 12, 'fmt ');
-	      /* format chunk length */
-	      view.setUint32(16, 16, true);
-	      /* sample format (raw) */
-	      view.setUint16(20, 1, true);
-	      /* channel count */
-	      //view.setUint16(22, 2, true); /*STEREO*/
-	      view.setUint16(22, 1, true);
-	      /*MONO*/
-	      /* sample rate */
-	      view.setUint32(24, sampleRate, true);
-	      /* byte rate (sample rate * block align) */
-	      //view.setUint32(28, sampleRate * 4, true); /*STEREO*/
-	      view.setUint32(28, sampleRate * 2, true);
-	      /*MONO*/
-	      /* block align (channel count * bytes per sample) */
-	      //view.setUint16(32, 4, true); /*STEREO*/
-	      view.setUint16(32, 2, true);
-	      /*MONO*/
-	      /* bits per sample */
-	      view.setUint16(34, 16, true);
-	      /* data chunk identifier */
-	      writeString(view, 36, 'data');
-	      /* data chunk length */
-	      view.setUint32(40, samples.length * 2, true);
-	
-	      floatTo16BitPCM(view, 44, samples);
-	
-	      return view;
-	    }
-	  };
-	
-	  var Recorder = function Recorder(source, cfg) {
-	    var config = cfg || {};
-	    var bufferLen = config.bufferLen || 4096;
-	    this.context = source.context;
-	    this.node = (this.context.createScriptProcessor || this.context.createJavaScriptNode).call(this.context, bufferLen, 2, 2);
-	    var worker = RecorderWorker.toWorker();
-	    worker.postMessage({
-	      command: 'init',
-	      config: {
-	        sampleRate: this.context.sampleRate
-	      }
-	    });
-	    var recording = false,
-	        currCallback;
-	
-	    this.node.onaudioprocess = function (e) {
-	      if (!recording) return;
-	      worker.postMessage({
-	        command: 'record',
-	        buffer: [e.inputBuffer.getChannelData(0)]
-	      });
-	    };
-	
-	    this.configure = function (cfg) {
-	      for (var prop in cfg) {
-	        if (cfg.hasOwnProperty(prop)) {
-	          config[prop] = cfg[prop];
-	        }
-	      }
-	    };
-	
-	    this.record = function () {
-	      recording = true;
-	    };
-	
-	    this.stop = function () {
-	      recording = false;
-	    };
-	
-	    this.clear = function () {
-	      worker.postMessage({ command: 'clear' });
-	    };
-	
-	    this.getBuffer = function (cb) {
-	      currCallback = cb || config.callback;
-	      worker.postMessage({ command: 'getBuffer' });
-	    };
-	
-	    this.exportWAV = function (cb, type) {
-	      currCallback = cb || config.callback;
-	      type = type || config.type || 'audio/wav';
-	      if (!currCallback) throw new Error('Callback not set');
-	      worker.postMessage({
-	        command: 'exportWAV',
-	        type: type
-	      });
-	    };
-	
-	    worker.onmessage = function (e) {
-	      var blob = e.data;
-	      //console.log("the blob " +  blob + " " + blob.size + " " + blob.type);
-	      currCallback(blob);
-	    };
-	
-	    source.connect(this.node);
-	    this.node.connect(this.context.destination); //this should not be necessary
-	  };
-	
-	  win.Recorder = Recorder;
-	})(window);
-	
-	(function (win) {
-	  'use strict';
-	
-	  var MP3ConversionWorker = function MP3ConversionWorker(me, params) {
-	    //should not reference any variable in parent scope as it will executed in its
-	    //on isolated scope
-	    console.log('MP3 conversion worker started.');
-	    console.log('params is ', params);
-	    if (typeof lamejs === 'undefined') {
-	      importScripts(params.lameJsUrl);
-	    }
-	
-	    var mp3Encoder,
-	        maxSamples = 1152,
-	        wav,
-	        samples,
-	        lame,
-	        config,
-	        dataBuffer;
-	
-	    var clearBuffer = function clearBuffer() {
-	      dataBuffer = [];
-	    };
-	
-	    var appendToBuffer = function appendToBuffer(mp3Buf) {
-	      dataBuffer.push(new Int8Array(mp3Buf));
-	    };
-	
-	    var init = function init(prefConfig) {
-	      config = prefConfig || {};
-	      lame = new lamejs();
-	      clearBuffer();
-	    };
-	
-	    var encode = function encode(arrayBuffer) {
-	      wav = lame.WavHeader.readHeader(new DataView(arrayBuffer));
-	      console.log('wave:', wav);
-	      samples = new Int16Array(arrayBuffer, wav.dataOffset, wav.dataLen / 2);
-	      mp3Encoder = new lame.Mp3Encoder(wav.channels, wav.sampleRate, config.bitRate || 128);
-	
-	      var remaining = samples.length;
-	      for (var i = 0; remaining >= maxSamples; i += maxSamples) {
-	        var mono = samples.subarray(i, i + maxSamples);
-	        var mp3buf = mp3Encoder.encodeBuffer(mono);
-	        appendToBuffer(mp3buf);
-	        remaining -= maxSamples;
-	      }
-	    };
-	
-	    var finish = function finish() {
-	      var mp3buf = mp3Encoder.flush();
-	      appendToBuffer(mp3buf);
-	      self.postMessage({ cmd: 'end', buf: dataBuffer });
-	      console.log('done encoding');
-	      clearBuffer(); //free up memory
-	    };
-	
-	    me.onmessage = function (e) {
-	      switch (e.data.cmd) {
-	        case 'init':
-	          init(e.data.config);
-	          break;
-	
-	        case 'encode':
-	          encode(e.data.rawInput);
-	          break;
-	
-	        case 'finish':
-	          finish();
-	          break;
-	      }
-	    };
-	  };
-	
-	  var SCRIPT_BASE = function () {
-	    var scripts = document.getElementsByTagName('script');
-	    var myUrl = scripts[scripts.length - 1].getAttribute('src');
-	    var path = myUrl.substr(0, myUrl.lastIndexOf('/') + 1);
-	    if (path && !path.match(/:\/\//)) {
-	      var a = document.createElement('a');
-	      a.href = path;
-	      return a.href;
-	    }
-	    return path;
-	  }();
-	
-	  var MP3Converter = function MP3Converter(config) {
-	
-	    config = config || {};
-	    config.lameJsUrl = SCRIPT_BASE + 'lame-min.js';
-	    // config.lameJsUrl = config.lameJsUrl || (SCRIPT_BASE + '/lame.min.js');
-	    var busy = false;
-	    var mp3Worker = MP3ConversionWorker.toWorker(config);
-	
-	    this.isBusy = function () {
-	      return busy;
-	    };
-	
-	    this.convert = function (blob) {
-	      var conversionId = 'conversion_' + Date.now(),
-	          tag = conversionId + ":";
-	      console.log(tag, 'Starting conversion');
-	      var preferredConfig = {},
-	          onSuccess,
-	          onError;
-	      switch (_typeof(arguments[1])) {
-	        case 'object':
-	          preferredConfig = arguments[1];
-	          break;
-	        case 'function':
-	          onSuccess = arguments[1];
-	          break;
-	        default:
-	          throw "parameter 2 is expected to be an object (config) or function (success callback)";
-	      }
-	
-	      if (typeof arguments[2] === 'function') {
-	        if (onSuccess) {
-	          onError = arguments[2];
-	        } else {
-	          onSuccess = arguments[2];
-	        }
-	      }
-	
-	      if (typeof arguments[3] === 'function' && !onError) {
-	        onError = arguments[3];
-	      }
-	
-	      if (busy) {
-	        throw "Another conversion is in progress";
-	      }
-	
-	      var initialSize = blob.size,
-	          fileReader = new FileReader(),
-	          startTime = Date.now();
-	
-	      fileReader.onload = function (e) {
-	        console.log(tag, "Passed to BG process");
-	        mp3Worker.postMessage({
-	          cmd: 'init',
-	          config: preferredConfig
-	        });
-	
-	        mp3Worker.postMessage({ cmd: 'encode', rawInput: e.target.result });
-	        mp3Worker.postMessage({ cmd: 'finish' });
-	
-	        mp3Worker.onmessage = function (e) {
-	          if (e.data.cmd == 'end') {
-	            console.log(tag, "Done converting to Mp3");
-	            var mp3Blob = new Blob(e.data.buf, { type: 'audio/mp3' });
-	            console.log(tag, "Conversion completed in: " + (Date.now() - startTime) / 1000 + 's');
-	            var finalSize = mp3Blob.size;
-	            console.log(tag + "Initial size: = " + initialSize + ", " + "Final size = " + finalSize + ", Reduction: " + Number(100 * (initialSize - finalSize) / initialSize).toPrecision(4) + "%");
-	
-	            busy = false;
-	            if (onSuccess && typeof onSuccess === 'function') {
-	              onSuccess(mp3Blob);
-	            }
-	          }
-	        };
-	      };
-	      busy = true;
-	      fileReader.readAsArrayBuffer(blob);
-	    };
-	  };
-	
-	  win.MP3Converter = MP3Converter;
-	})(window);
-	(function (win) {
-	  'use strict';
-	
-	  /*!SWFObject v2.1 <http://code.google.com/p/swfobject/>
-	   Copyright (c) 2007-2008 Geoff Stearns, Michael Williams, and Bobby van der Sluis
-	   This software is released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
-	   */
-	
-	  win.swfobject = function () {
-	
-	    var UNDEF = "undefined",
-	        OBJECT = "object",
-	        SHOCKWAVE_FLASH = "Shockwave Flash",
-	        SHOCKWAVE_FLASH_AX = "ShockwaveFlash.ShockwaveFlash",
-	        FLASH_MIME_TYPE = "application/x-shockwave-flash",
-	        EXPRESS_INSTALL_ID = "SWFObjectExprInst",
-	        win = window,
-	        doc = document,
-	        nav = navigator,
-	        domLoadFnArr = [],
-	        regObjArr = [],
-	        objIdArr = [],
-	        listenersArr = [],
-	        script,
-	        timer = null,
-	        storedAltContent = null,
-	        storedAltContentId = null,
-	        isDomLoaded = false,
-	        isExpressInstallActive = false;
-	
-	    /* Centralized function for browser feature detection
-	     - Proprietary feature detection (conditional compiling) is used to detect Internet Explorer's features
-	     - User agent string detection is only used when no alternative is possible
-	     - Is executed directly for optimal performance
-	     */
-	    var ua = function () {
-	      var w3cdom = _typeof(doc.getElementById) != UNDEF && _typeof(doc.getElementsByTagName) != UNDEF && _typeof(doc.createElement) != UNDEF,
-	          playerVersion = [0, 0, 0],
-	          d = null;
-	      if (_typeof(nav.plugins) != UNDEF && _typeof(nav.plugins[SHOCKWAVE_FLASH]) == OBJECT) {
-	        d = nav.plugins[SHOCKWAVE_FLASH].description;
-	        if (d && !(_typeof(nav.mimeTypes) != UNDEF && nav.mimeTypes[FLASH_MIME_TYPE] && !nav.mimeTypes[FLASH_MIME_TYPE].enabledPlugin)) {
-	          // navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin indicates whether plug-ins are enabled or disabled in Safari 3+
-	          d = d.replace(/^.*\s+(\S+\s+\S+$)/, "$1");
-	          playerVersion[0] = parseInt(d.replace(/^(.*)\..*$/, "$1"), 10);
-	          playerVersion[1] = parseInt(d.replace(/^.*\.(.*)\s.*$/, "$1"), 10);
-	          playerVersion[2] = /r/.test(d) ? parseInt(d.replace(/^.*r(.*)$/, "$1"), 10) : 0;
-	        }
-	      } else if (_typeof(win.ActiveXObject) != UNDEF) {
-	        var a = null,
-	            fp6Crash = false;
-	        try {
-	          a = new ActiveXObject(SHOCKWAVE_FLASH_AX + ".7");
-	        } catch (e) {
-	          try {
-	            a = new ActiveXObject(SHOCKWAVE_FLASH_AX + ".6");
-	            playerVersion = [6, 0, 21];
-	            a.AllowScriptAccess = "always"; // Introduced in fp6.0.47
-	          } catch (e) {
-	            if (playerVersion[0] == 6) {
-	              fp6Crash = true;
-	            }
-	          }
-	          if (!fp6Crash) {
-	            try {
-	              a = new ActiveXObject(SHOCKWAVE_FLASH_AX);
-	            } catch (e) {}
-	          }
-	        }
-	        if (!fp6Crash && a) {
-	          // a will return null when ActiveX is disabled
-	          try {
-	            d = a.GetVariable("$version"); // Will crash fp6.0.21/23/29
-	            if (d) {
-	              d = d.split(" ")[1].split(",");
-	              playerVersion = [parseInt(d[0], 10), parseInt(d[1], 10), parseInt(d[2], 10)];
-	            }
-	          } catch (e) {}
-	        }
-	      }
-	      var u = nav.userAgent.toLowerCase(),
-	          p = nav.platform.toLowerCase(),
-	          webkit = /webkit/.test(u) ? parseFloat(u.replace(/^.*webkit\/(\d+(\.\d+)?).*$/, "$1")) : false,
-	          // returns either the webkit version or false if not webkit
-	      ie = false,
-	          windows = p ? /win/.test(p) : /win/.test(u),
-	          mac = p ? /mac/.test(p) : /mac/.test(u);
-	      /*@cc_on
-	       ie = true;
-	       @if (@_win32)
-	       windows = true;
-	       @elif (@_mac)
-	       mac = true;
-	       @end
-	       @*/
-	      return { w3cdom: w3cdom, pv: playerVersion, webkit: webkit, ie: ie, win: windows, mac: mac };
-	    }();
-	
-	    /* Cross-browser onDomLoad
-	     - Based on Dean Edwards' solution: http://dean.edwards.name/weblog/2006/06/again/
-	     - Will fire an event as soon as the DOM of a page is loaded (supported by Gecko based browsers - like Firefox -, IE, Opera9+, Safari)
-	     */
-	    var onDomLoad = function () {
-	      if (!ua.w3cdom) {
-	        return;
-	      }
-	      addDomLoadEvent(main);
-	      if (ua.ie && ua.win) {
-	        try {
-	          // Avoid a possible Operation Aborted error
-	          doc.write("<scr" + "ipt id=__ie_ondomload defer=true src=//:></scr" + "ipt>"); // String is split into pieces to avoid Norton AV to add code that can cause errors
-	          script = getElementById("__ie_ondomload");
-	          if (script) {
-	            addListener(script, "onreadystatechange", checkReadyState);
-	          }
-	        } catch (e) {}
-	      }
-	      if (ua.webkit && _typeof(doc.readyState) != UNDEF) {
-	        timer = setInterval(function () {
-	          if (/loaded|complete/.test(doc.readyState)) {
-	            callDomLoadFunctions();
-	          }
-	        }, 10);
-	      }
-	      if (_typeof(doc.addEventListener) != UNDEF) {
-	        doc.addEventListener("DOMContentLoaded", callDomLoadFunctions, null);
-	      }
-	      addLoadEvent(callDomLoadFunctions);
-	    }();
-	
-	    function checkReadyState() {
-	      if (script.readyState == "complete") {
-	        script.parentNode.removeChild(script);
-	        callDomLoadFunctions();
-	      }
-	    }
-	
-	    function callDomLoadFunctions() {
-	      if (isDomLoaded) {
-	        return;
-	      }
-	      if (ua.ie && ua.win) {
-	        // Test if we can really add elements to the DOM; we don't want to fire it too early
-	        var s = createElement("span");
-	        try {
-	          // Avoid a possible Operation Aborted error
-	          var t = doc.getElementsByTagName("body")[0].appendChild(s);
-	          t.parentNode.removeChild(t);
-	        } catch (e) {
-	          return;
-	        }
-	      }
-	      isDomLoaded = true;
-	      if (timer) {
-	        clearInterval(timer);
-	        timer = null;
-	      }
-	      var dl = domLoadFnArr.length;
-	      for (var i = 0; i < dl; i++) {
-	        domLoadFnArr[i]();
-	      }
-	    }
-	
-	    function addDomLoadEvent(fn) {
-	      if (isDomLoaded) {
-	        fn();
-	      } else {
-	        domLoadFnArr[domLoadFnArr.length] = fn; // Array.push() is only available in IE5.5+
-	      }
-	    }
-	
-	    /* Cross-browser onload
-	     - Based on James Edwards' solution: http://brothercake.com/site/resources/scripts/onload/
-	     - Will fire an event as soon as a web page including all of its assets are loaded
-	     */
-	    function addLoadEvent(fn) {
-	      if (_typeof(win.addEventListener) != UNDEF) {
-	        win.addEventListener("load", fn, false);
-	      } else if (_typeof(doc.addEventListener) != UNDEF) {
-	        doc.addEventListener("load", fn, false);
-	      } else if (_typeof(win.attachEvent) != UNDEF) {
-	        addListener(win, "onload", fn);
-	      } else if (typeof win.onload == "function") {
-	        var fnOld = win.onload;
-	        win.onload = function () {
-	          fnOld();
-	          fn();
-	        };
-	      } else {
-	        win.onload = fn;
-	      }
-	    }
-	
-	    /* Main function
-	     - Will preferably execute onDomLoad, otherwise onload (as a fallback)
-	     */
-	    function main() {
-	      // Static publishing only
-	      var rl = regObjArr.length;
-	      for (var i = 0; i < rl; i++) {
-	        // For each registered object element
-	        var id = regObjArr[i].id;
-	        if (ua.pv[0] > 0) {
-	          var obj = getElementById(id);
-	          if (obj) {
-	            regObjArr[i].width = obj.getAttribute("width") ? obj.getAttribute("width") : "0";
-	            regObjArr[i].height = obj.getAttribute("height") ? obj.getAttribute("height") : "0";
-	            if (hasPlayerVersion(regObjArr[i].swfVersion)) {
-	              // Flash plug-in version >= Flash content version: Houston, we have a match!
-	              if (ua.webkit && ua.webkit < 312) {
-	                // Older webkit engines ignore the object element's nested param elements
-	                fixParams(obj);
-	              }
-	              setVisibility(id, true);
-	            } else if (regObjArr[i].expressInstall && !isExpressInstallActive && hasPlayerVersion("6.0.65") && (ua.win || ua.mac)) {
-	              // Show the Adobe Express Install dialog if set by the web page author and if supported (fp6.0.65+ on Win/Mac OS only)
-	              showExpressInstall(regObjArr[i]);
-	            } else {
-	              // Flash plug-in and Flash content version mismatch: display alternative content instead of Flash content
-	              displayAltContent(obj);
-	            }
-	          }
-	        } else {
-	          // If no fp is installed, we let the object element do its job (show alternative content)
-	          setVisibility(id, true);
-	        }
-	      }
-	    }
-	
-	    /* Fix nested param elements, which are ignored by older webkit engines
-	     - This includes Safari up to and including version 1.2.2 on Mac OS 10.3
-	     - Fall back to the proprietary embed element
-	     */
-	    function fixParams(obj) {
-	      var nestedObj = obj.getElementsByTagName(OBJECT)[0];
-	      if (nestedObj) {
-	        var e = createElement("embed"),
-	            a = nestedObj.attributes;
-	        if (a) {
-	          var al = a.length;
-	          for (var i = 0; i < al; i++) {
-	            if (a[i].nodeName == "DATA") {
-	              e.setAttribute("src", a[i].nodeValue);
-	            } else {
-	              e.setAttribute(a[i].nodeName, a[i].nodeValue);
-	            }
-	          }
-	        }
-	        var c = nestedObj.childNodes;
-	        if (c) {
-	          var cl = c.length;
-	          for (var j = 0; j < cl; j++) {
-	            if (c[j].nodeType == 1 && c[j].nodeName == "PARAM") {
-	              e.setAttribute(c[j].getAttribute("name"), c[j].getAttribute("value"));
-	            }
-	          }
-	        }
-	        obj.parentNode.replaceChild(e, obj);
-	      }
-	    }
-	
-	    /* Show the Adobe Express Install dialog
-	     - Reference: http://www.adobe.com/cfusion/knowledgebase/index.cfm?id=6a253b75
-	     */
-	    function showExpressInstall(regObj) {
-	      isExpressInstallActive = true;
-	      var obj = getElementById(regObj.id);
-	      if (obj) {
-	        if (regObj.altContentId) {
-	          var ac = getElementById(regObj.altContentId);
-	          if (ac) {
-	            storedAltContent = ac;
-	            storedAltContentId = regObj.altContentId;
-	          }
-	        } else {
-	          storedAltContent = abstractAltContent(obj);
-	        }
-	        if (!/%$/.test(regObj.width) && parseInt(regObj.width, 10) < 310) {
-	          regObj.width = "310";
-	        }
-	        if (!/%$/.test(regObj.height) && parseInt(regObj.height, 10) < 137) {
-	          regObj.height = "137";
-	        }
-	        doc.title = doc.title.slice(0, 47) + " - Flash Player Installation";
-	        var pt = ua.ie && ua.win ? "ActiveX" : "PlugIn",
-	            dt = doc.title,
-	            fv = "MMredirectURL=" + win.location + "&MMplayerType=" + pt + "&MMdoctitle=" + dt,
-	            replaceId = regObj.id;
-	        // For IE when a SWF is loading (AND: not available in cache) wait for the onload event to fire to remove the original object element
-	        // In IE you cannot properly cancel a loading SWF file without breaking browser load references, also obj.onreadystatechange doesn't work
-	        if (ua.ie && ua.win && obj.readyState != 4) {
-	          var newObj = createElement("div");
-	          replaceId += "SWFObjectNew";
-	          newObj.setAttribute("id", replaceId);
-	          obj.parentNode.insertBefore(newObj, obj); // Insert placeholder div that will be replaced by the object element that loads expressinstall.swf
-	          obj.style.display = "none";
-	          var fn = function fn() {
-	            obj.parentNode.removeChild(obj);
-	          };
-	          addListener(win, "onload", fn);
-	        }
-	        _createSWF({
-	          data: regObj.expressInstall,
-	          id: EXPRESS_INSTALL_ID,
-	          width: regObj.width,
-	          height: regObj.height
-	        }, { flashvars: fv }, replaceId);
-	      }
-	    }
-	
-	    /* Functions to abstract and display alternative content
-	     */
-	    function displayAltContent(obj) {
-	      if (ua.ie && ua.win && obj.readyState != 4) {
-	        // For IE when a SWF is loading (AND: not available in cache) wait for the onload event to fire to remove the original object element
-	        // In IE you cannot properly cancel a loading SWF file without breaking browser load references, also obj.onreadystatechange doesn't work
-	        var el = createElement("div");
-	        obj.parentNode.insertBefore(el, obj); // Insert placeholder div that will be replaced by the alternative content
-	        el.parentNode.replaceChild(abstractAltContent(obj), el);
-	        obj.style.display = "none";
-	        var fn = function fn() {
-	          obj.parentNode.removeChild(obj);
-	        };
-	        addListener(win, "onload", fn);
-	      } else {
-	        obj.parentNode.replaceChild(abstractAltContent(obj), obj);
-	      }
-	    }
-	
-	    function abstractAltContent(obj) {
-	      var ac = createElement("div");
-	      if (ua.win && ua.ie) {
-	        ac.innerHTML = obj.innerHTML;
-	      } else {
-	        var nestedObj = obj.getElementsByTagName(OBJECT)[0];
-	        if (nestedObj) {
-	          var c = nestedObj.childNodes;
-	          if (c) {
-	            var cl = c.length;
-	            for (var i = 0; i < cl; i++) {
-	              if (!(c[i].nodeType == 1 && c[i].nodeName == "PARAM") && !(c[i].nodeType == 8)) {
-	                ac.appendChild(c[i].cloneNode(true));
-	              }
-	            }
-	          }
-	        }
-	      }
-	      return ac;
-	    }
-	
-	    /* Cross-browser dynamic SWF creation
-	     */
-	    function _createSWF(attObj, parObj, id) {
-	      var r,
-	          el = getElementById(id);
-	      if (el) {
-	        if (_typeof(attObj.id) == UNDEF) {
-	          // if no 'id' is defined for the object element, it will inherit the 'id' from the alternative content
-	          attObj.id = id;
-	        }
-	        if (ua.ie && ua.win) {
-	          // IE, the object element and W3C DOM methods do not combine: fall back to outerHTML
-	          var att = "";
-	          for (var i in attObj) {
-	            if (attObj[i] != Object.prototype[i]) {
-	              // Filter out prototype additions from other potential libraries, like Object.prototype.toJSONString = function() {}
-	              if (i.toLowerCase() == "data") {
-	                parObj.movie = attObj[i];
-	              } else if (i.toLowerCase() == "styleclass") {
-	                // 'class' is an ECMA4 reserved keyword
-	                att += ' class="' + attObj[i] + '"';
-	              } else if (i.toLowerCase() != "classid") {
-	                att += ' ' + i + '="' + attObj[i] + '"';
-	              }
-	            }
-	          }
-	          var par = "";
-	          for (var j in parObj) {
-	            if (parObj[j] != Object.prototype[j]) {
-	              // Filter out prototype additions from other potential libraries
-	              par += '<param name="' + j + '" value="' + parObj[j] + '" />';
-	            }
-	          }
-	          el.outerHTML = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"' + att + '>' + par + '</object>';
-	          objIdArr[objIdArr.length] = attObj.id; // Stored to fix object 'leaks' on unload (dynamic publishing only)
-	          r = getElementById(attObj.id);
-	        } else if (ua.webkit && ua.webkit < 312) {
-	          // Older webkit engines ignore the object element's nested param elements: fall back to the proprietary embed element
-	          var e = createElement("embed");
-	          e.setAttribute("type", FLASH_MIME_TYPE);
-	          for (var k in attObj) {
-	            if (attObj[k] != Object.prototype[k]) {
-	              // Filter out prototype additions from other potential libraries
-	              if (k.toLowerCase() == "data") {
-	                e.setAttribute("src", attObj[k]);
-	              } else if (k.toLowerCase() == "styleclass") {
-	                // 'class' is an ECMA4 reserved keyword
-	                e.setAttribute("class", attObj[k]);
-	              } else if (k.toLowerCase() != "classid") {
-	                // Filter out IE specific attribute
-	                e.setAttribute(k, attObj[k]);
-	              }
-	            }
-	          }
-	          for (var l in parObj) {
-	            if (parObj[l] != Object.prototype[l]) {
-	              // Filter out prototype additions from other potential libraries
-	              if (l.toLowerCase() != "movie") {
-	                // Filter out IE specific param element
-	                e.setAttribute(l, parObj[l]);
-	              }
-	            }
-	          }
-	          el.parentNode.replaceChild(e, el);
-	          r = e;
-	        } else {
-	          // Well-behaving browsers
-	          var o = createElement(OBJECT);
-	          o.setAttribute("type", FLASH_MIME_TYPE);
-	          for (var m in attObj) {
-	            if (attObj[m] != Object.prototype[m]) {
-	              // Filter out prototype additions from other potential libraries
-	              if (m.toLowerCase() == "styleclass") {
-	                // 'class' is an ECMA4 reserved keyword
-	                o.setAttribute("class", attObj[m]);
-	              } else if (m.toLowerCase() != "classid") {
-	                // Filter out IE specific attribute
-	                o.setAttribute(m, attObj[m]);
-	              }
-	            }
-	          }
-	          for (var n in parObj) {
-	            if (parObj[n] != Object.prototype[n] && n.toLowerCase() != "movie") {
-	              // Filter out prototype additions from other potential libraries and IE specific param element
-	              createObjParam(o, n, parObj[n]);
-	            }
-	          }
-	          el.parentNode.replaceChild(o, el);
-	          r = o;
-	        }
-	      }
-	      return r;
-	    }
-	
-	    function createObjParam(el, pName, pValue) {
-	      var p = createElement("param");
-	      p.setAttribute("name", pName);
-	      p.setAttribute("value", pValue);
-	      el.appendChild(p);
-	    }
-	
-	    /* Cross-browser SWF removal
-	     - Especially needed to safely and completely remove a SWF in Internet Explorer
-	     */
-	    function _removeSWF(id) {
-	      var obj = getElementById(id);
-	      if (obj && (obj.nodeName == "OBJECT" || obj.nodeName == "EMBED")) {
-	        if (ua.ie && ua.win) {
-	          if (obj.readyState == 4) {
-	            removeObjectInIE(id);
-	          } else {
-	            win.attachEvent("onload", function () {
-	              removeObjectInIE(id);
-	            });
-	          }
-	        } else {
-	          obj.parentNode.removeChild(obj);
-	        }
-	      }
-	    }
-	
-	    function removeObjectInIE(id) {
-	      var obj = getElementById(id);
-	      if (obj) {
-	        for (var i in obj) {
-	          if (typeof obj[i] == "function") {
-	            obj[i] = null;
-	          }
-	        }
-	        obj.parentNode.removeChild(obj);
-	      }
-	    }
-	
-	    /* Functions to optimize JavaScript compression
-	     */
-	    function getElementById(id) {
-	      var el = null;
-	      try {
-	        el = doc.getElementById(id);
-	      } catch (e) {}
-	      return el;
-	    }
-	
-	    function createElement(el) {
-	      return doc.createElement(el);
-	    }
-	
-	    /* Updated attachEvent function for Internet Explorer
-	     - Stores attachEvent information in an Array, so on unload the detachEvent functions can be called to avoid memory leaks
-	     */
-	    function addListener(target, eventType, fn) {
-	      target.attachEvent(eventType, fn);
-	      listenersArr[listenersArr.length] = [target, eventType, fn];
-	    }
-	
-	    /* Flash Player and SWF content version matching
-	     */
-	    function hasPlayerVersion(rv) {
-	      var pv = ua.pv,
-	          v = rv.split(".");
-	      v[0] = parseInt(v[0], 10);
-	      v[1] = parseInt(v[1], 10) || 0; // supports short notation, e.g. "9" instead of "9.0.0"
-	      v[2] = parseInt(v[2], 10) || 0;
-	      return pv[0] > v[0] || pv[0] == v[0] && pv[1] > v[1] || pv[0] == v[0] && pv[1] == v[1] && pv[2] >= v[2] ? true : false;
-	    }
-	
-	    /* Cross-browser dynamic CSS creation
-	     - Based on Bobby van der Sluis' solution: http://www.bobbyvandersluis.com/articles/dynamicCSS.php
-	     */
-	    function _createCSS(sel, decl) {
-	      if (ua.ie && ua.mac) {
-	        return;
-	      }
-	      var h = doc.getElementsByTagName("head")[0],
-	          s = createElement("style");
-	      s.setAttribute("type", "text/css");
-	      s.setAttribute("media", "screen");
-	      if (!(ua.ie && ua.win) && _typeof(doc.createTextNode) != UNDEF) {
-	        s.appendChild(doc.createTextNode(sel + " {" + decl + "}"));
-	      }
-	      h.appendChild(s);
-	      if (ua.ie && ua.win && _typeof(doc.styleSheets) != UNDEF && doc.styleSheets.length > 0) {
-	        var ls = doc.styleSheets[doc.styleSheets.length - 1];
-	        if (_typeof(ls.addRule) == OBJECT) {
-	          ls.addRule(sel, decl);
-	        }
-	      }
-	    }
-	
-	    function setVisibility(id, isVisible) {
-	      var v = isVisible ? "visible" : "hidden";
-	      if (isDomLoaded && getElementById(id)) {
-	        getElementById(id).style.visibility = v;
-	      } else {
-	        _createCSS("#" + id, "visibility:" + v);
-	      }
-	    }
-	
-	    /* Filter to avoid XSS attacks
-	     */
-	    function urlEncodeIfNecessary(s) {
-	      var regex = /[\\\"<>\.;]/;
-	      var hasBadChars = regex.exec(s) != null;
-	      return hasBadChars ? encodeURIComponent(s) : s;
-	    }
-	
-	    /* Release memory to avoid memory leaks caused by closures, fix hanging audio/video threads and force open sockets/NetConnections to disconnect (Internet Explorer only)
-	     */
-	    var cleanup = function () {
-	      if (ua.ie && ua.win) {
-	        window.attachEvent("onunload", function () {
-	          // remove listeners to avoid memory leaks
-	          var ll = listenersArr.length;
-	          for (var i = 0; i < ll; i++) {
-	            listenersArr[i][0].detachEvent(listenersArr[i][1], listenersArr[i][2]);
-	          }
-	          // cleanup dynamically embedded objects to fix audio/video threads and force open sockets and NetConnections to disconnect
-	          var il = objIdArr.length;
-	          for (var j = 0; j < il; j++) {
-	            _removeSWF(objIdArr[j]);
-	          }
-	          // cleanup library's main closures to avoid memory leaks
-	          for (var k in ua) {
-	            ua[k] = null;
-	          }
-	          ua = null;
-	          for (var l in swfobject) {
-	            swfobject[l] = null;
-	          }
-	          swfobject = null;
-	        });
-	      }
-	    }();
-	
-	    return {
-	      /* Public API
-	       - Reference: http://code.google.com/p/swfobject/wiki/SWFObject_2_0_documentation
-	       */
-	      registerObject: function registerObject(objectIdStr, swfVersionStr, xiSwfUrlStr) {
-	        if (!ua.w3cdom || !objectIdStr || !swfVersionStr) {
-	          return;
-	        }
-	        var regObj = {};
-	        regObj.id = objectIdStr;
-	        regObj.swfVersion = swfVersionStr;
-	        regObj.expressInstall = xiSwfUrlStr ? xiSwfUrlStr : false;
-	        regObjArr[regObjArr.length] = regObj;
-	        setVisibility(objectIdStr, false);
-	      },
-	
-	      getObjectById: function getObjectById(objectIdStr) {
-	        var r = null;
-	        if (ua.w3cdom) {
-	          var o = getElementById(objectIdStr);
-	          if (o) {
-	            var n = o.getElementsByTagName(OBJECT)[0];
-	            if (!n || n && _typeof(o.SetVariable) != UNDEF) {
-	              r = o;
-	            } else if (_typeof(n.SetVariable) != UNDEF) {
-	              r = n;
-	            }
-	          }
-	        }
-	        return r;
-	      },
-	
-	      embedSWF: function embedSWF(swfUrlStr, replaceElemIdStr, widthStr, heightStr, swfVersionStr, xiSwfUrlStr, flashvarsObj, parObj, attObj) {
-	        if (!ua.w3cdom || !swfUrlStr || !replaceElemIdStr || !widthStr || !heightStr || !swfVersionStr) {
-	          return;
-	        }
-	        widthStr += ""; // Auto-convert to string
-	        heightStr += "";
-	        if (hasPlayerVersion(swfVersionStr)) {
-	          setVisibility(replaceElemIdStr, false);
-	          var att = {};
-	          if (attObj && (typeof attObj === 'undefined' ? 'undefined' : _typeof(attObj)) === OBJECT) {
-	            for (var i in attObj) {
-	              if (attObj[i] != Object.prototype[i]) {
-	                // Filter out prototype additions from other potential libraries
-	                att[i] = attObj[i];
-	              }
-	            }
-	          }
-	          att.data = swfUrlStr;
-	          att.width = widthStr;
-	          att.height = heightStr;
-	          var par = {};
-	          if (parObj && (typeof parObj === 'undefined' ? 'undefined' : _typeof(parObj)) === OBJECT) {
-	            for (var j in parObj) {
-	              if (parObj[j] != Object.prototype[j]) {
-	                // Filter out prototype additions from other potential libraries
-	                par[j] = parObj[j];
-	              }
-	            }
-	          }
-	          if (flashvarsObj && (typeof flashvarsObj === 'undefined' ? 'undefined' : _typeof(flashvarsObj)) === OBJECT) {
-	            for (var k in flashvarsObj) {
-	              if (flashvarsObj[k] != Object.prototype[k]) {
-	                // Filter out prototype additions from other potential libraries
-	                if (_typeof(par.flashvars) != UNDEF) {
-	                  par.flashvars += "&" + k + "=" + flashvarsObj[k];
-	                } else {
-	                  par.flashvars = k + "=" + flashvarsObj[k];
-	                }
-	              }
-	            }
-	          }
-	          addDomLoadEvent(function () {
-	            _createSWF(att, par, replaceElemIdStr);
-	            if (att.id == replaceElemIdStr) {
-	              setVisibility(replaceElemIdStr, true);
-	            }
-	          });
-	        } else if (xiSwfUrlStr && !isExpressInstallActive && hasPlayerVersion("6.0.65") && (ua.win || ua.mac)) {
-	          isExpressInstallActive = true; // deferred execution
-	          setVisibility(replaceElemIdStr, false);
-	          addDomLoadEvent(function () {
-	            var regObj = {};
-	            regObj.id = regObj.altContentId = replaceElemIdStr;
-	            regObj.width = widthStr;
-	            regObj.height = heightStr;
-	            regObj.expressInstall = xiSwfUrlStr;
-	            showExpressInstall(regObj);
-	          });
-	        }
-	      },
-	
-	      getFlashPlayerVersion: function getFlashPlayerVersion() {
-	        return { major: ua.pv[0], minor: ua.pv[1], release: ua.pv[2] };
-	      },
-	
-	      hasFlashPlayerVersion: hasPlayerVersion,
-	
-	      createSWF: function createSWF(attObj, parObj, replaceElemIdStr) {
-	        if (ua.w3cdom) {
-	          return _createSWF(attObj, parObj, replaceElemIdStr);
-	        } else {
-	          return undefined;
-	        }
-	      },
-	
-	      removeSWF: function removeSWF(objElemIdStr) {
-	        if (ua.w3cdom) {
-	          _removeSWF(objElemIdStr);
-	        }
-	      },
-	
-	      createCSS: function createCSS(sel, decl) {
-	        if (ua.w3cdom) {
-	          _createCSS(sel, decl);
-	        }
-	      },
-	
-	      addDomLoadEvent: addDomLoadEvent,
-	
-	      addLoadEvent: addLoadEvent,
-	
-	      getQueryParamValue: function getQueryParamValue(param) {
-	        var q = doc.location.search || doc.location.hash;
-	        if (param == null) {
-	          return urlEncodeIfNecessary(q);
-	        }
-	        if (q) {
-	          var pairs = q.substring(1).split("&");
-	          for (var i = 0; i < pairs.length; i++) {
-	            if (pairs[i].substring(0, pairs[i].indexOf("=")) == param) {
-	              return urlEncodeIfNecessary(pairs[i].substring(pairs[i].indexOf("=") + 1));
-	            }
-	          }
-	        }
-	        return "";
-	      },
-	
-	      // For internal usage only
-	      expressInstallCallback: function expressInstallCallback() {
-	        if (isExpressInstallActive && storedAltContent) {
-	          var obj = getElementById(EXPRESS_INSTALL_ID);
-	          if (obj) {
-	            obj.parentNode.replaceChild(storedAltContent, obj);
-	            if (storedAltContentId) {
-	              setVisibility(storedAltContentId, true);
-	              if (ua.ie && ua.win) {
-	                storedAltContent.style.display = "block";
-	              }
-	            }
-	            storedAltContent = null;
-	            storedAltContentId = null;
-	            isExpressInstallActive = false;
-	          }
-	        }
-	      }
-	    };
-	  }();
-	})(window);
-
-/***/ },
-/* 11 */
-/*!*************************************!*\
-  !*** ./~/lamejs/src/js/lametest.js ***!
-  \*************************************/
-/***/ function(module, exports) {
-
-	// require('use-strict');
-	//
-	// const fs = require('fs');
-	// var common = require('./common.js');
-	// var System = common.System;
-	// var VbrMode = common.VbrMode;
-	// var Float = common.Float;
-	// var ShortBlock = common.ShortBlock;
-	// var Util = common.Util;
-	// var Arrays = common.Arrays;
-	// var new_array_n = common.new_array_n;
-	// var new_byte = common.new_byte;
-	// var new_double = common.new_double;
-	// var new_float = common.new_float;
-	// var new_float_n = common.new_float_n;
-	// var new_int = common.new_int;
-	// var new_int_n = common.new_int_n;
-	// var assert = common.assert;
-	//
-	// Lame = require('./Lame.js');
-	// Presets = require('./Presets.js');
-	// GainAnalysis = require('./GainAnalysis.js');
-	// QuantizePVT = require('./QuantizePVT.js');
-	// Quantize = require('./Quantize.js');
-	// Takehiro = require('./Takehiro.js');
-	// Reservoir = require('./Reservoir.js');
-	// MPEGMode = require('./MPEGMode.js');
-	// BitStream = require('./BitStream.js');
-	// var Encoder = require('./Encoder.js');
-	// var Version = require('./Version.js');
-	// var VBRTag = require('./VBRTag.js');
-	//
-	// function GetAudio() {
-	//     var parse;
-	//     var mpg;
-	//
-	//     this.setModules = function (parse2, mpg2) {
-	//         parse = parse2;
-	//         mpg = mpg2;
-	//     }
-	// }
-	//
-	//
-	// function Parse() {
-	//     var ver;
-	//     var id3;
-	//     var pre;
-	//
-	//     this.setModules = function (ver2, id32, pre2) {
-	//         ver = ver2;
-	//         id3 = id32;
-	//         pre = pre2;
-	//     }
-	// }
-	//
-	// function MPGLib() {
-	// }
-	//
-	// function ID3Tag() {
-	//     var bits;
-	//     var ver;
-	//
-	//     this.setModules = function (_bits, _ver) {
-	//         bits = _bits;
-	//         ver = _ver;
-	//     }
-	// }
-	//
-	// function Mp3Encoder(channels, samplerate, kbps) {
-	//     if (arguments.length != 3) {
-	//         console.error('WARN: Mp3Encoder(channels, samplerate, kbps) not specified');
-	//         channels = 1;
-	//         samplerate = 44100;
-	//         kbps = 128;
-	//     }
-	//     var lame = new Lame();
-	//     var gaud = new GetAudio();
-	//     var ga = new GainAnalysis();
-	//     var bs = new BitStream();
-	//     var p = new Presets();
-	//     var qupvt = new QuantizePVT();
-	//     var qu = new Quantize();
-	//     var vbr = new VBRTag();
-	//     var ver = new Version();
-	//     var id3 = new ID3Tag();
-	//     var rv = new Reservoir();
-	//     var tak = new Takehiro();
-	//     var parse = new Parse();
-	//     var mpg = new MPGLib();
-	//
-	//     lame.setModules(ga, bs, p, qupvt, qu, vbr, ver, id3, mpg);
-	//     bs.setModules(ga, mpg, ver, vbr);
-	//     id3.setModules(bs, ver);
-	//     p.setModules(lame);
-	//     qu.setModules(bs, rv, qupvt, tak);
-	//     qupvt.setModules(tak, rv, lame.enc.psy);
-	//     rv.setModules(bs);
-	//     tak.setModules(qupvt);
-	//     vbr.setModules(lame, bs, ver);
-	//     gaud.setModules(parse, mpg);
-	//     parse.setModules(ver, id3, p);
-	//
-	//     var gfp = lame.lame_init();
-	//
-	//     gfp.num_channels = channels;
-	//     gfp.in_samplerate = samplerate;
-	//     gfp.brate = kbps;
-	//     gfp.mode = MPEGMode.STEREO;
-	//     gfp.quality = 3;
-	//     gfp.bWriteVbrTag = false;
-	//     gfp.disable_reservoir = true;
-	//     gfp.write_id3tag_automatic = false;
-	//
-	//     var retcode = lame.lame_init_params(gfp);
-	//     assert(0 == retcode);
-	//     var maxSamples = 1152;
-	//     var mp3buf_size = 0 | (1.25 * maxSamples + 7200);
-	//     var mp3buf = new_byte(mp3buf_size);
-	//
-	//     this.encodeBuffer = function (left, right) {
-	//         if (channels == 1) {
-	//             right = left;
-	//         }
-	//         assert(left.length == right.length);
-	//         if (left.length > maxSamples) {
-	//             maxSamples = left.length;
-	//             mp3buf_size = 0 | (1.25 * maxSamples + 7200);
-	//             mp3buf = new_byte(mp3buf_size);
-	//         }
-	//
-	//         var _sz = lame.lame_encode_buffer(gfp, left, right, left.length, mp3buf, 0, mp3buf_size);
-	//         return new Int8Array(mp3buf.subarray(0, _sz));
-	//     };
-	//
-	//     this.flush = function () {
-	//         var _sz = lame.lame_encode_flush(gfp, mp3buf, 0, mp3buf_size);
-	//         return new Int8Array(mp3buf.subarray(0, _sz));
-	//     };
-	// }
-	//
-	// function WavHeader() {
-	//     this.dataOffset = 0;
-	//     this.dataLen = 0;
-	//     this.channels = 0;
-	//     this.sampleRate = 0;
-	// }
-	//
-	// function fourccToInt(fourcc) {
-	//     return fourcc.charCodeAt(0) << 24 | fourcc.charCodeAt(1) << 16 | fourcc.charCodeAt(2) << 8 | fourcc.charCodeAt(3);
-	// }
-	//
-	// WavHeader.RIFF = fourccToInt("RIFF");
-	// WavHeader.WAVE = fourccToInt("WAVE");
-	// WavHeader.fmt_ = fourccToInt("fmt ");
-	// WavHeader.data = fourccToInt("data");
-	//
-	// WavHeader.readHeader = function (dataView) {
-	//     var w = new WavHeader();
-	//
-	//     var header = dataView.getUint32(0, false);
-	//     if (WavHeader.RIFF != header) {
-	//         return;
-	//     }
-	//     var fileLen = dataView.getUint32(4, true);
-	//     if (WavHeader.WAVE != dataView.getUint32(8, false)) {
-	//         return;
-	//     }
-	//     if (WavHeader.fmt_ != dataView.getUint32(12, false)) {
-	//         return;
-	//     }
-	//     var fmtLen = dataView.getUint32(16, true);
-	//     var pos = 16 + 4;
-	//     switch (fmtLen) {
-	//         case 16:
-	//         case 18:
-	//             w.channels = dataView.getUint16(pos + 2, true);
-	//             w.sampleRate = dataView.getUint32(pos + 4, true);
-	//             break;
-	//         default:
-	//             throw 'extended fmt chunk not implemented';
-	//             break;
-	//     }
-	//     pos += fmtLen;
-	//     var data = WavHeader.data;
-	//     var len = 0;
-	//     while (data != header) {
-	//         header = dataView.getUint32(pos, false);
-	//         len = dataView.getUint32(pos + 4, true);
-	//         if (data == header) {
-	//             break;
-	//         }
-	//         pos += (len + 8);
-	//     }
-	//     w.dataLen = len;
-	//     w.dataOffset = pos + 8;
-	//     return w;
-	// };
-	//
-	// function testFullLength() {
-	//     var r = fs.readFileSync("testdata/IMG_0373.wav");
-	//     var sampleBuf = new Uint8Array(r).buffer;
-	//     var w = WavHeader.readHeader(new DataView(sampleBuf));
-	//     var samples = new Int16Array(sampleBuf, w.dataOffset, w.dataLen / 2);
-	//     var remaining = samples.length;
-	//     var lameEnc = new Mp3Encoder(); //w.channels, w.sampleRate, 128);
-	//     var maxSamples = 1152;
-	//
-	//     var fd = fs.openSync("testjs2.mp3", "w");
-	//     var time = new Date().getTime();
-	//     for (var i = 0; remaining >= maxSamples; i += maxSamples) {
-	//         var left = samples.subarray(i, i + maxSamples);
-	//         var right = samples.subarray(i, i + maxSamples);
-	//
-	//         var mp3buf = lameEnc.encodeBuffer(left, right);
-	//         if (mp3buf.length > 0) {
-	//             fs.writeSync(fd, new Buffer(mp3buf), 0, mp3buf.length);
-	//         }
-	//         remaining -= maxSamples;
-	//     }
-	//     var mp3buf = lameEnc.flush();
-	//     if (mp3buf.length > 0) {
-	//         fs.writeSync(fd, new Buffer(mp3buf), 0, mp3buf.length);
-	//     }
-	//     fs.closeSync(fd);
-	//     time = new Date().getTime() - time;
-	//     console.log('done in ' + time + 'msec');
-	// }
-	//
-	// function testStereo44100() {
-	//     var r1 = fs.readFileSync("testdata/Left44100.wav");
-	//     var r2 = fs.readFileSync("testdata/Right44100.wav");
-	//     var fd = fs.openSync("stereo.mp3", "w");
-	//
-	//     var sampleBuf1 = new Uint8Array(r1).buffer;
-	//     var sampleBuf2 = new Uint8Array(r2).buffer;
-	//     var w1 = WavHeader.readHeader(new DataView(sampleBuf1));
-	//     var w2 = WavHeader.readHeader(new DataView(sampleBuf2));
-	//
-	//     var samples1 = new Int16Array(sampleBuf1, w1.dataOffset, w1.dataLen / 2);
-	//     var samples2 = new Int16Array(sampleBuf2, w2.dataOffset, w2.dataLen / 2);
-	//     var remaining1 = samples1.length;
-	//     var remaining2 = samples2.length;
-	//     assert(remaining1 == remaining2);
-	//     assert(w1.sampleRate == w2.sampleRate);
-	//
-	//     var lameEnc = new Mp3Encoder(2, w1.sampleRate, 128);
-	//     var maxSamples = 1152;
-	//
-	//     var time = new Date().getTime();
-	//     for (var i = 0; remaining1 >= maxSamples; i += maxSamples) {
-	//         var left = samples1.subarray(i, i + maxSamples);
-	//         var right = samples2.subarray(i, i + maxSamples);
-	//
-	//         var mp3buf = lameEnc.encodeBuffer(left, right);
-	//         if (mp3buf.length > 0) {
-	//             fs.writeSync(fd, new Buffer(mp3buf), 0, mp3buf.length);
-	//         }
-	//         remaining1 -= maxSamples;
-	//
-	//     }
-	//     var mp3buf = lameEnc.flush();
-	//     if (mp3buf.length > 0) {
-	//         fs.writeSync(fd, new Buffer(mp3buf), 0, mp3buf.length);
-	//     }
-	//     fs.closeSync(fd);
-	//     time = new Date().getTime() - time;
-	//     console.log('done in ' + time + 'msec');
-	// }
-	//
-	// //testStereo44100();
-	// //testFullLength();
-	//
-	// module.exports.Mp3Encoder = Mp3Encoder;
-	// module.exports.WavHeader = WavHeader;
-
-
-/***/ },
-/* 12 */
 /*!************************************************************!*\
   !*** ./src/components/landing-page-view/landing-page.scss ***!
   \************************************************************/
@@ -76802,10 +74133,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./landing-page.scss */ 13);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./landing-page.scss */ 11);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 16)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -76822,24 +74153,24 @@
 	}
 
 /***/ },
-/* 13 */
+/* 11 */
 /*!*******************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/landing-page-view/landing-page.scss ***!
   \*******************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 14)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\n.landing-page-wrapper {\n  height: 100vh;\n  width: 100%;\n  text-align: center;\n  background-image: url(" + __webpack_require__(/*! ./bass-player.jpg */ 15) + ");\n  background-size: cover; }\n\nmain {\n  height: 84vh;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n", ""]);
+	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\n.landing-page-wrapper {\n  height: 100vh;\n  width: 100%;\n  text-align: center;\n  background-image: url(" + __webpack_require__(/*! ./bass-player.jpg */ 13) + ");\n  background-size: cover; }\n\nmain {\n  height: 84vh;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 14 */
+/* 12 */
 /*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
   \**************************************/
@@ -76898,7 +74229,7 @@
 
 
 /***/ },
-/* 15 */
+/* 13 */
 /*!**********************************************************!*\
   !*** ./src/components/landing-page-view/bass-player.jpg ***!
   \**********************************************************/
@@ -76907,7 +74238,7 @@
 	module.exports = __webpack_require__.p + "./assets/images/bass-player.jpg";
 
 /***/ },
-/* 16 */
+/* 14 */
 /*!*************************************!*\
   !*** ./~/style-loader/addStyles.js ***!
   \*************************************/
@@ -77162,7 +74493,7 @@
 
 
 /***/ },
-/* 17 */
+/* 15 */
 /*!***************************************************************!*\
   !*** ./src/components/landing-page-view/landingPageTmpl.html ***!
   \***************************************************************/
@@ -77171,7 +74502,7 @@
 	module.exports = "<div class=\"landing-page-wrapper\">\n    <top-nav-bar type=\"landing-page\"></top-nav-bar>\n\n    <main>\n\n      <div class=landing-page-content-wrapper>\n        <h2>{{ mission }}</h2>\n\n        <md-button\n          class=\"md-raised md-primary\"\n          ui-sref=\"library-view\"\n        >\n          LEARN MORE\n        </md-button>\n      </div>\n\n    </main>\n</div>\n";
 
 /***/ },
-/* 18 */
+/* 16 */
 /*!*************************************************************!*\
   !*** ./src/components/landing-page-view/landingPageCtrl.js ***!
   \*************************************************************/
@@ -77192,7 +74523,7 @@
 	exports.default = landingPageCtrl;
 
 /***/ },
-/* 19 */
+/* 17 */
 /*!****************************************************!*\
   !*** ./src/components/main-view/mainViewTmpl.html ***!
   \****************************************************/
@@ -77201,7 +74532,7 @@
 	module.exports = "<top-nav-bar type=\"main\"></top-nav-bar>\n\n<ui-view></ui-view>\n";
 
 /***/ },
-/* 20 */
+/* 18 */
 /*!*******************************************************!*\
   !*** ./src/components/library-view/library-view.scss ***!
   \*******************************************************/
@@ -77210,10 +74541,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./library-view.scss */ 21);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./library-view.scss */ 19);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 16)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -77230,24 +74561,24 @@
 	}
 
 /***/ },
-/* 21 */
+/* 19 */
 /*!**************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/library-view/library-view.scss ***!
   \**************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 14)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".library-view-wrapper {\n  height: 86vh;\n  background-image: url(" + __webpack_require__(/*! ./andrew_plan.jpg */ 22) + ");\n  background-size: 100% auto;\n  background-repeat: no-repeat; }\n\n.library-view-library-audio-wrapper {\n  height: 78vh;\n  padding: 33em 4em 0em 4em;\n  overflow: scroll; }\n\nplayer-dir {\n  display: block; }\n", ""]);
+	exports.push([module.id, ".library-view-wrapper {\n  height: 86vh;\n  background-image: url(" + __webpack_require__(/*! ./andrew_plan.jpg */ 20) + ");\n  background-size: 100% auto;\n  background-repeat: no-repeat; }\n\n.library-view-library-audio-wrapper {\n  height: 78vh;\n  padding: 33em 4em 0em 4em;\n  overflow: scroll; }\n\nplayer-dir {\n  display: block; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 22 */
+/* 20 */
 /*!*****************************************************!*\
   !*** ./src/components/library-view/andrew_plan.jpg ***!
   \*****************************************************/
@@ -77256,34 +74587,37 @@
 	module.exports = __webpack_require__.p + "./assets/images/andrew_plan.jpg";
 
 /***/ },
-/* 23 */
+/* 21 */
 /*!**********************************************************!*\
   !*** ./src/components/library-view/libraryViewTmpl.html ***!
   \**********************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"library-view-wrapper\">\n\n    <div class=\"library-view-library-audio-wrapper\">\n\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n      <recording-dir type=\"library-view\"></recording-dir>\n\n    </div>\n\n    <player-dir></player-dir>\n\n</div>\n";
+	module.exports = "<div class=\"library-view-wrapper\">\n\n    <div class=\"library-view-library-audio-wrapper\">\n        <div\n          ng-if=\"audioUrl\"\n        >\n          <recording-dir\n            type=\"library-view\"\n            audio-url=\"audioUrl\"\n            bookmarks=\"bookmarks\"\n          >\n\n          </recording-dir>\n\n        </div>\n\n    </div>\n\n    <player-dir></player-dir>\n\n</div>\n";
 
 /***/ },
-/* 24 */
+/* 22 */
 /*!********************************************************!*\
   !*** ./src/components/library-view/libraryViewCtrl.js ***!
   \********************************************************/
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	function libraryViewCtrl($scope) {
-	    function init() {}
+	    // function init() {
+	    $scope.audioUrl = 'https://s3-us-west-2.amazonaws.com/songjam-recordings/demo.mp3';
+	    $scope.bookmarks = [2, 3, 5];
+	    // }
 	}
 	
 	exports.default = libraryViewCtrl;
 
 /***/ },
-/* 25 */
+/* 23 */
 /*!*********************************************************!*\
   !*** ./src/components/recorder-view/recorder-view.scss ***!
   \*********************************************************/
@@ -77292,10 +74626,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./recorder-view.scss */ 26);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./recorder-view.scss */ 24);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 16)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -77312,13 +74646,13 @@
 	}
 
 /***/ },
-/* 26 */
+/* 24 */
 /*!****************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/recorder-view/recorder-view.scss ***!
   \****************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 14)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
 	// imports
 	
 	
@@ -77329,34 +74663,3850 @@
 
 
 /***/ },
-/* 27 */
+/* 25 */
 /*!**************************************************************!*\
   !*** ./src/components/recorder-view/recorder-view-tmpl.html ***!
   \**************************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n\n        <ng-audio-recorder\n            id=\"mainAudio\"\n            audio-model=\"recorded\"\n            show-player=\"false\"\n            time-limit=\"timeLimit\"\n            \n            layout=\"row\"\n            layout-align=\"center center\"\n        >\n            <div ng-if=\"recorder.isAvailable\" class=\"audio-recorder-wrapper\">\n\n                <div ng-if=\"recorder.status.isDenied === true\" style=\"color: red;\">\n                    You need to grant permission for this application to USE your microphone.\n                </div>\n                <md-button\n                    ng-click=\"recorder.startRecord()\"\n                    type=\"button\"\n                    ng-disabled=\"recorder.status.isDenied === true || recorder.status.isRecording\"\n                >\n                    <md-icon\n                        class=\"recorder-record-button\"\n                        md-font-icon=\"fiber_manual_record\"\n                        md-font-set=\"material-icons\"\n                        >\n                        fiber_manual_record\n                    </md-icon>\n                    <md-tooltip>\n                        Record\n                    </md-tooltip>\n                </md-button>\n                <md-button\n                    ng-click=\"recorder.stopRecord()\"\n                    type=\"button\"\n                    ng-disabled=\"recorder.status.isRecording === false\"\n                >\n                    <md-icon\n\n                        md-font-icon=\"stop\"\n                        md-font-set=\"material-icons\"\n                        >\n                        stop\n                    </md-icon>\n                    <md-tooltip>\n                        Stop\n                    </md-tooltip>\n                </md-button>\n\n                <md-button ng-click=\"recorder.status.isPlaying ? recorder.playbackPause() : recorder.playbackResume()\"\n                        type=\"button\" ng-disabled=\"recorder.status.isRecording || !recorder.audioModel\">\n                        <div ng-show=\"recorder.status.isStopped || recorder.status.isPaused\">\n                          <md-icon\n                              md-font-icon=\"play_arrow\"\n                              md-font-set=\"material-icons\"\n                              >\n                              play_arrow\n                          </md-icon>\n                          <md-tooltip>\n                              Play\n                          </md-tooltip>\n                        </div>\n                        <div ng-hide=\"recorder.status.isStopped || recorder.status.isPaused\">\n                          <md-icon\n                              md-font-icon=\"pause\"\n                              md-font-set=\"material-icons\"\n                              >\n                              pause\n                          </md-icon>\n                          <md-tooltip>\n                              Pause\n                          </md-tooltip>\n                        </div>\n\n                    <!-- {{recorder.status.isStopped || recorder.status.isPaused ? 'Play' : 'Pause'}} -->\n                </md-button>\n\n                <md-button\n                    ng-click=\"currentTime = recorder.elapsedTime\"\n                    ng-disabled=\"!recorder.status.isRecording || recorder.audioModel\"\n                >\n                    Bookmark\n                </md-button>\n\n                <md-button ng-disabled=\"recorder.status.isRecording || !recorder.audioModel\">\n                    <a id=\"save\" href=\"\" ng-click=\"recorder.save()\">\n                        Download\n                    </a>\n                </md-button>\n\n                <md-button\n                    ng-disabled=\"recorder.status.isRecording || !recorder.audioModel\"\n                    ui-sref=\"library-view\"\n                >\n                    Save\n                </md-button>\n\n                <div style=\"max-width: 600px\">\n                    <div ng-show=\"recorder.status.isConverting\">\n                        Please wait while your recording is processed.\n                    </div>\n\n                    <div ng-show=\"recorder.isHtml5 && recorder.status.isRecording\">\n                        <ng-audio-recorder-analyzer wave-color=\"#fc5830\"></ng-audio-recorder-analyzer>\n                    </div>\n                    <br/>\n\n                    <div ng-show=\"!recorder.status.isRecording && recorder.audioModel\">\n                        <ng-audio-recorder-wave-view bar-width=\"4\" wave-color=\"#fc5830\"></ng-audio-recorder-wave-view>\n                    </div>\n                </div>\n\n                <h2 style=\"font-family: sans-serif; text-align: center; width: 400px; border-radius: 20px;\n            border: solid 2px #333; padding: 20px 10px;\" ng-if=\"recorder.status.isRecording\">\n                    {{recorder.elapsedTime > 9 ? recorder.elapsedTime : ('0'+recorder.elapsedTime) }}\n                    <br>\n                    Bookmark added at: {{ currentTime }}\n\n                </h2>\n\n\n                <!-- <h2 style=\"font-family: sans-serif; text-align: center; border: solid 2px #333; padding: 20px 10px;\"\n                    ng-if=\"recorder.status.isRecording\">\n                    Remaining Time: {{recorder.timeLimit - recorder.elapsedTime}}\n                </h2> -->\n            </div>\n\n\n            <div ng-if=\"!recorder.isAvailable\">\n                Your browser does not support this feature natively, please use latest version of <a\n                    href=\"https://www.google.com/chrome/browser\" target=\"_blank\">Google Chrome</a> or <a\n                    href=\"https://www.mozilla.org/en-US/firefox/new/\" target=\"_blank\">Mozilla Firefox</a>. If you're on\n                Safari or Internet Explorer, you can install <a href=\"https://get.adobe.com/flashplayer/\">Adobe Flash</a> to\n                use this feature.\n            </div>\n        </ng-audio-recorder>\n    </div>\n</div>\n";
+	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n        <button ng-click=\"addBookmark()\">Bookmark</button>\n\n        <h2>Bookmarks:</h2>\n        <ul>\n          <li ng-repeat=\"bookmark in bookmarks\">{{ bookmark }} s</li>\n        </ul>\n\n        <h2>Lyrics:</h2>\n        <p>{{ lyrics }}</p>\n    </div>\n</div>\n";
 
 /***/ },
-/* 28 */
+/* 26 */
 /*!**********************************************************!*\
   !*** ./src/components/recorder-view/recorderViewCtrl.js ***!
   \**********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _binaryjsClient = __webpack_require__(/*! binaryjs-client */ 27);
+	
+	function recorderViewCtrl($scope, $interval, $window, recorderService) {
+	  var client = new _binaryjsClient.BinaryClient('ws://localhost:9001');
+	
+	  $window = $window || {};
+	  $scope.bookmarks = recorderService.getBookmarks();
+	
+	  client.on('stream', function (stream, meta) {
+	    var parts = [];
+	    if (meta.type === 'transcription') {
+	      stream.on('data', function (data) {
+	        parts.push(data);
+	        console.log(parts);
+	        $scope.$apply(function () {
+	          $scope.lyrics = data;
+	        });
+	      });
+	    }
+	  });
+	
+	  client.on('open', function () {
+	    $window.audioStream = client.createStream({ user: 'aplan88', type: 'audio' });
+	    // console.log( $window.audioStream );
+	
+	    var recording = false;
+	
+	    $scope.startRecording = function () {
+	      recording = true;
+	      if (!navigator.getUserMedia) navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+	
+	      if (navigator.getUserMedia) {
+	        navigator.getUserMedia({ audio: true }, success, function (e) {
+	          alert('Error capturing audio.');
+	        });
+	      } else alert('getUserMedia not supported in this browser.');
+	    };
+	
+	    $scope.stopRecording = function () {
+	      recording = false;
+	      $window.audioStream.end();
+	      // $interval.cancel(timing);
+	    };
+	
+	    function success(e) {
+	      $scope.addBookmark = function () {
+	        recorderService.addBookmark(context.currentTime);
+	        client.send({ bookmark: context.currentTime }, { type: 'bookmarks' });
+	      };
+	
+	      var audioContext = $window.AudioContext || $window.webkitAudioContext;
+	      var context = new audioContext();
+	
+	      // the sample rate is in context.sampleRate
+	      var audioInput = context.createMediaStreamSource(e);
+	
+	      var bufferSize = 2048;
+	      var recorder = context.createScriptProcessor(bufferSize, 1, 1);
+	
+	      recorder.onaudioprocess = function (e) {
+	        if (!recording) return;
+	        console.log('recording');
+	        $scope.elapsedTime = 0;
+	        // var timing = $interval(function () {
+	        //   ++$scope.elapsedTime;
+	        // }, 1000);
+	        var left = e.inputBuffer.getChannelData(0);
+	        $window.audioStream.write(convertFloat32ToInt16(left));
+	      };
+	
+	      audioInput.connect(recorder);
+	      recorder.connect(context.destination);
+	    }
+	
+	    function convertFloat32ToInt16(buffer) {
+	      var l = buffer.length;
+	      var buf = new Int16Array(l);
+	
+	      while (l--) {
+	        buf[l] = buffer[l] * 0xFFFF; //convert to 16 bit
+	      }
+	      return buf.buffer;
+	    }
+	  });
+	}
+	
+	exports.default = recorderViewCtrl;
+
+/***/ },
+/* 27 */
+/*!************************************!*\
+  !*** ./~/binaryjs-client/index.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var EventEmitter = __webpack_require__(/*! wolfy87-eventemitter */ 32);
+	var BinaryPack = __webpack_require__(/*! js-binarypack */ 33);
+	
+	var isArray = Array.isArray;
+	
+	var util = {
+	  inherits: function(ctor, superCtor) {
+	    ctor.super_ = superCtor;
+	    ctor.prototype = Object.create(superCtor.prototype, {
+	      constructor: {
+	        value: ctor,
+	        enumerable: false,
+	        writable: true,
+	        configurable: true
+	      }
+	    });
+	  },
+	  extend: function(dest, source) {
+	    for(var key in source) {
+	      if(source.hasOwnProperty(key)) {
+	        dest[key] = source[key];
+	      }
+	    }
+	    return dest;
+	  },
+	  pack: BinaryPack.pack,
+	  unpack: BinaryPack.unpack,
+	  setZeroTimeout: (function(global) {
+	    var timeouts = [];
+	    var messageName = 'zero-timeout-message';
+	
+	    // Like setTimeout, but only takes a function argument.	 There's
+	    // no time argument (always zero) and no arguments (you have to
+	    // use a closure).
+	    function setZeroTimeoutPostMessage(fn) {
+	      timeouts.push(fn);
+	      global.postMessage(messageName, '*');
+	    }
+	
+	    function handleMessage(event) {
+	      if (event.source == global && event.data == messageName) {
+	        if (event.stopPropagation) {
+	          event.stopPropagation();
+	        }
+	        if (timeouts.length) {
+	          timeouts.shift()();
+	        }
+	      }
+	    }
+	    if (global.addEventListener) {
+	      global.addEventListener('message', handleMessage, true);
+	    } else if (global.attachEvent) {
+	      global.attachEvent('onmessage', handleMessage);
+	    }
+	    return setZeroTimeoutPostMessage;
+	  }(window))
+	};
+	
+	function Stream() {
+	  EventEmitter.call(this);
+	}
+	
+	util.inherits(Stream, EventEmitter);
+	
+	Stream.prototype.pipe = function(dest, options) {
+	  var source = this;
+	
+	  function ondata(chunk) {
+	    if (dest.writable) {
+	      if (false === dest.write(chunk) && source.pause) {
+	        source.pause();
+	      }
+	    }
+	  }
+	
+	  source.on('data', ondata);
+	
+	  function ondrain() {
+	    if (source.readable && source.resume) {
+	      source.resume();
+	    }
+	  }
+	
+	  dest.on('drain', ondrain);
+	
+	  // If the 'end' option is not supplied, dest.end() will be called when
+	  // source gets the 'end' or 'close' events.  Only dest.end() once.
+	  if (!dest._isStdio && (!options || options.end !== false)) {
+	    source.on('end', onend);
+	    source.on('close', onclose);
+	  }
+	
+	  var didOnEnd = false;
+	  function onend() {
+	    if (didOnEnd) return;
+	    didOnEnd = true;
+	
+	    dest.end();
+	  }
+	
+	
+	  function onclose() {
+	    if (didOnEnd) return;
+	    didOnEnd = true;
+	
+	    dest.destroy();
+	  }
+	
+	  // don't leave dangling pipes when there are errors.
+	  function onerror(er) {
+	    cleanup();
+	    if (this.listeners('error').length === 0) {
+	      throw er; // Unhandled stream error in pipe.
+	    }
+	  }
+	
+	  source.on('error', onerror);
+	  dest.on('error', onerror);
+	
+	  // remove all the event listeners that were added.
+	  function cleanup() {
+	    source.removeListener('data', ondata);
+	    dest.removeListener('drain', ondrain);
+	
+	    source.removeListener('end', onend);
+	    source.removeListener('close', onclose);
+	
+	    source.removeListener('error', onerror);
+	    dest.removeListener('error', onerror);
+	
+	    source.removeListener('end', cleanup);
+	    source.removeListener('close', cleanup);
+	
+	    dest.removeListener('end', cleanup);
+	    dest.removeListener('close', cleanup);
+	  }
+	
+	  source.on('end', cleanup);
+	  source.on('close', cleanup);
+	
+	  dest.on('end', cleanup);
+	  dest.on('close', cleanup);
+	
+	  dest.emit('pipe', source);
+	
+	  // Allow for unix-like usage: A.pipe(B).pipe(C)
+	  return dest;
+	};
+	
+	function BlobReadStream(source, options){
+	  Stream.call(this);
+	
+	  options = util.extend({
+	      readDelay: 0,
+	      paused: false
+	  }, options);
+	
+	  this._source = source;
+	  this._start = 0;
+	  this._readChunkSize = options.chunkSize || source.size;
+	  this._readDelay = options.readDelay;
+	
+	  this.readable = true;
+	  this.paused = options.paused;
+	
+	  this._read();
+	}
+	
+	util.inherits(BlobReadStream, Stream);
+	
+	
+	BlobReadStream.prototype.pause = function(){
+	  this.paused = true;
+	};
+	
+	BlobReadStream.prototype.resume = function(){
+	  this.paused = false;
+	  this._read();
+	};
+	
+	BlobReadStream.prototype.destroy = function(){
+	  this.readable = false;
+	  clearTimeout(this._timeoutId);
+	};
+	
+	BlobReadStream.prototype._read = function(){
+	
+	  var self = this;
+	
+	  function emitReadChunk(){
+	    self._emitReadChunk();
+	  }
+	
+	  var readDelay = this._readDelay;
+	  if (readDelay !== 0){
+	    this._timeoutId = setTimeout(emitReadChunk, readDelay);
+	  } else {
+	    util.setZeroTimeout(emitReadChunk);
+	  }
+	
+	};
+	
+	BlobReadStream.prototype._emitReadChunk = function(){
+	
+	  if(this.paused || !this.readable) return;
+	
+	  var chunkSize = Math.min(this._source.size - this._start, this._readChunkSize);
+	
+	  if(chunkSize === 0){
+	      this.readable = false;
+	      this.emit("end");
+	      return;
+	  }
+	
+	  var sourceEnd = this._start + chunkSize;
+	  var chunk = (this._source.slice || this._source.webkitSlice || this._source.mozSlice).call(this._source, this._start, sourceEnd);
+	
+	  this._start = sourceEnd;
+	  this._read();
+	
+	  this.emit("data", chunk);
+	
+	};
+	
+	function BinaryStream(socket, id, create, meta) {
+	  if (!(this instanceof BinaryStream)) return new BinaryStream(options);
+	
+	  var self = this;
+	
+	  Stream.call(this);
+	
+	
+	  this.id = id;
+	  this._socket = socket;
+	
+	  this.writable = true;
+	  this.readable = true;
+	  this.paused = false;
+	
+	  this._closed = false;
+	  this._ended = false;
+	
+	  if(create) {
+	    // This is a stream we are creating
+	    this._write(1, meta, this.id);
+	  }
+	}
+	
+	util.inherits(BinaryStream, Stream);
+	
+	
+	BinaryStream.prototype._onDrain = function() {
+	  if(!this.paused) {
+	    this.emit('drain');
+	  }
+	};
+	
+	BinaryStream.prototype._onClose = function() {
+	  // Emit close event
+	  if (this._closed) {
+	    return;
+	  }
+	  this.readable = false;
+	  this.writable = false;
+	  this._closed = true;
+	  this.emit('close');
+	};
+	
+	BinaryStream.prototype._onError = function(error){
+	  this.readable = false;
+	  this.writable = false;
+	  this.emit('error', error);
+	};
+	
+	// Write stream
+	
+	BinaryStream.prototype._onPause = function() {
+	  // Emit pause event
+	  this.paused = true;
+	  this.emit('pause');
+	};
+	
+	BinaryStream.prototype._onResume = function() {
+	  // Emit resume event
+	  this.paused = false;
+	  this.emit('resume');
+	  this.emit('drain');
+	};
+	
+	BinaryStream.prototype._write = function(code, data, bonus) {
+	  if (this._socket.readyState !== this._socket.constructor.OPEN) {
+	    return false;
+	  }
+	  var message = util.pack([code, data, bonus]);
+	  return this._socket.send(message) !== false;
+	};
+	
+	BinaryStream.prototype.write = function(data) {
+	  if(this.writable) {
+	    var out = this._write(2, data, this.id);
+	    return !this.paused && out;
+	  } else {
+	    this.emit('error', new Error('Stream is not writable'));
+	    return false;
+	  }
+	};
+	
+	BinaryStream.prototype.end = function() {
+	  this._ended = true;
+	  this.readable = false;
+	  this._write(5, null, this.id);
+	};
+	
+	BinaryStream.prototype.destroy = BinaryStream.prototype.destroySoon = function() {
+	  this._onClose();
+	  this._write(6, null, this.id);
+	};
+	
+	
+	// Read stream
+	
+	BinaryStream.prototype._onEnd = function() {
+	  if(this._ended) {
+	    return;
+	  }
+	  this._ended = true;
+	  this.readable = false;
+	  this.emit('end');
+	};
+	
+	BinaryStream.prototype._onData = function(data) {
+	  // Dispatch
+	  this.emit('data', data);
+	};
+	
+	BinaryStream.prototype.pause = function() {
+	  this._onPause();
+	  this._write(3, null, this.id);
+	};
+	
+	BinaryStream.prototype.resume = function() {
+	  this._onResume();
+	  this._write(4, null, this.id);
+	};
+	
+	
+	function BinaryClient(socket, options) {
+	  if (!(this instanceof BinaryClient)) return new BinaryClient(socket, options);
+	
+	  EventEmitter.call(this);
+	
+	  var self = this;
+	
+	  this._options = util.extend({
+	    chunkSize: 40960
+	  }, options);
+	
+	  this.streams = {};
+	
+	  if(typeof socket === 'string') {
+	    this._nextId = 0;
+	    this._socket = new WebSocket(socket);
+	  } else {
+	    // Use odd numbered ids for server originated streams
+	    this._nextId = 1;
+	    this._socket = socket;
+	  }
+	
+	  this._socket.binaryType = 'arraybuffer';
+	
+	  this._socket.addEventListener('open', function(){
+	    self.emit('open');
+	  });
+	  this._socket.addEventListener('error', function(error){
+	    var ids = Object.keys(self.streams);
+	    for (var i = 0, ii = ids.length; i < ii; i++) {
+	      self.streams[ids[i]]._onError(error);
+	    }
+	    self.emit('error', error);
+	  });
+	  this._socket.addEventListener('close', function(code, message){
+	    var ids = Object.keys(self.streams);
+	    for (var i = 0, ii = ids.length; i < ii; i++) {
+	      self.streams[ids[i]]._onClose();
+	    }
+	    self.emit('close', code, message);
+	  });
+	  this._socket.addEventListener('message', function(data, flags){
+	    util.setZeroTimeout(function(){
+	
+	      // Message format
+	      // [type, payload, bonus ]
+	      //
+	      // Reserved
+	      // [ 0  , X , X ]
+	      //
+	      //
+	      // New stream
+	      // [ 1  , Meta , new streamId ]
+	      //
+	      //
+	      // Data
+	      // [ 2  , Data , streamId ]
+	      //
+	      //
+	      // Pause
+	      // [ 3  , null , streamId ]
+	      //
+	      //
+	      // Resume
+	      // [ 4  , null , streamId ]
+	      //
+	      //
+	      // End
+	      // [ 5  , null , streamId ]
+	      //
+	      //
+	      // Close
+	      // [ 6  , null , streamId ]
+	      //
+	
+	      data = data.data;
+	
+	      try {
+	          data = util.unpack(data);
+	      } catch (ex) {
+	          return self.emit('error', new Error('Received unparsable message: ' + ex));
+	      }
+	      if (!(data instanceof Array))
+	          return self.emit('error', new Error('Received non-array message'));
+	      if (data.length != 3)
+	          return self.emit('error', new Error('Received message with wrong part count: ' + data.length));
+	      if ('number' != typeof data[0])
+	          return self.emit('error', new Error('Received message with non-number type: ' + data[0]));
+	
+	      switch(data[0]) {
+	        case 0:
+	          // Reserved
+	          break;
+	        case 1:
+	          var meta = data[1];
+	          var streamId = data[2];
+	          var binaryStream = self._receiveStream(streamId);
+	          self.emit('stream', binaryStream, meta);
+	          break;
+	        case 2:
+	          var payload = data[1];
+	          var streamId = data[2];
+	          var binaryStream = self.streams[streamId];
+	          if(binaryStream) {
+	            binaryStream._onData(payload);
+	          } else {
+	            self.emit('error', new Error('Received `data` message for unknown stream: ' + streamId));
+	          }
+	          break;
+	        case 3:
+	          var streamId = data[2];
+	          var binaryStream = self.streams[streamId];
+	          if(binaryStream) {
+	            binaryStream._onPause();
+	          } else {
+	            self.emit('error', new Error('Received `pause` message for unknown stream: ' + streamId));
+	          }
+	          break;
+	        case 4:
+	          var streamId = data[2];
+	          var binaryStream = self.streams[streamId];
+	          if(binaryStream) {
+	            binaryStream._onResume();
+	          } else {
+	            self.emit('error', new Error('Received `resume` message for unknown stream: ' + streamId));
+	          }
+	          break;
+	        case 5:
+	          var streamId = data[2];
+	          var binaryStream = self.streams[streamId];
+	          if(binaryStream) {
+	            binaryStream._onEnd();
+	          } else {
+	            self.emit('error', new Error('Received `end` message for unknown stream: ' + streamId));
+	          }
+	          break;
+	        case 6:
+	          var streamId = data[2];
+	          var binaryStream = self.streams[streamId];
+	          if(binaryStream) {
+	            binaryStream._onClose();
+	          } else {
+	            self.emit('error', new Error('Received `close` message for unknown stream: ' + streamId));
+	          }
+	          break;
+	        default:
+	          self.emit('error', new Error('Unrecognized message type received: ' + data[0]));
+	      }
+	    });
+	  });
+	}
+	
+	util.inherits(BinaryClient, EventEmitter);
+	
+	BinaryClient.prototype.send = function(data, meta){
+	  var stream = this.createStream(meta);
+	  if(data instanceof Stream) {
+	    data.pipe(stream);
+	  } else if (util.isNode === true) {
+	    if(Buffer.isBuffer(data)) {
+	      (new BufferReadStream(data, {chunkSize: this._options.chunkSize})).pipe(stream);
+	    } else {
+	      stream.write(data);
+	    }
+	  } else if (util.isNode !== true) {
+	    if(data.constructor == Blob || data.constructor == File) {
+	      (new BlobReadStream(data, {chunkSize: this._options.chunkSize})).pipe(stream);
+	    } else if (data.constructor == ArrayBuffer) {
+	      var blob;
+	      if(binaryFeatures.useArrayBufferView) {
+	        data = new Uint8Array(data);
+	      }
+	      if(binaryFeatures.useBlobBuilder) {
+	        var builder = new BlobBuilder();
+	        builder.append(data);
+	        blob = builder.getBlob()
+	      } else {
+	        blob = new Blob([data]);
+	      }
+	      (new BlobReadStream(blob, {chunkSize: this._options.chunkSize})).pipe(stream);
+	    } else if (typeof data === 'object' && 'BYTES_PER_ELEMENT' in data) {
+	      var blob;
+	      if(!binaryFeatures.useArrayBufferView) {
+	        // Warn
+	        data = data.buffer;
+	      }
+	      if(binaryFeatures.useBlobBuilder) {
+	        var builder = new BlobBuilder();
+	        builder.append(data);
+	        blob = builder.getBlob()
+	      } else {
+	        blob = new Blob([data]);
+	      }
+	      (new BlobReadStream(blob, {chunkSize: this._options.chunkSize})).pipe(stream);
+	    } else {
+	      stream.write(data);
+	    }
+	  }
+	  return stream;
+	};
+	
+	BinaryClient.prototype._receiveStream = function(streamId){
+	  var self = this;
+	  var binaryStream = new BinaryStream(this._socket, streamId, false);
+	  binaryStream.on('close', function(){
+	    delete self.streams[streamId];
+	  });
+	  this.streams[streamId] = binaryStream;
+	  return binaryStream;
+	};
+	
+	BinaryClient.prototype.createStream = function(meta){
+	  if(this._socket.readyState !== WebSocket.OPEN) {
+	    throw new Error('Client is not yet connected or has closed');
+	    return;
+	  }
+	  var self = this;
+	  var streamId = this._nextId;
+	  this._nextId += 2;
+	  var binaryStream = new BinaryStream(this._socket, streamId, true, meta);
+	  binaryStream.on('close', function(){
+	    delete self.streams[streamId];
+	  });
+	  this.streams[streamId] = binaryStream;
+	  return binaryStream;
+	};
+	
+	BinaryClient.prototype.close = BinaryClient.prototype.destroy = function() {
+	  this._socket.close();
+	};
+	
+	module.exports.BinaryClient = BinaryClient;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 28).Buffer))
+
+/***/ },
+/* 28 */
+/*!***************************!*\
+  !*** ./~/buffer/index.js ***!
+  \***************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
+	 * The buffer module from node.js, for the browser.
+	 *
+	 * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+	 * @license  MIT
+	 */
+	/* eslint-disable no-proto */
+	
+	'use strict'
+	
+	var base64 = __webpack_require__(/*! base64-js */ 29)
+	var ieee754 = __webpack_require__(/*! ieee754 */ 30)
+	var isArray = __webpack_require__(/*! isarray */ 31)
+	
+	exports.Buffer = Buffer
+	exports.SlowBuffer = SlowBuffer
+	exports.INSPECT_MAX_BYTES = 50
+	
+	/**
+	 * If `Buffer.TYPED_ARRAY_SUPPORT`:
+	 *   === true    Use Uint8Array implementation (fastest)
+	 *   === false   Use Object implementation (most compatible, even IE6)
+	 *
+	 * Browsers that support typed arrays are IE 10+, Firefox 4+, Chrome 7+, Safari 5.1+,
+	 * Opera 11.6+, iOS 4.2+.
+	 *
+	 * Due to various browser bugs, sometimes the Object implementation will be used even
+	 * when the browser supports typed arrays.
+	 *
+	 * Note:
+	 *
+	 *   - Firefox 4-29 lacks support for adding new properties to `Uint8Array` instances,
+	 *     See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438.
+	 *
+	 *   - Chrome 9-10 is missing the `TypedArray.prototype.subarray` function.
+	 *
+	 *   - IE10 has a broken `TypedArray.prototype.subarray` function which returns arrays of
+	 *     incorrect length in some situations.
+	
+	 * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
+	 * get the Object implementation, which is slower but behaves correctly.
+	 */
+	Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined
+	  ? global.TYPED_ARRAY_SUPPORT
+	  : typedArraySupport()
+	
+	/*
+	 * Export kMaxLength after typed array support is determined.
+	 */
+	exports.kMaxLength = kMaxLength()
+	
+	function typedArraySupport () {
+	  try {
+	    var arr = new Uint8Array(1)
+	    arr.__proto__ = {__proto__: Uint8Array.prototype, foo: function () { return 42 }}
+	    return arr.foo() === 42 && // typed array instances can be augmented
+	        typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
+	        arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
+	  } catch (e) {
+	    return false
+	  }
+	}
+	
+	function kMaxLength () {
+	  return Buffer.TYPED_ARRAY_SUPPORT
+	    ? 0x7fffffff
+	    : 0x3fffffff
+	}
+	
+	function createBuffer (that, length) {
+	  if (kMaxLength() < length) {
+	    throw new RangeError('Invalid typed array length')
+	  }
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    // Return an augmented `Uint8Array` instance, for best performance
+	    that = new Uint8Array(length)
+	    that.__proto__ = Buffer.prototype
+	  } else {
+	    // Fallback: Return an object instance of the Buffer class
+	    if (that === null) {
+	      that = new Buffer(length)
+	    }
+	    that.length = length
+	  }
+	
+	  return that
+	}
+	
+	/**
+	 * The Buffer constructor returns instances of `Uint8Array` that have their
+	 * prototype changed to `Buffer.prototype`. Furthermore, `Buffer` is a subclass of
+	 * `Uint8Array`, so the returned instances will have all the node `Buffer` methods
+	 * and the `Uint8Array` methods. Square bracket notation works as expected -- it
+	 * returns a single octet.
+	 *
+	 * The `Uint8Array` prototype remains unmodified.
+	 */
+	
+	function Buffer (arg, encodingOrOffset, length) {
+	  if (!Buffer.TYPED_ARRAY_SUPPORT && !(this instanceof Buffer)) {
+	    return new Buffer(arg, encodingOrOffset, length)
+	  }
+	
+	  // Common case.
+	  if (typeof arg === 'number') {
+	    if (typeof encodingOrOffset === 'string') {
+	      throw new Error(
+	        'If encoding is specified then the first argument must be a string'
+	      )
+	    }
+	    return allocUnsafe(this, arg)
+	  }
+	  return from(this, arg, encodingOrOffset, length)
+	}
+	
+	Buffer.poolSize = 8192 // not used by this implementation
+	
+	// TODO: Legacy, not needed anymore. Remove in next major version.
+	Buffer._augment = function (arr) {
+	  arr.__proto__ = Buffer.prototype
+	  return arr
+	}
+	
+	function from (that, value, encodingOrOffset, length) {
+	  if (typeof value === 'number') {
+	    throw new TypeError('"value" argument must not be a number')
+	  }
+	
+	  if (typeof ArrayBuffer !== 'undefined' && value instanceof ArrayBuffer) {
+	    return fromArrayBuffer(that, value, encodingOrOffset, length)
+	  }
+	
+	  if (typeof value === 'string') {
+	    return fromString(that, value, encodingOrOffset)
+	  }
+	
+	  return fromObject(that, value)
+	}
+	
+	/**
+	 * Functionally equivalent to Buffer(arg, encoding) but throws a TypeError
+	 * if value is a number.
+	 * Buffer.from(str[, encoding])
+	 * Buffer.from(array)
+	 * Buffer.from(buffer)
+	 * Buffer.from(arrayBuffer[, byteOffset[, length]])
+	 **/
+	Buffer.from = function (value, encodingOrOffset, length) {
+	  return from(null, value, encodingOrOffset, length)
+	}
+	
+	if (Buffer.TYPED_ARRAY_SUPPORT) {
+	  Buffer.prototype.__proto__ = Uint8Array.prototype
+	  Buffer.__proto__ = Uint8Array
+	  if (typeof Symbol !== 'undefined' && Symbol.species &&
+	      Buffer[Symbol.species] === Buffer) {
+	    // Fix subarray() in ES2016. See: https://github.com/feross/buffer/pull/97
+	    Object.defineProperty(Buffer, Symbol.species, {
+	      value: null,
+	      configurable: true
+	    })
+	  }
+	}
+	
+	function assertSize (size) {
+	  if (typeof size !== 'number') {
+	    throw new TypeError('"size" argument must be a number')
+	  } else if (size < 0) {
+	    throw new RangeError('"size" argument must not be negative')
+	  }
+	}
+	
+	function alloc (that, size, fill, encoding) {
+	  assertSize(size)
+	  if (size <= 0) {
+	    return createBuffer(that, size)
+	  }
+	  if (fill !== undefined) {
+	    // Only pay attention to encoding if it's a string. This
+	    // prevents accidentally sending in a number that would
+	    // be interpretted as a start offset.
+	    return typeof encoding === 'string'
+	      ? createBuffer(that, size).fill(fill, encoding)
+	      : createBuffer(that, size).fill(fill)
+	  }
+	  return createBuffer(that, size)
+	}
+	
+	/**
+	 * Creates a new filled Buffer instance.
+	 * alloc(size[, fill[, encoding]])
+	 **/
+	Buffer.alloc = function (size, fill, encoding) {
+	  return alloc(null, size, fill, encoding)
+	}
+	
+	function allocUnsafe (that, size) {
+	  assertSize(size)
+	  that = createBuffer(that, size < 0 ? 0 : checked(size) | 0)
+	  if (!Buffer.TYPED_ARRAY_SUPPORT) {
+	    for (var i = 0; i < size; ++i) {
+	      that[i] = 0
+	    }
+	  }
+	  return that
+	}
+	
+	/**
+	 * Equivalent to Buffer(num), by default creates a non-zero-filled Buffer instance.
+	 * */
+	Buffer.allocUnsafe = function (size) {
+	  return allocUnsafe(null, size)
+	}
+	/**
+	 * Equivalent to SlowBuffer(num), by default creates a non-zero-filled Buffer instance.
+	 */
+	Buffer.allocUnsafeSlow = function (size) {
+	  return allocUnsafe(null, size)
+	}
+	
+	function fromString (that, string, encoding) {
+	  if (typeof encoding !== 'string' || encoding === '') {
+	    encoding = 'utf8'
+	  }
+	
+	  if (!Buffer.isEncoding(encoding)) {
+	    throw new TypeError('"encoding" must be a valid string encoding')
+	  }
+	
+	  var length = byteLength(string, encoding) | 0
+	  that = createBuffer(that, length)
+	
+	  var actual = that.write(string, encoding)
+	
+	  if (actual !== length) {
+	    // Writing a hex string, for example, that contains invalid characters will
+	    // cause everything after the first invalid character to be ignored. (e.g.
+	    // 'abxxcd' will be treated as 'ab')
+	    that = that.slice(0, actual)
+	  }
+	
+	  return that
+	}
+	
+	function fromArrayLike (that, array) {
+	  var length = array.length < 0 ? 0 : checked(array.length) | 0
+	  that = createBuffer(that, length)
+	  for (var i = 0; i < length; i += 1) {
+	    that[i] = array[i] & 255
+	  }
+	  return that
+	}
+	
+	function fromArrayBuffer (that, array, byteOffset, length) {
+	  array.byteLength // this throws if `array` is not a valid ArrayBuffer
+	
+	  if (byteOffset < 0 || array.byteLength < byteOffset) {
+	    throw new RangeError('\'offset\' is out of bounds')
+	  }
+	
+	  if (array.byteLength < byteOffset + (length || 0)) {
+	    throw new RangeError('\'length\' is out of bounds')
+	  }
+	
+	  if (byteOffset === undefined && length === undefined) {
+	    array = new Uint8Array(array)
+	  } else if (length === undefined) {
+	    array = new Uint8Array(array, byteOffset)
+	  } else {
+	    array = new Uint8Array(array, byteOffset, length)
+	  }
+	
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    // Return an augmented `Uint8Array` instance, for best performance
+	    that = array
+	    that.__proto__ = Buffer.prototype
+	  } else {
+	    // Fallback: Return an object instance of the Buffer class
+	    that = fromArrayLike(that, array)
+	  }
+	  return that
+	}
+	
+	function fromObject (that, obj) {
+	  if (Buffer.isBuffer(obj)) {
+	    var len = checked(obj.length) | 0
+	    that = createBuffer(that, len)
+	
+	    if (that.length === 0) {
+	      return that
+	    }
+	
+	    obj.copy(that, 0, 0, len)
+	    return that
+	  }
+	
+	  if (obj) {
+	    if ((typeof ArrayBuffer !== 'undefined' &&
+	        obj.buffer instanceof ArrayBuffer) || 'length' in obj) {
+	      if (typeof obj.length !== 'number' || isnan(obj.length)) {
+	        return createBuffer(that, 0)
+	      }
+	      return fromArrayLike(that, obj)
+	    }
+	
+	    if (obj.type === 'Buffer' && isArray(obj.data)) {
+	      return fromArrayLike(that, obj.data)
+	    }
+	  }
+	
+	  throw new TypeError('First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object.')
+	}
+	
+	function checked (length) {
+	  // Note: cannot use `length < kMaxLength()` here because that fails when
+	  // length is NaN (which is otherwise coerced to zero.)
+	  if (length >= kMaxLength()) {
+	    throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
+	                         'size: 0x' + kMaxLength().toString(16) + ' bytes')
+	  }
+	  return length | 0
+	}
+	
+	function SlowBuffer (length) {
+	  if (+length != length) { // eslint-disable-line eqeqeq
+	    length = 0
+	  }
+	  return Buffer.alloc(+length)
+	}
+	
+	Buffer.isBuffer = function isBuffer (b) {
+	  return !!(b != null && b._isBuffer)
+	}
+	
+	Buffer.compare = function compare (a, b) {
+	  if (!Buffer.isBuffer(a) || !Buffer.isBuffer(b)) {
+	    throw new TypeError('Arguments must be Buffers')
+	  }
+	
+	  if (a === b) return 0
+	
+	  var x = a.length
+	  var y = b.length
+	
+	  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
+	    if (a[i] !== b[i]) {
+	      x = a[i]
+	      y = b[i]
+	      break
+	    }
+	  }
+	
+	  if (x < y) return -1
+	  if (y < x) return 1
+	  return 0
+	}
+	
+	Buffer.isEncoding = function isEncoding (encoding) {
+	  switch (String(encoding).toLowerCase()) {
+	    case 'hex':
+	    case 'utf8':
+	    case 'utf-8':
+	    case 'ascii':
+	    case 'latin1':
+	    case 'binary':
+	    case 'base64':
+	    case 'ucs2':
+	    case 'ucs-2':
+	    case 'utf16le':
+	    case 'utf-16le':
+	      return true
+	    default:
+	      return false
+	  }
+	}
+	
+	Buffer.concat = function concat (list, length) {
+	  if (!isArray(list)) {
+	    throw new TypeError('"list" argument must be an Array of Buffers')
+	  }
+	
+	  if (list.length === 0) {
+	    return Buffer.alloc(0)
+	  }
+	
+	  var i
+	  if (length === undefined) {
+	    length = 0
+	    for (i = 0; i < list.length; ++i) {
+	      length += list[i].length
+	    }
+	  }
+	
+	  var buffer = Buffer.allocUnsafe(length)
+	  var pos = 0
+	  for (i = 0; i < list.length; ++i) {
+	    var buf = list[i]
+	    if (!Buffer.isBuffer(buf)) {
+	      throw new TypeError('"list" argument must be an Array of Buffers')
+	    }
+	    buf.copy(buffer, pos)
+	    pos += buf.length
+	  }
+	  return buffer
+	}
+	
+	function byteLength (string, encoding) {
+	  if (Buffer.isBuffer(string)) {
+	    return string.length
+	  }
+	  if (typeof ArrayBuffer !== 'undefined' && typeof ArrayBuffer.isView === 'function' &&
+	      (ArrayBuffer.isView(string) || string instanceof ArrayBuffer)) {
+	    return string.byteLength
+	  }
+	  if (typeof string !== 'string') {
+	    string = '' + string
+	  }
+	
+	  var len = string.length
+	  if (len === 0) return 0
+	
+	  // Use a for loop to avoid recursion
+	  var loweredCase = false
+	  for (;;) {
+	    switch (encoding) {
+	      case 'ascii':
+	      case 'latin1':
+	      case 'binary':
+	        return len
+	      case 'utf8':
+	      case 'utf-8':
+	      case undefined:
+	        return utf8ToBytes(string).length
+	      case 'ucs2':
+	      case 'ucs-2':
+	      case 'utf16le':
+	      case 'utf-16le':
+	        return len * 2
+	      case 'hex':
+	        return len >>> 1
+	      case 'base64':
+	        return base64ToBytes(string).length
+	      default:
+	        if (loweredCase) return utf8ToBytes(string).length // assume utf8
+	        encoding = ('' + encoding).toLowerCase()
+	        loweredCase = true
+	    }
+	  }
+	}
+	Buffer.byteLength = byteLength
+	
+	function slowToString (encoding, start, end) {
+	  var loweredCase = false
+	
+	  // No need to verify that "this.length <= MAX_UINT32" since it's a read-only
+	  // property of a typed array.
+	
+	  // This behaves neither like String nor Uint8Array in that we set start/end
+	  // to their upper/lower bounds if the value passed is out of range.
+	  // undefined is handled specially as per ECMA-262 6th Edition,
+	  // Section 13.3.3.7 Runtime Semantics: KeyedBindingInitialization.
+	  if (start === undefined || start < 0) {
+	    start = 0
+	  }
+	  // Return early if start > this.length. Done here to prevent potential uint32
+	  // coercion fail below.
+	  if (start > this.length) {
+	    return ''
+	  }
+	
+	  if (end === undefined || end > this.length) {
+	    end = this.length
+	  }
+	
+	  if (end <= 0) {
+	    return ''
+	  }
+	
+	  // Force coersion to uint32. This will also coerce falsey/NaN values to 0.
+	  end >>>= 0
+	  start >>>= 0
+	
+	  if (end <= start) {
+	    return ''
+	  }
+	
+	  if (!encoding) encoding = 'utf8'
+	
+	  while (true) {
+	    switch (encoding) {
+	      case 'hex':
+	        return hexSlice(this, start, end)
+	
+	      case 'utf8':
+	      case 'utf-8':
+	        return utf8Slice(this, start, end)
+	
+	      case 'ascii':
+	        return asciiSlice(this, start, end)
+	
+	      case 'latin1':
+	      case 'binary':
+	        return latin1Slice(this, start, end)
+	
+	      case 'base64':
+	        return base64Slice(this, start, end)
+	
+	      case 'ucs2':
+	      case 'ucs-2':
+	      case 'utf16le':
+	      case 'utf-16le':
+	        return utf16leSlice(this, start, end)
+	
+	      default:
+	        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)
+	        encoding = (encoding + '').toLowerCase()
+	        loweredCase = true
+	    }
+	  }
+	}
+	
+	// The property is used by `Buffer.isBuffer` and `is-buffer` (in Safari 5-7) to detect
+	// Buffer instances.
+	Buffer.prototype._isBuffer = true
+	
+	function swap (b, n, m) {
+	  var i = b[n]
+	  b[n] = b[m]
+	  b[m] = i
+	}
+	
+	Buffer.prototype.swap16 = function swap16 () {
+	  var len = this.length
+	  if (len % 2 !== 0) {
+	    throw new RangeError('Buffer size must be a multiple of 16-bits')
+	  }
+	  for (var i = 0; i < len; i += 2) {
+	    swap(this, i, i + 1)
+	  }
+	  return this
+	}
+	
+	Buffer.prototype.swap32 = function swap32 () {
+	  var len = this.length
+	  if (len % 4 !== 0) {
+	    throw new RangeError('Buffer size must be a multiple of 32-bits')
+	  }
+	  for (var i = 0; i < len; i += 4) {
+	    swap(this, i, i + 3)
+	    swap(this, i + 1, i + 2)
+	  }
+	  return this
+	}
+	
+	Buffer.prototype.swap64 = function swap64 () {
+	  var len = this.length
+	  if (len % 8 !== 0) {
+	    throw new RangeError('Buffer size must be a multiple of 64-bits')
+	  }
+	  for (var i = 0; i < len; i += 8) {
+	    swap(this, i, i + 7)
+	    swap(this, i + 1, i + 6)
+	    swap(this, i + 2, i + 5)
+	    swap(this, i + 3, i + 4)
+	  }
+	  return this
+	}
+	
+	Buffer.prototype.toString = function toString () {
+	  var length = this.length | 0
+	  if (length === 0) return ''
+	  if (arguments.length === 0) return utf8Slice(this, 0, length)
+	  return slowToString.apply(this, arguments)
+	}
+	
+	Buffer.prototype.equals = function equals (b) {
+	  if (!Buffer.isBuffer(b)) throw new TypeError('Argument must be a Buffer')
+	  if (this === b) return true
+	  return Buffer.compare(this, b) === 0
+	}
+	
+	Buffer.prototype.inspect = function inspect () {
+	  var str = ''
+	  var max = exports.INSPECT_MAX_BYTES
+	  if (this.length > 0) {
+	    str = this.toString('hex', 0, max).match(/.{2}/g).join(' ')
+	    if (this.length > max) str += ' ... '
+	  }
+	  return '<Buffer ' + str + '>'
+	}
+	
+	Buffer.prototype.compare = function compare (target, start, end, thisStart, thisEnd) {
+	  if (!Buffer.isBuffer(target)) {
+	    throw new TypeError('Argument must be a Buffer')
+	  }
+	
+	  if (start === undefined) {
+	    start = 0
+	  }
+	  if (end === undefined) {
+	    end = target ? target.length : 0
+	  }
+	  if (thisStart === undefined) {
+	    thisStart = 0
+	  }
+	  if (thisEnd === undefined) {
+	    thisEnd = this.length
+	  }
+	
+	  if (start < 0 || end > target.length || thisStart < 0 || thisEnd > this.length) {
+	    throw new RangeError('out of range index')
+	  }
+	
+	  if (thisStart >= thisEnd && start >= end) {
+	    return 0
+	  }
+	  if (thisStart >= thisEnd) {
+	    return -1
+	  }
+	  if (start >= end) {
+	    return 1
+	  }
+	
+	  start >>>= 0
+	  end >>>= 0
+	  thisStart >>>= 0
+	  thisEnd >>>= 0
+	
+	  if (this === target) return 0
+	
+	  var x = thisEnd - thisStart
+	  var y = end - start
+	  var len = Math.min(x, y)
+	
+	  var thisCopy = this.slice(thisStart, thisEnd)
+	  var targetCopy = target.slice(start, end)
+	
+	  for (var i = 0; i < len; ++i) {
+	    if (thisCopy[i] !== targetCopy[i]) {
+	      x = thisCopy[i]
+	      y = targetCopy[i]
+	      break
+	    }
+	  }
+	
+	  if (x < y) return -1
+	  if (y < x) return 1
+	  return 0
+	}
+	
+	// Finds either the first index of `val` in `buffer` at offset >= `byteOffset`,
+	// OR the last index of `val` in `buffer` at offset <= `byteOffset`.
+	//
+	// Arguments:
+	// - buffer - a Buffer to search
+	// - val - a string, Buffer, or number
+	// - byteOffset - an index into `buffer`; will be clamped to an int32
+	// - encoding - an optional encoding, relevant is val is a string
+	// - dir - true for indexOf, false for lastIndexOf
+	function bidirectionalIndexOf (buffer, val, byteOffset, encoding, dir) {
+	  // Empty buffer means no match
+	  if (buffer.length === 0) return -1
+	
+	  // Normalize byteOffset
+	  if (typeof byteOffset === 'string') {
+	    encoding = byteOffset
+	    byteOffset = 0
+	  } else if (byteOffset > 0x7fffffff) {
+	    byteOffset = 0x7fffffff
+	  } else if (byteOffset < -0x80000000) {
+	    byteOffset = -0x80000000
+	  }
+	  byteOffset = +byteOffset  // Coerce to Number.
+	  if (isNaN(byteOffset)) {
+	    // byteOffset: it it's undefined, null, NaN, "foo", etc, search whole buffer
+	    byteOffset = dir ? 0 : (buffer.length - 1)
+	  }
+	
+	  // Normalize byteOffset: negative offsets start from the end of the buffer
+	  if (byteOffset < 0) byteOffset = buffer.length + byteOffset
+	  if (byteOffset >= buffer.length) {
+	    if (dir) return -1
+	    else byteOffset = buffer.length - 1
+	  } else if (byteOffset < 0) {
+	    if (dir) byteOffset = 0
+	    else return -1
+	  }
+	
+	  // Normalize val
+	  if (typeof val === 'string') {
+	    val = Buffer.from(val, encoding)
+	  }
+	
+	  // Finally, search either indexOf (if dir is true) or lastIndexOf
+	  if (Buffer.isBuffer(val)) {
+	    // Special case: looking for empty string/buffer always fails
+	    if (val.length === 0) {
+	      return -1
+	    }
+	    return arrayIndexOf(buffer, val, byteOffset, encoding, dir)
+	  } else if (typeof val === 'number') {
+	    val = val & 0xFF // Search for a byte value [0-255]
+	    if (Buffer.TYPED_ARRAY_SUPPORT &&
+	        typeof Uint8Array.prototype.indexOf === 'function') {
+	      if (dir) {
+	        return Uint8Array.prototype.indexOf.call(buffer, val, byteOffset)
+	      } else {
+	        return Uint8Array.prototype.lastIndexOf.call(buffer, val, byteOffset)
+	      }
+	    }
+	    return arrayIndexOf(buffer, [ val ], byteOffset, encoding, dir)
+	  }
+	
+	  throw new TypeError('val must be string, number or Buffer')
+	}
+	
+	function arrayIndexOf (arr, val, byteOffset, encoding, dir) {
+	  var indexSize = 1
+	  var arrLength = arr.length
+	  var valLength = val.length
+	
+	  if (encoding !== undefined) {
+	    encoding = String(encoding).toLowerCase()
+	    if (encoding === 'ucs2' || encoding === 'ucs-2' ||
+	        encoding === 'utf16le' || encoding === 'utf-16le') {
+	      if (arr.length < 2 || val.length < 2) {
+	        return -1
+	      }
+	      indexSize = 2
+	      arrLength /= 2
+	      valLength /= 2
+	      byteOffset /= 2
+	    }
+	  }
+	
+	  function read (buf, i) {
+	    if (indexSize === 1) {
+	      return buf[i]
+	    } else {
+	      return buf.readUInt16BE(i * indexSize)
+	    }
+	  }
+	
+	  var i
+	  if (dir) {
+	    var foundIndex = -1
+	    for (i = byteOffset; i < arrLength; i++) {
+	      if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
+	        if (foundIndex === -1) foundIndex = i
+	        if (i - foundIndex + 1 === valLength) return foundIndex * indexSize
+	      } else {
+	        if (foundIndex !== -1) i -= i - foundIndex
+	        foundIndex = -1
+	      }
+	    }
+	  } else {
+	    if (byteOffset + valLength > arrLength) byteOffset = arrLength - valLength
+	    for (i = byteOffset; i >= 0; i--) {
+	      var found = true
+	      for (var j = 0; j < valLength; j++) {
+	        if (read(arr, i + j) !== read(val, j)) {
+	          found = false
+	          break
+	        }
+	      }
+	      if (found) return i
+	    }
+	  }
+	
+	  return -1
+	}
+	
+	Buffer.prototype.includes = function includes (val, byteOffset, encoding) {
+	  return this.indexOf(val, byteOffset, encoding) !== -1
+	}
+	
+	Buffer.prototype.indexOf = function indexOf (val, byteOffset, encoding) {
+	  return bidirectionalIndexOf(this, val, byteOffset, encoding, true)
+	}
+	
+	Buffer.prototype.lastIndexOf = function lastIndexOf (val, byteOffset, encoding) {
+	  return bidirectionalIndexOf(this, val, byteOffset, encoding, false)
+	}
+	
+	function hexWrite (buf, string, offset, length) {
+	  offset = Number(offset) || 0
+	  var remaining = buf.length - offset
+	  if (!length) {
+	    length = remaining
+	  } else {
+	    length = Number(length)
+	    if (length > remaining) {
+	      length = remaining
+	    }
+	  }
+	
+	  // must be an even number of digits
+	  var strLen = string.length
+	  if (strLen % 2 !== 0) throw new TypeError('Invalid hex string')
+	
+	  if (length > strLen / 2) {
+	    length = strLen / 2
+	  }
+	  for (var i = 0; i < length; ++i) {
+	    var parsed = parseInt(string.substr(i * 2, 2), 16)
+	    if (isNaN(parsed)) return i
+	    buf[offset + i] = parsed
+	  }
+	  return i
+	}
+	
+	function utf8Write (buf, string, offset, length) {
+	  return blitBuffer(utf8ToBytes(string, buf.length - offset), buf, offset, length)
+	}
+	
+	function asciiWrite (buf, string, offset, length) {
+	  return blitBuffer(asciiToBytes(string), buf, offset, length)
+	}
+	
+	function latin1Write (buf, string, offset, length) {
+	  return asciiWrite(buf, string, offset, length)
+	}
+	
+	function base64Write (buf, string, offset, length) {
+	  return blitBuffer(base64ToBytes(string), buf, offset, length)
+	}
+	
+	function ucs2Write (buf, string, offset, length) {
+	  return blitBuffer(utf16leToBytes(string, buf.length - offset), buf, offset, length)
+	}
+	
+	Buffer.prototype.write = function write (string, offset, length, encoding) {
+	  // Buffer#write(string)
+	  if (offset === undefined) {
+	    encoding = 'utf8'
+	    length = this.length
+	    offset = 0
+	  // Buffer#write(string, encoding)
+	  } else if (length === undefined && typeof offset === 'string') {
+	    encoding = offset
+	    length = this.length
+	    offset = 0
+	  // Buffer#write(string, offset[, length][, encoding])
+	  } else if (isFinite(offset)) {
+	    offset = offset | 0
+	    if (isFinite(length)) {
+	      length = length | 0
+	      if (encoding === undefined) encoding = 'utf8'
+	    } else {
+	      encoding = length
+	      length = undefined
+	    }
+	  // legacy write(string, encoding, offset, length) - remove in v0.13
+	  } else {
+	    throw new Error(
+	      'Buffer.write(string, encoding, offset[, length]) is no longer supported'
+	    )
+	  }
+	
+	  var remaining = this.length - offset
+	  if (length === undefined || length > remaining) length = remaining
+	
+	  if ((string.length > 0 && (length < 0 || offset < 0)) || offset > this.length) {
+	    throw new RangeError('Attempt to write outside buffer bounds')
+	  }
+	
+	  if (!encoding) encoding = 'utf8'
+	
+	  var loweredCase = false
+	  for (;;) {
+	    switch (encoding) {
+	      case 'hex':
+	        return hexWrite(this, string, offset, length)
+	
+	      case 'utf8':
+	      case 'utf-8':
+	        return utf8Write(this, string, offset, length)
+	
+	      case 'ascii':
+	        return asciiWrite(this, string, offset, length)
+	
+	      case 'latin1':
+	      case 'binary':
+	        return latin1Write(this, string, offset, length)
+	
+	      case 'base64':
+	        // Warning: maxLength not taken into account in base64Write
+	        return base64Write(this, string, offset, length)
+	
+	      case 'ucs2':
+	      case 'ucs-2':
+	      case 'utf16le':
+	      case 'utf-16le':
+	        return ucs2Write(this, string, offset, length)
+	
+	      default:
+	        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)
+	        encoding = ('' + encoding).toLowerCase()
+	        loweredCase = true
+	    }
+	  }
+	}
+	
+	Buffer.prototype.toJSON = function toJSON () {
+	  return {
+	    type: 'Buffer',
+	    data: Array.prototype.slice.call(this._arr || this, 0)
+	  }
+	}
+	
+	function base64Slice (buf, start, end) {
+	  if (start === 0 && end === buf.length) {
+	    return base64.fromByteArray(buf)
+	  } else {
+	    return base64.fromByteArray(buf.slice(start, end))
+	  }
+	}
+	
+	function utf8Slice (buf, start, end) {
+	  end = Math.min(buf.length, end)
+	  var res = []
+	
+	  var i = start
+	  while (i < end) {
+	    var firstByte = buf[i]
+	    var codePoint = null
+	    var bytesPerSequence = (firstByte > 0xEF) ? 4
+	      : (firstByte > 0xDF) ? 3
+	      : (firstByte > 0xBF) ? 2
+	      : 1
+	
+	    if (i + bytesPerSequence <= end) {
+	      var secondByte, thirdByte, fourthByte, tempCodePoint
+	
+	      switch (bytesPerSequence) {
+	        case 1:
+	          if (firstByte < 0x80) {
+	            codePoint = firstByte
+	          }
+	          break
+	        case 2:
+	          secondByte = buf[i + 1]
+	          if ((secondByte & 0xC0) === 0x80) {
+	            tempCodePoint = (firstByte & 0x1F) << 0x6 | (secondByte & 0x3F)
+	            if (tempCodePoint > 0x7F) {
+	              codePoint = tempCodePoint
+	            }
+	          }
+	          break
+	        case 3:
+	          secondByte = buf[i + 1]
+	          thirdByte = buf[i + 2]
+	          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80) {
+	            tempCodePoint = (firstByte & 0xF) << 0xC | (secondByte & 0x3F) << 0x6 | (thirdByte & 0x3F)
+	            if (tempCodePoint > 0x7FF && (tempCodePoint < 0xD800 || tempCodePoint > 0xDFFF)) {
+	              codePoint = tempCodePoint
+	            }
+	          }
+	          break
+	        case 4:
+	          secondByte = buf[i + 1]
+	          thirdByte = buf[i + 2]
+	          fourthByte = buf[i + 3]
+	          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80 && (fourthByte & 0xC0) === 0x80) {
+	            tempCodePoint = (firstByte & 0xF) << 0x12 | (secondByte & 0x3F) << 0xC | (thirdByte & 0x3F) << 0x6 | (fourthByte & 0x3F)
+	            if (tempCodePoint > 0xFFFF && tempCodePoint < 0x110000) {
+	              codePoint = tempCodePoint
+	            }
+	          }
+	      }
+	    }
+	
+	    if (codePoint === null) {
+	      // we did not generate a valid codePoint so insert a
+	      // replacement char (U+FFFD) and advance only 1 byte
+	      codePoint = 0xFFFD
+	      bytesPerSequence = 1
+	    } else if (codePoint > 0xFFFF) {
+	      // encode to utf16 (surrogate pair dance)
+	      codePoint -= 0x10000
+	      res.push(codePoint >>> 10 & 0x3FF | 0xD800)
+	      codePoint = 0xDC00 | codePoint & 0x3FF
+	    }
+	
+	    res.push(codePoint)
+	    i += bytesPerSequence
+	  }
+	
+	  return decodeCodePointsArray(res)
+	}
+	
+	// Based on http://stackoverflow.com/a/22747272/680742, the browser with
+	// the lowest limit is Chrome, with 0x10000 args.
+	// We go 1 magnitude less, for safety
+	var MAX_ARGUMENTS_LENGTH = 0x1000
+	
+	function decodeCodePointsArray (codePoints) {
+	  var len = codePoints.length
+	  if (len <= MAX_ARGUMENTS_LENGTH) {
+	    return String.fromCharCode.apply(String, codePoints) // avoid extra slice()
+	  }
+	
+	  // Decode in chunks to avoid "call stack size exceeded".
+	  var res = ''
+	  var i = 0
+	  while (i < len) {
+	    res += String.fromCharCode.apply(
+	      String,
+	      codePoints.slice(i, i += MAX_ARGUMENTS_LENGTH)
+	    )
+	  }
+	  return res
+	}
+	
+	function asciiSlice (buf, start, end) {
+	  var ret = ''
+	  end = Math.min(buf.length, end)
+	
+	  for (var i = start; i < end; ++i) {
+	    ret += String.fromCharCode(buf[i] & 0x7F)
+	  }
+	  return ret
+	}
+	
+	function latin1Slice (buf, start, end) {
+	  var ret = ''
+	  end = Math.min(buf.length, end)
+	
+	  for (var i = start; i < end; ++i) {
+	    ret += String.fromCharCode(buf[i])
+	  }
+	  return ret
+	}
+	
+	function hexSlice (buf, start, end) {
+	  var len = buf.length
+	
+	  if (!start || start < 0) start = 0
+	  if (!end || end < 0 || end > len) end = len
+	
+	  var out = ''
+	  for (var i = start; i < end; ++i) {
+	    out += toHex(buf[i])
+	  }
+	  return out
+	}
+	
+	function utf16leSlice (buf, start, end) {
+	  var bytes = buf.slice(start, end)
+	  var res = ''
+	  for (var i = 0; i < bytes.length; i += 2) {
+	    res += String.fromCharCode(bytes[i] + bytes[i + 1] * 256)
+	  }
+	  return res
+	}
+	
+	Buffer.prototype.slice = function slice (start, end) {
+	  var len = this.length
+	  start = ~~start
+	  end = end === undefined ? len : ~~end
+	
+	  if (start < 0) {
+	    start += len
+	    if (start < 0) start = 0
+	  } else if (start > len) {
+	    start = len
+	  }
+	
+	  if (end < 0) {
+	    end += len
+	    if (end < 0) end = 0
+	  } else if (end > len) {
+	    end = len
+	  }
+	
+	  if (end < start) end = start
+	
+	  var newBuf
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    newBuf = this.subarray(start, end)
+	    newBuf.__proto__ = Buffer.prototype
+	  } else {
+	    var sliceLen = end - start
+	    newBuf = new Buffer(sliceLen, undefined)
+	    for (var i = 0; i < sliceLen; ++i) {
+	      newBuf[i] = this[i + start]
+	    }
+	  }
+	
+	  return newBuf
+	}
+	
+	/*
+	 * Need to make sure that buffer isn't trying to write out of bounds.
+	 */
+	function checkOffset (offset, ext, length) {
+	  if ((offset % 1) !== 0 || offset < 0) throw new RangeError('offset is not uint')
+	  if (offset + ext > length) throw new RangeError('Trying to access beyond buffer length')
+	}
+	
+	Buffer.prototype.readUIntLE = function readUIntLE (offset, byteLength, noAssert) {
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) checkOffset(offset, byteLength, this.length)
+	
+	  var val = this[offset]
+	  var mul = 1
+	  var i = 0
+	  while (++i < byteLength && (mul *= 0x100)) {
+	    val += this[offset + i] * mul
+	  }
+	
+	  return val
+	}
+	
+	Buffer.prototype.readUIntBE = function readUIntBE (offset, byteLength, noAssert) {
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) {
+	    checkOffset(offset, byteLength, this.length)
+	  }
+	
+	  var val = this[offset + --byteLength]
+	  var mul = 1
+	  while (byteLength > 0 && (mul *= 0x100)) {
+	    val += this[offset + --byteLength] * mul
+	  }
+	
+	  return val
+	}
+	
+	Buffer.prototype.readUInt8 = function readUInt8 (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 1, this.length)
+	  return this[offset]
+	}
+	
+	Buffer.prototype.readUInt16LE = function readUInt16LE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 2, this.length)
+	  return this[offset] | (this[offset + 1] << 8)
+	}
+	
+	Buffer.prototype.readUInt16BE = function readUInt16BE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 2, this.length)
+	  return (this[offset] << 8) | this[offset + 1]
+	}
+	
+	Buffer.prototype.readUInt32LE = function readUInt32LE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+	
+	  return ((this[offset]) |
+	      (this[offset + 1] << 8) |
+	      (this[offset + 2] << 16)) +
+	      (this[offset + 3] * 0x1000000)
+	}
+	
+	Buffer.prototype.readUInt32BE = function readUInt32BE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+	
+	  return (this[offset] * 0x1000000) +
+	    ((this[offset + 1] << 16) |
+	    (this[offset + 2] << 8) |
+	    this[offset + 3])
+	}
+	
+	Buffer.prototype.readIntLE = function readIntLE (offset, byteLength, noAssert) {
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) checkOffset(offset, byteLength, this.length)
+	
+	  var val = this[offset]
+	  var mul = 1
+	  var i = 0
+	  while (++i < byteLength && (mul *= 0x100)) {
+	    val += this[offset + i] * mul
+	  }
+	  mul *= 0x80
+	
+	  if (val >= mul) val -= Math.pow(2, 8 * byteLength)
+	
+	  return val
+	}
+	
+	Buffer.prototype.readIntBE = function readIntBE (offset, byteLength, noAssert) {
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) checkOffset(offset, byteLength, this.length)
+	
+	  var i = byteLength
+	  var mul = 1
+	  var val = this[offset + --i]
+	  while (i > 0 && (mul *= 0x100)) {
+	    val += this[offset + --i] * mul
+	  }
+	  mul *= 0x80
+	
+	  if (val >= mul) val -= Math.pow(2, 8 * byteLength)
+	
+	  return val
+	}
+	
+	Buffer.prototype.readInt8 = function readInt8 (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 1, this.length)
+	  if (!(this[offset] & 0x80)) return (this[offset])
+	  return ((0xff - this[offset] + 1) * -1)
+	}
+	
+	Buffer.prototype.readInt16LE = function readInt16LE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 2, this.length)
+	  var val = this[offset] | (this[offset + 1] << 8)
+	  return (val & 0x8000) ? val | 0xFFFF0000 : val
+	}
+	
+	Buffer.prototype.readInt16BE = function readInt16BE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 2, this.length)
+	  var val = this[offset + 1] | (this[offset] << 8)
+	  return (val & 0x8000) ? val | 0xFFFF0000 : val
+	}
+	
+	Buffer.prototype.readInt32LE = function readInt32LE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+	
+	  return (this[offset]) |
+	    (this[offset + 1] << 8) |
+	    (this[offset + 2] << 16) |
+	    (this[offset + 3] << 24)
+	}
+	
+	Buffer.prototype.readInt32BE = function readInt32BE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+	
+	  return (this[offset] << 24) |
+	    (this[offset + 1] << 16) |
+	    (this[offset + 2] << 8) |
+	    (this[offset + 3])
+	}
+	
+	Buffer.prototype.readFloatLE = function readFloatLE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+	  return ieee754.read(this, offset, true, 23, 4)
+	}
+	
+	Buffer.prototype.readFloatBE = function readFloatBE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 4, this.length)
+	  return ieee754.read(this, offset, false, 23, 4)
+	}
+	
+	Buffer.prototype.readDoubleLE = function readDoubleLE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 8, this.length)
+	  return ieee754.read(this, offset, true, 52, 8)
+	}
+	
+	Buffer.prototype.readDoubleBE = function readDoubleBE (offset, noAssert) {
+	  if (!noAssert) checkOffset(offset, 8, this.length)
+	  return ieee754.read(this, offset, false, 52, 8)
+	}
+	
+	function checkInt (buf, value, offset, ext, max, min) {
+	  if (!Buffer.isBuffer(buf)) throw new TypeError('"buffer" argument must be a Buffer instance')
+	  if (value > max || value < min) throw new RangeError('"value" argument is out of bounds')
+	  if (offset + ext > buf.length) throw new RangeError('Index out of range')
+	}
+	
+	Buffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) {
+	    var maxBytes = Math.pow(2, 8 * byteLength) - 1
+	    checkInt(this, value, offset, byteLength, maxBytes, 0)
+	  }
+	
+	  var mul = 1
+	  var i = 0
+	  this[offset] = value & 0xFF
+	  while (++i < byteLength && (mul *= 0x100)) {
+	    this[offset + i] = (value / mul) & 0xFF
+	  }
+	
+	  return offset + byteLength
+	}
+	
+	Buffer.prototype.writeUIntBE = function writeUIntBE (value, offset, byteLength, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  byteLength = byteLength | 0
+	  if (!noAssert) {
+	    var maxBytes = Math.pow(2, 8 * byteLength) - 1
+	    checkInt(this, value, offset, byteLength, maxBytes, 0)
+	  }
+	
+	  var i = byteLength - 1
+	  var mul = 1
+	  this[offset + i] = value & 0xFF
+	  while (--i >= 0 && (mul *= 0x100)) {
+	    this[offset + i] = (value / mul) & 0xFF
+	  }
+	
+	  return offset + byteLength
+	}
+	
+	Buffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 1, 0xff, 0)
+	  if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
+	  this[offset] = (value & 0xff)
+	  return offset + 1
+	}
+	
+	function objectWriteUInt16 (buf, value, offset, littleEndian) {
+	  if (value < 0) value = 0xffff + value + 1
+	  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; ++i) {
+	    buf[offset + i] = (value & (0xff << (8 * (littleEndian ? i : 1 - i)))) >>>
+	      (littleEndian ? i : 1 - i) * 8
+	  }
+	}
+	
+	Buffer.prototype.writeUInt16LE = function writeUInt16LE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value & 0xff)
+	    this[offset + 1] = (value >>> 8)
+	  } else {
+	    objectWriteUInt16(this, value, offset, true)
+	  }
+	  return offset + 2
+	}
+	
+	Buffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value >>> 8)
+	    this[offset + 1] = (value & 0xff)
+	  } else {
+	    objectWriteUInt16(this, value, offset, false)
+	  }
+	  return offset + 2
+	}
+	
+	function objectWriteUInt32 (buf, value, offset, littleEndian) {
+	  if (value < 0) value = 0xffffffff + value + 1
+	  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; ++i) {
+	    buf[offset + i] = (value >>> (littleEndian ? i : 3 - i) * 8) & 0xff
+	  }
+	}
+	
+	Buffer.prototype.writeUInt32LE = function writeUInt32LE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset + 3] = (value >>> 24)
+	    this[offset + 2] = (value >>> 16)
+	    this[offset + 1] = (value >>> 8)
+	    this[offset] = (value & 0xff)
+	  } else {
+	    objectWriteUInt32(this, value, offset, true)
+	  }
+	  return offset + 4
+	}
+	
+	Buffer.prototype.writeUInt32BE = function writeUInt32BE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value >>> 24)
+	    this[offset + 1] = (value >>> 16)
+	    this[offset + 2] = (value >>> 8)
+	    this[offset + 3] = (value & 0xff)
+	  } else {
+	    objectWriteUInt32(this, value, offset, false)
+	  }
+	  return offset + 4
+	}
+	
+	Buffer.prototype.writeIntLE = function writeIntLE (value, offset, byteLength, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) {
+	    var limit = Math.pow(2, 8 * byteLength - 1)
+	
+	    checkInt(this, value, offset, byteLength, limit - 1, -limit)
+	  }
+	
+	  var i = 0
+	  var mul = 1
+	  var sub = 0
+	  this[offset] = value & 0xFF
+	  while (++i < byteLength && (mul *= 0x100)) {
+	    if (value < 0 && sub === 0 && this[offset + i - 1] !== 0) {
+	      sub = 1
+	    }
+	    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
+	  }
+	
+	  return offset + byteLength
+	}
+	
+	Buffer.prototype.writeIntBE = function writeIntBE (value, offset, byteLength, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) {
+	    var limit = Math.pow(2, 8 * byteLength - 1)
+	
+	    checkInt(this, value, offset, byteLength, limit - 1, -limit)
+	  }
+	
+	  var i = byteLength - 1
+	  var mul = 1
+	  var sub = 0
+	  this[offset + i] = value & 0xFF
+	  while (--i >= 0 && (mul *= 0x100)) {
+	    if (value < 0 && sub === 0 && this[offset + i + 1] !== 0) {
+	      sub = 1
+	    }
+	    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
+	  }
+	
+	  return offset + byteLength
+	}
+	
+	Buffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 1, 0x7f, -0x80)
+	  if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
+	  if (value < 0) value = 0xff + value + 1
+	  this[offset] = (value & 0xff)
+	  return offset + 1
+	}
+	
+	Buffer.prototype.writeInt16LE = function writeInt16LE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value & 0xff)
+	    this[offset + 1] = (value >>> 8)
+	  } else {
+	    objectWriteUInt16(this, value, offset, true)
+	  }
+	  return offset + 2
+	}
+	
+	Buffer.prototype.writeInt16BE = function writeInt16BE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value >>> 8)
+	    this[offset + 1] = (value & 0xff)
+	  } else {
+	    objectWriteUInt16(this, value, offset, false)
+	  }
+	  return offset + 2
+	}
+	
+	Buffer.prototype.writeInt32LE = function writeInt32LE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value & 0xff)
+	    this[offset + 1] = (value >>> 8)
+	    this[offset + 2] = (value >>> 16)
+	    this[offset + 3] = (value >>> 24)
+	  } else {
+	    objectWriteUInt32(this, value, offset, true)
+	  }
+	  return offset + 4
+	}
+	
+	Buffer.prototype.writeInt32BE = function writeInt32BE (value, offset, noAssert) {
+	  value = +value
+	  offset = offset | 0
+	  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
+	  if (value < 0) value = 0xffffffff + value + 1
+	  if (Buffer.TYPED_ARRAY_SUPPORT) {
+	    this[offset] = (value >>> 24)
+	    this[offset + 1] = (value >>> 16)
+	    this[offset + 2] = (value >>> 8)
+	    this[offset + 3] = (value & 0xff)
+	  } else {
+	    objectWriteUInt32(this, value, offset, false)
+	  }
+	  return offset + 4
+	}
+	
+	function checkIEEE754 (buf, value, offset, ext, max, min) {
+	  if (offset + ext > buf.length) throw new RangeError('Index out of range')
+	  if (offset < 0) throw new RangeError('Index out of range')
+	}
+	
+	function writeFloat (buf, value, offset, littleEndian, noAssert) {
+	  if (!noAssert) {
+	    checkIEEE754(buf, value, offset, 4, 3.4028234663852886e+38, -3.4028234663852886e+38)
+	  }
+	  ieee754.write(buf, value, offset, littleEndian, 23, 4)
+	  return offset + 4
+	}
+	
+	Buffer.prototype.writeFloatLE = function writeFloatLE (value, offset, noAssert) {
+	  return writeFloat(this, value, offset, true, noAssert)
+	}
+	
+	Buffer.prototype.writeFloatBE = function writeFloatBE (value, offset, noAssert) {
+	  return writeFloat(this, value, offset, false, noAssert)
+	}
+	
+	function writeDouble (buf, value, offset, littleEndian, noAssert) {
+	  if (!noAssert) {
+	    checkIEEE754(buf, value, offset, 8, 1.7976931348623157E+308, -1.7976931348623157E+308)
+	  }
+	  ieee754.write(buf, value, offset, littleEndian, 52, 8)
+	  return offset + 8
+	}
+	
+	Buffer.prototype.writeDoubleLE = function writeDoubleLE (value, offset, noAssert) {
+	  return writeDouble(this, value, offset, true, noAssert)
+	}
+	
+	Buffer.prototype.writeDoubleBE = function writeDoubleBE (value, offset, noAssert) {
+	  return writeDouble(this, value, offset, false, noAssert)
+	}
+	
+	// copy(targetBuffer, targetStart=0, sourceStart=0, sourceEnd=buffer.length)
+	Buffer.prototype.copy = function copy (target, targetStart, start, end) {
+	  if (!start) start = 0
+	  if (!end && end !== 0) end = this.length
+	  if (targetStart >= target.length) targetStart = target.length
+	  if (!targetStart) targetStart = 0
+	  if (end > 0 && end < start) end = start
+	
+	  // Copy 0 bytes; we're done
+	  if (end === start) return 0
+	  if (target.length === 0 || this.length === 0) return 0
+	
+	  // Fatal error conditions
+	  if (targetStart < 0) {
+	    throw new RangeError('targetStart out of bounds')
+	  }
+	  if (start < 0 || start >= this.length) throw new RangeError('sourceStart out of bounds')
+	  if (end < 0) throw new RangeError('sourceEnd out of bounds')
+	
+	  // Are we oob?
+	  if (end > this.length) end = this.length
+	  if (target.length - targetStart < end - start) {
+	    end = target.length - targetStart + start
+	  }
+	
+	  var len = end - start
+	  var i
+	
+	  if (this === target && start < targetStart && targetStart < end) {
+	    // descending copy from end
+	    for (i = len - 1; i >= 0; --i) {
+	      target[i + targetStart] = this[i + start]
+	    }
+	  } else if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {
+	    // ascending copy from start
+	    for (i = 0; i < len; ++i) {
+	      target[i + targetStart] = this[i + start]
+	    }
+	  } else {
+	    Uint8Array.prototype.set.call(
+	      target,
+	      this.subarray(start, start + len),
+	      targetStart
+	    )
+	  }
+	
+	  return len
+	}
+	
+	// Usage:
+	//    buffer.fill(number[, offset[, end]])
+	//    buffer.fill(buffer[, offset[, end]])
+	//    buffer.fill(string[, offset[, end]][, encoding])
+	Buffer.prototype.fill = function fill (val, start, end, encoding) {
+	  // Handle string cases:
+	  if (typeof val === 'string') {
+	    if (typeof start === 'string') {
+	      encoding = start
+	      start = 0
+	      end = this.length
+	    } else if (typeof end === 'string') {
+	      encoding = end
+	      end = this.length
+	    }
+	    if (val.length === 1) {
+	      var code = val.charCodeAt(0)
+	      if (code < 256) {
+	        val = code
+	      }
+	    }
+	    if (encoding !== undefined && typeof encoding !== 'string') {
+	      throw new TypeError('encoding must be a string')
+	    }
+	    if (typeof encoding === 'string' && !Buffer.isEncoding(encoding)) {
+	      throw new TypeError('Unknown encoding: ' + encoding)
+	    }
+	  } else if (typeof val === 'number') {
+	    val = val & 255
+	  }
+	
+	  // Invalid ranges are not set to a default, so can range check early.
+	  if (start < 0 || this.length < start || this.length < end) {
+	    throw new RangeError('Out of range index')
+	  }
+	
+	  if (end <= start) {
+	    return this
+	  }
+	
+	  start = start >>> 0
+	  end = end === undefined ? this.length : end >>> 0
+	
+	  if (!val) val = 0
+	
+	  var i
+	  if (typeof val === 'number') {
+	    for (i = start; i < end; ++i) {
+	      this[i] = val
+	    }
+	  } else {
+	    var bytes = Buffer.isBuffer(val)
+	      ? val
+	      : utf8ToBytes(new Buffer(val, encoding).toString())
+	    var len = bytes.length
+	    for (i = 0; i < end - start; ++i) {
+	      this[i + start] = bytes[i % len]
+	    }
+	  }
+	
+	  return this
+	}
+	
+	// HELPER FUNCTIONS
+	// ================
+	
+	var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g
+	
+	function base64clean (str) {
+	  // Node strips out invalid characters like \n and \t from the string, base64-js does not
+	  str = stringtrim(str).replace(INVALID_BASE64_RE, '')
+	  // Node converts strings with length < 2 to ''
+	  if (str.length < 2) return ''
+	  // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
+	  while (str.length % 4 !== 0) {
+	    str = str + '='
+	  }
+	  return str
+	}
+	
+	function stringtrim (str) {
+	  if (str.trim) return str.trim()
+	  return str.replace(/^\s+|\s+$/g, '')
+	}
+	
+	function toHex (n) {
+	  if (n < 16) return '0' + n.toString(16)
+	  return n.toString(16)
+	}
+	
+	function utf8ToBytes (string, units) {
+	  units = units || Infinity
+	  var codePoint
+	  var length = string.length
+	  var leadSurrogate = null
+	  var bytes = []
+	
+	  for (var i = 0; i < length; ++i) {
+	    codePoint = string.charCodeAt(i)
+	
+	    // is surrogate component
+	    if (codePoint > 0xD7FF && codePoint < 0xE000) {
+	      // last char was a lead
+	      if (!leadSurrogate) {
+	        // no lead yet
+	        if (codePoint > 0xDBFF) {
+	          // unexpected trail
+	          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+	          continue
+	        } else if (i + 1 === length) {
+	          // unpaired lead
+	          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+	          continue
+	        }
+	
+	        // valid lead
+	        leadSurrogate = codePoint
+	
+	        continue
+	      }
+	
+	      // 2 leads in a row
+	      if (codePoint < 0xDC00) {
+	        if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+	        leadSurrogate = codePoint
+	        continue
+	      }
+	
+	      // valid surrogate pair
+	      codePoint = (leadSurrogate - 0xD800 << 10 | codePoint - 0xDC00) + 0x10000
+	    } else if (leadSurrogate) {
+	      // valid bmp char, but last char was a lead
+	      if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+	    }
+	
+	    leadSurrogate = null
+	
+	    // encode utf8
+	    if (codePoint < 0x80) {
+	      if ((units -= 1) < 0) break
+	      bytes.push(codePoint)
+	    } else if (codePoint < 0x800) {
+	      if ((units -= 2) < 0) break
+	      bytes.push(
+	        codePoint >> 0x6 | 0xC0,
+	        codePoint & 0x3F | 0x80
+	      )
+	    } else if (codePoint < 0x10000) {
+	      if ((units -= 3) < 0) break
+	      bytes.push(
+	        codePoint >> 0xC | 0xE0,
+	        codePoint >> 0x6 & 0x3F | 0x80,
+	        codePoint & 0x3F | 0x80
+	      )
+	    } else if (codePoint < 0x110000) {
+	      if ((units -= 4) < 0) break
+	      bytes.push(
+	        codePoint >> 0x12 | 0xF0,
+	        codePoint >> 0xC & 0x3F | 0x80,
+	        codePoint >> 0x6 & 0x3F | 0x80,
+	        codePoint & 0x3F | 0x80
+	      )
+	    } else {
+	      throw new Error('Invalid code point')
+	    }
+	  }
+	
+	  return bytes
+	}
+	
+	function asciiToBytes (str) {
+	  var byteArray = []
+	  for (var i = 0; i < str.length; ++i) {
+	    // Node's code seems to be doing this and not & 0x7F..
+	    byteArray.push(str.charCodeAt(i) & 0xFF)
+	  }
+	  return byteArray
+	}
+	
+	function utf16leToBytes (str, units) {
+	  var c, hi, lo
+	  var byteArray = []
+	  for (var i = 0; i < str.length; ++i) {
+	    if ((units -= 2) < 0) break
+	
+	    c = str.charCodeAt(i)
+	    hi = c >> 8
+	    lo = c % 256
+	    byteArray.push(lo)
+	    byteArray.push(hi)
+	  }
+	
+	  return byteArray
+	}
+	
+	function base64ToBytes (str) {
+	  return base64.toByteArray(base64clean(str))
+	}
+	
+	function blitBuffer (src, dst, offset, length) {
+	  for (var i = 0; i < length; ++i) {
+	    if ((i + offset >= dst.length) || (i >= src.length)) break
+	    dst[i + offset] = src[i]
+	  }
+	  return i
+	}
+	
+	function isnan (val) {
+	  return val !== val // eslint-disable-line no-self-compare
+	}
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 28).Buffer, (function() { return this; }())))
+
+/***/ },
+/* 29 */
+/*!******************************!*\
+  !*** ./~/base64-js/index.js ***!
+  \******************************/
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict'
+	
+	exports.byteLength = byteLength
+	exports.toByteArray = toByteArray
+	exports.fromByteArray = fromByteArray
+	
+	var lookup = []
+	var revLookup = []
+	var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
+	
+	var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+	for (var i = 0, len = code.length; i < len; ++i) {
+	  lookup[i] = code[i]
+	  revLookup[code.charCodeAt(i)] = i
+	}
+	
+	revLookup['-'.charCodeAt(0)] = 62
+	revLookup['_'.charCodeAt(0)] = 63
+	
+	function placeHoldersCount (b64) {
+	  var len = b64.length
+	  if (len % 4 > 0) {
+	    throw new Error('Invalid string. Length must be a multiple of 4')
+	  }
+	
+	  // the number of equal signs (place holders)
+	  // if there are two placeholders, than the two characters before it
+	  // represent one byte
+	  // if there is only one, then the three characters before it represent 2 bytes
+	  // this is just a cheap hack to not do indexOf twice
+	  return b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0
+	}
+	
+	function byteLength (b64) {
+	  // base64 is 4/3 + up to two characters of the original data
+	  return b64.length * 3 / 4 - placeHoldersCount(b64)
+	}
+	
+	function toByteArray (b64) {
+	  var i, j, l, tmp, placeHolders, arr
+	  var len = b64.length
+	  placeHolders = placeHoldersCount(b64)
+	
+	  arr = new Arr(len * 3 / 4 - placeHolders)
+	
+	  // if there are placeholders, only get up to the last complete 4 chars
+	  l = placeHolders > 0 ? len - 4 : len
+	
+	  var L = 0
+	
+	  for (i = 0, j = 0; i < l; i += 4, j += 3) {
+	    tmp = (revLookup[b64.charCodeAt(i)] << 18) | (revLookup[b64.charCodeAt(i + 1)] << 12) | (revLookup[b64.charCodeAt(i + 2)] << 6) | revLookup[b64.charCodeAt(i + 3)]
+	    arr[L++] = (tmp >> 16) & 0xFF
+	    arr[L++] = (tmp >> 8) & 0xFF
+	    arr[L++] = tmp & 0xFF
+	  }
+	
+	  if (placeHolders === 2) {
+	    tmp = (revLookup[b64.charCodeAt(i)] << 2) | (revLookup[b64.charCodeAt(i + 1)] >> 4)
+	    arr[L++] = tmp & 0xFF
+	  } else if (placeHolders === 1) {
+	    tmp = (revLookup[b64.charCodeAt(i)] << 10) | (revLookup[b64.charCodeAt(i + 1)] << 4) | (revLookup[b64.charCodeAt(i + 2)] >> 2)
+	    arr[L++] = (tmp >> 8) & 0xFF
+	    arr[L++] = tmp & 0xFF
+	  }
+	
+	  return arr
+	}
+	
+	function tripletToBase64 (num) {
+	  return lookup[num >> 18 & 0x3F] + lookup[num >> 12 & 0x3F] + lookup[num >> 6 & 0x3F] + lookup[num & 0x3F]
+	}
+	
+	function encodeChunk (uint8, start, end) {
+	  var tmp
+	  var output = []
+	  for (var i = start; i < end; i += 3) {
+	    tmp = (uint8[i] << 16) + (uint8[i + 1] << 8) + (uint8[i + 2])
+	    output.push(tripletToBase64(tmp))
+	  }
+	  return output.join('')
+	}
+	
+	function fromByteArray (uint8) {
+	  var tmp
+	  var len = uint8.length
+	  var extraBytes = len % 3 // if we have 1 byte left, pad 2 bytes
+	  var output = ''
+	  var parts = []
+	  var maxChunkLength = 16383 // must be multiple of 3
+	
+	  // go through the array every three bytes, we'll deal with trailing stuff later
+	  for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
+	    parts.push(encodeChunk(uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)))
+	  }
+	
+	  // pad the end with zeros, but make sure to not forget the extra bytes
+	  if (extraBytes === 1) {
+	    tmp = uint8[len - 1]
+	    output += lookup[tmp >> 2]
+	    output += lookup[(tmp << 4) & 0x3F]
+	    output += '=='
+	  } else if (extraBytes === 2) {
+	    tmp = (uint8[len - 2] << 8) + (uint8[len - 1])
+	    output += lookup[tmp >> 10]
+	    output += lookup[(tmp >> 4) & 0x3F]
+	    output += lookup[(tmp << 2) & 0x3F]
+	    output += '='
+	  }
+	
+	  parts.push(output)
+	
+	  return parts.join('')
+	}
+
+
+/***/ },
+/* 30 */
+/*!****************************!*\
+  !*** ./~/ieee754/index.js ***!
+  \****************************/
+/***/ function(module, exports) {
+
+	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
+	  var e, m
+	  var eLen = nBytes * 8 - mLen - 1
+	  var eMax = (1 << eLen) - 1
+	  var eBias = eMax >> 1
+	  var nBits = -7
+	  var i = isLE ? (nBytes - 1) : 0
+	  var d = isLE ? -1 : 1
+	  var s = buffer[offset + i]
+	
+	  i += d
+	
+	  e = s & ((1 << (-nBits)) - 1)
+	  s >>= (-nBits)
+	  nBits += eLen
+	  for (; nBits > 0; e = e * 256 + buffer[offset + i], i += d, nBits -= 8) {}
+	
+	  m = e & ((1 << (-nBits)) - 1)
+	  e >>= (-nBits)
+	  nBits += mLen
+	  for (; nBits > 0; m = m * 256 + buffer[offset + i], i += d, nBits -= 8) {}
+	
+	  if (e === 0) {
+	    e = 1 - eBias
+	  } else if (e === eMax) {
+	    return m ? NaN : ((s ? -1 : 1) * Infinity)
+	  } else {
+	    m = m + Math.pow(2, mLen)
+	    e = e - eBias
+	  }
+	  return (s ? -1 : 1) * m * Math.pow(2, e - mLen)
+	}
+	
+	exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
+	  var e, m, c
+	  var eLen = nBytes * 8 - mLen - 1
+	  var eMax = (1 << eLen) - 1
+	  var eBias = eMax >> 1
+	  var rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0)
+	  var i = isLE ? 0 : (nBytes - 1)
+	  var d = isLE ? 1 : -1
+	  var s = value < 0 || (value === 0 && 1 / value < 0) ? 1 : 0
+	
+	  value = Math.abs(value)
+	
+	  if (isNaN(value) || value === Infinity) {
+	    m = isNaN(value) ? 1 : 0
+	    e = eMax
+	  } else {
+	    e = Math.floor(Math.log(value) / Math.LN2)
+	    if (value * (c = Math.pow(2, -e)) < 1) {
+	      e--
+	      c *= 2
+	    }
+	    if (e + eBias >= 1) {
+	      value += rt / c
+	    } else {
+	      value += rt * Math.pow(2, 1 - eBias)
+	    }
+	    if (value * c >= 2) {
+	      e++
+	      c /= 2
+	    }
+	
+	    if (e + eBias >= eMax) {
+	      m = 0
+	      e = eMax
+	    } else if (e + eBias >= 1) {
+	      m = (value * c - 1) * Math.pow(2, mLen)
+	      e = e + eBias
+	    } else {
+	      m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen)
+	      e = 0
+	    }
+	  }
+	
+	  for (; mLen >= 8; buffer[offset + i] = m & 0xff, i += d, m /= 256, mLen -= 8) {}
+	
+	  e = (e << mLen) | m
+	  eLen += mLen
+	  for (; eLen > 0; buffer[offset + i] = e & 0xff, i += d, e /= 256, eLen -= 8) {}
+	
+	  buffer[offset + i - d] |= s * 128
+	}
+
+
+/***/ },
+/* 31 */
+/*!****************************!*\
+  !*** ./~/isarray/index.js ***!
+  \****************************/
+/***/ function(module, exports) {
+
+	var toString = {}.toString;
+	
+	module.exports = Array.isArray || function (arr) {
+	  return toString.call(arr) == '[object Array]';
+	};
+
+
+/***/ },
+/* 32 */
+/*!************************************************!*\
+  !*** ./~/wolfy87-eventemitter/EventEmitter.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	 * EventEmitter v4.2.11 - git.io/ee
+	 * Unlicense - http://unlicense.org/
+	 * Oliver Caldwell - http://oli.me.uk/
+	 * @preserve
+	 */
+	
+	;(function () {
+	    'use strict';
+	
+	    /**
+	     * Class for managing events.
+	     * Can be extended to provide event functionality in other classes.
+	     *
+	     * @class EventEmitter Manages event registering and emitting.
+	     */
+	    function EventEmitter() {}
+	
+	    // Shortcuts to improve speed and size
+	    var proto = EventEmitter.prototype;
+	    var exports = this;
+	    var originalGlobalValue = exports.EventEmitter;
+	
+	    /**
+	     * Finds the index of the listener for the event in its storage array.
+	     *
+	     * @param {Function[]} listeners Array of listeners to search through.
+	     * @param {Function} listener Method to look for.
+	     * @return {Number} Index of the specified listener, -1 if not found
+	     * @api private
+	     */
+	    function indexOfListener(listeners, listener) {
+	        var i = listeners.length;
+	        while (i--) {
+	            if (listeners[i].listener === listener) {
+	                return i;
+	            }
+	        }
+	
+	        return -1;
+	    }
+	
+	    /**
+	     * Alias a method while keeping the context correct, to allow for overwriting of target method.
+	     *
+	     * @param {String} name The name of the target method.
+	     * @return {Function} The aliased method
+	     * @api private
+	     */
+	    function alias(name) {
+	        return function aliasClosure() {
+	            return this[name].apply(this, arguments);
+	        };
+	    }
+	
+	    /**
+	     * Returns the listener array for the specified event.
+	     * Will initialise the event object and listener arrays if required.
+	     * Will return an object if you use a regex search. The object contains keys for each matched event. So /ba[rz]/ might return an object containing bar and baz. But only if you have either defined them with defineEvent or added some listeners to them.
+	     * Each property in the object response is an array of listener functions.
+	     *
+	     * @param {String|RegExp} evt Name of the event to return the listeners from.
+	     * @return {Function[]|Object} All listener functions for the event.
+	     */
+	    proto.getListeners = function getListeners(evt) {
+	        var events = this._getEvents();
+	        var response;
+	        var key;
+	
+	        // Return a concatenated array of all matching events if
+	        // the selector is a regular expression.
+	        if (evt instanceof RegExp) {
+	            response = {};
+	            for (key in events) {
+	                if (events.hasOwnProperty(key) && evt.test(key)) {
+	                    response[key] = events[key];
+	                }
+	            }
+	        }
+	        else {
+	            response = events[evt] || (events[evt] = []);
+	        }
+	
+	        return response;
+	    };
+	
+	    /**
+	     * Takes a list of listener objects and flattens it into a list of listener functions.
+	     *
+	     * @param {Object[]} listeners Raw listener objects.
+	     * @return {Function[]} Just the listener functions.
+	     */
+	    proto.flattenListeners = function flattenListeners(listeners) {
+	        var flatListeners = [];
+	        var i;
+	
+	        for (i = 0; i < listeners.length; i += 1) {
+	            flatListeners.push(listeners[i].listener);
+	        }
+	
+	        return flatListeners;
+	    };
+	
+	    /**
+	     * Fetches the requested listeners via getListeners but will always return the results inside an object. This is mainly for internal use but others may find it useful.
+	     *
+	     * @param {String|RegExp} evt Name of the event to return the listeners from.
+	     * @return {Object} All listener functions for an event in an object.
+	     */
+	    proto.getListenersAsObject = function getListenersAsObject(evt) {
+	        var listeners = this.getListeners(evt);
+	        var response;
+	
+	        if (listeners instanceof Array) {
+	            response = {};
+	            response[evt] = listeners;
+	        }
+	
+	        return response || listeners;
+	    };
+	
+	    /**
+	     * Adds a listener function to the specified event.
+	     * The listener will not be added if it is a duplicate.
+	     * If the listener returns true then it will be removed after it is called.
+	     * If you pass a regular expression as the event name then the listener will be added to all events that match it.
+	     *
+	     * @param {String|RegExp} evt Name of the event to attach the listener to.
+	     * @param {Function} listener Method to be called when the event is emitted. If the function returns true then it will be removed after calling.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.addListener = function addListener(evt, listener) {
+	        var listeners = this.getListenersAsObject(evt);
+	        var listenerIsWrapped = typeof listener === 'object';
+	        var key;
+	
+	        for (key in listeners) {
+	            if (listeners.hasOwnProperty(key) && indexOfListener(listeners[key], listener) === -1) {
+	                listeners[key].push(listenerIsWrapped ? listener : {
+	                    listener: listener,
+	                    once: false
+	                });
+	            }
+	        }
+	
+	        return this;
+	    };
+	
+	    /**
+	     * Alias of addListener
+	     */
+	    proto.on = alias('addListener');
+	
+	    /**
+	     * Semi-alias of addListener. It will add a listener that will be
+	     * automatically removed after its first execution.
+	     *
+	     * @param {String|RegExp} evt Name of the event to attach the listener to.
+	     * @param {Function} listener Method to be called when the event is emitted. If the function returns true then it will be removed after calling.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.addOnceListener = function addOnceListener(evt, listener) {
+	        return this.addListener(evt, {
+	            listener: listener,
+	            once: true
+	        });
+	    };
+	
+	    /**
+	     * Alias of addOnceListener.
+	     */
+	    proto.once = alias('addOnceListener');
+	
+	    /**
+	     * Defines an event name. This is required if you want to use a regex to add a listener to multiple events at once. If you don't do this then how do you expect it to know what event to add to? Should it just add to every possible match for a regex? No. That is scary and bad.
+	     * You need to tell it what event names should be matched by a regex.
+	     *
+	     * @param {String} evt Name of the event to create.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.defineEvent = function defineEvent(evt) {
+	        this.getListeners(evt);
+	        return this;
+	    };
+	
+	    /**
+	     * Uses defineEvent to define multiple events.
+	     *
+	     * @param {String[]} evts An array of event names to define.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.defineEvents = function defineEvents(evts) {
+	        for (var i = 0; i < evts.length; i += 1) {
+	            this.defineEvent(evts[i]);
+	        }
+	        return this;
+	    };
+	
+	    /**
+	     * Removes a listener function from the specified event.
+	     * When passed a regular expression as the event name, it will remove the listener from all events that match it.
+	     *
+	     * @param {String|RegExp} evt Name of the event to remove the listener from.
+	     * @param {Function} listener Method to remove from the event.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.removeListener = function removeListener(evt, listener) {
+	        var listeners = this.getListenersAsObject(evt);
+	        var index;
+	        var key;
+	
+	        for (key in listeners) {
+	            if (listeners.hasOwnProperty(key)) {
+	                index = indexOfListener(listeners[key], listener);
+	
+	                if (index !== -1) {
+	                    listeners[key].splice(index, 1);
+	                }
+	            }
+	        }
+	
+	        return this;
+	    };
+	
+	    /**
+	     * Alias of removeListener
+	     */
+	    proto.off = alias('removeListener');
+	
+	    /**
+	     * Adds listeners in bulk using the manipulateListeners method.
+	     * If you pass an object as the second argument you can add to multiple events at once. The object should contain key value pairs of events and listeners or listener arrays. You can also pass it an event name and an array of listeners to be added.
+	     * You can also pass it a regular expression to add the array of listeners to all events that match it.
+	     * Yeah, this function does quite a bit. That's probably a bad thing.
+	     *
+	     * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to add to multiple events at once.
+	     * @param {Function[]} [listeners] An optional array of listener functions to add.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.addListeners = function addListeners(evt, listeners) {
+	        // Pass through to manipulateListeners
+	        return this.manipulateListeners(false, evt, listeners);
+	    };
+	
+	    /**
+	     * Removes listeners in bulk using the manipulateListeners method.
+	     * If you pass an object as the second argument you can remove from multiple events at once. The object should contain key value pairs of events and listeners or listener arrays.
+	     * You can also pass it an event name and an array of listeners to be removed.
+	     * You can also pass it a regular expression to remove the listeners from all events that match it.
+	     *
+	     * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to remove from multiple events at once.
+	     * @param {Function[]} [listeners] An optional array of listener functions to remove.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.removeListeners = function removeListeners(evt, listeners) {
+	        // Pass through to manipulateListeners
+	        return this.manipulateListeners(true, evt, listeners);
+	    };
+	
+	    /**
+	     * Edits listeners in bulk. The addListeners and removeListeners methods both use this to do their job. You should really use those instead, this is a little lower level.
+	     * The first argument will determine if the listeners are removed (true) or added (false).
+	     * If you pass an object as the second argument you can add/remove from multiple events at once. The object should contain key value pairs of events and listeners or listener arrays.
+	     * You can also pass it an event name and an array of listeners to be added/removed.
+	     * You can also pass it a regular expression to manipulate the listeners of all events that match it.
+	     *
+	     * @param {Boolean} remove True if you want to remove listeners, false if you want to add.
+	     * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to add/remove from multiple events at once.
+	     * @param {Function[]} [listeners] An optional array of listener functions to add/remove.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.manipulateListeners = function manipulateListeners(remove, evt, listeners) {
+	        var i;
+	        var value;
+	        var single = remove ? this.removeListener : this.addListener;
+	        var multiple = remove ? this.removeListeners : this.addListeners;
+	
+	        // If evt is an object then pass each of its properties to this method
+	        if (typeof evt === 'object' && !(evt instanceof RegExp)) {
+	            for (i in evt) {
+	                if (evt.hasOwnProperty(i) && (value = evt[i])) {
+	                    // Pass the single listener straight through to the singular method
+	                    if (typeof value === 'function') {
+	                        single.call(this, i, value);
+	                    }
+	                    else {
+	                        // Otherwise pass back to the multiple function
+	                        multiple.call(this, i, value);
+	                    }
+	                }
+	            }
+	        }
+	        else {
+	            // So evt must be a string
+	            // And listeners must be an array of listeners
+	            // Loop over it and pass each one to the multiple method
+	            i = listeners.length;
+	            while (i--) {
+	                single.call(this, evt, listeners[i]);
+	            }
+	        }
+	
+	        return this;
+	    };
+	
+	    /**
+	     * Removes all listeners from a specified event.
+	     * If you do not specify an event then all listeners will be removed.
+	     * That means every event will be emptied.
+	     * You can also pass a regex to remove all events that match it.
+	     *
+	     * @param {String|RegExp} [evt] Optional name of the event to remove all listeners for. Will remove from every event if not passed.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.removeEvent = function removeEvent(evt) {
+	        var type = typeof evt;
+	        var events = this._getEvents();
+	        var key;
+	
+	        // Remove different things depending on the state of evt
+	        if (type === 'string') {
+	            // Remove all listeners for the specified event
+	            delete events[evt];
+	        }
+	        else if (evt instanceof RegExp) {
+	            // Remove all events matching the regex.
+	            for (key in events) {
+	                if (events.hasOwnProperty(key) && evt.test(key)) {
+	                    delete events[key];
+	                }
+	            }
+	        }
+	        else {
+	            // Remove all listeners in all events
+	            delete this._events;
+	        }
+	
+	        return this;
+	    };
+	
+	    /**
+	     * Alias of removeEvent.
+	     *
+	     * Added to mirror the node API.
+	     */
+	    proto.removeAllListeners = alias('removeEvent');
+	
+	    /**
+	     * Emits an event of your choice.
+	     * When emitted, every listener attached to that event will be executed.
+	     * If you pass the optional argument array then those arguments will be passed to every listener upon execution.
+	     * Because it uses `apply`, your array of arguments will be passed as if you wrote them out separately.
+	     * So they will not arrive within the array on the other side, they will be separate.
+	     * You can also pass a regular expression to emit to all events that match it.
+	     *
+	     * @param {String|RegExp} evt Name of the event to emit and execute listeners for.
+	     * @param {Array} [args] Optional array of arguments to be passed to each listener.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.emitEvent = function emitEvent(evt, args) {
+	        var listenersMap = this.getListenersAsObject(evt);
+	        var listeners;
+	        var listener;
+	        var i;
+	        var key;
+	        var response;
+	
+	        for (key in listenersMap) {
+	            if (listenersMap.hasOwnProperty(key)) {
+	                listeners = listenersMap[key].slice(0);
+	                i = listeners.length;
+	
+	                while (i--) {
+	                    // If the listener returns true then it shall be removed from the event
+	                    // The function is executed either with a basic call or an apply if there is an args array
+	                    listener = listeners[i];
+	
+	                    if (listener.once === true) {
+	                        this.removeListener(evt, listener.listener);
+	                    }
+	
+	                    response = listener.listener.apply(this, args || []);
+	
+	                    if (response === this._getOnceReturnValue()) {
+	                        this.removeListener(evt, listener.listener);
+	                    }
+	                }
+	            }
+	        }
+	
+	        return this;
+	    };
+	
+	    /**
+	     * Alias of emitEvent
+	     */
+	    proto.trigger = alias('emitEvent');
+	
+	    /**
+	     * Subtly different from emitEvent in that it will pass its arguments on to the listeners, as opposed to taking a single array of arguments to pass on.
+	     * As with emitEvent, you can pass a regex in place of the event name to emit to all events that match it.
+	     *
+	     * @param {String|RegExp} evt Name of the event to emit and execute listeners for.
+	     * @param {...*} Optional additional arguments to be passed to each listener.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.emit = function emit(evt) {
+	        var args = Array.prototype.slice.call(arguments, 1);
+	        return this.emitEvent(evt, args);
+	    };
+	
+	    /**
+	     * Sets the current value to check against when executing listeners. If a
+	     * listeners return value matches the one set here then it will be removed
+	     * after execution. This value defaults to true.
+	     *
+	     * @param {*} value The new value to check for when executing listeners.
+	     * @return {Object} Current instance of EventEmitter for chaining.
+	     */
+	    proto.setOnceReturnValue = function setOnceReturnValue(value) {
+	        this._onceReturnValue = value;
+	        return this;
+	    };
+	
+	    /**
+	     * Fetches the current value to check against when executing listeners. If
+	     * the listeners return value matches this one then it should be removed
+	     * automatically. It will return true by default.
+	     *
+	     * @return {*|Boolean} The current value to check for or the default, true.
+	     * @api private
+	     */
+	    proto._getOnceReturnValue = function _getOnceReturnValue() {
+	        if (this.hasOwnProperty('_onceReturnValue')) {
+	            return this._onceReturnValue;
+	        }
+	        else {
+	            return true;
+	        }
+	    };
+	
+	    /**
+	     * Fetches the events object and creates one if required.
+	     *
+	     * @return {Object} The events storage object.
+	     * @api private
+	     */
+	    proto._getEvents = function _getEvents() {
+	        return this._events || (this._events = {});
+	    };
+	
+	    /**
+	     * Reverts the global {@link EventEmitter} to its previous value and returns a reference to this version.
+	     *
+	     * @return {Function} Non conflicting EventEmitter class.
+	     */
+	    EventEmitter.noConflict = function noConflict() {
+	        exports.EventEmitter = originalGlobalValue;
+	        return EventEmitter;
+	    };
+	
+	    // Expose the class either via AMD, CommonJS or the global object
+	    if (true) {
+	        !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+	            return EventEmitter;
+	        }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    }
+	    else if (typeof module === 'object' && module.exports){
+	        module.exports = EventEmitter;
+	    }
+	    else {
+	        exports.EventEmitter = EventEmitter;
+	    }
+	}.call(this));
+
+
+/***/ },
+/* 33 */
+/*!*******************************************!*\
+  !*** ./~/js-binarypack/lib/binarypack.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var BufferBuilder = __webpack_require__(/*! ./bufferbuilder */ 34).BufferBuilder;
+	var binaryFeatures = __webpack_require__(/*! ./bufferbuilder */ 34).binaryFeatures;
+	
+	var BinaryPack = {
+	  unpack: function(data){
+	    var unpacker = new Unpacker(data);
+	    return unpacker.unpack();
+	  },
+	  pack: function(data){
+	    var packer = new Packer();
+	    packer.pack(data);
+	    var buffer = packer.getBuffer();
+	    return buffer;
+	  }
+	};
+	
+	module.exports = BinaryPack;
+	
+	function Unpacker (data){
+	  // Data is ArrayBuffer
+	  this.index = 0;
+	  this.dataBuffer = data;
+	  this.dataView = new Uint8Array(this.dataBuffer);
+	  this.length = this.dataBuffer.byteLength;
+	}
+	
+	Unpacker.prototype.unpack = function(){
+	  var type = this.unpack_uint8();
+	  if (type < 0x80){
+	    var positive_fixnum = type;
+	    return positive_fixnum;
+	  } else if ((type ^ 0xe0) < 0x20){
+	    var negative_fixnum = (type ^ 0xe0) - 0x20;
+	    return negative_fixnum;
+	  }
+	  var size;
+	  if ((size = type ^ 0xa0) <= 0x0f){
+	    return this.unpack_raw(size);
+	  } else if ((size = type ^ 0xb0) <= 0x0f){
+	    return this.unpack_string(size);
+	  } else if ((size = type ^ 0x90) <= 0x0f){
+	    return this.unpack_array(size);
+	  } else if ((size = type ^ 0x80) <= 0x0f){
+	    return this.unpack_map(size);
+	  }
+	  switch(type){
+	    case 0xc0:
+	      return null;
+	    case 0xc1:
+	      return undefined;
+	    case 0xc2:
+	      return false;
+	    case 0xc3:
+	      return true;
+	    case 0xca:
+	      return this.unpack_float();
+	    case 0xcb:
+	      return this.unpack_double();
+	    case 0xcc:
+	      return this.unpack_uint8();
+	    case 0xcd:
+	      return this.unpack_uint16();
+	    case 0xce:
+	      return this.unpack_uint32();
+	    case 0xcf:
+	      return this.unpack_uint64();
+	    case 0xd0:
+	      return this.unpack_int8();
+	    case 0xd1:
+	      return this.unpack_int16();
+	    case 0xd2:
+	      return this.unpack_int32();
+	    case 0xd3:
+	      return this.unpack_int64();
+	    case 0xd4:
+	      return undefined;
+	    case 0xd5:
+	      return undefined;
+	    case 0xd6:
+	      return undefined;
+	    case 0xd7:
+	      return undefined;
+	    case 0xd8:
+	      size = this.unpack_uint16();
+	      return this.unpack_string(size);
+	    case 0xd9:
+	      size = this.unpack_uint32();
+	      return this.unpack_string(size);
+	    case 0xda:
+	      size = this.unpack_uint16();
+	      return this.unpack_raw(size);
+	    case 0xdb:
+	      size = this.unpack_uint32();
+	      return this.unpack_raw(size);
+	    case 0xdc:
+	      size = this.unpack_uint16();
+	      return this.unpack_array(size);
+	    case 0xdd:
+	      size = this.unpack_uint32();
+	      return this.unpack_array(size);
+	    case 0xde:
+	      size = this.unpack_uint16();
+	      return this.unpack_map(size);
+	    case 0xdf:
+	      size = this.unpack_uint32();
+	      return this.unpack_map(size);
+	  }
+	}
+	
+	Unpacker.prototype.unpack_uint8 = function(){
+	  var byte = this.dataView[this.index] & 0xff;
+	  this.index++;
+	  return byte;
+	};
+	
+	Unpacker.prototype.unpack_uint16 = function(){
+	  var bytes = this.read(2);
+	  var uint16 =
+	    ((bytes[0] & 0xff) * 256) + (bytes[1] & 0xff);
+	  this.index += 2;
+	  return uint16;
+	}
+	
+	Unpacker.prototype.unpack_uint32 = function(){
+	  var bytes = this.read(4);
+	  var uint32 =
+	     ((bytes[0]  * 256 +
+	       bytes[1]) * 256 +
+	       bytes[2]) * 256 +
+	       bytes[3];
+	  this.index += 4;
+	  return uint32;
+	}
+	
+	Unpacker.prototype.unpack_uint64 = function(){
+	  var bytes = this.read(8);
+	  var uint64 =
+	   ((((((bytes[0]  * 256 +
+	       bytes[1]) * 256 +
+	       bytes[2]) * 256 +
+	       bytes[3]) * 256 +
+	       bytes[4]) * 256 +
+	       bytes[5]) * 256 +
+	       bytes[6]) * 256 +
+	       bytes[7];
+	  this.index += 8;
+	  return uint64;
+	}
+	
+	
+	Unpacker.prototype.unpack_int8 = function(){
+	  var uint8 = this.unpack_uint8();
+	  return (uint8 < 0x80 ) ? uint8 : uint8 - (1 << 8);
+	};
+	
+	Unpacker.prototype.unpack_int16 = function(){
+	  var uint16 = this.unpack_uint16();
+	  return (uint16 < 0x8000 ) ? uint16 : uint16 - (1 << 16);
+	}
+	
+	Unpacker.prototype.unpack_int32 = function(){
+	  var uint32 = this.unpack_uint32();
+	  return (uint32 < Math.pow(2, 31) ) ? uint32 :
+	    uint32 - Math.pow(2, 32);
+	}
+	
+	Unpacker.prototype.unpack_int64 = function(){
+	  var uint64 = this.unpack_uint64();
+	  return (uint64 < Math.pow(2, 63) ) ? uint64 :
+	    uint64 - Math.pow(2, 64);
+	}
+	
+	Unpacker.prototype.unpack_raw = function(size){
+	  if ( this.length < this.index + size){
+	    throw new Error('BinaryPackFailure: index is out of range'
+	      + ' ' + this.index + ' ' + size + ' ' + this.length);
+	  }
+	  var buf = this.dataBuffer.slice(this.index, this.index + size);
+	  this.index += size;
+	
+	    //buf = util.bufferToString(buf);
+	
+	  return buf;
+	}
+	
+	Unpacker.prototype.unpack_string = function(size){
+	  var bytes = this.read(size);
+	  var i = 0, str = '', c, code;
+	  while(i < size){
+	    c = bytes[i];
+	    if ( c < 128){
+	      str += String.fromCharCode(c);
+	      i++;
+	    } else if ((c ^ 0xc0) < 32){
+	      code = ((c ^ 0xc0) << 6) | (bytes[i+1] & 63);
+	      str += String.fromCharCode(code);
+	      i += 2;
+	    } else {
+	      code = ((c & 15) << 12) | ((bytes[i+1] & 63) << 6) |
+	        (bytes[i+2] & 63);
+	      str += String.fromCharCode(code);
+	      i += 3;
+	    }
+	  }
+	  this.index += size;
+	  return str;
+	}
+	
+	Unpacker.prototype.unpack_array = function(size){
+	  var objects = new Array(size);
+	  for(var i = 0; i < size ; i++){
+	    objects[i] = this.unpack();
+	  }
+	  return objects;
+	}
+	
+	Unpacker.prototype.unpack_map = function(size){
+	  var map = {};
+	  for(var i = 0; i < size ; i++){
+	    var key  = this.unpack();
+	    var value = this.unpack();
+	    map[key] = value;
+	  }
+	  return map;
+	}
+	
+	Unpacker.prototype.unpack_float = function(){
+	  var uint32 = this.unpack_uint32();
+	  var sign = uint32 >> 31;
+	  var exp  = ((uint32 >> 23) & 0xff) - 127;
+	  var fraction = ( uint32 & 0x7fffff ) | 0x800000;
+	  return (sign == 0 ? 1 : -1) *
+	    fraction * Math.pow(2, exp - 23);
+	}
+	
+	Unpacker.prototype.unpack_double = function(){
+	  var h32 = this.unpack_uint32();
+	  var l32 = this.unpack_uint32();
+	  var sign = h32 >> 31;
+	  var exp  = ((h32 >> 20) & 0x7ff) - 1023;
+	  var hfrac = ( h32 & 0xfffff ) | 0x100000;
+	  var frac = hfrac * Math.pow(2, exp - 20) +
+	    l32   * Math.pow(2, exp - 52);
+	  return (sign == 0 ? 1 : -1) * frac;
+	}
+	
+	Unpacker.prototype.read = function(length){
+	  var j = this.index;
+	  if (j + length <= this.length) {
+	    return this.dataView.subarray(j, j + length);
+	  } else {
+	    throw new Error('BinaryPackFailure: read index out of range');
+	  }
+	}
+	
+	function Packer(){
+	  this.bufferBuilder = new BufferBuilder();
+	}
+	
+	Packer.prototype.getBuffer = function(){
+	  return this.bufferBuilder.getBuffer();
+	}
+	
+	Packer.prototype.pack = function(value){
+	  var type = typeof(value);
+	  if (type == 'string'){
+	    this.pack_string(value);
+	  } else if (type == 'number'){
+	    if (Math.floor(value) === value){
+	      this.pack_integer(value);
+	    } else{
+	      this.pack_double(value);
+	    }
+	  } else if (type == 'boolean'){
+	    if (value === true){
+	      this.bufferBuilder.append(0xc3);
+	    } else if (value === false){
+	      this.bufferBuilder.append(0xc2);
+	    }
+	  } else if (type == 'undefined'){
+	    this.bufferBuilder.append(0xc0);
+	  } else if (type == 'object'){
+	    if (value === null){
+	      this.bufferBuilder.append(0xc0);
+	    } else {
+	      var constructor = value.constructor;
+	      if (constructor == Array){
+	        this.pack_array(value);
+	      } else if (constructor == Blob || constructor == File) {
+	        this.pack_bin(value);
+	      } else if (constructor == ArrayBuffer) {
+	        if(binaryFeatures.useArrayBufferView) {
+	          this.pack_bin(new Uint8Array(value));
+	        } else {
+	          this.pack_bin(value);
+	        }
+	      } else if ('BYTES_PER_ELEMENT' in value){
+	        if(binaryFeatures.useArrayBufferView) {
+	          this.pack_bin(new Uint8Array(value.buffer));
+	        } else {
+	          this.pack_bin(value.buffer);
+	        }
+	      } else if (constructor == Object){
+	        this.pack_object(value);
+	      } else if (constructor == Date){
+	        this.pack_string(value.toString());
+	      } else if (typeof value.toBinaryPack == 'function'){
+	        this.bufferBuilder.append(value.toBinaryPack());
+	      } else {
+	        throw new Error('Type "' + constructor.toString() + '" not yet supported');
+	      }
+	    }
+	  } else {
+	    throw new Error('Type "' + type + '" not yet supported');
+	  }
+	  this.bufferBuilder.flush();
+	}
+	
+	
+	Packer.prototype.pack_bin = function(blob){
+	  var length = blob.length || blob.byteLength || blob.size;
+	  if (length <= 0x0f){
+	    this.pack_uint8(0xa0 + length);
+	  } else if (length <= 0xffff){
+	    this.bufferBuilder.append(0xda) ;
+	    this.pack_uint16(length);
+	  } else if (length <= 0xffffffff){
+	    this.bufferBuilder.append(0xdb);
+	    this.pack_uint32(length);
+	  } else{
+	    throw new Error('Invalid length');
+	  }
+	  this.bufferBuilder.append(blob);
+	}
+	
+	Packer.prototype.pack_string = function(str){
+	  var length = utf8Length(str);
+	
+	  if (length <= 0x0f){
+	    this.pack_uint8(0xb0 + length);
+	  } else if (length <= 0xffff){
+	    this.bufferBuilder.append(0xd8) ;
+	    this.pack_uint16(length);
+	  } else if (length <= 0xffffffff){
+	    this.bufferBuilder.append(0xd9);
+	    this.pack_uint32(length);
+	  } else{
+	    throw new Error('Invalid length');
+	  }
+	  this.bufferBuilder.append(str);
+	}
+	
+	Packer.prototype.pack_array = function(ary){
+	  var length = ary.length;
+	  if (length <= 0x0f){
+	    this.pack_uint8(0x90 + length);
+	  } else if (length <= 0xffff){
+	    this.bufferBuilder.append(0xdc)
+	    this.pack_uint16(length);
+	  } else if (length <= 0xffffffff){
+	    this.bufferBuilder.append(0xdd);
+	    this.pack_uint32(length);
+	  } else{
+	    throw new Error('Invalid length');
+	  }
+	  for(var i = 0; i < length ; i++){
+	    this.pack(ary[i]);
+	  }
+	}
+	
+	Packer.prototype.pack_integer = function(num){
+	  if ( -0x20 <= num && num <= 0x7f){
+	    this.bufferBuilder.append(num & 0xff);
+	  } else if (0x00 <= num && num <= 0xff){
+	    this.bufferBuilder.append(0xcc);
+	    this.pack_uint8(num);
+	  } else if (-0x80 <= num && num <= 0x7f){
+	    this.bufferBuilder.append(0xd0);
+	    this.pack_int8(num);
+	  } else if ( 0x0000 <= num && num <= 0xffff){
+	    this.bufferBuilder.append(0xcd);
+	    this.pack_uint16(num);
+	  } else if (-0x8000 <= num && num <= 0x7fff){
+	    this.bufferBuilder.append(0xd1);
+	    this.pack_int16(num);
+	  } else if ( 0x00000000 <= num && num <= 0xffffffff){
+	    this.bufferBuilder.append(0xce);
+	    this.pack_uint32(num);
+	  } else if (-0x80000000 <= num && num <= 0x7fffffff){
+	    this.bufferBuilder.append(0xd2);
+	    this.pack_int32(num);
+	  } else if (-0x8000000000000000 <= num && num <= 0x7FFFFFFFFFFFFFFF){
+	    this.bufferBuilder.append(0xd3);
+	    this.pack_int64(num);
+	  } else if (0x0000000000000000 <= num && num <= 0xFFFFFFFFFFFFFFFF){
+	    this.bufferBuilder.append(0xcf);
+	    this.pack_uint64(num);
+	  } else{
+	    throw new Error('Invalid integer');
+	  }
+	}
+	
+	Packer.prototype.pack_double = function(num){
+	  var sign = 0;
+	  if (num < 0){
+	    sign = 1;
+	    num = -num;
+	  }
+	  var exp  = Math.floor(Math.log(num) / Math.LN2);
+	  var frac0 = num / Math.pow(2, exp) - 1;
+	  var frac1 = Math.floor(frac0 * Math.pow(2, 52));
+	  var b32   = Math.pow(2, 32);
+	  var h32 = (sign << 31) | ((exp+1023) << 20) |
+	      (frac1 / b32) & 0x0fffff;
+	  var l32 = frac1 % b32;
+	  this.bufferBuilder.append(0xcb);
+	  this.pack_int32(h32);
+	  this.pack_int32(l32);
+	}
+	
+	Packer.prototype.pack_object = function(obj){
+	  var keys = Object.keys(obj);
+	  var length = keys.length;
+	  if (length <= 0x0f){
+	    this.pack_uint8(0x80 + length);
+	  } else if (length <= 0xffff){
+	    this.bufferBuilder.append(0xde);
+	    this.pack_uint16(length);
+	  } else if (length <= 0xffffffff){
+	    this.bufferBuilder.append(0xdf);
+	    this.pack_uint32(length);
+	  } else{
+	    throw new Error('Invalid length');
+	  }
+	  for(var prop in obj){
+	    if (obj.hasOwnProperty(prop)){
+	      this.pack(prop);
+	      this.pack(obj[prop]);
+	    }
+	  }
+	}
+	
+	Packer.prototype.pack_uint8 = function(num){
+	  this.bufferBuilder.append(num);
+	}
+	
+	Packer.prototype.pack_uint16 = function(num){
+	  this.bufferBuilder.append(num >> 8);
+	  this.bufferBuilder.append(num & 0xff);
+	}
+	
+	Packer.prototype.pack_uint32 = function(num){
+	  var n = num & 0xffffffff;
+	  this.bufferBuilder.append((n & 0xff000000) >>> 24);
+	  this.bufferBuilder.append((n & 0x00ff0000) >>> 16);
+	  this.bufferBuilder.append((n & 0x0000ff00) >>>  8);
+	  this.bufferBuilder.append((n & 0x000000ff));
+	}
+	
+	Packer.prototype.pack_uint64 = function(num){
+	  var high = num / Math.pow(2, 32);
+	  var low  = num % Math.pow(2, 32);
+	  this.bufferBuilder.append((high & 0xff000000) >>> 24);
+	  this.bufferBuilder.append((high & 0x00ff0000) >>> 16);
+	  this.bufferBuilder.append((high & 0x0000ff00) >>>  8);
+	  this.bufferBuilder.append((high & 0x000000ff));
+	  this.bufferBuilder.append((low  & 0xff000000) >>> 24);
+	  this.bufferBuilder.append((low  & 0x00ff0000) >>> 16);
+	  this.bufferBuilder.append((low  & 0x0000ff00) >>>  8);
+	  this.bufferBuilder.append((low  & 0x000000ff));
+	}
+	
+	Packer.prototype.pack_int8 = function(num){
+	  this.bufferBuilder.append(num & 0xff);
+	}
+	
+	Packer.prototype.pack_int16 = function(num){
+	  this.bufferBuilder.append((num & 0xff00) >> 8);
+	  this.bufferBuilder.append(num & 0xff);
+	}
+	
+	Packer.prototype.pack_int32 = function(num){
+	  this.bufferBuilder.append((num >>> 24) & 0xff);
+	  this.bufferBuilder.append((num & 0x00ff0000) >>> 16);
+	  this.bufferBuilder.append((num & 0x0000ff00) >>> 8);
+	  this.bufferBuilder.append((num & 0x000000ff));
+	}
+	
+	Packer.prototype.pack_int64 = function(num){
+	  var high = Math.floor(num / Math.pow(2, 32));
+	  var low  = num % Math.pow(2, 32);
+	  this.bufferBuilder.append((high & 0xff000000) >>> 24);
+	  this.bufferBuilder.append((high & 0x00ff0000) >>> 16);
+	  this.bufferBuilder.append((high & 0x0000ff00) >>>  8);
+	  this.bufferBuilder.append((high & 0x000000ff));
+	  this.bufferBuilder.append((low  & 0xff000000) >>> 24);
+	  this.bufferBuilder.append((low  & 0x00ff0000) >>> 16);
+	  this.bufferBuilder.append((low  & 0x0000ff00) >>>  8);
+	  this.bufferBuilder.append((low  & 0x000000ff));
+	}
+	
+	function _utf8Replace(m){
+	  var code = m.charCodeAt(0);
+	
+	  if(code <= 0x7ff) return '00';
+	  if(code <= 0xffff) return '000';
+	  if(code <= 0x1fffff) return '0000';
+	  if(code <= 0x3ffffff) return '00000';
+	  return '000000';
+	}
+	
+	function utf8Length(str){
+	  if (str.length > 600) {
+	    // Blob method faster for large strings
+	    return (new Blob([str])).size;
+	  } else {
+	    return str.replace(/[^\u0000-\u007F]/g, _utf8Replace).length;
+	  }
+	}
+
+
+/***/ },
+/* 34 */
+/*!**********************************************!*\
+  !*** ./~/js-binarypack/lib/bufferbuilder.js ***!
+  \**********************************************/
+/***/ function(module, exports) {
+
+	var binaryFeatures = {};
+	binaryFeatures.useBlobBuilder = (function(){
+	  try {
+	    new Blob([]);
+	    return false;
+	  } catch (e) {
+	    return true;
+	  }
+	})();
+	
+	binaryFeatures.useArrayBufferView = !binaryFeatures.useBlobBuilder && (function(){
+	  try {
+	    return (new Blob([new Uint8Array([])])).size === 0;
+	  } catch (e) {
+	    return true;
+	  }
+	})();
+	
+	module.exports.binaryFeatures = binaryFeatures;
+	var BlobBuilder = module.exports.BlobBuilder;
+	if (typeof window != 'undefined') {
+	  BlobBuilder = module.exports.BlobBuilder = window.WebKitBlobBuilder ||
+	    window.MozBlobBuilder || window.MSBlobBuilder || window.BlobBuilder;
+	}
+	
+	function BufferBuilder(){
+	  this._pieces = [];
+	  this._parts = [];
+	}
+	
+	BufferBuilder.prototype.append = function(data) {
+	  if(typeof data === 'number') {
+	    this._pieces.push(data);
+	  } else {
+	    this.flush();
+	    this._parts.push(data);
+	  }
+	};
+	
+	BufferBuilder.prototype.flush = function() {
+	  if (this._pieces.length > 0) {
+	    var buf = new Uint8Array(this._pieces);
+	    if(!binaryFeatures.useArrayBufferView) {
+	      buf = buf.buffer;
+	    }
+	    this._parts.push(buf);
+	    this._pieces = [];
+	  }
+	};
+	
+	BufferBuilder.prototype.getBuffer = function() {
+	  this.flush();
+	  if(binaryFeatures.useBlobBuilder) {
+	    var builder = new BlobBuilder();
+	    for(var i = 0, ii = this._parts.length; i < ii; i++) {
+	      builder.append(this._parts[i]);
+	    }
+	    return builder.getBlob();
+	  } else {
+	    return new Blob(this._parts);
+	  }
+	};
+	
+	module.exports.BufferBuilder = BufferBuilder;
+
+
+/***/ },
+/* 35 */
+/*!*****************************************!*\
+  !*** ./src/services/recorderService.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	function recorderView($scope) {
-	    function init() {}
+	
+	var _binaryjsClient = __webpack_require__(/*! binaryjs-client */ 27);
+	
+	function recorderService($window) {
+	    var _this = this;
+	
+	    var bookmarks = [];
+	
+	    this.getBookmarks = function () {
+	        return bookmarks;
+	    };
+	
+	    this.addBookmark = function (bookmark) {
+	        bookmarks.push(bookmark);
+	        _this.getBookmarks();
+	    };
 	}
 	
-	exports.default = recorderView;
+	exports.default = recorderService;
 
 /***/ },
-/* 29 */
+/* 36 */
 /*!*********************************************************!*\
   !*** ./src/components/playback-view/playback-view.scss ***!
   \*********************************************************/
@@ -77365,10 +78515,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./playback-view.scss */ 30);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./playback-view.scss */ 37);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 16)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -77385,13 +78535,13 @@
 	}
 
 /***/ },
-/* 30 */
+/* 37 */
 /*!****************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/playback-view/playback-view.scss ***!
   \****************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 14)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
 	// imports
 	
 	
@@ -77402,7 +78552,7 @@
 
 
 /***/ },
-/* 31 */
+/* 38 */
 /*!**************************************************************!*\
   !*** ./src/components/playback-view/playback-view-tmpl.html ***!
   \**************************************************************/
@@ -77411,7 +78561,7 @@
 	module.exports = "<div class=\"playback-view-wrapper\">\n    <recording-dir id=\"playback-view-recording-dir\" type=\"playback-view\"></recording-dir>\n\n\n\n</div>\n";
 
 /***/ },
-/* 32 */
+/* 39 */
 /*!**********************************************************!*\
   !*** ./src/components/playback-view/playbackViewCtrl.js ***!
   \**********************************************************/
@@ -77420,7 +78570,7 @@
 	"use strict";
 
 /***/ },
-/* 33 */
+/* 40 */
 /*!********************************************************************!*\
   !*** ./src/components/top-nav-bar-directive/topNavBarDirective.js ***!
   \********************************************************************/
@@ -77432,13 +78582,13 @@
 	    value: true
 	});
 	
-	__webpack_require__(/*! ./top-nav-bar.scss */ 34);
+	__webpack_require__(/*! ./top-nav-bar.scss */ 41);
 	
-	var _topNavBarLandingPageTmpl = __webpack_require__(/*! ./top-nav-bar-landing-page-tmpl.html */ 36);
+	var _topNavBarLandingPageTmpl = __webpack_require__(/*! ./top-nav-bar-landing-page-tmpl.html */ 43);
 	
 	var _topNavBarLandingPageTmpl2 = _interopRequireDefault(_topNavBarLandingPageTmpl);
 	
-	var _topNavBarMainTmpl = __webpack_require__(/*! ./top-nav-bar-main-tmpl.html */ 37);
+	var _topNavBarMainTmpl = __webpack_require__(/*! ./top-nav-bar-main-tmpl.html */ 44);
 	
 	var _topNavBarMainTmpl2 = _interopRequireDefault(_topNavBarMainTmpl);
 	
@@ -77469,7 +78619,7 @@
 	exports.default = topNavBar;
 
 /***/ },
-/* 34 */
+/* 41 */
 /*!***************************************************************!*\
   !*** ./src/components/top-nav-bar-directive/top-nav-bar.scss ***!
   \***************************************************************/
@@ -77478,10 +78628,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./top-nav-bar.scss */ 35);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./top-nav-bar.scss */ 42);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 16)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -77498,13 +78648,13 @@
 	}
 
 /***/ },
-/* 35 */
+/* 42 */
 /*!**********************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/top-nav-bar-directive/top-nav-bar.scss ***!
   \**********************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 14)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
 	// imports
 	
 	
@@ -77515,7 +78665,7 @@
 
 
 /***/ },
-/* 36 */
+/* 43 */
 /*!*********************************************************************************!*\
   !*** ./src/components/top-nav-bar-directive/top-nav-bar-landing-page-tmpl.html ***!
   \*********************************************************************************/
@@ -77524,7 +78674,7 @@
 	module.exports = "<nav>\n  <h1 ui-sref=\"landing-page\">SONGJAM</h1>\n  <div>\n    <md-button id=\"sign-in\">Sign In</md-button>\n    <md-button id=\"create-account\">Create Account</md-button>\n  </div>\n</nav>\n";
 
 /***/ },
-/* 37 */
+/* 44 */
 /*!*************************************************************************!*\
   !*** ./src/components/top-nav-bar-directive/top-nav-bar-main-tmpl.html ***!
   \*************************************************************************/
@@ -77533,7 +78683,7 @@
 	module.exports = "<div>\n  <nav>\n    <h1 ui-sref=\"landing-page\">SONGJAM</h1>\n\n    <div>\n        <md-button\n          class=\"md-raised md-primary\"\n          ui-sref=\"recorder\"\n        >\n          RECORD\n        </md-button>\n        <md-menu md-position-mode=\"target-right target\">\n            <md-button\n            class=\"md-icon-button\"\n            ng-click=\"$mdOpenMenu( $event )\"\n            >\n                <md-icon\n                  md-font-icon=\"account_circle\"\n                  md-font-set=\"material-icons\"\n                  md-menu-origin=\"\"\n                >\n                  account_circle\n                </md-icon>\n            </md-button>\n            <md-menu-content width=\"2\">\n                <md-menu-item>\n                    <p class=\"md-title\">Signed in as Andrew Plan</p>\n                </md-menu-item>\n\n                <md-menu-divider></md-menu-divider>\n\n                <md-menu-item>\n                    <md-button ui-sref=\"library-view\">Library</md-button>\n                </md-menu-item>\n\n                <md-menu-item>\n                    <md-button>Account Settings</md-button>\n                </md-menu-item>\n            </md-menu-content>\n\n        </md-menu>\n    </div>\n  </nav>\n\n  <md-content></md-content>\n\n</div>\n";
 
 /***/ },
-/* 38 */
+/* 45 */
 /*!**********************************************************!*\
   !*** ./src/components/audio-directive/audioDirective.js ***!
   \**********************************************************/
@@ -77545,15 +78695,19 @@
 	    value: true
 	});
 	
-	__webpack_require__(/*! ./audio-directive.scss */ 39);
+	__webpack_require__(/*! ./audio-directive.scss */ 46);
 	
-	var _audioDirectiveLibraryViewTmpl = __webpack_require__(/*! ./audio-directive-library-view-tmpl.html */ 41);
+	var _audioDirectiveLibraryViewTmpl = __webpack_require__(/*! ./audio-directive-library-view-tmpl.html */ 48);
 	
 	var _audioDirectiveLibraryViewTmpl2 = _interopRequireDefault(_audioDirectiveLibraryViewTmpl);
 	
-	var _audioDirectivePlaybackViewTmpl = __webpack_require__(/*! ./audio-directive-playback-view-tmpl.html */ 42);
+	var _audioDirectivePlaybackViewTmpl = __webpack_require__(/*! ./audio-directive-playback-view-tmpl.html */ 49);
 	
 	var _audioDirectivePlaybackViewTmpl2 = _interopRequireDefault(_audioDirectivePlaybackViewTmpl);
+	
+	var _libraryViewCtrl = __webpack_require__(/*! ../library-view/libraryViewCtrl */ 22);
+	
+	var _libraryViewCtrl2 = _interopRequireDefault(_libraryViewCtrl);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -77561,12 +78715,28 @@
 	    return {
 	        restrict: 'EA',
 	        replace: true,
-	        template: function template(elem, attr) {
+	        scope: {
+	            audioUrl: '=',
+	            bookmarks: '='
+	        }
+	        // , controller: libraryViewCtrl
+	        , template: function template(elem, attr) {
 	            if (attr.type === "library-view") {
 	                return _audioDirectiveLibraryViewTmpl2.default;
 	            } else if (attr.type === "playback-view") {
 	                return _audioDirectivePlaybackViewTmpl2.default;
 	            }
+	        },
+	        link: function link(scope, elem, attr) {
+	            scope.wavesurfer = WaveSurfer.create({
+	                container: '.waveform',
+	                scrollParent: true,
+	                barWidth: 4,
+	                waveColor: '#fc5830'
+	            });
+	            console.log(attr);
+	            scope.wavesurfer.load(scope.audioUrl);
+	            scope.wavesurfer.play();
 	        }
 	
 	    };
@@ -77575,7 +78745,7 @@
 	exports.default = recordingDir;
 
 /***/ },
-/* 39 */
+/* 46 */
 /*!*************************************************************!*\
   !*** ./src/components/audio-directive/audio-directive.scss ***!
   \*************************************************************/
@@ -77584,10 +78754,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./audio-directive.scss */ 40);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./audio-directive.scss */ 47);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 16)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -77604,13 +78774,13 @@
 	}
 
 /***/ },
-/* 40 */
+/* 47 */
 /*!********************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/audio-directive/audio-directive.scss ***!
   \********************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 14)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
 	// imports
 	
 	
@@ -77621,16 +78791,16 @@
 
 
 /***/ },
-/* 41 */
+/* 48 */
 /*!*******************************************************************************!*\
   !*** ./src/components/audio-directive/audio-directive-library-view-tmpl.html ***!
   \*******************************************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<md-card\n  class=\"audio-directive-library-view-wrapper\"\n  layout=\"row\"\n>\n    <div id=\"card-recording-info\" layout-align=\"start-center\">\n\n      <md-card-title ui-sref=\"playback-view\">\n          <md-card-title-text>\n              <span class=\"md-headline\">\n                SongJam 10.10.16 07:16 PM\n              </span>\n          </md-card-title-text>\n      </md-card-title>\n\n      <md-card-content\n      >\n        <p>Waveform goes here...</p>\n      </md-card-content>\n\n    </div>\n\n    <md-card-actions\n        layout=\"row\"\n        layout-align=\"end start\"\n    >\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"favorite\"\n                md-font-set=\"material-icons\"\n              >\n                favorite\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"description\"\n                md-font-set=\"material-icons\"\n              >\n                description\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"share\"\n                md-font-set=\"material-icons\"\n              >\n                share\n              </md-icon>\n        </md-button>\n    </md-card-actions>\n\n</md-card>\n";
+	module.exports = "<md-card\n  class=\"audio-directive-library-view-wrapper\"\n  layout=\"row\"\n>\n    <div id=\"card-recording-info\" layout-align=\"start-center\">\n\n      <md-card-title ui-sref=\"playback-view\">\n          <md-card-title-text>\n              <span class=\"md-headline\">\n                SongJam 10.10.16 07:16 PM\n              </span>\n          </md-card-title-text>\n      </md-card-title>\n\n      <md-card-content\n      >\n        <!-- <p>Waveform goes here...</p> -->\n        <div class=\"waveform\"></div>\n        <div ng-click=\"wavesurfer.play()\">Play</div>\n        <span ng-repeat=\"bookmark in bookmarks\">\n          <button ng-click=\"wavesurfer.play( bookmark )\">{{ bookmark }}</button>\n        </span>\n      </md-card-content>\n\n    </div>\n\n    <md-card-actions\n        layout=\"row\"\n        layout-align=\"end start\"\n    >\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"favorite\"\n                md-font-set=\"material-icons\"\n              >\n                favorite\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"description\"\n                md-font-set=\"material-icons\"\n              >\n                description\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"share\"\n                md-font-set=\"material-icons\"\n              >\n                share\n              </md-icon>\n        </md-button>\n    </md-card-actions>\n\n</md-card>\n";
 
 /***/ },
-/* 42 */
+/* 49 */
 /*!********************************************************************************!*\
   !*** ./src/components/audio-directive/audio-directive-playback-view-tmpl.html ***!
   \********************************************************************************/
@@ -77639,7 +78809,7 @@
 	module.exports = "<md-card\n  class=\"audio-directive-playback-view-wrapper\"\n  layout=\"row\"\n>\n    <div id=\"card-recording-info\" layout-align=\"start center\">\n\n        <md-card-title ui-sref=\"playback-view\">\n            <md-card-title-text>\n                <span class=\"md-headline\">\n                  SongJam 10.10.16 07:16 PM\n                </span>\n            </md-card-title-text>\n        </md-card-title>\n\n        <md-card-content\n        >\n          <p>Waveform goes here...</p>\n        </md-card-content>\n\n        <md-card-actions\n            layout=\"row\"\n            layout-align=\"end start\"\n        >\n            <md-button class=\"md-icon-button\">\n                  <md-icon\n                    md-font-icon=\"favorite\"\n                    md-font-set=\"material-icons\"\n                  >\n                    favorite\n                  </md-icon>\n            </md-button>\n            <md-button class=\"md-icon-button\">\n                  <md-icon\n                    md-font-icon=\"description\"\n                    md-font-set=\"material-icons\"\n                  >\n                    description\n                  </md-icon>\n            </md-button>\n            <md-button class=\"md-icon-button\">\n                  <md-icon\n                    md-font-icon=\"share\"\n                    md-font-set=\"material-icons\"\n                  >\n                    share\n                  </md-icon>\n            </md-button>\n        </md-card-actions>\n\n        <md-divider></md-divider>\n\n        <md-card-content>\n            <h2>Description goes here</h2>\n        </md-card-content>\n\n        <md-divider></md-divider>\n\n        <md-card-content>\n            <h2>Bookmarks go here</h2>\n        </md-card-content>\n    </div>\n\n</md-card>\n";
 
 /***/ },
-/* 43 */
+/* 50 */
 /*!************************************************************!*\
   !*** ./src/components/player-directive/playerDirective.js ***!
   \************************************************************/
@@ -77651,9 +78821,9 @@
 	    value: true
 	});
 	
-	__webpack_require__(/*! ./player-directive.scss */ 44);
+	__webpack_require__(/*! ./player-directive.scss */ 51);
 	
-	var _playerDirectiveTmpl = __webpack_require__(/*! ./player-directive-tmpl.html */ 46);
+	var _playerDirectiveTmpl = __webpack_require__(/*! ./player-directive-tmpl.html */ 53);
 	
 	var _playerDirectiveTmpl2 = _interopRequireDefault(_playerDirectiveTmpl);
 	
@@ -77670,7 +78840,7 @@
 	exports.default = playerDir;
 
 /***/ },
-/* 44 */
+/* 51 */
 /*!***************************************************************!*\
   !*** ./src/components/player-directive/player-directive.scss ***!
   \***************************************************************/
@@ -77679,10 +78849,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./player-directive.scss */ 45);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./player-directive.scss */ 52);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 16)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -77699,13 +78869,13 @@
 	}
 
 /***/ },
-/* 45 */
+/* 52 */
 /*!**********************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/player-directive/player-directive.scss ***!
   \**********************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 14)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
 	// imports
 	
 	
@@ -77716,7 +78886,7 @@
 
 
 /***/ },
-/* 46 */
+/* 53 */
 /*!********************************************************************!*\
   !*** ./src/components/player-directive/player-directive-tmpl.html ***!
   \********************************************************************/
