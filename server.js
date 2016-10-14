@@ -35,10 +35,12 @@ binaryServer.on('connection', function(client) {
     bitDepth: 16
   });
 
+  const parts = [];
+
   client.on( 'stream', function(stream, meta) {
     console.log('new stream', meta );
     if ( meta.type === 'bookmarks' ) {
-        const parts = [];
+
         stream.on( 'data', data => {
             parts.push( data );
             console.log( parts );
