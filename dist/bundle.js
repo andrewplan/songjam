@@ -77332,7 +77332,7 @@
   \**************************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n    </div>\n</div>\n";
+	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n        <button ng-click=\"getCurrentTime()\">Bookmark</button>\n        {{ currentTime }}\n    </div>\n</div>\n";
 
 /***/ },
 /* 28 */
@@ -77349,33 +77349,38 @@
 	
 	var _binaryjsClient = __webpack_require__(/*! binaryjs-client */ 47);
 	
-	function recorderViewCtrl($scope, $window) {
+	function recorderViewCtrl($scope, $interval, $window) {
 	  var client = new _binaryjsClient.BinaryClient('ws://localhost:9001');
 	
 	  client.on('open', function () {
 	    $window.Stream = client.createStream();
 	    console.log($window.Stream);
 	
-	    if (!navigator.getUserMedia) navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-	
-	    if (navigator.getUserMedia) {
-	      navigator.getUserMedia({ audio: true }, success, function (e) {
-	        alert('Error capturing audio.');
-	      });
-	    } else alert('getUserMedia not supported in this browser.');
-	
 	    var recording = false;
 	
 	    $scope.startRecording = function () {
 	      recording = true;
+	      if (!navigator.getUserMedia) navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+	
+	      if (navigator.getUserMedia) {
+	        navigator.getUserMedia({ audio: true }, success, function (e) {
+	          alert('Error capturing audio.');
+	        });
+	      } else alert('getUserMedia not supported in this browser.');
 	    };
 	
 	    $scope.stopRecording = function () {
 	      recording = false;
 	      $window.Stream.end();
+	      // $interval.cancel(timing);
 	    };
 	
 	    function success(e) {
+	      $scope.getCurrentTime = function () {
+	        console.log(context.currentTime);
+	        $scope.currentTime = context.currentTime;
+	      };
+	
 	      var audioContext = $window.AudioContext || $window.webkitAudioContext;
 	      var context = new audioContext();
 	
@@ -77388,6 +77393,10 @@
 	      recorder.onaudioprocess = function (e) {
 	        if (!recording) return;
 	        console.log('recording');
+	        $scope.elapsedTime = 0;
+	        // var timing = $interval(function () {
+	        //   ++$scope.elapsedTime;
+	        // }, 1000);
 	        var left = e.inputBuffer.getChannelData(0);
 	        $window.Stream.write(convertFloat32ToInt16(left));
 	      };

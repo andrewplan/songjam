@@ -1,39 +1,34 @@
 import { BinaryClient } from 'binaryjs-client';
 
-function recorderViewCtrl ($scope, $interval, $window){
+function recorderService ($scope, $window){
   var client = new BinaryClient('ws://localhost:9001');
 
   client.on('open', function() {
     $window.Stream = client.createStream();
     console.log( $window.Stream );
 
+    if (!navigator.getUserMedia)
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+    if (navigator.getUserMedia) {
+      navigator.getUserMedia({audio:true}, success, function(e) {
+        alert('Error capturing audio.');
+      });
+    } else alert('getUserMedia not supported in this browser.');
+
     var recording = false;
 
-    $scope.startRecording = function() {
+    recorderService.startRecording = function() {
       recording = true;
-      if (!navigator.getUserMedia)
-        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
-      navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-      if (navigator.getUserMedia) {
-        navigator.getUserMedia({audio:true}, success, function(e) {
-          alert('Error capturing audio.');
-        });
-      } else alert('getUserMedia not supported in this browser.');
     }
 
-    $scope.stopRecording = function() {
+    recorderService.stopRecording = function() {
       recording = false;
       $window.Stream.end();
-      // $interval.cancel(timing);
     }
 
     function success(e) {
-      $scope.getCurrentTime = function() {
-        console.log( context.currentTime );
-        $scope.currentTime = context.currentTime;
-      };
-
       var audioContext = $window.AudioContext || $window.webkitAudioContext;
       var context = new audioContext();
 
@@ -46,10 +41,6 @@ function recorderViewCtrl ($scope, $interval, $window){
       recorder.onaudioprocess = function(e){
         if(!recording) return;
         console.log ('recording');
-        $scope.elapsedTime = 0;
-        // var timing = $interval(function () {
-        //   ++$scope.elapsedTime;
-        // }, 1000);
         var left = e.inputBuffer.getChannelData(0);
         $window.Stream.write(convertFloat32ToInt16(left));
       }
@@ -70,4 +61,4 @@ function recorderViewCtrl ($scope, $interval, $window){
   });
 }
 
-export default recorderViewCtrl;
+export default recorderService;
