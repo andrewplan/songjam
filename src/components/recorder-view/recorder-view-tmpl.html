@@ -3,7 +3,14 @@
         <h2>Select the circle to start recording your next SongJam.</h2>
         <button ng-click="startRecording()">Start recording</button>
         <button ng-click="stopRecording()">Stop recording</button>
-        <button ng-click="getCurrentTime()">Bookmark</button>
-        {{ currentTime }}
+        <button ng-click="addBookmark()">Bookmark</button>
+
+        <h2>Bookmarks:</h2>
+        <ul>
+          <li ng-repeat="bookmark in bookmarks">{{ bookmark }} s</li>
+        </ul>
+
+        <h2>Lyrics:</h2>
+        <p>{{ lyrics }}</p>
     </div>
 </div>

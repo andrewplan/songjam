@@ -1,11 +1,27 @@
 import { BinaryClient } from 'binaryjs-client';
 
-function recorderViewCtrl ($scope, $interval, $window){
+function recorderViewCtrl ($scope, $interval, $window, recorderService ){
   var client = new BinaryClient('ws://localhost:9001');
 
+  $window = $window || {};
+  $scope.bookmarks = recorderService.getBookmarks();
+
+  client.on( 'stream', ( stream, meta ) => {
+      if ( meta.type === 'transcription' ) {
+        const parts = [];
+        stream.on( 'data', data => {
+            parts.push( data );
+            console.log( parts );
+            $scope.$apply( () => {
+                $scope.lyrics = data;
+            } );
+        } );
+      }
+  } );
+
   client.on('open', function() {
-    $window.Stream = client.createStream();
-    console.log( $window.Stream );
+    $window.audioStream = client.createStream( { user: 'aplan88', type: 'audio' } );
+    // console.log( $window.audioStream );
 
     var recording = false;
 
@@ -24,48 +40,48 @@ function recorderViewCtrl ($scope, $interval, $window){
 
     $scope.stopRecording = function() {
       recording = false;
-      $window.Stream.end();
+      $window.audioStream.end();
       // $interval.cancel(timing);
     }
 
     function success(e) {
-      $scope.getCurrentTime = function() {
-        console.log( context.currentTime );
-        $scope.currentTime = context.currentTime;
-      };
+        $scope.addBookmark = function() {
+            recorderService.addBookmark( context.currentTime );
+            client.send( { bookmark: context.currentTime }, { type: 'bookmarks' } );
+        };
 
-      var audioContext = $window.AudioContext || $window.webkitAudioContext;
-      var context = new audioContext();
+        var audioContext = $window.AudioContext || $window.webkitAudioContext;
+        var context = new audioContext();
 
-      // the sample rate is in context.sampleRate
-      var audioInput = context.createMediaStreamSource(e);
+        // the sample rate is in context.sampleRate
+        var audioInput = context.createMediaStreamSource(e);
 
-      var bufferSize = 2048;
-      var recorder = context.createScriptProcessor(bufferSize, 1, 1);
+        var bufferSize = 2048;
+        var recorder = context.createScriptProcessor(bufferSize, 1, 1);
 
-      recorder.onaudioprocess = function(e){
-        if(!recording) return;
-        console.log ('recording');
-        $scope.elapsedTime = 0;
-        // var timing = $interval(function () {
-        //   ++$scope.elapsedTime;
-        // }, 1000);
-        var left = e.inputBuffer.getChannelData(0);
-        $window.Stream.write(convertFloat32ToInt16(left));
-      }
+        recorder.onaudioprocess = function(e){
+          if(!recording) return;
+          console.log ('recording');
+          $scope.elapsedTime = 0;
+          // var timing = $interval(function () {
+          //   ++$scope.elapsedTime;
+          // }, 1000);
+          var left = e.inputBuffer.getChannelData(0);
+          $window.audioStream.write(convertFloat32ToInt16(left));
+        }
 
-      audioInput.connect(recorder)
-      recorder.connect(context.destination);
+        audioInput.connect(recorder)
+        recorder.connect(context.destination);
     }
 
     function convertFloat32ToInt16(buffer) {
-      var l = buffer.length;
-      var buf = new Int16Array(l)
+        var l = buffer.length;
+        var buf = new Int16Array(l)
 
-      while (l--) {
-        buf[l] = buffer[l]*0xFFFF;    //convert to 16 bit
-      }
-      return buf.buffer
+        while (l--) {
+          buf[l] = buffer[l]*0xFFFF;    //convert to 16 bit
+        }
+        return buf.buffer
     }
   });
 }

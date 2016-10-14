@@ -28,6 +28,7 @@ import libraryViewCtrl from './components/library-view/libraryViewCtrl'
 import './components/recorder-view/recorder-view.scss';
 import recorderViewHtml from './components/recorder-view/recorder-view-tmpl.html'
 import recorderViewCtrl from './components/recorder-view/recorderViewCtrl.js'
+import recorderService from './services/recorderService.js'
 
 // Playback view
 import './components/playback-view/playback-view.scss';
@@ -44,6 +45,7 @@ import recordingDir from './components/audio-directive/audioDirective'
 import playerDir from './components/player-directive/playerDirective'
 
 angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', ] )
+    .service( 'recorderService', recorderService )
     .directive( 'topNavBar', topNavBar )
     .directive( 'recordingDir', recordingDir )
     .directive( 'playerDir', playerDir )
