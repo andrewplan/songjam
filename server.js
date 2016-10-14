@@ -9,6 +9,10 @@ const Speech = require('google-cloud/node_modules/@google-cloud/speech');
 const projectId = googleSpeechConfig.project_id;
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './server/configs/googleSpeechCredentials.json';
 
+const AWS = require( 'aws-sdk' );
+const s3Stream = require( 's3-upload-stream' )( new AWS.S3() );
+AWS.config.loadFromPath( './server/configs/awsConfig.json' );
+
 const wav = require( 'wav' );
 const lame = require( 'lame' );
 const outFile = 'demo.wav';

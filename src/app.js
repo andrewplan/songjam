@@ -11,37 +11,29 @@ import 'angular-material';
 // wavesurfer
 // import './node_modules/wavesurfer.js/dist/wavesurfer.js'
 
-// Landing page view
 import './components/landing-page-view/landing-page.scss';
 import landingPageHtml from './components/landing-page-view/landingPageTmpl.html'
 import landingPageCtrl from './components/landing-page-view/landingPageCtrl'
 
-// Main view
 import mainViewHtml from './components/main-view/mainViewTmpl.html'
 
-// Library view
 import './components/library-view/library-view.scss';
 import libraryViewHtml from './components/library-view/libraryViewTmpl.html'
 import libraryViewCtrl from './components/library-view/libraryViewCtrl'
 
-// Recorder view
 import './components/recorder-view/recorder-view.scss';
 import recorderViewHtml from './components/recorder-view/recorder-view-tmpl.html'
 import recorderViewCtrl from './components/recorder-view/recorderViewCtrl.js'
 import recorderService from './services/recorderService.js'
 
-// Playback view
 import './components/playback-view/playback-view.scss';
 import playbackViewHtml from './components/playback-view/playback-view-tmpl.html'
 import playbackViewCtrl from './components/playback-view/playbackViewCtrl.js'
 
-// Nav bar directive
 import topNavBar from './components/top-nav-bar-directive/topNavBarDirective';
 
-// Audio directive
 import recordingDir from './components/audio-directive/audioDirective'
 
-// Player directive
 import playerDir from './components/player-directive/playerDirective'
 
 angular.module( 'songJamApp', [ uiRouter, 'ngMaterial', ] )
