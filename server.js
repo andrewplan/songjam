@@ -2,7 +2,6 @@ const express = require( 'express' );
 const BinaryServer = require( 'binaryjs' ).BinaryServer;
 const fs = require( 'fs' );
 const path = require( 'path' );
-const zlib = require( 'zlib' );
 const { json } = require( 'body-parser' );
 const cors = require( 'cors' );
 
@@ -15,7 +14,6 @@ const projectId = googleSpeechConfig.project_id;
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './server/configs/googleSpeechCredentials.json';
 
 const AWS = require( 'aws-sdk' );
-const s3Stream = require( 's3-upload-stream' )( new AWS.S3() );
 AWS.config.loadFromPath( './server/configs/awsConfig.json' );
 
 const wav = require( 'wav' );
@@ -31,8 +29,14 @@ app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
 app.use( json() );
 app.use( express.static( `${ __dirname }` ) );
 
+require( './server/masterRoutes' )( app );
+
+
 mongoose.connect( mongoUri );
 mongoose.connection.once( 'open', () => { console.log( `Mongoose listening at ${ mongoUri }`) } );
+
+const Recording = require( './server/features/recording/Recording' );
+
 
 binaryServer = BinaryServer( { port: 9001 } );
 
@@ -61,7 +65,7 @@ binaryServer.on('connection', function(client) {
 
       let stream1 = stream.pipe( new streamClone.PassThrough() );
       let stream2 = stream.pipe( new streamClone.PassThrough() );
-      let stream3 = stream.pipe( new streamClone.PassThrough() );
+      // let stream3 = stream.pipe( new streamClone.PassThrough() );
 
       stream1.pipe(fileWriter);
 
@@ -93,23 +97,11 @@ binaryServer.on('connection', function(client) {
             console.log(`Transcription: ${result}`);
 
             client.send( result, { type: 'transcription' } );
+            fs.unlink( './' + outFile );
           });
       });
 
-      stream2
-        .pipe( new lame.Encoder( {
-            channels: 1
-            , bitDepth: 16
-            , float: false
-
-            , bitRate: 192
-            , outSampleRate: 44100
-            , mode: lame.STEREO
-          } ) )
-        .pipe( fs.createWriteStream( path.resolve( __dirname, 'demo.mp3' ) ) )
-        .on( 'close', () => { console.log( 'Done encoding to mp3' ); } );
-
-      let body = stream3.pipe( new lame.Encoder( {
+      let body = stream2.pipe( new lame.Encoder( {
             channels: 1
             , bitDepth: 16
             , float: false
@@ -124,7 +116,7 @@ binaryServer.on('connection', function(client) {
 
         const params = {
           Bucket: 'songjam-recordings'
-          , Key: 'mySongJam.mp3'
+          , Key: 'mySongJam2.mp3'
           , Body: body
           , ACL: 'public-read'
         };
@@ -132,7 +124,8 @@ binaryServer.on('connection', function(client) {
         s3obj.upload( params )
             .on( 'httpUploadProgress', evt => { console.log( evt ); } )
             .send( ( err, data ) => {
-                console.log( err, data )
+                console.log( err, data );
+                client.send( data, { type: 's3Data' } );
               } );
 
 
@@ -140,6 +133,19 @@ binaryServer.on('connection', function(client) {
             // then front end could make get request for the data posted to mongoDB
         // delete wav from server
       // });
+
+      // stream3
+      //   .pipe( new lame.Encoder( {
+      //       channels: 1
+      //       , bitDepth: 16
+      //       , float: false
+      //
+      //       , bitRate: 192
+      //       , outSampleRate: 44100
+      //       , mode: lame.STEREO
+      //     } ) )
+      //   .pipe( fs.createWriteStream( path.resolve( __dirname, 'demo.mp3' ) ) )
+      //   .on( 'close', () => { console.log( 'Done encoding to mp3' ); } );
     }
 });
 });

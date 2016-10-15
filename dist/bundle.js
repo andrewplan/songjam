@@ -74588,7 +74588,7 @@
 	});
 	function libraryViewCtrl($scope) {
 	    // function init() {
-	    $scope.audioUrls = ['https://s3-us-west-2.amazonaws.com/songjam-recordings/demo.mp3', 'https://s3-us-west-2.amazonaws.com/songjam-recordings/mySongJam.mp3'];
+	    $scope.audioUrls = ['https://s3-us-west-2.amazonaws.com/songjam-recordings/demo.mp3', 'https://s3-us-west-2.amazonaws.com/songjam-recordings/mySongJam.mp3', 'https://songjam-recordings.s3-us-west-2.amazonaws.com/mySongJam2.mp3'];
 	    $scope.bookmarks = [2, 3, 5];
 	    // }
 	}
@@ -74650,7 +74650,7 @@
   \**************************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n        <button ng-click=\"addBookmark()\">Bookmark</button>\n\n        <h2>Bookmarks:</h2>\n        <ul>\n          <li ng-repeat=\"bookmark in bookmarks\">{{ bookmark }} s</li>\n        </ul>\n\n        <h2>Lyrics:</h2>\n        <p>{{ lyrics }}</p>\n    </div>\n</div>\n";
+	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n        <button ng-click=\"addBookmark()\">Bookmark</button>\n\n        <h2>Bookmarks:</h2>\n        <ul>\n          <li ng-repeat=\"bookmark in bookmarks\">{{ bookmark }} s</li>\n        </ul>\n\n        <h2>Lyrics:</h2>\n        <p>{{ lyrics }}</p>\n\n        <h2>S3 data:</h2>\n        <p>{{ s3Data }}</p>\n    </div>\n</div>\n";
 
 /***/ },
 /* 26 */
@@ -74675,12 +74675,16 @@
 	
 	  client.on('stream', function (stream, meta) {
 	    var parts = [];
-	    if (meta.type === 'transcription') {
+	    if (meta.type === 'transcription' || meta.type === 's3Data') {
 	      stream.on('data', function (data) {
 	        parts.push(data);
 	        console.log(parts);
 	        $scope.$apply(function () {
-	          $scope.lyrics = data;
+	          if (meta.type === 'transcription') {
+	            $scope.lyrics = data;
+	          } else if (meta.type === 's3Data') {
+	            $scope.s3Data = data;
+	          }
 	        });
 	      });
 	    }

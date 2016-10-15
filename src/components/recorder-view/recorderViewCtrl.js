@@ -8,12 +8,17 @@ function recorderViewCtrl ($scope, $interval, $window, recorderService ){
 
   client.on( 'stream', ( stream, meta ) => {
       const parts = [];
-      if ( meta.type === 'transcription' ) {
+      if ( meta.type === 'transcription' || meta.type === 's3Data' ) {
         stream.on( 'data', data => {
             parts.push( data );
             console.log( parts );
             $scope.$apply( () => {
-                $scope.lyrics = data;
+                if ( meta.type === 'transcription' ) {
+                  $scope.lyrics = data;
+                }
+                else if ( meta.type === 's3Data' ) {
+                  $scope.s3Data = data;
+                }
             } );
         } );
       }
