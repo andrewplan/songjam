@@ -1,6 +1,6 @@
 import { BinaryClient } from 'binaryjs-client';
 
-function recorderService ( $window ){
+function recorderService ( $http ){
     const bookmarks = [];
 
     this.getBookmarks = () => {
@@ -8,8 +8,14 @@ function recorderService ( $window ){
     };
 
     this.addBookmark = bookmark => {
-        bookmarks.push( bookmark );
+        bookmarks.push( { position: bookmark } );
         this.getBookmarks();
+    };
+
+    this.addRecording = recording => {
+        return $http
+                  .post( 'http://localhost:4000/api/recordings', recording )
+                  .then( data => { console.log( data ); } );
     };
 }
 

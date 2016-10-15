@@ -74650,7 +74650,7 @@
   \**************************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n        <button ng-click=\"addBookmark()\">Bookmark</button>\n\n        <h2>Bookmarks:</h2>\n        <ul>\n          <li ng-repeat=\"bookmark in bookmarks\">{{ bookmark }} s</li>\n        </ul>\n\n        <h2>Lyrics:</h2>\n        <p>{{ lyrics }}</p>\n\n        <h2>S3 data:</h2>\n        <p>{{ s3Data }}</p>\n    </div>\n</div>\n";
+	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n        <button ng-click=\"addBookmark()\">Bookmark</button>\n        <button ng-click=\"addRecording()\">Save Recording</button>\n\n        <h2>Bookmarks:</h2>\n        <ul>\n          <li ng-repeat=\"bookmark in bookmarks\">{{ bookmark }} s</li>\n        </ul>\n\n        <h2>Lyrics:</h2>\n        <p>{{ lyrics }}</p>\n\n        <h2>S3 data:</h2>\n        <p>{{ s3Data }}</p>\n    </div>\n</div>\n";
 
 /***/ },
 /* 26 */
@@ -74672,6 +74672,16 @@
 	
 	  $window = $window || {};
 	  $scope.bookmarks = recorderService.getBookmarks();
+	  $scope.addRecording = function () {
+	    $scope.recordingData = {
+	      Etag: $scope.s3Data.Etag,
+	      location: $scope.s3Data.Location,
+	      markers: $scope.bookmarks,
+	      notes: $scope.lyrics
+	    };
+	
+	    recorderService.addRecording($scope.recordingData);
+	  };
 	
 	  client.on('stream', function (stream, meta) {
 	    var parts = [];
@@ -78473,7 +78483,7 @@
 	
 	var _binaryjsClient = __webpack_require__(/*! binaryjs-client */ 27);
 	
-	function recorderService($window) {
+	function recorderService($http) {
 	    var _this = this;
 	
 	    var bookmarks = [];
@@ -78483,8 +78493,14 @@
 	    };
 	
 	    this.addBookmark = function (bookmark) {
-	        bookmarks.push(bookmark);
+	        bookmarks.push({ position: bookmark });
 	        _this.getBookmarks();
+	    };
+	
+	    this.addRecording = function (recording) {
+	        return $http.post('http://localhost:4000/api/recordings', recording).then(function (data) {
+	            console.log(data);
+	        });
 	    };
 	}
 	

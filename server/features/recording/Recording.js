@@ -12,6 +12,7 @@ const Recording = new mongoose.Schema( {
     , location: { type: String }
     , created: { type: Date, default: Date.now() }
     , markers: [ Marker ]
+    , notes: { type: String }
 } );
 
 module.exports = mongoose.model( 'Recording', Recording );

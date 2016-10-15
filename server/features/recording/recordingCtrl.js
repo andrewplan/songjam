@@ -5,6 +5,21 @@ module.exports = {
         // make new Recording doc from req.body and save to database
         // add objectId of new recording to user
         console.log( 'addRecording working!' );
+        new Recording( req.body ).save( ( err, recording ) => {
+            if ( err ) {
+                return res.status( 500 ).json( err );
+            }
+            return res.status( 201 ).json( recording );
+        } );
+    }
+    , getAllRecordings ( req, res ) {
+        console.log( 'getAllRecordings working!' );
+        Recording.find( {}, ( err, recordings ) => {
+            if ( err ) {
+                return res.status( 500 ).json( err );
+            }
+            return res.status( 200 ).json( recordings );
+        } );
     }
     , getRecordingsByUserId ( req, res ) {
         // declare empty array that will hold recordings
@@ -29,6 +44,12 @@ module.exports = {
         // use location/Etag to delete from s3 bucket
         // remove recording from database
         console.log( 'deleteRecordingById working!' );
+        Recording.remove( req.params.recording_id, ( err, response ) => {
+            if ( err ) {
+                return res.status( 500 ).json( err );
+            }
+            return res.status( 200 ).json( response );
+        } );
     }
     , addMarkerToRecording ( req, res ) {
         // find recording by id

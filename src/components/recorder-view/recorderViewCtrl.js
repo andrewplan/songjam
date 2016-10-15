@@ -5,6 +5,16 @@ function recorderViewCtrl ($scope, $interval, $window, recorderService ){
 
   $window = $window || {};
   $scope.bookmarks = recorderService.getBookmarks();
+  $scope.addRecording = () => {
+      $scope.recordingData = {
+          Etag: $scope.s3Data.Etag
+          , location: $scope.s3Data.Location
+          , markers: $scope.bookmarks
+          , notes: $scope.lyrics
+      };
+
+      recorderService.addRecording( $scope.recordingData );
+  }
 
   client.on( 'stream', ( stream, meta ) => {
       const parts = [];
