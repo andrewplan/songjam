@@ -2,16 +2,17 @@
 
     <div class="library-view-library-audio-wrapper">
         <div
-          ng-if="audioUrl"
+          ng-if="audioUrls"
         >
           <recording-dir
             type="library-view"
             audio-url="audioUrl"
             bookmarks="bookmarks"
+            ng-repeat="audioUrl in audioUrls"
+            index="index"
           >
 
           </recording-dir>
-
         </div>
 
     </div>

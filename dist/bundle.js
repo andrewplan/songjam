@@ -125,16 +125,6 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// Audio directive
-	
-	
-	// Playback view
-	
-	
-	// Recorder view
-	
-	
-	// Main view
 	_angular2.default.module('songJamApp', [_angularUiRouter2.default, 'ngMaterial']).service('recorderService', _recorderService2.default).directive('topNavBar', _topNavBarDirective2.default).directive('recordingDir', _audioDirective2.default).directive('playerDir', _playerDirective2.default).filter('secondsToDateTime', [function () {
 	    return function (seconds) {
 	        var d = new Date('0, 0, 0, 0, 0, 0, 0');
@@ -171,23 +161,12 @@
 	    });
 	});
 	
-	// Player directive
-	
-	
-	// Nav bar directive
-	
-	
-	// Library view
-	
-	
 	// angular-recorder
 	// import './components/angular-recorder/dist/angular-audio-recorder.js'
 	// import 'lamejs';
 	
 	// wavesurfer
 	// import './node_modules/wavesurfer.js/dist/wavesurfer.js'
-	
-	// Landing page view
 
 /***/ },
 /* 1 */
@@ -74593,7 +74572,7 @@
   \**********************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"library-view-wrapper\">\n\n    <div class=\"library-view-library-audio-wrapper\">\n        <div\n          ng-if=\"audioUrl\"\n        >\n          <recording-dir\n            type=\"library-view\"\n            audio-url=\"audioUrl\"\n            bookmarks=\"bookmarks\"\n          >\n\n          </recording-dir>\n\n        </div>\n\n    </div>\n\n    <player-dir></player-dir>\n\n</div>\n";
+	module.exports = "<div class=\"library-view-wrapper\">\n\n    <div class=\"library-view-library-audio-wrapper\">\n        <div\n          ng-if=\"audioUrls\"\n        >\n          <recording-dir\n            type=\"library-view\"\n            audio-url=\"audioUrl\"\n            bookmarks=\"bookmarks\"\n            ng-repeat=\"audioUrl in audioUrls\"\n            index=\"index\"\n          >\n\n          </recording-dir>\n        </div>\n\n    </div>\n\n    <player-dir></player-dir>\n\n</div>\n";
 
 /***/ },
 /* 22 */
@@ -74609,12 +74588,14 @@
 	});
 	function libraryViewCtrl($scope) {
 	    // function init() {
-	    $scope.audioUrl = 'https://s3-us-west-2.amazonaws.com/songjam-recordings/demo.mp3';
+	    $scope.audioUrls = ['https://s3-us-west-2.amazonaws.com/songjam-recordings/demo.mp3', 'https://s3-us-west-2.amazonaws.com/songjam-recordings/mySongJam.mp3'];
 	    $scope.bookmarks = [2, 3, 5];
 	    // }
 	}
 	
 	exports.default = libraryViewCtrl;
+	
+	//https://songjam-recordings.s3-us-west-2.amazonaws.com/mySongJam.mp3
 
 /***/ },
 /* 23 */
@@ -78717,6 +78698,7 @@
 	        replace: true,
 	        scope: {
 	            audioUrl: '=',
+	            audioUrls: '=',
 	            bookmarks: '='
 	        }
 	        // , controller: libraryViewCtrl
@@ -78728,13 +78710,13 @@
 	            }
 	        },
 	        link: function link(scope, elem, attr) {
+	            console.log(elem[0].querySelector('.waveform'));
 	            scope.wavesurfer = WaveSurfer.create({
-	                container: '.waveform',
+	                container: elem[0].querySelector('.waveform'),
 	                scrollParent: true,
 	                barWidth: 4,
 	                waveColor: '#fc5830'
 	            });
-	            console.log(attr);
 	            scope.wavesurfer.load(scope.audioUrl);
 	            scope.wavesurfer.play();
 	        }

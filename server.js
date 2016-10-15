@@ -2,7 +2,12 @@ const express = require( 'express' );
 const BinaryServer = require( 'binaryjs' ).BinaryServer;
 const fs = require( 'fs' );
 const path = require( 'path' );
+const zlib = require( 'zlib' );
 const { json } = require( 'body-parser' );
+const cors = require( 'cors' );
+
+const mongoose = require( 'mongoose' );
+const mongoUri = "mongodb://localhost:27017/songjam";
 
 const googleSpeechConfig = require( './server/configs/googleSpeechConfig' );
 const Speech = require('google-cloud/node_modules/@google-cloud/speech');
@@ -20,13 +25,14 @@ const outFile = 'demo.wav';
 const port = 4000;
 
 const app = express();
-// const server = require( 'http' ).createServer( app );
-// const io = require( 'socket.io' ).listen( server );
 
 app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
 
 app.use( json() );
 app.use( express.static( `${ __dirname }` ) );
+
+mongoose.connect( mongoUri );
+mongoose.connection.once( 'open', () => { console.log( `Mongoose listening at ${ mongoUri }`) } );
 
 binaryServer = BinaryServer( { port: 9001 } );
 
@@ -55,6 +61,7 @@ binaryServer.on('connection', function(client) {
 
       let stream1 = stream.pipe( new streamClone.PassThrough() );
       let stream2 = stream.pipe( new streamClone.PassThrough() );
+      let stream3 = stream.pipe( new streamClone.PassThrough() );
 
       stream1.pipe(fileWriter);
 
@@ -101,7 +108,34 @@ binaryServer.on('connection', function(client) {
           } ) )
         .pipe( fs.createWriteStream( path.resolve( __dirname, 'demo.mp3' ) ) )
         .on( 'close', () => { console.log( 'Done encoding to mp3' ); } );
-        // upload mp3 to Amazon S3
+
+      let body = stream3.pipe( new lame.Encoder( {
+            channels: 1
+            , bitDepth: 16
+            , float: false
+
+            , bitRate: 192
+            , outSampleRate: 44100
+            , mode: lame.STEREO
+          } ) )
+        .on( 'close', () => { console.log( 'Done uploading to Amazon S3' ); } );
+
+        let s3obj = new AWS.S3();
+
+        const params = {
+          Bucket: 'songjam-recordings'
+          , Key: 'mySongJam.mp3'
+          , Body: body
+          , ACL: 'public-read'
+        };
+
+        s3obj.upload( params )
+            .on( 'httpUploadProgress', evt => { console.log( evt ); } )
+            .send( ( err, data ) => {
+                console.log( err, data )
+              } );
+
+
         // call mongoDB method to POST obj with S3 URL and transcription
             // then front end could make get request for the data posted to mongoDB
         // delete wav from server
