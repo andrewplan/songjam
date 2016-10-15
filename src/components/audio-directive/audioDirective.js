@@ -24,7 +24,7 @@ function recordingDir() {
 
         }
         , link: function( scope, elem, attr ) {
-            console.log( elem[ 0 ].querySelector( '.waveform' ) );
+            // console.log( elem[ 0 ].querySelector( '.waveform' ) );
             scope.wavesurfer = WaveSurfer.create( {
                 container: elem[ 0 ].querySelector( '.waveform' )
                 , scrollParent: true

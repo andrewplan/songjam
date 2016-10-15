@@ -74650,7 +74650,7 @@
   \**************************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n        <button ng-click=\"addBookmark()\">Bookmark</button>\n        <button ng-click=\"addRecording()\">Save Recording</button>\n\n        <h2>Bookmarks:</h2>\n        <ul>\n          <li ng-repeat=\"bookmark in bookmarks\">{{ bookmark }} s</li>\n        </ul>\n\n        <h2>Lyrics:</h2>\n        <p>{{ lyrics }}</p>\n\n        <h2>S3 data:</h2>\n        <p>{{ s3Data }}</p>\n    </div>\n</div>\n";
+	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n        <button ng-click=\"addBookmark()\">Bookmark</button>\n        <button ng-click=\"addRecording()\">Save to Library</button>\n\n        <h2>Bookmarks:</h2>\n        <ul>\n          <li ng-repeat=\"bookmark in bookmarks\">{{ bookmark }}</li>\n        </ul>\n\n        <h2>Lyrics:</h2>\n        <p>{{ lyrics }}</p>\n\n        <h2>S3 data:</h2>\n        <p>{{ s3Data }}</p>\n    </div>\n</div>\n";
 
 /***/ },
 /* 26 */
@@ -78730,7 +78730,7 @@
 	            }
 	        },
 	        link: function link(scope, elem, attr) {
-	            console.log(elem[0].querySelector('.waveform'));
+	            // console.log( elem[ 0 ].querySelector( '.waveform' ) );
 	            scope.wavesurfer = WaveSurfer.create({
 	                container: elem[0].querySelector('.waveform'),
 	                scrollParent: true,

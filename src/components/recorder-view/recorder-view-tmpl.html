@@ -4,11 +4,11 @@
         <button ng-click="startRecording()">Start recording</button>
         <button ng-click="stopRecording()">Stop recording</button>
         <button ng-click="addBookmark()">Bookmark</button>
-        <button ng-click="addRecording()">Save Recording</button>
+        <button ng-click="addRecording()">Save to Library</button>
 
         <h2>Bookmarks:</h2>
         <ul>
-          <li ng-repeat="bookmark in bookmarks">{{ bookmark }} s</li>
+          <li ng-repeat="bookmark in bookmarks">{{ bookmark }}</li>
         </ul>
 
         <h2>Lyrics:</h2>
