@@ -1,6 +1,7 @@
 import Auth0Lock from 'auth0-lock';
+import userService from './userService';
 
-function authService( $rootScope, $state, lock, authManager ) {
+function authService( $rootScope, $state, lock, authManager, userService ) {
 
       var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
 
@@ -35,7 +36,7 @@ function authService( $rootScope, $state, lock, authManager ) {
 
             console.log( 'Authenticated! token: ', authResult.idToken, 'profile: ', profile )
 
-            $state.go( 'library-view' );
+            $state.go( 'library-view', { profile } );
           });
         });
       }

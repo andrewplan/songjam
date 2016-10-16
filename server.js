@@ -1,4 +1,5 @@
 const express = require( 'express' );
+const jwt = require( 'express-jwt' );
 const session = require( 'express-session' );
 const BinaryServer = require( 'binaryjs' ).BinaryServer;
 const fs = require( 'fs' );
@@ -31,6 +32,7 @@ const app = express();
 
 app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
 
+// app.use( cors() );
 app.use( json() );
 app.use( session( { secret: mySecrets.secret } ) );
 app.use( passport.initialize() );
@@ -43,52 +45,58 @@ mongoose.connect( mongoUri );
 mongoose.connection.once( 'open', () => { console.log( `Mongoose listening at ${ mongoUri }`) } );
 
 /****** Passport authentication with Auth0 ******/
-var strategy = new Auth0Strategy( {
-     domain: auth0Config.domain
-     , clientID: auth0Config.clientID
-     , clientSecret: auth0Config.clientSecret
-     , callbackURL: auth0Config.callbackURL
-    },
-    function(accessToken, refreshToken, extraParams, profile, done) {
-      // accessToken is the token to call Auth0 API (not needed in the most cases)
-      // extraParams.id_token has the JSON Web Token
-      // profile has all the information from the user
-      return done(null, profile);
-    }
-);
 
-passport.use(strategy);
+// var strategy = new Auth0Strategy( {
+//      domain: auth0Config.domain
+//      , clientID: auth0Config.clientID
+//      , clientSecret: auth0Config.clientSecret
+//      , callbackURL: auth0Config.callbackURL
+//     },
+//     function(accessToken, refreshToken, extraParams, profile, done) {
+//       // accessToken is the token to call Auth0 API (not needed in the most cases)
+//       // extraParams.id_token has the JSON Web Token
+//       // profile has all the information from the user
+//       return done(null, profile);
+//     }
+// );
+//
+// passport.use(strategy);
+//
+// app.get( '/auth/callback',
+//     passport.authenticate( 'auth0', { failureRedirect: '/#' }),
+//     function( req, res ) {
+//       if ( !req.user ) {
+//         throw new Error( 'user null' );
+//       }
+//       // console.log( 'req.user from CALLBACK is ', req.user );
+//       res.redirect( "/#/main/library");
+//     }
+// );
+//
+// passport.serializeUser( ( user, done ) => done( null, user ) );
+// passport.deserializeUser( ( obj, done ) => done( null, obj ) );
+//
+// app.get( '/user', ( req, res ) => {
+//     // console.log( 'req.user exists and is: ', req.user );
+//     res.send( req.user );
+// } );
+//
+// app.post( '/logout', ( req, res ) => {
+//     req.logout();
+//     res.redirect( '/dist/#' );
+// } );
 
-app.get( '/auth/callback',
-    passport.authenticate( 'auth0', { failureRedirect: '/#' }),
-    function( req, res ) {
-      if ( !req.user ) {
-        throw new Error( 'user null' );
-      }
-      // console.log( 'req.user from CALLBACK is ', req.user );
-      res.redirect( "/#/main/library");
-    }
-);
-
-passport.serializeUser( ( user, done ) => done( null, user ) );
-passport.deserializeUser( ( obj, done ) => done( null, obj ) );
-
-app.get( '/user', ( req, res ) => {
-    // console.log( 'req.user exists and is: ', req.user );
-    res.send( req.user );
+/****** jwt example ******/
+let authCheck = jwt( {
+    secret: new Buffer( auth0Config.clientSecret, 'base64' )
+    , audience: auth0Config.clientID
 } );
 
-// app.get('/login', (req, res) => {
-//     res.render( 'account/login', { layout: 'layouts/empty' } );
-// } );
-// app.get('/login',
-//     passport.authenticate( 'auth0', {}), function (req, res) {
-//     res.redirect( "/" );
-// } );
-
-app.post( '/logout', ( req, res ) => {
-    req.logout();
-    res.redirect( '/dist/#' );
+app.get( '/api/public', ( req, res ) => {
+    res.json( { message: 'Hello from a public endpoint!  No authentication needed.' } );
+} );
+app.get( '/api/private', authCheck, ( req, res ) => {
+    res.json( { message: 'Hello from a private endpoint!  Authentication IS needed.' } );
 } );
 
 /****** Audio streaming and speech recognition ******/

@@ -1,7 +1,11 @@
 
 function userService ( $http ) {
-    this.getUser = function() {
-        return $http.get( '/user' );
+    this.findOrCreateUser = function( profile ) {
+        if ( !profile ) {
+          profile = JSON.parse( localStorage.profile );
+        }
+        console.log( profile );
+        return $http.put( 'api/users', { email: profile.email } );
     };
 }
 

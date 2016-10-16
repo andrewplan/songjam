@@ -2,7 +2,7 @@ const userCtrl = require( './userCtrl' );
 
 module.exports = app => {
     app.route( '/api/users' )
-        .post( userCtrl.addUser )
+        .put( userCtrl.findOrCreateUser )
         .get( userCtrl.getUsers );
 
     app.route( '/api/users/:user_id' )

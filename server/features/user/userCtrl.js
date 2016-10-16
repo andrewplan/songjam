@@ -1,9 +1,17 @@
 const User = require( './User' );
 
+
 module.exports = {
-  addUser ( req, res ) {
+  findOrCreateUser ( req, res ) {
       // create new user from req.body and save to mongoDB
-      console.log( 'addUser working!' );
+      console.log( 'findOrCreateUser working!' );
+      User.findOrCreate( { email: req.body.email }, ( err, user ) => {
+          if ( err ) {
+              return res.status( 500 ).json( err );
+          }
+          console.log( err, user );
+          return res.status( 200 ).json( user );
+      } );
   }
   , getUsers ( req, res ) {
       console.log( 'getUsers working!' );
@@ -12,8 +20,8 @@ module.exports = {
               return res.send( 500 ).json( err );
           }
           console.log( response );
-          return res.send( 200 ).json( response );
-      } )
+          return res.status( 200 ).json( response );
+      } );
   }
   , getUserById ( req, res ) {
       // find user by ID and return response to client-side

@@ -97,7 +97,7 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
           tokenGetter: function() {
             return localStorage.getItem('id_token');
           }
-        });
+        } );
 
         $httpProvider.interceptors.push('jwtInterceptor');
 
@@ -118,7 +118,7 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
                 url: '/main'
                 , template: mainViewHtml
                 , data: {
-                  requiresLogin: true
+                    requiresLogin: true
                 }
             } )
             .state( 'login-view', {
@@ -132,9 +132,12 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
                 , template: libraryViewHtml
                 , controller: libraryViewCtrl
                 , resolve: {
-                    user ( userService ) {
-                      return userService.getUser();
+                    user ( userService, $stateParams ) {
+                      return userService.findOrCreateUser( $stateParams.profile );
                     }
+                }
+                , params: {
+                    profile: null
                 }
 
             } )
