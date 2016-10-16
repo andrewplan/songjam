@@ -5,6 +5,16 @@ module.exports = {
       // create new user from req.body and save to mongoDB
       console.log( 'addUser working!' );
   }
+  , getUsers ( req, res ) {
+      console.log( 'getUsers working!' );
+      User.find( {}, ( err, response ) => {
+          if ( err ) {
+              return res.send( 500 ).json( err );
+          }
+          console.log( response );
+          return res.send( 200 ).json( response );
+      } )
+  }
   , getUserById ( req, res ) {
       // find user by ID and return response to client-side
       console.log( 'getUserById working!' );
