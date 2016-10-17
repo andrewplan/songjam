@@ -2,7 +2,7 @@ const mongoose = require( 'mongoose' );
 
 const Marker = new mongoose.Schema( {
     // userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-    position: { type: String }
+    position: { type: Number }
     , notes: { type: String }
 } );
 

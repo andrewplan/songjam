@@ -9,9 +9,7 @@ function recordingDir() {
         restrict: 'EA'
         , replace: true
         , scope: {
-            audioUrl: '='
-            , audioUrls: '='
-            , bookmarks: '='
+            recording: '='
         }
         // , controller: libraryViewCtrl
         , template: ( elem, attr ) => {
@@ -31,7 +29,7 @@ function recordingDir() {
                 , barWidth: 4
                 , waveColor: '#fc5830'
             } );
-            scope.wavesurfer.load( scope.audioUrl );
+            scope.wavesurfer.load( scope.recording.s3Location );
             scope.wavesurfer.play();
         }
 

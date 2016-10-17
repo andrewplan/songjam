@@ -1,6 +1,12 @@
-<div class="library-view-wrapper">
-
-    <div class="library-view-library-audio-wrapper">
+<div
+    class="library-view-wrapper"
+    ng-style="{
+      'background-image': 'url( {{ user.profileImgUrl }} )'
+      , 'background-position': 'center'
+      , 'background-repeat': 'no-repeat'
+    }"
+>
+    <div class="library-view-library-audio-wrapper"
         <div
           ng-if="audioUrls"
         >
@@ -8,8 +14,8 @@
             type="library-view"
             audio-url="audioUrl"
             bookmarks="bookmarks"
-            ng-repeat="audioUrl in audioUrls"
-            index="index"
+            ng-repeat="recording in user.recordings"
+            recording="recording"
           >
 
           </recording-dir>

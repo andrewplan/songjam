@@ -141,8 +141,11 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
                 , parent: 'main-view'
                 , template: libraryViewHtml
                 , controller: libraryViewCtrl
-
-
+                , resolve: {
+                    user ( userService, $stateParams ) {
+                      return userService.findOrCreateUser( $stateParams.profile );
+                    }
+                }
             } )
             .state( 'recorder', {
                 url: '/recorder'

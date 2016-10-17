@@ -7,7 +7,7 @@
       <md-card-title ui-sref="playback-view">
           <md-card-title-text>
               <span class="md-headline">
-                SongJam 10.10.16 07:16 PM
+                  {{ recording.created }}
               </span>
           </md-card-title-text>
       </md-card-title>
@@ -17,8 +17,8 @@
         <!-- <p>Waveform goes here...</p> -->
         <div class="waveform"></div>
         <div ng-click="wavesurfer.play()">Play</div>
-        <span ng-repeat="bookmark in bookmarks">
-          <button ng-click="wavesurfer.play( bookmark )">{{ bookmark }}</button>
+        <span ng-repeat="marker in recording.markers">
+          <button ng-click="wavesurfer.play( marker.position )">{{ marker.position }}</button>
         </span>
       </md-card-content>
 
