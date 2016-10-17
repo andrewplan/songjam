@@ -29,8 +29,10 @@ function recorderViewCtrl ($scope, $stateParams, $interval, $window, recorderSer
                         $scope.s3Data = data;
                         $scope.recordingData = {
                             userId: $scope.user._id
-                            , ETag: $scope.s3Data.ETag
-                            , location: $scope.s3Data.Location
+                            , s3ETag: $scope.s3Data.ETag
+                            , s3Location: $scope.s3Data.Location
+                            , s3Bucket: $scope.s3Data.Bucket
+                            , s3Key: $scope.s3Data.Key
                             , markers: $scope.bookmarks
                             , notes: $scope.lyrics
                         };
@@ -85,12 +87,12 @@ function recorderViewCtrl ($scope, $stateParams, $interval, $window, recorderSer
                 audioInput.connect(recorder);
                 recorder.connect(context.destination);
 
-                $scope.addBookmark = function() {
+                $scope.addBookmark = () => {
                     recorderService.addBookmark( context.currentTime );
                     client.send( { bookmark: context.currentTime }, { type: 'bookmarks' } );
                 };
 
-                $scope.stopRecording = function() {
+                $scope.stopRecording = () => {
                     recording = false;
                     $window.audioStream.end();
                     $window.audioStream = '';

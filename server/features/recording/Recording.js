@@ -8,7 +8,7 @@ const Marker = new mongoose.Schema( {
 
 const Recording = new mongoose.Schema( {
     userId: { type: mongoose.Schema.Types.ObjectId }
-    , ETag: { type: String }
+    , s3ETag: { type: String }
     , s3Location: { type: String }
     , s3Bucket: { type: String }
     , s3Key: { type: String }

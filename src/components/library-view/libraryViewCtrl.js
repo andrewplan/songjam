@@ -1,5 +1,6 @@
 function libraryViewCtrl( $scope, $stateParams, userService ) {
         $scope.user = userService.getCurrentUser();
+        console.log( $scope.user );
 
         $scope.audioUrls = [
           'https://s3-us-west-2.amazonaws.com/songjam-recordings/demo.mp3'

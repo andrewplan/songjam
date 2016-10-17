@@ -40,13 +40,16 @@ module.exports = {
   }
   , getUsers ( req, res ) {
       console.log( 'getUsers working!' );
-      User.find( {}, ( err, response ) => {
-          if ( err ) {
-              return res.send( 500 ).json( err );
-          }
-          console.log( response );
-          return res.status( 200 ).json( response );
-      } );
+      User
+        .find()
+        .populate( 'recordings' )
+        .exec( ( err, users ) => {
+            if ( err ) {
+                return res.send( 500 ).json( err );
+            }
+            console.log( users );
+            return res.status( 200 ).json( users );
+        } );
   }
   , getUserById ( req, res ) {
       // find user by ID and return response to client-side

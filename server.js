@@ -141,7 +141,18 @@ binaryServer.on('connection', function(client) {
     /*********** END client.on() ************/
 
     client.on( 'close', () => {
-        fs.unlink( mp3FilePath );
+        fs.open( mp3FilePath, 'wx', ( err, fd ) => {
+            if ( err ) {
+                if ( err.code === 'EEXIST' ) {
+                    console.error( mp3FilePath, ' exists, deleting now.' );
+                    fs.unlink( mp3FilePath );
+                    return;
+                }
+            }
+            else {
+                throw err;
+            }
+        } );
         // stretch goal:  instead of deleting upon connection close, maybe pause stream somehow?
     } );
 });
