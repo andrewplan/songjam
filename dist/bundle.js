@@ -40,8 +40,9 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /*!********************!*\
   !*** ./src/app.js ***!
   \********************/
@@ -63,63 +64,63 @@
 	
 	__webpack_require__(/*! angular-material */ 8);
 	
-	__webpack_require__(/*! ./components/landing-page-view/landing-page.scss */ 10);
+	__webpack_require__(/*! ./components/landing-page-view/landing-page.scss */ 327);
 	
-	var _landingPageTmpl = __webpack_require__(/*! ./components/landing-page-view/landingPageTmpl.html */ 15);
+	var _landingPageTmpl = __webpack_require__(/*! ./components/landing-page-view/landingPageTmpl.html */ 332);
 	
 	var _landingPageTmpl2 = _interopRequireDefault(_landingPageTmpl);
 	
-	var _landingPageCtrl = __webpack_require__(/*! ./components/landing-page-view/landingPageCtrl */ 16);
+	var _landingPageCtrl = __webpack_require__(/*! ./components/landing-page-view/landingPageCtrl */ 333);
 	
 	var _landingPageCtrl2 = _interopRequireDefault(_landingPageCtrl);
 	
-	var _mainViewTmpl = __webpack_require__(/*! ./components/main-view/mainViewTmpl.html */ 17);
+	var _mainViewTmpl = __webpack_require__(/*! ./components/main-view/mainViewTmpl.html */ 338);
 	
 	var _mainViewTmpl2 = _interopRequireDefault(_mainViewTmpl);
 	
-	__webpack_require__(/*! ./components/library-view/library-view.scss */ 18);
+	__webpack_require__(/*! ./components/library-view/library-view.scss */ 339);
 	
-	var _libraryViewTmpl = __webpack_require__(/*! ./components/library-view/libraryViewTmpl.html */ 21);
+	var _libraryViewTmpl = __webpack_require__(/*! ./components/library-view/libraryViewTmpl.html */ 342);
 	
 	var _libraryViewTmpl2 = _interopRequireDefault(_libraryViewTmpl);
 	
-	var _libraryViewCtrl = __webpack_require__(/*! ./components/library-view/libraryViewCtrl */ 22);
+	var _libraryViewCtrl = __webpack_require__(/*! ./components/library-view/libraryViewCtrl */ 343);
 	
 	var _libraryViewCtrl2 = _interopRequireDefault(_libraryViewCtrl);
 	
-	__webpack_require__(/*! ./components/recorder-view/recorder-view.scss */ 23);
+	__webpack_require__(/*! ./components/recorder-view/recorder-view.scss */ 344);
 	
-	var _recorderViewTmpl = __webpack_require__(/*! ./components/recorder-view/recorder-view-tmpl.html */ 25);
+	var _recorderViewTmpl = __webpack_require__(/*! ./components/recorder-view/recorder-view-tmpl.html */ 346);
 	
 	var _recorderViewTmpl2 = _interopRequireDefault(_recorderViewTmpl);
 	
-	var _recorderViewCtrl = __webpack_require__(/*! ./components/recorder-view/recorderViewCtrl.js */ 26);
+	var _recorderViewCtrl = __webpack_require__(/*! ./components/recorder-view/recorderViewCtrl.js */ 347);
 	
 	var _recorderViewCtrl2 = _interopRequireDefault(_recorderViewCtrl);
 	
-	var _recorderService = __webpack_require__(/*! ./services/recorderService.js */ 35);
+	var _recorderService = __webpack_require__(/*! ./services/recorderService.js */ 356);
 	
 	var _recorderService2 = _interopRequireDefault(_recorderService);
 	
-	__webpack_require__(/*! ./components/playback-view/playback-view.scss */ 36);
+	__webpack_require__(/*! ./components/playback-view/playback-view.scss */ 357);
 	
-	var _playbackViewTmpl = __webpack_require__(/*! ./components/playback-view/playback-view-tmpl.html */ 38);
+	var _playbackViewTmpl = __webpack_require__(/*! ./components/playback-view/playback-view-tmpl.html */ 359);
 	
 	var _playbackViewTmpl2 = _interopRequireDefault(_playbackViewTmpl);
 	
-	var _playbackViewCtrl = __webpack_require__(/*! ./components/playback-view/playbackViewCtrl.js */ 39);
+	var _playbackViewCtrl = __webpack_require__(/*! ./components/playback-view/playbackViewCtrl.js */ 360);
 	
 	var _playbackViewCtrl2 = _interopRequireDefault(_playbackViewCtrl);
 	
-	var _topNavBarDirective = __webpack_require__(/*! ./components/top-nav-bar-directive/topNavBarDirective */ 40);
+	var _topNavBarDirective = __webpack_require__(/*! ./components/top-nav-bar-directive/topNavBarDirective */ 361);
 	
 	var _topNavBarDirective2 = _interopRequireDefault(_topNavBarDirective);
 	
-	var _audioDirective = __webpack_require__(/*! ./components/audio-directive/audioDirective */ 45);
+	var _audioDirective = __webpack_require__(/*! ./components/audio-directive/audioDirective */ 366);
 	
 	var _audioDirective2 = _interopRequireDefault(_audioDirective);
 	
-	var _playerDirective = __webpack_require__(/*! ./components/player-directive/playerDirective */ 50);
+	var _playerDirective = __webpack_require__(/*! ./components/player-directive/playerDirective */ 371);
 	
 	var _playerDirective2 = _interopRequireDefault(_playerDirective);
 	
@@ -169,7 +170,8 @@
 	// import './node_modules/wavesurfer.js/dist/wavesurfer.js'
 
 /***/ },
-/* 1 */
+
+/***/ 1:
 /*!****************************!*\
   !*** ./~/angular/index.js ***!
   \****************************/
@@ -180,7 +182,8 @@
 
 
 /***/ },
-/* 2 */
+
+/***/ 2:
 /*!******************************!*\
   !*** ./~/angular/angular.js ***!
   \******************************/
@@ -31956,7 +31959,8 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 3 */
+
+/***/ 3:
 /*!**********************************************************!*\
   !*** ./~/angular-ui-router/release/angular-ui-router.js ***!
   \**********************************************************/
@@ -36540,7 +36544,8 @@
 	})(window, window.angular);
 
 /***/ },
-/* 4 */
+
+/***/ 4:
 /*!************************************!*\
   !*** ./~/angular-animate/index.js ***!
   \************************************/
@@ -36551,7 +36556,8 @@
 
 
 /***/ },
-/* 5 */
+
+/***/ 5:
 /*!**********************************************!*\
   !*** ./~/angular-animate/angular-animate.js ***!
   \**********************************************/
@@ -40699,7 +40705,8 @@
 
 
 /***/ },
-/* 6 */
+
+/***/ 6:
 /*!*********************************!*\
   !*** ./~/angular-aria/index.js ***!
   \*********************************/
@@ -40710,7 +40717,8 @@
 
 
 /***/ },
-/* 7 */
+
+/***/ 7:
 /*!****************************************!*\
   !*** ./~/angular-aria/angular-aria.js ***!
   \****************************************/
@@ -41124,7 +41132,8 @@
 
 
 /***/ },
-/* 8 */
+
+/***/ 8:
 /*!*************************************!*\
   !*** ./~/angular-material/index.js ***!
   \*************************************/
@@ -41145,7 +41154,8 @@
 
 
 /***/ },
-/* 9 */
+
+/***/ 9:
 /*!************************************************!*\
   !*** ./~/angular-material/angular-material.js ***!
   \************************************************/
@@ -74103,7 +74113,8 @@
 	})(window, window.angular);;window.ngMaterial={version:{full: "1.1.1"}};
 
 /***/ },
-/* 10 */
+
+/***/ 327:
 /*!************************************************************!*\
   !*** ./src/components/landing-page-view/landing-page.scss ***!
   \************************************************************/
@@ -74112,10 +74123,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./landing-page.scss */ 11);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./landing-page.scss */ 328);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 331)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -74132,24 +74143,26 @@
 	}
 
 /***/ },
-/* 11 */
+
+/***/ 328:
 /*!*******************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/landing-page-view/landing-page.scss ***!
   \*******************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 329)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\n.landing-page-wrapper {\n  height: 100vh;\n  width: 100%;\n  text-align: center;\n  background-image: url(" + __webpack_require__(/*! ./bass-player.jpg */ 13) + ");\n  background-size: cover; }\n\nmain {\n  height: 84vh;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n", ""]);
+	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\n.landing-page-wrapper {\n  height: 100vh;\n  width: 100%;\n  text-align: center;\n  background-image: url(" + __webpack_require__(/*! ./bass-player.jpg */ 330) + ");\n  background-size: cover; }\n\nmain {\n  height: 84vh;\n  display: flex;\n  align-items: center;\n  justify-content: center; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 12 */
+
+/***/ 329:
 /*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
   \**************************************/
@@ -74208,7 +74221,8 @@
 
 
 /***/ },
-/* 13 */
+
+/***/ 330:
 /*!**********************************************************!*\
   !*** ./src/components/landing-page-view/bass-player.jpg ***!
   \**********************************************************/
@@ -74217,7 +74231,8 @@
 	module.exports = __webpack_require__.p + "./assets/images/bass-player.jpg";
 
 /***/ },
-/* 14 */
+
+/***/ 331:
 /*!*************************************!*\
   !*** ./~/style-loader/addStyles.js ***!
   \*************************************/
@@ -74472,7 +74487,8 @@
 
 
 /***/ },
-/* 15 */
+
+/***/ 332:
 /*!***************************************************************!*\
   !*** ./src/components/landing-page-view/landingPageTmpl.html ***!
   \***************************************************************/
@@ -74481,7 +74497,8 @@
 	module.exports = "<div class=\"landing-page-wrapper\">\n    <top-nav-bar type=\"landing-page\"></top-nav-bar>\n\n    <main>\n\n      <div class=landing-page-content-wrapper>\n        <h2>{{ mission }}</h2>\n\n        <md-button\n          class=\"md-raised md-primary\"\n          ui-sref=\"library-view\"\n        >\n          LEARN MORE\n        </md-button>\n      </div>\n\n    </main>\n</div>\n";
 
 /***/ },
-/* 16 */
+
+/***/ 333:
 /*!*************************************************************!*\
   !*** ./src/components/landing-page-view/landingPageCtrl.js ***!
   \*************************************************************/
@@ -74502,7 +74519,8 @@
 	exports.default = landingPageCtrl;
 
 /***/ },
-/* 17 */
+
+/***/ 338:
 /*!****************************************************!*\
   !*** ./src/components/main-view/mainViewTmpl.html ***!
   \****************************************************/
@@ -74511,7 +74529,8 @@
 	module.exports = "<top-nav-bar type=\"main\"></top-nav-bar>\n\n<ui-view></ui-view>\n";
 
 /***/ },
-/* 18 */
+
+/***/ 339:
 /*!*******************************************************!*\
   !*** ./src/components/library-view/library-view.scss ***!
   \*******************************************************/
@@ -74520,10 +74539,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./library-view.scss */ 19);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./library-view.scss */ 340);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 331)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -74540,24 +74559,26 @@
 	}
 
 /***/ },
-/* 19 */
+
+/***/ 340:
 /*!**************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/library-view/library-view.scss ***!
   \**************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 329)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".library-view-wrapper {\n  height: 86vh;\n  background-image: url(" + __webpack_require__(/*! ./andrew_plan.jpg */ 20) + ");\n  background-size: 100% auto;\n  background-repeat: no-repeat; }\n\n.library-view-library-audio-wrapper {\n  height: 78vh;\n  padding: 33em 4em 0em 4em;\n  overflow: scroll; }\n\nplayer-dir {\n  display: block; }\n", ""]);
+	exports.push([module.id, ".library-view-wrapper {\n  height: 86vh;\n  background-image: url(" + __webpack_require__(/*! ./andrew_plan.jpg */ 341) + ");\n  background-size: 100% auto;\n  background-repeat: no-repeat; }\n\n.library-view-library-audio-wrapper {\n  height: 78vh;\n  padding: 33em 4em 0em 4em;\n  overflow: scroll; }\n\nplayer-dir {\n  display: block; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 20 */
+
+/***/ 341:
 /*!*****************************************************!*\
   !*** ./src/components/library-view/andrew_plan.jpg ***!
   \*****************************************************/
@@ -74566,7 +74587,8 @@
 	module.exports = __webpack_require__.p + "./assets/images/andrew_plan.jpg";
 
 /***/ },
-/* 21 */
+
+/***/ 342:
 /*!**********************************************************!*\
   !*** ./src/components/library-view/libraryViewTmpl.html ***!
   \**********************************************************/
@@ -74575,7 +74597,8 @@
 	module.exports = "<div class=\"library-view-wrapper\">\n\n    <div class=\"library-view-library-audio-wrapper\">\n        <div\n          ng-if=\"audioUrls\"\n        >\n          <recording-dir\n            type=\"library-view\"\n            audio-url=\"audioUrl\"\n            bookmarks=\"bookmarks\"\n            ng-repeat=\"audioUrl in audioUrls\"\n            index=\"index\"\n          >\n\n          </recording-dir>\n        </div>\n\n    </div>\n\n    <player-dir></player-dir>\n\n</div>\n";
 
 /***/ },
-/* 22 */
+
+/***/ 343:
 /*!********************************************************!*\
   !*** ./src/components/library-view/libraryViewCtrl.js ***!
   \********************************************************/
@@ -74598,7 +74621,8 @@
 	//https://songjam-recordings.s3-us-west-2.amazonaws.com/mySongJam.mp3
 
 /***/ },
-/* 23 */
+
+/***/ 344:
 /*!*********************************************************!*\
   !*** ./src/components/recorder-view/recorder-view.scss ***!
   \*********************************************************/
@@ -74607,10 +74631,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./recorder-view.scss */ 24);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./recorder-view.scss */ 345);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 331)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -74627,13 +74651,14 @@
 	}
 
 /***/ },
-/* 24 */
+
+/***/ 345:
 /*!****************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/recorder-view/recorder-view.scss ***!
   \****************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 329)();
 	// imports
 	
 	
@@ -74644,7 +74669,8 @@
 
 
 /***/ },
-/* 25 */
+
+/***/ 346:
 /*!**************************************************************!*\
   !*** ./src/components/recorder-view/recorder-view-tmpl.html ***!
   \**************************************************************/
@@ -74653,7 +74679,8 @@
 	module.exports = "<div class=\"recorder-view-wrapper\">\n    <div class=\"recorder-view-content-wrapper\">\n        <h2>Select the circle to start recording your next SongJam.</h2>\n        <button ng-click=\"startRecording()\">Start recording</button>\n        <button ng-click=\"stopRecording()\">Stop recording</button>\n        <button ng-click=\"addBookmark()\">Bookmark</button>\n        <button ng-click=\"addRecording()\">Save to Library</button>\n\n        <h2>Bookmarks:</h2>\n        <ul>\n          <li ng-repeat=\"bookmark in bookmarks\">{{ bookmark }}</li>\n        </ul>\n\n        <h2>Lyrics:</h2>\n        <p>{{ lyrics }}</p>\n\n        <h2>S3 data:</h2>\n        <p>{{ s3Data }}</p>\n    </div>\n</div>\n";
 
 /***/ },
-/* 26 */
+
+/***/ 347:
 /*!**********************************************************!*\
   !*** ./src/components/recorder-view/recorderViewCtrl.js ***!
   \**********************************************************/
@@ -74665,7 +74692,7 @@
 	  value: true
 	});
 	
-	var _binaryjsClient = __webpack_require__(/*! binaryjs-client */ 27);
+	var _binaryjsClient = __webpack_require__(/*! binaryjs-client */ 348);
 	
 	function recorderViewCtrl($scope, $interval, $window, recorderService) {
 	  var client = new _binaryjsClient.BinaryClient('ws://localhost:9001');
@@ -74768,14 +74795,15 @@
 	exports.default = recorderViewCtrl;
 
 /***/ },
-/* 27 */
+
+/***/ 348:
 /*!************************************!*\
   !*** ./~/binaryjs-client/index.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var EventEmitter = __webpack_require__(/*! wolfy87-eventemitter */ 32);
-	var BinaryPack = __webpack_require__(/*! js-binarypack */ 33);
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var EventEmitter = __webpack_require__(/*! wolfy87-eventemitter */ 353);
+	var BinaryPack = __webpack_require__(/*! js-binarypack */ 354);
 	
 	var isArray = Array.isArray;
 	
@@ -75353,10 +75381,11 @@
 	
 	module.exports.BinaryClient = BinaryClient;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 28).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 349).Buffer))
 
 /***/ },
-/* 28 */
+
+/***/ 349:
 /*!***************************!*\
   !*** ./~/buffer/index.js ***!
   \***************************/
@@ -75372,9 +75401,9 @@
 	
 	'use strict'
 	
-	var base64 = __webpack_require__(/*! base64-js */ 29)
-	var ieee754 = __webpack_require__(/*! ieee754 */ 30)
-	var isArray = __webpack_require__(/*! isarray */ 31)
+	var base64 = __webpack_require__(/*! base64-js */ 350)
+	var ieee754 = __webpack_require__(/*! ieee754 */ 351)
+	var isArray = __webpack_require__(/*! isarray */ 352)
 	
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -77152,10 +77181,11 @@
 	  return val !== val // eslint-disable-line no-self-compare
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 28).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/buffer/index.js */ 349).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 29 */
+
+/***/ 350:
 /*!******************************!*\
   !*** ./~/base64-js/index.js ***!
   \******************************/
@@ -77278,7 +77308,8 @@
 
 
 /***/ },
-/* 30 */
+
+/***/ 351:
 /*!****************************!*\
   !*** ./~/ieee754/index.js ***!
   \****************************/
@@ -77371,7 +77402,8 @@
 
 
 /***/ },
-/* 31 */
+
+/***/ 352:
 /*!****************************!*\
   !*** ./~/isarray/index.js ***!
   \****************************/
@@ -77385,7 +77417,8 @@
 
 
 /***/ },
-/* 32 */
+
+/***/ 353:
 /*!************************************************!*\
   !*** ./~/wolfy87-eventemitter/EventEmitter.js ***!
   \************************************************/
@@ -77868,14 +77901,15 @@
 
 
 /***/ },
-/* 33 */
+
+/***/ 354:
 /*!*******************************************!*\
   !*** ./~/js-binarypack/lib/binarypack.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var BufferBuilder = __webpack_require__(/*! ./bufferbuilder */ 34).BufferBuilder;
-	var binaryFeatures = __webpack_require__(/*! ./bufferbuilder */ 34).binaryFeatures;
+	var BufferBuilder = __webpack_require__(/*! ./bufferbuilder */ 355).BufferBuilder;
+	var binaryFeatures = __webpack_require__(/*! ./bufferbuilder */ 355).binaryFeatures;
 	
 	var BinaryPack = {
 	  unpack: function(data){
@@ -78396,7 +78430,8 @@
 
 
 /***/ },
-/* 34 */
+
+/***/ 355:
 /*!**********************************************!*\
   !*** ./~/js-binarypack/lib/bufferbuilder.js ***!
   \**********************************************/
@@ -78469,7 +78504,8 @@
 
 
 /***/ },
-/* 35 */
+
+/***/ 356:
 /*!*****************************************!*\
   !*** ./src/services/recorderService.js ***!
   \*****************************************/
@@ -78481,7 +78517,7 @@
 	    value: true
 	});
 	
-	var _binaryjsClient = __webpack_require__(/*! binaryjs-client */ 27);
+	var _binaryjsClient = __webpack_require__(/*! binaryjs-client */ 348);
 	
 	function recorderService($http) {
 	    var _this = this;
@@ -78507,7 +78543,8 @@
 	exports.default = recorderService;
 
 /***/ },
-/* 36 */
+
+/***/ 357:
 /*!*********************************************************!*\
   !*** ./src/components/playback-view/playback-view.scss ***!
   \*********************************************************/
@@ -78516,10 +78553,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./playback-view.scss */ 37);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./playback-view.scss */ 358);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 331)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -78536,13 +78573,14 @@
 	}
 
 /***/ },
-/* 37 */
+
+/***/ 358:
 /*!****************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/playback-view/playback-view.scss ***!
   \****************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 329)();
 	// imports
 	
 	
@@ -78553,7 +78591,8 @@
 
 
 /***/ },
-/* 38 */
+
+/***/ 359:
 /*!**************************************************************!*\
   !*** ./src/components/playback-view/playback-view-tmpl.html ***!
   \**************************************************************/
@@ -78562,7 +78601,8 @@
 	module.exports = "<div class=\"playback-view-wrapper\">\n    <recording-dir id=\"playback-view-recording-dir\" type=\"playback-view\"></recording-dir>\n\n\n\n</div>\n";
 
 /***/ },
-/* 39 */
+
+/***/ 360:
 /*!**********************************************************!*\
   !*** ./src/components/playback-view/playbackViewCtrl.js ***!
   \**********************************************************/
@@ -78571,7 +78611,8 @@
 	"use strict";
 
 /***/ },
-/* 40 */
+
+/***/ 361:
 /*!********************************************************************!*\
   !*** ./src/components/top-nav-bar-directive/topNavBarDirective.js ***!
   \********************************************************************/
@@ -78583,13 +78624,13 @@
 	    value: true
 	});
 	
-	__webpack_require__(/*! ./top-nav-bar.scss */ 41);
+	__webpack_require__(/*! ./top-nav-bar.scss */ 362);
 	
-	var _topNavBarLandingPageTmpl = __webpack_require__(/*! ./top-nav-bar-landing-page-tmpl.html */ 43);
+	var _topNavBarLandingPageTmpl = __webpack_require__(/*! ./top-nav-bar-landing-page-tmpl.html */ 364);
 	
 	var _topNavBarLandingPageTmpl2 = _interopRequireDefault(_topNavBarLandingPageTmpl);
 	
-	var _topNavBarMainTmpl = __webpack_require__(/*! ./top-nav-bar-main-tmpl.html */ 44);
+	var _topNavBarMainTmpl = __webpack_require__(/*! ./top-nav-bar-main-tmpl.html */ 365);
 	
 	var _topNavBarMainTmpl2 = _interopRequireDefault(_topNavBarMainTmpl);
 	
@@ -78620,7 +78661,8 @@
 	exports.default = topNavBar;
 
 /***/ },
-/* 41 */
+
+/***/ 362:
 /*!***************************************************************!*\
   !*** ./src/components/top-nav-bar-directive/top-nav-bar.scss ***!
   \***************************************************************/
@@ -78629,10 +78671,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./top-nav-bar.scss */ 42);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./top-nav-bar.scss */ 363);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 331)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -78649,13 +78691,14 @@
 	}
 
 /***/ },
-/* 42 */
+
+/***/ 363:
 /*!**********************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/top-nav-bar-directive/top-nav-bar.scss ***!
   \**********************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 329)();
 	// imports
 	
 	
@@ -78666,7 +78709,8 @@
 
 
 /***/ },
-/* 43 */
+
+/***/ 364:
 /*!*********************************************************************************!*\
   !*** ./src/components/top-nav-bar-directive/top-nav-bar-landing-page-tmpl.html ***!
   \*********************************************************************************/
@@ -78675,7 +78719,8 @@
 	module.exports = "<nav>\n  <h1 ui-sref=\"landing-page\">SONGJAM</h1>\n  <div>\n    <md-button id=\"sign-in\">Sign In</md-button>\n    <md-button id=\"create-account\">Create Account</md-button>\n  </div>\n</nav>\n";
 
 /***/ },
-/* 44 */
+
+/***/ 365:
 /*!*************************************************************************!*\
   !*** ./src/components/top-nav-bar-directive/top-nav-bar-main-tmpl.html ***!
   \*************************************************************************/
@@ -78684,7 +78729,8 @@
 	module.exports = "<div>\n  <nav>\n    <h1 ui-sref=\"landing-page\">SONGJAM</h1>\n\n    <div>\n        <md-button\n          class=\"md-raised md-primary\"\n          ui-sref=\"recorder\"\n        >\n          RECORD\n        </md-button>\n        <md-menu md-position-mode=\"target-right target\">\n            <md-button\n            class=\"md-icon-button\"\n            ng-click=\"$mdOpenMenu( $event )\"\n            >\n                <md-icon\n                  md-font-icon=\"account_circle\"\n                  md-font-set=\"material-icons\"\n                  md-menu-origin=\"\"\n                >\n                  account_circle\n                </md-icon>\n            </md-button>\n            <md-menu-content width=\"2\">\n                <md-menu-item>\n                    <p class=\"md-title\">Signed in as Andrew Plan</p>\n                </md-menu-item>\n\n                <md-menu-divider></md-menu-divider>\n\n                <md-menu-item>\n                    <md-button ui-sref=\"library-view\">Library</md-button>\n                </md-menu-item>\n\n                <md-menu-item>\n                    <md-button>Account Settings</md-button>\n                </md-menu-item>\n            </md-menu-content>\n\n        </md-menu>\n    </div>\n  </nav>\n\n  <md-content></md-content>\n\n</div>\n";
 
 /***/ },
-/* 45 */
+
+/***/ 366:
 /*!**********************************************************!*\
   !*** ./src/components/audio-directive/audioDirective.js ***!
   \**********************************************************/
@@ -78696,17 +78742,17 @@
 	    value: true
 	});
 	
-	__webpack_require__(/*! ./audio-directive.scss */ 46);
+	__webpack_require__(/*! ./audio-directive.scss */ 367);
 	
-	var _audioDirectiveLibraryViewTmpl = __webpack_require__(/*! ./audio-directive-library-view-tmpl.html */ 48);
+	var _audioDirectiveLibraryViewTmpl = __webpack_require__(/*! ./audio-directive-library-view-tmpl.html */ 369);
 	
 	var _audioDirectiveLibraryViewTmpl2 = _interopRequireDefault(_audioDirectiveLibraryViewTmpl);
 	
-	var _audioDirectivePlaybackViewTmpl = __webpack_require__(/*! ./audio-directive-playback-view-tmpl.html */ 49);
+	var _audioDirectivePlaybackViewTmpl = __webpack_require__(/*! ./audio-directive-playback-view-tmpl.html */ 370);
 	
 	var _audioDirectivePlaybackViewTmpl2 = _interopRequireDefault(_audioDirectivePlaybackViewTmpl);
 	
-	var _libraryViewCtrl = __webpack_require__(/*! ../library-view/libraryViewCtrl */ 22);
+	var _libraryViewCtrl = __webpack_require__(/*! ../library-view/libraryViewCtrl */ 343);
 	
 	var _libraryViewCtrl2 = _interopRequireDefault(_libraryViewCtrl);
 	
@@ -78747,7 +78793,8 @@
 	exports.default = recordingDir;
 
 /***/ },
-/* 46 */
+
+/***/ 367:
 /*!*************************************************************!*\
   !*** ./src/components/audio-directive/audio-directive.scss ***!
   \*************************************************************/
@@ -78756,10 +78803,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./audio-directive.scss */ 47);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./audio-directive.scss */ 368);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 331)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -78776,13 +78823,14 @@
 	}
 
 /***/ },
-/* 47 */
+
+/***/ 368:
 /*!********************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/audio-directive/audio-directive.scss ***!
   \********************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 329)();
 	// imports
 	
 	
@@ -78793,7 +78841,8 @@
 
 
 /***/ },
-/* 48 */
+
+/***/ 369:
 /*!*******************************************************************************!*\
   !*** ./src/components/audio-directive/audio-directive-library-view-tmpl.html ***!
   \*******************************************************************************/
@@ -78802,7 +78851,8 @@
 	module.exports = "<md-card\n  class=\"audio-directive-library-view-wrapper\"\n  layout=\"row\"\n>\n    <div id=\"card-recording-info\" layout-align=\"start-center\">\n\n      <md-card-title ui-sref=\"playback-view\">\n          <md-card-title-text>\n              <span class=\"md-headline\">\n                SongJam 10.10.16 07:16 PM\n              </span>\n          </md-card-title-text>\n      </md-card-title>\n\n      <md-card-content\n      >\n        <!-- <p>Waveform goes here...</p> -->\n        <div class=\"waveform\"></div>\n        <div ng-click=\"wavesurfer.play()\">Play</div>\n        <span ng-repeat=\"bookmark in bookmarks\">\n          <button ng-click=\"wavesurfer.play( bookmark )\">{{ bookmark }}</button>\n        </span>\n      </md-card-content>\n\n    </div>\n\n    <md-card-actions\n        layout=\"row\"\n        layout-align=\"end start\"\n    >\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"favorite\"\n                md-font-set=\"material-icons\"\n              >\n                favorite\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"description\"\n                md-font-set=\"material-icons\"\n              >\n                description\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"share\"\n                md-font-set=\"material-icons\"\n              >\n                share\n              </md-icon>\n        </md-button>\n    </md-card-actions>\n\n</md-card>\n";
 
 /***/ },
-/* 49 */
+
+/***/ 370:
 /*!********************************************************************************!*\
   !*** ./src/components/audio-directive/audio-directive-playback-view-tmpl.html ***!
   \********************************************************************************/
@@ -78811,7 +78861,8 @@
 	module.exports = "<md-card\n  class=\"audio-directive-playback-view-wrapper\"\n  layout=\"row\"\n>\n    <div id=\"card-recording-info\" layout-align=\"start center\">\n\n        <md-card-title ui-sref=\"playback-view\">\n            <md-card-title-text>\n                <span class=\"md-headline\">\n                  SongJam 10.10.16 07:16 PM\n                </span>\n            </md-card-title-text>\n        </md-card-title>\n\n        <md-card-content\n        >\n          <p>Waveform goes here...</p>\n        </md-card-content>\n\n        <md-card-actions\n            layout=\"row\"\n            layout-align=\"end start\"\n        >\n            <md-button class=\"md-icon-button\">\n                  <md-icon\n                    md-font-icon=\"favorite\"\n                    md-font-set=\"material-icons\"\n                  >\n                    favorite\n                  </md-icon>\n            </md-button>\n            <md-button class=\"md-icon-button\">\n                  <md-icon\n                    md-font-icon=\"description\"\n                    md-font-set=\"material-icons\"\n                  >\n                    description\n                  </md-icon>\n            </md-button>\n            <md-button class=\"md-icon-button\">\n                  <md-icon\n                    md-font-icon=\"share\"\n                    md-font-set=\"material-icons\"\n                  >\n                    share\n                  </md-icon>\n            </md-button>\n        </md-card-actions>\n\n        <md-divider></md-divider>\n\n        <md-card-content>\n            <h2>Description goes here</h2>\n        </md-card-content>\n\n        <md-divider></md-divider>\n\n        <md-card-content>\n            <h2>Bookmarks go here</h2>\n        </md-card-content>\n    </div>\n\n</md-card>\n";
 
 /***/ },
-/* 50 */
+
+/***/ 371:
 /*!************************************************************!*\
   !*** ./src/components/player-directive/playerDirective.js ***!
   \************************************************************/
@@ -78823,9 +78874,9 @@
 	    value: true
 	});
 	
-	__webpack_require__(/*! ./player-directive.scss */ 51);
+	__webpack_require__(/*! ./player-directive.scss */ 372);
 	
-	var _playerDirectiveTmpl = __webpack_require__(/*! ./player-directive-tmpl.html */ 53);
+	var _playerDirectiveTmpl = __webpack_require__(/*! ./player-directive-tmpl.html */ 374);
 	
 	var _playerDirectiveTmpl2 = _interopRequireDefault(_playerDirectiveTmpl);
 	
@@ -78842,7 +78893,8 @@
 	exports.default = playerDir;
 
 /***/ },
-/* 51 */
+
+/***/ 372:
 /*!***************************************************************!*\
   !*** ./src/components/player-directive/player-directive.scss ***!
   \***************************************************************/
@@ -78851,10 +78903,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./player-directive.scss */ 52);
+	var content = __webpack_require__(/*! !./../../../~/css-loader!./../../../~/sass-loader!./player-directive.scss */ 373);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 14)(content, {});
+	var update = __webpack_require__(/*! ./../../../~/style-loader/addStyles.js */ 331)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -78871,13 +78923,14 @@
 	}
 
 /***/ },
-/* 52 */
+
+/***/ 373:
 /*!**********************************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/components/player-directive/player-directive.scss ***!
   \**********************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 12)();
+	exports = module.exports = __webpack_require__(/*! ./../../../~/css-loader/lib/css-base.js */ 329)();
 	// imports
 	
 	
@@ -78888,7 +78941,8 @@
 
 
 /***/ },
-/* 53 */
+
+/***/ 374:
 /*!********************************************************************!*\
   !*** ./src/components/player-directive/player-directive-tmpl.html ***!
   \********************************************************************/
@@ -78897,5 +78951,6 @@
 	module.exports = "<div\n  class=\"player-directive-wrapper\"\n  layout=\"row\"\n  layout-align=\"center center\"\n>\n    <div\n        class=\"player-directive-audio-info\"\n        flex=\"30\"\n    >\n        <p>SongJam 10.10.16 07:16 PM</p>\n    </div>\n\n    <div\n        class=\"player-directive-player-buttons\"\n        flex=\"40\"\n        layout=\"row\"\n        layout-align=\"center center\"\n    >\n        <md-button class=\"md-icon-button\">\n            <md-icon\n              md-font-icon=\"replay_30\"\n              md-font-set=\"material-icons\"\n            >\n                replay_30\n            </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"skip_previous\"\n                md-font-set=\"material-icons\"\n              >\n                skip_previous\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"play_circle_filled\"\n                md-font-set=\"material-icons\"\n              >\n                play_circle_filled\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"skip_next\"\n                md-font-set=\"material-icons\"\n              >\n                skip_next\n              </md-icon>\n        </md-button>\n        <md-button class=\"md-icon-button\">\n              <md-icon\n                md-font-icon=\"forward_30\"\n                md-font-set=\"material-icons\"\n              >\n                forward_30\n              </md-icon>\n        </md-button>\n    </div>\n\n    <div\n        class=\"player-directive-audio-info\"\n        flex=\"30\"\n    >\n        <md-icon\n            flex=\"5\"\n            md-font-icon=\"volume_down\"\n            md-font-set=\"material-icons\"\n        >\n          volume_down\n        </md-icon>\n        <md-slider\n            flex=\"20\"\n            ng-model=\"currentVolume\"\n            min=\"0\"\n            max=\"20\"\n        >\n        </md-slider>\n        <md-icon\n            flex=\"5\"\n            md-font-icon=\"volume_up\"\n            md-font-set=\"material-icons\"\n        >\n          volume_up\n        </md-icon>\n    </div>\n</div>\n";
 
 /***/ }
-/******/ ]);
+
+/******/ });
 //# sourceMappingURL=bundle.js.map
