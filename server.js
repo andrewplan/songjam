@@ -21,7 +21,6 @@ const lame = require( 'lame' );
 const outFile = 'demo.wav';
 
 const port = 4000;
-
 const app = express();
 
 app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
@@ -31,7 +30,6 @@ app.use( express.static( `${ __dirname }` + '/dist' ) );
 app.use( express.static( `${ __dirname }` + '/server/user-audio-previews' ) );
 
 require( './server/masterRoutes' )( app );
-
 
 mongoose.connect( mongoUri );
 mongoose.connection.once( 'open', () => { console.log( `Mongoose listening at ${ mongoUri }`) } );
@@ -45,42 +43,41 @@ binaryServer.on('connection', function(client) {
     channels: 1,
     sampleRate: 44000,
     bitDepth: 16
-  });
+  } );
 
   const parts = [];
+  let mp3FileName;
+  let mp3FilePath;
 
-  client.on( 'stream', function(stream, meta) {
+  client.on( 'stream', ( stream, meta ) => {
+
     console.log('new stream', meta );
 
-    let mp3FileName = meta.user_id + '-preview.mp3';
-
     if ( meta.type === 'bookmarks' ) {
-
         stream.on( 'data', data => {
             parts.push( data );
             console.log( parts );
         } );
     }
     else if ( meta.type === 'audio' ) {
+      mp3FileName = meta.user_id + '-preview.mp3';
+      mp3FilePath = __dirname + '/server/user-audio-previews/' + mp3FileName;
 
       let streamClone = require( 'stream' );
 
       let stream1 = stream.pipe( new streamClone.PassThrough() );
       let stream2 = stream.pipe( new streamClone.PassThrough() );
-      let stream3 = stream.pipe( new streamClone.PassThrough() );
 
       stream1.pipe(fileWriter);
 
-      stream1.on('end', function() {
+      stream1.on( 'end', function() {
           fileWriter.end();
           console.log('wrote to file ' + outFile);
 
-          // Instantiates a client
           const speechClient = Speech({
             projectId: projectId
           });
 
-          // The name of the audio file to transcribe
           const fileName = outFile;
 
           // The audio file's encoding and sample rate
@@ -103,8 +100,7 @@ binaryServer.on('connection', function(client) {
           });
       });
 
-      stream3
-        .pipe( new lame.Encoder( {
+      stream2.pipe( new lame.Encoder( {
             channels: 1
             , bitDepth: 16
             , float: false
@@ -119,18 +115,18 @@ binaryServer.on('connection', function(client) {
             client.send( { filename: mp3FileName, url: 'http://localhost:4000/' + mp3FileName }, { type: 'mp3PreviewUrl' } );
           } );
       }
+
       else if ( meta.type === 'upload-to-S3' ) {
           console.log( 'uploading to S3' );
           let s3obj = new AWS.S3();
 
-          let mp3FilePath = __dirname + '/server/user-audio-previews/' + mp3FileName;
           let body = fs.createReadStream( mp3FilePath );
 
           const params = {
-            Bucket: 'songjam-recordings/' + meta.email
-            , Key: meta.user_id + '_' + new Date().toISOString() + '.mp3'
-            , Body: body
-            , ACL: 'public-read'
+              Bucket: 'songjam-recordings/' + meta.email
+              , Key: meta.user_id + '_' + new Date().toISOString() + '.mp3'
+              , Body: body
+              , ACL: 'public-read'
           };
 
           s3obj.upload( params )
@@ -138,7 +134,14 @@ binaryServer.on('connection', function(client) {
               .send( ( err, data ) => {
                   console.log( err, data );
                   client.send( data, { type: 's3Data' } );
+                  fs.unlink( mp3FilePath );
                 } );
       }
-});
+    } );
+    /*********** END client.on() ************/
+
+    client.on( 'close', () => {
+        fs.unlink( mp3FilePath );
+        // stretch goal:  instead of deleting upon connection close, maybe pause stream somehow?
+    } );
 });

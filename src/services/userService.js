@@ -13,7 +13,8 @@ function userService ( $http ) {
         // console.log( profile );
         return $http.put( 'api/users', { email: profile.email } ).then( user => {
             currentUser = user.data;
-            console.log( 'user is ', currentUser );
+            console.log( 'user is ', currentUser, profile );
+            // add code for error that in essence calls findOrCreateUser
         } );
     };
 
