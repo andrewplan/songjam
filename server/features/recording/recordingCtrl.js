@@ -39,24 +39,17 @@ module.exports = {
             return res.status( 200 ).json( recordings );
         } );
     }
-    , getRecordingsByUserId ( req, res ) {
-        // declare empty array that will hold recordings
-        // loop through recordings
-        // if recording has req._id, push recording to array
-        // return array to front end
-        console.log( 'getRecordingsByUserId working!');
-    }
     , getRecordingById ( req, res ) {
         // loop through recordings
         // if recording has req._id, return recording to front end
         console.log( 'getRecordingById working!');
 
-        // Recording.findById( req.params.recording_id, ( err, recording ) => {
-        //     if ( err ) {
-        //         return res.status( 500 ).json( err );
-        //     }
-        //     return res.status( 200 ).json( recording );
-        // } );
+        Recording.findById( req.params.recording_id, ( err, recording ) => {
+            if ( err ) {
+                return res.status( 500 ).json( err );
+            }
+            return res.status( 200 ).json( recording );
+        } );
     }
     , deleteRecordingById ( req, res ) {
         console.log( 'deleteRecordingById working!, req.params.recording_id is ', req.params.recording_id );
@@ -121,5 +114,17 @@ module.exports = {
         // find recording by id
         // push marker information to recording marker array
         console.log( 'addMarkerToRecording working!' );
+
+        Recording.findByIdAndUpdate( req.params.recording_id, { $push: { markers: req.body } }, ( err, recording ) => {
+            if ( err ) {
+                return res.status( 500 ).json( err );
+            }
+            Recording.findById( recording._id, ( err, recording ) => {
+                if ( err ) {
+                    return res.status( 500 ).json( err );
+                }
+                return res.status( 201 ).json( recording );
+            } );
+        } );
     }
 };
