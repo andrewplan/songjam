@@ -2,8 +2,9 @@ const userCtrl = require( './userCtrl' );
 
 module.exports = app => {
     app.route( '/api/users' )
+        .get( userCtrl.findUser )
         .put( userCtrl.findOrCreateUser )
-        .get( userCtrl.getUsers );
+        // .get( userCtrl.getUsers );
 
     app.route( '/api/users/:user_id' )
         .get( userCtrl.getUserById )

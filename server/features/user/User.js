@@ -9,8 +9,8 @@ const User = new mongoose.Schema( {
     , lastName: { type: String }
     , city: { type: String }
     , country: { type: String }
-    , bio: { type: String }
-    , links: [ { type: String } ]
+    // , bio: { type: String }
+    // , links: [ { type: String } ]
     , recordings: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Recording' } ]
     , profileImgUrl: { type: String }
     , bgImgUrl: { type: String }

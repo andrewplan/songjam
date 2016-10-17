@@ -1,18 +1,33 @@
 const Recording = require( './Recording' );
+const User = require( './../user/User' );
 
 module.exports = {
-    addRecording ( req, res ) {
+    addRecordingToUser ( req, res ) {
         // make new Recording doc from req.body and save to database
         // add objectId of new recording to user
-        console.log( 'addRecording working!' );
+        console.log( 'addRecordingToUser working!' );
         new Recording( req.body ).save( ( err, recording ) => {
             if ( err ) {
                 return res.status( 500 ).json( err );
             }
-            return res.status( 201 ).json( recording );
-        } );
+            User.findByIdAndUpdate( recording.userId, { $push: { recordings: recording._id } }, ( err, user ) => {
+                if ( err ) {
+                    return res.status( 500 ).json( err );
+                }
+                User
+                    .findOne( { _id: user._id } )
+                    .populate( 'recordings' )
+                    .exec( ( err, user ) => {
+                        if ( err ) {
+                            return res.status( 500 ).json( err );
+                        }
+                        return res.status( 200 ).json( user );
+                    } )
+                } );
+            } );
     }
     , getAllRecordings ( req, res ) {
+        // for debugging purposes only
         console.log( 'getAllRecordings working!' );
         Recording.find( {}, ( err, recordings ) => {
             if ( err ) {
@@ -33,7 +48,7 @@ module.exports = {
         // if recording has req._id, return recording to front end
         console.log( 'getRecordingById working!');
 
-        // Recording.findById( req.params._id, ( err, recording ) => {
+        // Recording.findById( req.params.recording_id, ( err, recording ) => {
         //     if ( err ) {
         //         return res.status( 500 ).json( err );
         //     }

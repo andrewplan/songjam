@@ -13,9 +13,10 @@ function recorderService ( $http ){
     };
 
     this.addRecording = recording => {
+        console.log( 'addRecording is working! recording is ', recording );
         return $http
                   .post( 'http://localhost:4000/api/recordings', recording )
-                  .then( data => { console.log( data ); } );
+                  .then( response => { console.log( response.data ); } );
     };
 }
 

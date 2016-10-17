@@ -2,7 +2,7 @@ const recordingCtrl = require( './recordingCtrl' );
 
 module.exports = app => {
     app.route( '/api/recordings/' )
-        .post( recordingCtrl.addRecording )
+        .post( recordingCtrl.addRecordingToUser )
         .get( recordingCtrl.getAllRecordings );
 
     app.route( '/api/recordings/user_id/:user_id' )

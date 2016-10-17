@@ -1,8 +1,5 @@
-function libraryViewCtrl( $scope, $stateParams, user ) {
-
-        console.log( '$stateParams.profile is ', $stateParams.profile );
-        console.log( 'user is ', user );
-        $scope.user = user.data;
+function libraryViewCtrl( $scope, $stateParams, userService ) {
+        $scope.user = userService.getCurrentUser();
 
         $scope.audioUrls = [
           'https://s3-us-west-2.amazonaws.com/songjam-recordings/demo.mp3'
