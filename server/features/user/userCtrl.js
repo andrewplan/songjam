@@ -1,5 +1,5 @@
 const User = require( './User' );
-
+const Recording = require( './../recording/Recording' );
 
 module.exports = {
   findOrCreateUser ( req, res ) {
@@ -26,18 +26,6 @@ module.exports = {
             }
       } );
   }
-  , findUser ( req, res ) {
-      // create new user from req.body and save to mongoDB
-      console.log( 'findUser working!' );
-      User
-        .find( { email: req.body.email }, ( err, user ) => {
-            if ( err ) {
-                return res.status( 500 ).json( err );
-            }
-            console.log( err, user );
-            return res.status( 200 ).json( user );
-      } );
-  }
   , getUsers ( req, res ) {
       console.log( 'getUsers working!' );
       User
@@ -54,18 +42,41 @@ module.exports = {
   , getUserById ( req, res ) {
       // find user by ID and return response to client-side
       console.log( 'getUserById working!' );
-
+      User
+        .findById( req.params.user_id )
+        .populate( 'recordings' )
+        .exec( ( err, users ) => {
+            if ( err ) {
+                return res.send( 500 ).json( err );
+            }
+            console.log( user );
+            return res.status( 200 ).json( user );
+        } );
   }
   , updateUserById ( req, res ) {
       // find user by ID and set updated properties with req.body
       // return response containing updated user
       console.log( 'updateUserById working!' );
-      // User.findByIdAndUpdate( req.params.user_id,  )
+      User.findByIdAndUpdate( req.params.user_id, { $set: req.body }, ( err, user ) => {
+          if ( err ) {
+              return res.send( 500 ).json( err );
+          }
+          User.findById( user._id, ( err, user ) => {
+              if ( err ) {
+                  return res.send( 500 ).json( err );
+              }
+              return res.send( 200 ).json( user );
+          } );
+      } );
   }
-  , deleteUserById ( req, res ) {
-      // find user by ID and delete from mongoDB
-      // delete recordings from Amazon S3
-      // delete recordings from mongoDB
-      console.log( 'deleteUserById working!' );
-  }
+  /****** STRETCH GOAL:  delete user *******/
+  // , deleteUserById ( req, res ) {
+  //     // find user by ID and delete from mongoDB
+  //     User.findById( req.params.user_id, ( err, user ) => {
+  //       // delete recordings from AmazonS3
+  //       // deleting user from Auth0
+  //       // delete recordings + whatever assets from MongoDB
+  //     } );
+  //     console.log( 'deleteUserById working!' );
+  // }
 }
