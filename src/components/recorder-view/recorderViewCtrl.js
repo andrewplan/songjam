@@ -1,59 +1,55 @@
 import { BinaryClient } from 'binaryjs-client';
 
-function recorderViewCtrl ($scope, $interval, $window, recorderService ){
-  var client = new BinaryClient('ws://localhost:9001');
+function recorderViewCtrl ($scope, $stateParams, $interval, $window, recorderService, userService ){
 
-  $window = $window || {};
-  $scope.bookmarks = recorderService.getBookmarks();
-  $scope.addRecording = () => {
-      $scope.recordingData = {
-          Etag: $scope.s3Data.Etag
-          , location: $scope.s3Data.Location
-          , markers: $scope.bookmarks
-          , notes: $scope.lyrics
-      };
+    $scope.user = userService.getCurrentUser();
+    console.log( $scope.user );
 
-      recorderService.addRecording( $scope.recordingData );
-  }
+    $window = $window || {};
 
-  client.on( 'stream', ( stream, meta ) => {
-      const parts = [];
-      if ( meta.type === 'transcription' || meta.type === 's3Data' ) {
-          stream.on( 'data', data => {
-              parts.push( data );
-              console.log( parts );
-              $scope.$apply( () => {
-                  if ( meta.type === 'transcription' ) {
-                    $scope.lyrics = data;
-                  }
-                  else if ( meta.type === 's3Data' ) {
-                    $scope.s3Data = data;
-                  }
-              } );
-          } );
-      }
-      // code for what to do when audio is being streamed back
-      // else if ( meta.type === 'mp3' ) {
-      //     stream.on( 'data', data => {
-      //         window.AudioContext = window.AudioContext||window.webkitAudioContext;
-      //         const context = new AudioContext();
-      //         const source = context.createBufferSource(); // Create Sound Source
-      //         context.decodeAudioData( data, function(buffer){
-      //             source.buffer = buffer;
-      //             source.connect(context.destination);
-      //             source.start(context.currentTime);
-      //         } );
-      //     } );
-      // }
-  } );
+    var audioContext = $window.AudioContext || $window.webkitAudioContext;
+    var context = new audioContext();
 
-  client.on('open', function() {
-    $window.audioStream = client.createStream( { user: 'aplan88', type: 'audio' } );
+    $scope.bookmarks = recorderService.getBookmarks();
 
-    var recording = false;
+    var client = new BinaryClient('ws://localhost:9001');
 
-    $scope.startRecording = function() {
-      recording = true;
+    $scope.uploadToS3 = function() {
+        client.send( {}, { user_id: $scope.user._id, email: $scope.user.email, type: 'upload-to-S3' } );
+    };
+
+    client.on( 'stream', ( stream, meta ) => {
+        const parts = [];
+        if ( meta.type !== 'audio' ) {
+            stream.on( 'data', data => {
+                parts.push( data );
+                console.log( parts );
+                $scope.$apply( () => {
+                    if ( meta.type === 'transcription' ) {
+                        $scope.lyrics = data;
+                    }
+                    else if ( meta.type === 'mp3PreviewUrl' ) {
+                        $scope.audioUrl = data.url;
+                    }
+                    else if ( meta.type === 's3Data' ) {
+                        $scope.s3Data = data;
+                        $scope.recordingData = {
+                            userId: $scope.user._id
+                            , Etag: $scope.s3Data.Etag
+                            , location: $scope.s3Data.Location
+                            , markers: $scope.bookmarks
+                            , notes: $scope.lyrics
+                        };
+                        recorderService.addRecording( $scope.recordingData );
+                    }
+                } );
+            } );
+        }
+    } );
+
+    client.on('open', function() {
+      $window.audioStream = client.createStream( { user_id: $scope.user._id, type: 'audio' } );
+
       if (!navigator.getUserMedia)
         navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -63,54 +59,58 @@ function recorderViewCtrl ($scope, $interval, $window, recorderService ){
           alert('Error capturing audio.');
         });
       } else alert('getUserMedia not supported in this browser.');
-    }
 
-    $scope.stopRecording = function() {
-      recording = false;
-      $window.audioStream.end();
-      // $interval.cancel(timing);
-    }
+      var recording = false;
 
-    function success(e) {
-        $scope.addBookmark = function() {
-            recorderService.addBookmark( context.currentTime );
-            client.send( { bookmark: context.currentTime }, { type: 'bookmarks' } );
-        };
+      $scope.startRecording = function() {
+        recording = true;
+      }
 
-        var audioContext = $window.AudioContext || $window.webkitAudioContext;
-        var context = new audioContext();
+      $scope.stopRecording = function() {
+        recording = false;
+        $window.audioStream.end();
+        // $interval.cancel(timing);
+      }
 
-        // the sample rate is in context.sampleRate
-        var audioInput = context.createMediaStreamSource(e);
 
-        var bufferSize = 2048;
-        var recorder = context.createScriptProcessor(bufferSize, 1, 1);
 
-        recorder.onaudioprocess = function(e){
-          if(!recording) return;
-          console.log ('recording');
-          $scope.elapsedTime = 0;
-          // var timing = $interval(function () {
-          //   ++$scope.elapsedTime;
-          // }, 1000);
-          var left = e.inputBuffer.getChannelData(0);
-          $window.audioStream.write(convertFloat32ToInt16(left));
-        }
+      function success(e) {
+          $scope.addBookmark = function() {
+              recorderService.addBookmark( context.currentTime );
+              client.send( { bookmark: context.currentTime }, { type: 'bookmarks' } );
+          };
 
-        audioInput.connect(recorder)
-        recorder.connect(context.destination);
-    }
+          // the sample rate is in context.sampleRate
+          var audioInput = context.createMediaStreamSource(e);
 
-    function convertFloat32ToInt16(buffer) {
-        var l = buffer.length;
-        var buf = new Int16Array(l)
+          var bufferSize = 2048;
+          var recorder = context.createScriptProcessor(bufferSize, 1, 1);
 
-        while (l--) {
-          buf[l] = buffer[l]*0xFFFF;    //convert to 16 bit
-        }
-        return buf.buffer
-    }
-  });
+          recorder.onaudioprocess = function(e){
+            if(!recording) return;
+            console.log ('recording');
+            $scope.elapsedTime = 0;
+            // var timing = $interval(function () {
+            //   ++$scope.elapsedTime;
+            // }, 1000);
+            var left = e.inputBuffer.getChannelData(0);
+            $window.audioStream.write(convertFloat32ToInt16(left));
+          }
+
+          audioInput.connect(recorder)
+          recorder.connect(context.destination);
+      }
+
+      function convertFloat32ToInt16(buffer) {
+          var l = buffer.length;
+          var buf = new Int16Array(l)
+
+          while (l--) {
+            buf[l] = buffer[l]*0xFFFF;    //convert to 16 bit
+          }
+          return buf.buffer
+      }
+    });
 }
 
 export default recorderViewCtrl;

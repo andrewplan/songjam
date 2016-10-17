@@ -24,6 +24,7 @@ import loginViewHtml from './components/login-view/login-view-tmpl.html'
 import loginViewCtrl from './components/login-view/loginViewCtrl.js'
 
 import mainViewHtml from './components/main-view/mainViewTmpl.html'
+import mainViewCtrl from './components/main-view/mainViewCtrl.js'
 
 import './components/library-view/library-view.scss';
 import libraryViewHtml from './components/library-view/libraryViewTmpl.html'
@@ -117,8 +118,17 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
             .state( 'main-view', {
                 url: '/main'
                 , template: mainViewHtml
+                , controller: mainViewCtrl
                 , data: {
                     requiresLogin: true
+                }
+                , resolve: {
+                    user ( userService, $stateParams ) {
+                      return userService.findOrCreateUser( $stateParams.profile );
+                    }
+                }
+                , params: {
+                    profile: null
                 }
             } )
             .state( 'login-view', {
@@ -131,14 +141,7 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
                 , parent: 'main-view'
                 , template: libraryViewHtml
                 , controller: libraryViewCtrl
-                , resolve: {
-                    user ( userService, $stateParams ) {
-                      return userService.findOrCreateUser( $stateParams.profile );
-                    }
-                }
-                , params: {
-                    profile: null
-                }
+
 
             } )
             .state( 'recorder', {
