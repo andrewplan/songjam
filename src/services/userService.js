@@ -4,7 +4,7 @@ function userService ( $http ) {
         if ( !profile ) {
           profile = JSON.parse( localStorage.profile );
         }
-        console.log( profile );
+        // console.log( profile );
         return $http.put( 'api/users', { email: profile.email } );
     };
 }

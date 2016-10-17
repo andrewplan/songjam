@@ -2,7 +2,7 @@ const express = require( 'express' );
 const jwt = require( 'express-jwt' );
 const session = require( 'express-session' );
 const BinaryServer = require( 'binaryjs' ).BinaryServer;
-const fs = require( 'fs' );
+const fs = require( 'fs-extra' );
 const path = require( 'path' );
 const { json } = require( 'body-parser' );
 const cors = require( 'cors' );
@@ -26,6 +26,7 @@ AWS.config.loadFromPath( './server/configs/awsConfig.json' );
 const wav = require( 'wav' );
 const lame = require( 'lame' );
 const outFile = 'demo.wav';
+const outFileMp3 = 'demo.mp3';
 
 const port = 4000;
 const app = express();
@@ -105,6 +106,7 @@ binaryServer = BinaryServer( { port: 9001 } );
 binaryServer.on('connection', function(client) {
   console.log('new connection');
 
+
   var fileWriter = new wav.FileWriter(outFile, {
     channels: 1,
     sampleRate: 44000,
@@ -129,7 +131,7 @@ binaryServer.on('connection', function(client) {
       let stream2 = stream.pipe( new streamClone.PassThrough() );
       // let stream3 = stream.pipe( new streamClone.PassThrough() );
 
-      stream1.pipe(fileWriter);
+      stream1.pipe( fileWriter );
 
       stream1.on('end', function() {
           fileWriter.end();
@@ -172,7 +174,11 @@ binaryServer.on('connection', function(client) {
             , outSampleRate: 44100
             , mode: lame.STEREO
           } ) )
-        .on( 'close', () => { console.log( 'Done uploading to Amazon S3' ); } );
+        .on( 'close', () => {
+          console.log( 'created mp3 file' );
+        } );
+
+        // client.send( body, { type: 'mp3' } );
 
         let s3obj = new AWS.S3();
 
