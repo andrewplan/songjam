@@ -19,24 +19,36 @@ function recorderViewCtrl ($scope, $interval, $window, recorderService ){
   client.on( 'stream', ( stream, meta ) => {
       const parts = [];
       if ( meta.type === 'transcription' || meta.type === 's3Data' ) {
-        stream.on( 'data', data => {
-            parts.push( data );
-            console.log( parts );
-            $scope.$apply( () => {
-                if ( meta.type === 'transcription' ) {
-                  $scope.lyrics = data;
-                }
-                else if ( meta.type === 's3Data' ) {
-                  $scope.s3Data = data;
-                }
-            } );
-        } );
+          stream.on( 'data', data => {
+              parts.push( data );
+              console.log( parts );
+              $scope.$apply( () => {
+                  if ( meta.type === 'transcription' ) {
+                    $scope.lyrics = data;
+                  }
+                  else if ( meta.type === 's3Data' ) {
+                    $scope.s3Data = data;
+                  }
+              } );
+          } );
       }
+      // code for what to do when audio is being streamed back
+      // else if ( meta.type === 'mp3' ) {
+      //     stream.on( 'data', data => {
+      //         window.AudioContext = window.AudioContext||window.webkitAudioContext;
+      //         const context = new AudioContext();
+      //         const source = context.createBufferSource(); // Create Sound Source
+      //         context.decodeAudioData( data, function(buffer){
+      //             source.buffer = buffer;
+      //             source.connect(context.destination);
+      //             source.start(context.currentTime);
+      //         } );
+      //     } );
+      // }
   } );
 
   client.on('open', function() {
     $window.audioStream = client.createStream( { user: 'aplan88', type: 'audio' } );
-    // console.log( $window.audioStream );
 
     var recording = false;
 

@@ -29,6 +29,11 @@ module.exports = {
                 , loader: 'file'
             }
         ]
+        // , plugins: [
+        //     new webpack.ProvidePlugin( {
+        //         window.Auth0Lock: "auth0-lock",
+        //     } )
+        //   ]
     }
     , resolve: {
         extensions: [ "", ".js", ".css" ]

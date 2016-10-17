@@ -15,14 +15,9 @@ function topNavBar() {
                   return mainHtml;
               }
         }
-        // , controller: function () {
-        //     var originatorEv;
-        //
-        //     this.openMenu = function($mdOpenMenu, ev) {
-        //       originatorEv = ev;
-        //       $mdOpenMenu(ev);
-        //     };
-        //   }
+        , controller: function ( $scope, authService ) {
+              $scope.authService = authService;
+          }
     }
 }
 
