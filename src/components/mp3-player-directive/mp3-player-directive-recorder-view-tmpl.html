@@ -6,8 +6,11 @@
 
       <md-card-title ui-sref="playback-view">
           <md-card-title-text>
-              <span class="md-headline">
+              <span class="md-headline" ng-if="recording.created">
                   {{ recording.created }}
+              </span>
+              <span class="md-headline" ng-if="!recording.created">
+                  Preview your SongJam:
               </span>
           </md-card-title-text>
       </md-card-title>
@@ -15,7 +18,7 @@
       <md-card-content
       >
         <!-- <p>Waveform goes here...</p> -->
-        <span class="waveform"></span>
+        <div class="waveform"></div>
         <span ng-click="wavesurfer.play()">Play</span>
         <span ng-click="wavesurfer.pause()">Pause</span>
         <span ng-click="wavesurfer.stop()">Stop</span>

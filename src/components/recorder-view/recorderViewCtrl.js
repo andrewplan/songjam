@@ -10,7 +10,7 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
     $window = $window || {};
     let audioContext = $window.AudioContext || $window.webkitAudioContext;
 
-    $scope.wavesurfer = WaveSurfer.create( {
+    $scope.wavesurferMicInput = WaveSurfer.create( {
       container: '#waveform-recorder-view'
       , barWidth: 4
       , waveColor: '#fc5830'
@@ -19,7 +19,7 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
     } );
     $scope.microphone = Object.create(WaveSurfer.Microphone);
     $scope.microphone.init({
-        wavesurfer: $scope.wavesurfer
+        wavesurfer: $scope.wavesurferMicInput
     });
     $scope.microphone.on('deviceReady', function(stream) {
         console.log('Device ready!', stream);
@@ -46,6 +46,7 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
                     }
                     else if ( meta.type === 'mp3PreviewUrl' ) {
                         $scope.audioPreviewUrl = data.url;
+                        console.log( $scope.audioPreviewUrl );
                     }
                     else if ( meta.type === 's3Data' ) {
                         $scope.s3Data = data;

@@ -21,17 +21,20 @@
         <p>{{ audioPreviewUrl }}</p> -->
 
         <div ng-if="audioPreviewUrl">
+            <!-- <h2>Preview your SongJam:</h2> -->
             <mp3-player-dir
               audio-preview-url="audioPreviewUrl"
               bookmarks="bookmarks"
-              microphone-actions="microphoneActions"
               type="recorder-view"
             >
             </mp3-player-dir>
         </div>
 
-        <h2>Lyrics:</h2>
-        <p>{{ lyrics }}</p>
+        <div ng-if="lyrics">
+            <h2>Lyrics:</h2>
+            <p>{{ lyrics }}</p>
+        </div>
+
 
         <!-- <h2>S3 data:</h2>
         <p>{{ s3Data }}</p> -->

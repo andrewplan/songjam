@@ -16,19 +16,18 @@ function mp3PlayerDir() {
             , recording: '='
         }
         , controller: ( $scope, $state, $stateParams, recorderService ) => {
-              console.log( '$stateParams is ', $stateParams );
               if ( $stateParams.recording ) {
-                  $scope.recording = $stateParams.recording;
-                  $scope.wavesurferUrl = $stateParams.recording.s3Location;
+                $scope.recording = $stateParams.recording;
               }
+              console.log( $scope.audioPreviewUrl );
 
               $scope.deleteRecording = ( recording ) => {
-                  recorderService.deleteRecording( recording );
-                  $state.reload();
+                recorderService.deleteRecording( recording );
+                $state.reload();
               };
 
               $scope.updateRecording = ( recording ) => {
-                  recorderService.updateRecording( recording );
+                recorderService.updateRecording( recording );
               };
         }
         , template: ( elem, attr ) => {
@@ -46,14 +45,14 @@ function mp3PlayerDir() {
         , link: function( scope, elem, attr ) {
             scope.wavesurfer = WaveSurfer.create( {
                 container: elem[ 0 ].querySelector( '.waveform' )
-                , scrollParent: true
+                , scrollParent: false
                 , barWidth: 4
                 , waveColor: '#fc5830'
             } );
 
             scope.wavesurfer.on('ready', function () {
               // Enable creating regions by dragging
-              scope.wavesurfer.enableDragSelection();
+              scope.wavesurfer.enableDragSelection( { loop: true } );
             } );
 
             scope.wavesurfer.on( 'region-dblclick', ( region, event ) => {
@@ -70,12 +69,11 @@ function mp3PlayerDir() {
                       scope.wavesurfer.pause();
                     });
                 }
-
             } );
 
             scope.wavesurferUrl = scope.audioPreviewUrl || scope.recording.s3Location;
             scope.wavesurfer.load( scope.wavesurferUrl );
-            // scope.wavesurfer.play();
+
         }
 
     }
