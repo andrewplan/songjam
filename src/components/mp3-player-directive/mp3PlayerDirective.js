@@ -75,7 +75,7 @@ function mp3PlayerDir() {
 
             scope.wavesurferUrl = scope.audioPreviewUrl || scope.recording.s3Location;
             scope.wavesurfer.load( scope.wavesurferUrl );
-            scope.wavesurfer.play();
+            // scope.wavesurfer.play();
         }
 
     }

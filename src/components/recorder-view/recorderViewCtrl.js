@@ -1,6 +1,6 @@
 import { BinaryClient } from 'binaryjs-client';
 
-function recorderViewCtrl ($scope, $stateParams, $interval, $window, recorderService, userService ){
+function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, recorderService, userService ){
 
     $scope.user = userService.getCurrentUser();
     $scope.bookmarks = recorderService.getBookmarks();
@@ -17,22 +17,21 @@ function recorderViewCtrl ($scope, $stateParams, $interval, $window, recorderSer
       , height: 200
       , cursorColor: '#FFFFFF'
     } );
-
     $scope.microphone = Object.create(WaveSurfer.Microphone);
-
     $scope.microphone.init({
         wavesurfer: $scope.wavesurfer
     });
-
     $scope.microphone.on('deviceReady', function(stream) {
         console.log('Device ready!', stream);
-
     });
     $scope.microphone.on('deviceError', function(code) {
         console.warn('Device error: ' + code);
     });
-
     $scope.microphone.start();
+
+    $scope.restartRecording = () => {
+        $state.go( $state.current.name, $state.params, { reload: true } );
+    }
 
     $scope.uploadToS3 = () => {
         client.send( {}, { user_id: $scope.user._id, email: $scope.user.email, type: 'upload-to-S3' } );
