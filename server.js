@@ -83,11 +83,12 @@ binaryServer.on('connection', function(client) {
           // The audio file's encoding and sample rate
           const options = {
             encoding: 'LINEAR16',
-            sampleRate: 44000
+            sampleRate: 44000,
+            profanityFilter: true
           };
 
           // Detects speech in the audio file
-          speechClient.recognize(fileName, options, (err, result) => {
+          speechClient.recognize( fileName, options, (err, result) => {
             if (err) {
               console.error(err);
               return;

@@ -14,6 +14,7 @@ function userService ( $http ) {
         return $http.put( 'api/users', profile ).then( user => {
             currentUser = user.data;
             console.log( 'user is ', currentUser, profile );
+            return currentUser;
             // add code for error that in essence calls findOrCreateUser
         } );
     };

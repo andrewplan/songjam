@@ -68,11 +68,8 @@ module.exports = {
               console.log( 'User.findById is working! User is ', myUser );
               for ( let i = 0; i < myUser.recordings.length; i++ ) {
                   if ( recording._id.toString() === myUser.recordings[ i ].toString() ) {
-                      console.log( 'myUser.recordings is ', myUser.recordings );
                       myUser.recordings.splice( i, 1 );
-                  }
-                  else {
-                      console.log( 'Recording id not found in user.' );
+                      console.log( 'Recording deleted!  myUser.recordings is now ', myUser.recordings );
                   }
               }
 
@@ -109,6 +106,23 @@ module.exports = {
           } );
       } );
 
+    }
+    , updateRecordingById ( req, res ) {
+        // find recording by id
+        // push marker information to recording marker array
+        console.log( 'updateRecordingById working!' );
+
+        Recording.findByIdAndUpdate( req.params.recording_id, { $set: req.body }, ( err, recording ) => {
+            if ( err ) {
+                return res.status( 500 ).json( err );
+            }
+            Recording.findById( recording._id, ( err, recording ) => {
+                if ( err ) {
+                    return res.status( 500 ).json( err );
+                }
+                return res.status( 201 ).json( recording );
+            } );
+        } );
     }
     , addMarkerToRecording ( req, res ) {
         // find recording by id

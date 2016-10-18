@@ -11,5 +11,8 @@ module.exports = app => {
     app.route( '/api/recordings/:recording_id' )
         .get( recordingCtrl.getRecordingById )
         .delete( recordingCtrl.deleteRecordingById )
+        .put( recordingCtrl.updateRecordingById )
+
+    app.route( '/api/recordings/:recording_id/marker' )
         .put( recordingCtrl.addMarkerToRecording );
 };

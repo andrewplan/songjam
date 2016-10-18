@@ -3,7 +3,7 @@ import './mp3-player-directive.scss'
 import mp3PlayerDirectiveLibraryViewHtml from './mp3-player-directive-library-view-tmpl.html';
 import mp3PlayerDirectivePlaybackViewHtml from './mp3-player-directive-playback-view-tmpl.html';
 import mp3PlayerDirectiveRecorderViewHtml from './mp3-player-directive-recorder-view-tmpl.html';
-// import libraryViewCtrl from '../library-view/libraryViewCtrl';
+import recorderService from '../../services/recorderService.js';
 
 function mp3PlayerDir() {
     return {
@@ -15,7 +15,22 @@ function mp3PlayerDir() {
             , microphoneActions: '='
             , recording: '='
         }
-        // , controller: libraryViewCtrl
+        , controller: ( $scope, $state, $stateParams, recorderService ) => {
+              console.log( '$stateParams is ', $stateParams );
+              if ( $stateParams.recording ) {
+                  $scope.recording = $stateParams.recording;
+                  $scope.wavesurferUrl = $stateParams.recording.s3Location;
+              }
+
+              $scope.deleteRecording = ( recording ) => {
+                  recorderService.deleteRecording( recording );
+                  $state.reload();
+              };
+
+              $scope.updateRecording = ( recording ) => {
+                  recorderService.updateRecording( recording );
+              };
+        }
         , template: ( elem, attr ) => {
               if ( attr.type === "library-view" ) {
                   return mp3PlayerDirectiveLibraryViewHtml;
@@ -29,7 +44,6 @@ function mp3PlayerDir() {
 
         }
         , link: function( scope, elem, attr ) {
-            // console.log( elem[ 0 ].querySelector( '.waveform' ) );
             scope.wavesurfer = WaveSurfer.create( {
                 container: elem[ 0 ].querySelector( '.waveform' )
                 , scrollParent: true
@@ -39,18 +53,10 @@ function mp3PlayerDir() {
 
             scope.wavesurfer.on('ready', function () {
               // Enable creating regions by dragging
-              scope.wavesurfer.enableDragSelection( { loop: true } );
+              scope.wavesurfer.enableDragSelection();
             } );
 
             scope.wavesurfer.on( 'region-dblclick', ( region, event ) => {
-                event.stopPropagation();
-                scope.wavesurfer.play( region.start );
-                region.once( 'out', () => {
-                    scope.wavesurfer.play( region.start );
-                });
-            } );
-
-            scope.wavesurfer.on( 'region-click', ( region, event ) => {
                 event.stopPropagation();
                 scope.wavesurfer.play( region.start );
 
@@ -64,6 +70,7 @@ function mp3PlayerDir() {
                       scope.wavesurfer.pause();
                     });
                 }
+
             } );
 
             scope.wavesurferUrl = scope.audioPreviewUrl || scope.recording.s3Location;

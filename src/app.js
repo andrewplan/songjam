@@ -80,6 +80,24 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
            }
          });
     } )
+    .value( '$anchorScroll', angular.noop )
+    // .run(['$state', '$stateParams', '$window', function($state, $stateParams, $window){
+    //     $rootScope.$on('$viewContentLoaded', function(){
+    //         var state = $state.$current;
+    //         if (state.scrollTo == undefined) $window.scrollTo(0, 0);
+    //         else {
+    //             var to = 0;
+    //             if (state.scrollTo.id != undefined)
+    //                 to = $(state.scrollTo.id).offset().top;
+    //             if ($($window).scrollTop() == to)
+    //                 return;
+    //             if (state.scrollTo.animated)
+    //                 $(document.body).animate({scrollTop:to});
+    //             else
+    //                 $window.scrollTo(0, to);
+    //         }
+    //     });
+    // }])
     .service( 'authService', authService )
     .service( 'userService', userService )
     .service( 'recorderService', recorderService )
@@ -157,6 +175,10 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
                 url: '/playback'
                 , parent: 'main-view'
                 , template: playbackViewHtml
+                , controller: playbackViewCtrl
+                , params: {
+                    recording: null
+                }
                 // , controller: playbackViewCtrl
             } )
     } );

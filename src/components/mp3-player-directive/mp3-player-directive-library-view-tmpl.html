@@ -4,11 +4,12 @@
 >
     <div id="card-recording-info" layout-align="start-center">
 
-      <md-card-title ui-sref="playback-view">
+      <md-card-title ui-sref="playback-view( { recording: recording } )">
           <md-card-title-text>
               <span class="md-headline">
-                  {{ recording.created }}
+                  {{ recording.created | date: "MM/dd/yyyy h:mma" }}
               </span>
+              <span>{{ recording.notes | limitTo: 50 }} ...</span>
           </md-card-title-text>
       </md-card-title>
 
@@ -16,9 +17,13 @@
       >
         <!-- <p>Waveform goes here...</p> -->
         <div class="waveform"></div>
-        <div ng-click="wavesurfer.play()">Play</div>
+        <span ng-click="wavesurfer.play()">Play</span>
+        <span ng-click="wavesurfer.pause()">Pause</span>
+        <span ng-click="wavesurfer.stop()">Stop</span>
+        <span ng-click="wavesurfer.clearRegions()">Clear Regions</span>
+        <a ng-href="{{ recording.s3Location }}" download="">Download</a>
         <span ng-repeat="marker in recording.markers">
-          <button ng-click="wavesurfer.play( marker.position )">{{ marker.position }}</button>
+            <button ng-click="wavesurfer.play( marker.position )">{{ marker.position }}</button>
         </span>
       </md-card-content>
 
@@ -28,7 +33,7 @@
         layout="row"
         layout-align="end start"
     >
-        <md-button class="md-icon-button">
+        <!-- <md-button class="md-icon-button">
               <md-icon
                 md-font-icon="favorite"
                 md-font-set="material-icons"
@@ -51,8 +56,8 @@
               >
                 share
               </md-icon>
-        </md-button>
-        <md-button class="md-icon-button">
+        </md-button> -->
+        <md-button class="md-icon-button" ng-click="deleteRecording( recording )">
               <md-icon
                 md-font-icon="delete"
                 md-font-set="material-icons"

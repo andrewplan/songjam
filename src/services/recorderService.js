@@ -21,7 +21,13 @@ function recorderService ( $http ){
     this.deleteRecording = recording => {
         console.log( 'deleteRecording is working! recording is ', recording );
         return $http
-                  .put( 'http://localhost:4000/api/recordings/' + recording._id )
+                  .delete( 'http://localhost:4000/api/recordings/' + recording._id )
+                  .then( response => { console.log( response.data ); } );
+    };
+    this.updateRecording = recording => {
+        console.log( 'updateRecording is working! recording is ', recording );
+        return $http
+                  .put( 'http://localhost:4000/api/recordings/' + recording._id, recording )
                   .then( response => { console.log( response.data ); } );
     };
 }
