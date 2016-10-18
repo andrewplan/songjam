@@ -8,7 +8,7 @@ function userService ( $http ) {
 
     this.findOrCreateUser = function( profile ) {
         if ( !profile ) {
-          profile = JSON.parse( localStorage.profile );
+            profile = JSON.parse( localStorage.profile );
         }
         // console.log( profile );
         return $http.put( 'api/users', profile ).then( user => {

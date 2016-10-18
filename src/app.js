@@ -40,7 +40,7 @@ import playbackViewHtml from './components/playback-view/playback-view-tmpl.html
 import playbackViewCtrl from './components/playback-view/playbackViewCtrl.js'
 
 import topNavBar from './components/top-nav-bar-directive/topNavBarDirective';
-import recordingDir from './components/audio-directive/audioDirective'
+import mp3PlayerDir from './components/mp3-player-directive/mp3PlayerDirective'
 import playerDir from './components/player-directive/playerDirective'
 
 import userService from './services/userService.js'
@@ -84,7 +84,7 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
     .service( 'userService', userService )
     .service( 'recorderService', recorderService )
     .directive( 'topNavBar', topNavBar )
-    .directive( 'recordingDir', recordingDir )
+    .directive( 'mp3PlayerDir', mp3PlayerDir )
     .directive( 'playerDir', playerDir )
     .config( function( $httpProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider ) {
 

@@ -6,11 +6,11 @@
       , 'background-repeat': 'no-repeat'
     }"
 >
-    <div class="library-view-library-audio-wrapper"
+    <div class="library-view-library-audio-wrapper">
         <div
           ng-if="audioUrls"
         >
-          <recording-dir
+          <mp3-player-dir
             type="library-view"
             audio-url="audioUrl"
             bookmarks="bookmarks"
@@ -18,7 +18,7 @@
             recording="recording"
           >
 
-          </recording-dir>
+          </mp3-player-dir>
         </div>
 
     </div>

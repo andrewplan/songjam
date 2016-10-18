@@ -1,0 +1,65 @@
+<md-card
+  class="mp3-player-directive-library-view-wrapper recorder-view"
+  layout="row"
+>
+    <div id="card-recording-info" layout-align="start-center">
+
+      <md-card-title ui-sref="playback-view">
+          <md-card-title-text>
+              <span class="md-headline">
+                  {{ recording.created }}
+              </span>
+          </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content
+      >
+        <!-- <p>Waveform goes here...</p> -->
+        <div class="waveform"></div>
+        <div ng-click="wavesurfer.play()">Play</div>
+        <span ng-repeat="marker in recording.markers">
+          <button ng-click="wavesurfer.play( marker.position )">{{ marker.position }}</button>
+        </span>
+      </md-card-content>
+
+    </div>
+
+    <md-card-actions
+        layout="row"
+        layout-align="end start"
+    >
+        <md-button class="md-icon-button">
+              <md-icon
+                md-font-icon="favorite"
+                md-font-set="material-icons"
+              >
+                favorite
+              </md-icon>
+        </md-button>
+        <md-button class="md-icon-button">
+              <md-icon
+                md-font-icon="description"
+                md-font-set="material-icons"
+              >
+                description
+              </md-icon>
+        </md-button>
+        <md-button class="md-icon-button">
+              <md-icon
+                md-font-icon="share"
+                md-font-set="material-icons"
+              >
+                share
+              </md-icon>
+        </md-button>
+        <md-button class="md-icon-button">
+              <md-icon
+                md-font-icon="delete"
+                md-font-set="material-icons"
+              >
+                delete
+              </md-icon>
+        </md-button>
+    </md-card-actions>
+
+</md-card>

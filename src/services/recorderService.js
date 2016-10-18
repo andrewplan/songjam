@@ -18,6 +18,12 @@ function recorderService ( $http ){
                   .post( 'http://localhost:4000/api/recordings', recording )
                   .then( response => { console.log( response.data ); } );
     };
+    this.deleteRecording = recording => {
+        console.log( 'deleteRecording is working! recording is ', recording );
+        return $http
+                  .put( 'http://localhost:4000/api/recordings/' + recording._id )
+                  .then( response => { console.log( response.data ); } );
+    };
 }
 
 export default recorderService;

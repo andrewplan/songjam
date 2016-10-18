@@ -11,6 +11,30 @@ function recorderViewCtrl ($scope, $stateParams, $interval, $window, recorderSer
 
     let audioContext = $window.AudioContext || $window.webkitAudioContext;
 
+    $scope.wavesurfer = WaveSurfer.create( {
+      container: '#waveform-recorder-view'
+      , barWidth: 2
+      , waveColor: '#fc5830'
+      , height: 200
+      , fillParent: true
+    } );
+
+    $scope.microphone = Object.create(WaveSurfer.Microphone);
+
+    $scope.microphone.init({
+        wavesurfer: $scope.wavesurfer
+    });
+
+    $scope.microphone.on('deviceReady', function(stream) {
+        console.log('Device ready!', stream);
+
+    });
+    $scope.microphone.on('deviceError', function(code) {
+        console.warn('Device error: ' + code);
+    });
+
+    $scope.microphone.start();
+
     $scope.uploadToS3 = () => {
         client.send( {}, { user_id: $scope.user._id, email: $scope.user.email, type: 'upload-to-S3' } );
     };
@@ -23,7 +47,7 @@ function recorderViewCtrl ($scope, $stateParams, $interval, $window, recorderSer
                         $scope.lyrics = data;
                     }
                     else if ( meta.type === 'mp3PreviewUrl' ) {
-                        $scope.audioUrl = data.url;
+                        $scope.audioPreviewUrl = data.url;
                     }
                     else if ( meta.type === 's3Data' ) {
                         $scope.s3Data = data;

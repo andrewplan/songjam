@@ -135,24 +135,26 @@ binaryServer.on('connection', function(client) {
                   console.log( err, data );
                   client.send( data, { type: 's3Data' } );
                   fs.unlink( mp3FilePath );
+                  client.close();
                 } );
       }
     } );
-    /*********** END client.on() ************/
+    /*********** END client.on( 'stream' ) ************/
 
-    client.on( 'close', () => {
-        fs.open( mp3FilePath, 'wx', ( err, fd ) => {
-            if ( err ) {
-                if ( err.code === 'EEXIST' ) {
-                    console.error( mp3FilePath, ' exists, deleting now.' );
-                    fs.unlink( mp3FilePath );
-                    return;
-                }
-            }
-            else {
-                throw err;
-            }
-        } );
-        // stretch goal:  instead of deleting upon connection close, maybe pause stream somehow?
-    } );
+    // client.on( 'close', () => {
+    //     console.log( 'mp3FilePath is ', mp3FilePath );
+    //     fs.open( mp3FilePath, 'wx', ( err, fd ) => {
+    //         if ( err ) {
+    //             if ( err.code === 'EEXIST' ) {
+    //                 console.error( mp3FilePath, ' exists, deleting now.' );
+    //                 fs.unlink( mp3FilePath );
+    //                 return;
+    //             }
+    //         }
+    //         // else {
+    //         //     throw err;
+    //         // }
+    //     } );
+    // // stretch goal:  instead of deleting upon connection close, maybe pause stream somehow?
+    // } );
 });

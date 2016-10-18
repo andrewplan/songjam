@@ -10,10 +10,13 @@
         <ul>
           <li ng-repeat="bookmark in bookmarks">{{ bookmark }}</li>
         </ul>
+
+        <div id="waveform-recorder-view"></div>
+
         <h2>MP3 preview url:</h2>
         <p>{{ audioUrl }}</p>
-        <div ng-if="audioUrl">
-          <recording-dir audio-url="audioUrl" type="library-view"></recording-dir>
+        <div ng-if="audioPreviewUrl">
+          <mp3-player-dir audio-preview-url="audioPreviewUrl" microphone-actions="microphoneActions" type="library-view"></mp3-player-dir>
         </div>
 
         <h2>Lyrics:</h2>
