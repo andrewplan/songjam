@@ -8,15 +8,14 @@ function recorderViewCtrl ($scope, $stateParams, $interval, $window, recorderSer
     let client = new BinaryClient('ws://localhost:9001');
 
     $window = $window || {};
-
     let audioContext = $window.AudioContext || $window.webkitAudioContext;
 
     $scope.wavesurfer = WaveSurfer.create( {
       container: '#waveform-recorder-view'
-      , barWidth: 2
+      , barWidth: 4
       , waveColor: '#fc5830'
       , height: 200
-      , fillParent: true
+      , cursorColor: '#FFFFFF'
     } );
 
     $scope.microphone = Object.create(WaveSurfer.Microphone);
@@ -119,12 +118,12 @@ function recorderViewCtrl ($scope, $stateParams, $interval, $window, recorderSer
                 $scope.stopRecording = () => {
                     recording = false;
                     $window.audioStream.end();
-                    $window.audioStream = '';
+                    $window.audioStream = null;
 
-                    context = '';
-                    audioInput = '';
-                    bufferSize = '';
-                    recorder = '';
+                    context = null;
+                    audioInput = null;
+                    bufferSize = null;
+                    recorder = null;
                 };
             };
         }

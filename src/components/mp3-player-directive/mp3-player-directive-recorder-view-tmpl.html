@@ -2,7 +2,7 @@
   class="mp3-player-directive-library-view-wrapper recorder-view"
   layout="row"
 >
-    <div id="card-recording-info" layout-align="start-center">
+    <span id="card-recording-info" layout-align="start-center">
 
       <md-card-title ui-sref="playback-view">
           <md-card-title-text>
@@ -15,14 +15,21 @@
       <md-card-content
       >
         <!-- <p>Waveform goes here...</p> -->
-        <div class="waveform"></div>
-        <div ng-click="wavesurfer.play()">Play</div>
-        <span ng-repeat="marker in recording.markers">
-          <button ng-click="wavesurfer.play( marker.position )">{{ marker.position }}</button>
-        </span>
+        <span class="waveform"></span>
+        <span ng-click="wavesurfer.play()">Play</span>
+        <span ng-click="wavesurfer.pause()">Pause</span>
+        <span ng-click="wavesurfer.stop()">Stop</span>
+        <span ng-click="wavesurfer.clearRegions()">Clear Regions</span>
+        <a ng-href="{{ audioPreviewUrl }}" download="">Download</a>
+
+        <div>
+            <span ng-repeat="marker in bookmarks">
+              <button ng-click="wavesurfer.play( marker.position )">{{ marker.position }}</button>
+            </span>
+        </div>
       </md-card-content>
 
-    </div>
+    </span>
 
     <md-card-actions
         layout="row"

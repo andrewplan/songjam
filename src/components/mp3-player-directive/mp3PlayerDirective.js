@@ -10,9 +10,10 @@ function mp3PlayerDir() {
         restrict: 'EA'
         , replace: true
         , scope: {
-            microphoneActions: '='
+            audioPreviewUrl: '='
+            , bookmarks: '='
+            , microphoneActions: '='
             , recording: '='
-            , audioPreviewUrl: '='
         }
         // , controller: libraryViewCtrl
         , template: ( elem, attr ) => {
@@ -21,6 +22,9 @@ function mp3PlayerDir() {
               }
               else if ( attr.type === "playback-view" ) {
                   return mp3PlayerDirectivePlaybackViewHtml;
+              }
+              else if ( attr.type === "recorder-view" ) {
+                  return mp3PlayerDirectiveRecorderViewHtml;
               }
 
         }
@@ -33,37 +37,35 @@ function mp3PlayerDir() {
                 , waveColor: '#fc5830'
             } );
 
-            scope.microphone = Object.create(WaveSurfer.Microphone);
-
-            scope.microphoneActions = () => {
-              return scope.microphone.start();
-            }
-
-            scope.microphone.init( {
-                wavesurfer: scope.wavesurfer
+            scope.wavesurfer.on('ready', function () {
+              // Enable creating regions by dragging
+              scope.wavesurfer.enableDragSelection( { loop: true } );
             } );
 
-            scope.microphone.on('deviceReady', function(stream) {
-                console.log('Device ready!', stream);
+            scope.wavesurfer.on( 'region-dblclick', ( region, event ) => {
+                event.stopPropagation();
+                scope.wavesurfer.play( region.start );
+                region.once( 'out', () => {
+                    scope.wavesurfer.play( region.start );
+                });
             } );
-            scope.microphone.on('deviceError', function(code) {
-                console.warn('Device error: ' + code);
+
+            scope.wavesurfer.on( 'region-click', ( region, event ) => {
+                event.stopPropagation();
+                scope.wavesurfer.play( region.start );
+
+                if ( event.shiftKey ) {
+                    region.once( 'out', () => {
+                      scope.wavesurfer.play( region.start );
+                    });
+                }
+                else {
+                    region.once( 'out', () => {
+                      scope.wavesurfer.pause();
+                    });
+                }
             } );
 
-            // pause rendering
-            //microphone.pause();
-
-            // resume rendering
-            //microphone.play();
-
-            // stop visualization and disconnect microphone
-            //microphone.stopDevice();
-
-            // same as stopDevice() but also clears the wavesurfer canvas
-            //microphone.stop();
-
-            // destroy the plugin
-            //microphone.destroy();
             scope.wavesurferUrl = scope.audioPreviewUrl || scope.recording.s3Location;
             scope.wavesurfer.load( scope.wavesurferUrl );
             scope.wavesurfer.play();

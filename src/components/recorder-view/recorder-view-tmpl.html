@@ -6,17 +6,27 @@
         <button ng-click="addBookmark()">Bookmark</button>
         <button ng-click="uploadToS3()">Save to Library</button>
 
-        <h2>Bookmarks:</h2>
+        <!-- <h2>Bookmarks:</h2>
         <ul>
           <li ng-repeat="bookmark in bookmarks">{{ bookmark }}</li>
-        </ul>
+        </ul> -->
 
-        <div id="waveform-recorder-view"></div>
+        <div
+          id="waveform-recorder-view"
+        >
+        </div>
 
-        <h2>MP3 preview url:</h2>
-        <p>{{ audioUrl }}</p>
+        <!-- <h2>MP3 preview url:</h2>
+        <p>{{ audioPreviewUrl }}</p> -->
+        
         <div ng-if="audioPreviewUrl">
-          <mp3-player-dir audio-preview-url="audioPreviewUrl" microphone-actions="microphoneActions" type="library-view"></mp3-player-dir>
+            <mp3-player-dir
+              audio-preview-url="audioPreviewUrl"
+              bookmarks="bookmarks"
+              microphone-actions="microphoneActions"
+              type="recorder-view"
+            >
+            </mp3-player-dir>
         </div>
 
         <h2>Lyrics:</h2>
