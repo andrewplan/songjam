@@ -42,6 +42,8 @@ import playbackViewCtrl from './components/playback-view/playbackViewCtrl.js'
 import topNavBar from './components/top-nav-bar-directive/topNavBarDirective';
 import mp3PlayerDir from './components/mp3-player-directive/mp3PlayerDirective'
 import playerDir from './components/player-directive/playerDirective'
+import markersContainerDir from './components/markers-container-directive/markersContainerDirective'
+import markerDir from './components/marker-directive/markerDirective'
 
 import userService from './services/userService.js'
 import authService from './services/authService.js'
@@ -74,35 +76,21 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
            if (to.data && to.data.requiresLogin) {
                if (jwtHelper.isTokenExpired(token)) {
                   $timeout(function() {
-                      $state.go('login');
+                      $state.go('landing-page');
                   });
                }
            }
          });
     } )
     .value( '$anchorScroll', angular.noop )
-    // .run(['$state', '$stateParams', '$window', function($state, $stateParams, $window){
-    //     $rootScope.$on('$viewContentLoaded', function(){
-    //         var state = $state.$current;
-    //         if (state.scrollTo == undefined) $window.scrollTo(0, 0);
-    //         else {
-    //             var to = 0;
-    //             if (state.scrollTo.id != undefined)
-    //                 to = $(state.scrollTo.id).offset().top;
-    //             if ($($window).scrollTop() == to)
-    //                 return;
-    //             if (state.scrollTo.animated)
-    //                 $(document.body).animate({scrollTop:to});
-    //             else
-    //                 $window.scrollTo(0, to);
-    //         }
-    //     });
-    // }])
+    // .service( 'audioService', audioService )
     .service( 'authService', authService )
     .service( 'userService', userService )
     .service( 'recorderService', recorderService )
     .directive( 'topNavBar', topNavBar )
     .directive( 'mp3PlayerDir', mp3PlayerDir )
+    .directive( 'markersContainerDir', markersContainerDir )
+    .directive( 'markerDir', markerDir )
     .directive( 'playerDir', playerDir )
     .config( function( $httpProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider ) {
 
@@ -163,6 +151,9 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
                     user ( userService, $stateParams ) {
                       return userService.findOrCreateUser( $stateParams.profile );
                     }
+                }
+                , params: {
+                    profile: null
                 }
             } )
             .state( 'recorder', {

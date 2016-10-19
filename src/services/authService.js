@@ -1,7 +1,7 @@
-import Auth0Lock from 'auth0-lock';
-import userService from './userService';
+// import Auth0Lock from 'auth0-lock';
+// import userService from './userService';
 
-function authService( $rootScope, $state, lock, authManager, userService ) {
+function authService( $rootScope, $state, lock, authManager ) {
 
       var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
 

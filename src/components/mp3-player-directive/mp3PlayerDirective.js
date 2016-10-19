@@ -15,11 +15,13 @@ function mp3PlayerDir() {
             , microphoneActions: '='
             , recording: '='
         }
-        , controller: ( $scope, $state, $stateParams, recorderService ) => {
+        , controller: ( $scope, $state, $stateParams ) => {
               if ( $stateParams.recording ) {
                 $scope.recording = $stateParams.recording;
               }
-              console.log( $scope.audioPreviewUrl );
+
+              $scope.duration;
+              $scope.waveformWidth;
 
               $scope.deleteRecording = ( recording ) => {
                 recorderService.deleteRecording( recording );
@@ -42,7 +44,7 @@ function mp3PlayerDir() {
               }
 
         }
-        , link: function( scope, elem, attr ) {
+        , link: function( scope, elem, attr, recorderService ) {
             scope.wavesurfer = WaveSurfer.create( {
                 container: elem[ 0 ].querySelector( '.waveform' )
                 , scrollParent: false
@@ -50,9 +52,11 @@ function mp3PlayerDir() {
                 , waveColor: '#fc5830'
             } );
 
-            scope.wavesurfer.on('ready', function () {
+            scope.wavesurfer.on('ready', () => {
               // Enable creating regions by dragging
               scope.wavesurfer.enableDragSelection( { loop: true } );
+                scope.duration = scope.wavesurfer.getDuration();
+                scope.waveformWidth = elem[ 0 ].querySelector( '.waveform' ).clientWidth / 16;
             } );
 
             scope.wavesurfer.on( 'region-dblclick', ( region, event ) => {
@@ -73,7 +77,6 @@ function mp3PlayerDir() {
 
             scope.wavesurferUrl = scope.audioPreviewUrl || scope.recording.s3Location;
             scope.wavesurfer.load( scope.wavesurferUrl );
-
         }
 
     }
