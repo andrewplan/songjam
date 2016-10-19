@@ -6,15 +6,6 @@ import 'angular-material';
 import 'auth0-lock';
 import 'angular-lock';
 import 'angular-jwt';
-// import './../node_modules/angular-lock/dist/angular-lock.js';
-// import './../node_modules/angular-jwt/dist/angular-jwt.js';
-
-// angular-recorder
-// import './components/angular-recorder/dist/angular-audio-recorder.js'
-// import 'lamejs';
-
-// wavesurfer
-// import './node_modules/wavesurfer.js/dist/wavesurfer.js'
 
 import './components/landing-page-view/landing-page.scss';
 import landingPageHtml from './components/landing-page-view/landingPageTmpl.html'
@@ -83,7 +74,6 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
          });
     } )
     .value( '$anchorScroll', angular.noop )
-    // .service( 'audioService', audioService )
     .service( 'authService', authService )
     .service( 'userService', userService )
     .service( 'recorderService', recorderService )
