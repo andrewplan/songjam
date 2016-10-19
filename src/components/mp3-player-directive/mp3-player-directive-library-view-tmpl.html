@@ -2,7 +2,10 @@
   class="mp3-player-directive-library-view-wrapper"
   layout="row"
 >
-    <div id="card-recording-info" layout-align="start-center">
+    <div
+        id="card-recording-info"
+        layout-align="start-center"
+    >
 
       <md-card-title ui-sref="playback-view( { recording: recording } )">
           <md-card-title-text>
@@ -13,19 +16,40 @@
           </md-card-title-text>
       </md-card-title>
 
-      <md-card-content
-      >
-        <!-- <p>Waveform goes here...</p> -->
-        <div class="waveform"></div>
-        <span ng-click="wavesurfer.play()">Play</span>
-        <span ng-click="wavesurfer.pause()">Pause</span>
-        <span ng-click="wavesurfer.stop()">Stop</span>
-        <span ng-click="wavesurfer.clearRegions()">Clear Regions</span>
-        <a ng-href="{{ recording.s3Location }}" download="">Download</a>
-        <span ng-repeat="marker in recording.markers">
-            <button ng-click="wavesurfer.play( marker.position )">{{ marker.position }}</button>
-        </span>
-        <div ng-if="!duration">{{ duration }}</div>
+      <md-card-content>
+
+          <div class="waveform"></div>
+
+          <div
+              markers-container-dir
+              class="markers-container-dir"
+              recording="recording"
+              ng-if="duration"
+              duration="duration"
+              waveform-width="waveformWidth"
+          >
+              <span
+                  marker-dir
+                  marker="marker"
+                  duration="duration"
+                  ng-click="wavesurfer.play( marker.position )"
+                  ng-if="duration"
+                  ng-repeat="marker in recording.markers"
+                  waveform-width="waveformWidth"
+              >
+                  ►
+              </span>
+          </div>
+
+          <div class="mp3-player-directive-player-controls">
+              <span ng-click="wavesurfer.play()">Play</span>
+              <span ng-click="wavesurfer.pause()">Pause</span>
+              <span ng-click="wavesurfer.stop()">Stop</span>
+              <span ng-click="wavesurfer.clearRegions()">Clear Regions</span>
+              <a ng-href="{{ audioPreviewUrl }}" download="">Download</a>
+              <div ng-if="duration">{{ duration | limitTo: 5 }}</div>
+          </div>
+
       </md-card-content>
 
     </div>
@@ -34,31 +58,10 @@
         layout="row"
         layout-align="end start"
     >
-        <!-- <md-button class="md-icon-button">
-              <md-icon
-                md-font-icon="favorite"
-                md-font-set="material-icons"
-              >
-                favorite
-              </md-icon>
-        </md-button>
-        <md-button class="md-icon-button">
-              <md-icon
-                md-font-icon="description"
-                md-font-set="material-icons"
-              >
-                description
-              </md-icon>
-        </md-button>
-        <md-button class="md-icon-button">
-              <md-icon
-                md-font-icon="share"
-                md-font-set="material-icons"
-              >
-                share
-              </md-icon>
-        </md-button> -->
-        <md-button class="md-icon-button" ng-click="deleteRecording( recording )">
+        <md-button
+            class="md-icon-button"
+            ng-click="deleteRecording( recording )"
+        >
               <md-icon
                 md-font-icon="delete"
                 md-font-set="material-icons"

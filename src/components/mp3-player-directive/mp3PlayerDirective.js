@@ -12,10 +12,10 @@ function mp3PlayerDir() {
         , scope: {
             audioPreviewUrl: '='
             , bookmarks: '='
-            , microphoneActions: '='
+            , markers: '='
             , recording: '='
         }
-        , controller: ( $scope, $state, $stateParams ) => {
+        , controller: ( $scope, $state, $stateParams, recorderService ) => {
               if ( $stateParams.recording ) {
                 $scope.recording = $stateParams.recording;
               }
@@ -53,8 +53,8 @@ function mp3PlayerDir() {
             } );
 
             scope.wavesurfer.on('ready', () => {
-              // Enable creating regions by dragging
-              scope.wavesurfer.enableDragSelection( { loop: true } );
+                // Enable creating regions by dragging
+                scope.wavesurfer.enableDragSelection( { loop: true } );
                 scope.duration = scope.wavesurfer.getDuration();
                 scope.waveformWidth = elem[ 0 ].querySelector( '.waveform' ).clientWidth / 16;
             } );
