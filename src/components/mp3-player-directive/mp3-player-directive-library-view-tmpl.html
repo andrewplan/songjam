@@ -1,6 +1,6 @@
 <md-card
   class="mp3-player-directive-library-view-wrapper
-          md-whiteframe-3dp"
+          md-whiteframe-9dp"
   layout="row"
 >
     <div
@@ -56,6 +56,7 @@
           >
               <span
                   marker-dir
+                  class="marker-dir"
                   marker="marker"
                   duration="duration"
                   ng-click="wavesurfer.play( marker.position )"
@@ -113,8 +114,12 @@
             class="mp3-player-directive-other-controls-wrapper"
             flex="60"
         >
-            <span ng-click="wavesurfer.clearRegions()">Clear Regions</span>
-            <a ng-href="{{ recording.s3Location }}" download="">Download</a>
+            <md-button ng-click="wavesurfer.clearRegions()">
+                <span>Clear Regions</span>
+            </md-button>
+            <md-button ng-href="{{ recording.s3Location }}" download="">
+                Download
+            </md-button>
             <span ng-if="duration">{{ duration | limitTo: 5 }}</span>
         </div>
       </div>

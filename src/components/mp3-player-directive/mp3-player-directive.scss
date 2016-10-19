@@ -6,7 +6,11 @@
     md-card {
         min-height: 9em;
     }
-    .waveform:hover {
+    .marker-dir {
+        &:hover {
+            cursor: pointer;
+            color: #F4511E;
+        }
     }
 
 }
@@ -21,13 +25,9 @@
 }
 
 .mp3-player-directive-other-controls-wrapper {
-  padding-bottom: 0.67em;
+  margin-top: 0.5em;
   padding-right: 1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  a {
-      text-decoration: none;
-  }
 }
