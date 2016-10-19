@@ -52,11 +52,12 @@ function mp3PlayerDir() {
                 , waveColor: '#fc5830'
             } );
 
-            scope.wavesurfer.on('ready', () => {
+            scope.wavesurfer.on( 'ready', () => {
                 // Enable creating regions by dragging
                 scope.wavesurfer.enableDragSelection( { loop: true } );
                 scope.duration = scope.wavesurfer.getDuration();
                 scope.waveformWidth = elem[ 0 ].querySelector( '.waveform' ).clientWidth / 16;
+                scope.$apply( scope.duration );
             } );
 
             scope.wavesurfer.on( 'region-dblclick', ( region, event ) => {
