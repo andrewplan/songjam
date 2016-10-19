@@ -1,19 +1,45 @@
 <md-card
-  class="mp3-player-directive-library-view-wrapper"
+  class="mp3-player-directive-library-view-wrapper
+          md-whiteframe-3dp"
   layout="row"
 >
     <div
         id="card-recording-info"
         layout-align="start-center"
+
     >
 
-      <md-card-title ui-sref="playback-view( { recording: recording } )">
-          <md-card-title-text>
+      <md-card-title
+
+          layout="row"
+          ui-sref="playback-view( { recording: recording } )"
+      >
+          <md-card-title-text
+              flex="80"
+          >
               <span class="md-headline">
                   {{ recording.created | date: "MM/dd/yyyy h:mma" }}
               </span>
               <span>{{ recording.notes | limitTo: 50 }} ...</span>
           </md-card-title-text>
+
+          <md-card-actions
+              flex="20"
+              layout="row"
+              layout-align="end start"
+          >
+              <md-button
+                  class="md-icon-button"
+                  ng-click="deleteRecording( recording )"
+              >
+                    <md-icon
+                      md-font-icon="delete"
+                      md-font-set="material-icons"
+                    >
+                      delete
+                    </md-icon>
+              </md-button>
+          </md-card-actions>
       </md-card-title>
 
       <md-card-content>
@@ -41,34 +67,60 @@
               </span>
           </div>
 
-          <div class="mp3-player-directive-player-controls">
-              <span ng-click="wavesurfer.play()">Play</span>
-              <span ng-click="wavesurfer.pause()">Pause</span>
-              <span ng-click="wavesurfer.stop()">Stop</span>
-              <span ng-click="wavesurfer.clearRegions()">Clear Regions</span>
-              <a ng-href="{{ audioPreviewUrl }}" download="">Download</a>
-              <div ng-if="duration">{{ duration | limitTo: 5 }}</div>
-          </div>
+          <div
+              class="mp3-player-directive-all-controls-wrapper"
+              layout="row"
+              layout-align="space-between end"
+          >
+              <div
+                  class="mp3-player-directive-player-controls"
+              >
+                <md-button
+                class="md-icon-button"
+                ng-click="wavesurfer.play()"
+                >
+                <md-icon
+                md-font-icon="play_arrow"
+                md-font-set="material-icons"
+                >
+                play_arrow
+              </md-icon>
+              </md-button>
+                <md-button
+                class="md-icon-button"
+                ng-click="wavesurfer.pause()"
+                >
+                <md-icon
+                md-font-icon="pause"
+                md-font-set="material-icons"
+                >
+                pause
+                </md-icon>
+              </md-button>
+              <md-button
+              class="md-icon-button"
+              ng-click="wavesurfer.stop()"
+              >
+                <md-icon
+                  md-font-icon="stop"
+                  md-font-set="material-icons"
+                >
+                  stop
+                </md-icon>
+              </md-button>
+        </div>
+        <div
+            class="mp3-player-directive-other-controls-wrapper"
+            flex="60"
+        >
+            <span ng-click="wavesurfer.clearRegions()">Clear Regions</span>
+            <a ng-href="{{ recording.s3Location }}" download="">Download</a>
+            <span ng-if="duration">{{ duration | limitTo: 5 }}</span>
+        </div>
+      </div>
 
       </md-card-content>
 
     </div>
-
-    <md-card-actions
-        layout="row"
-        layout-align="end start"
-    >
-        <md-button
-            class="md-icon-button"
-            ng-click="deleteRecording( recording )"
-        >
-              <md-icon
-                md-font-icon="delete"
-                md-font-set="material-icons"
-              >
-                delete
-              </md-icon>
-        </md-button>
-    </md-card-actions>
 
 </md-card>

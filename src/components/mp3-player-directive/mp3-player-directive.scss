@@ -1,10 +1,33 @@
 .mp3-player-directive-library-view-wrapper {
-    md-card {
-      min-height: 9em;
+    overflow: scroll;
+    &:hover {
+        background-color: gold;
     }
+    md-card {
+        min-height: 9em;
+    }
+    .waveform:hover {
+    }
+
 }
 
 #card-recording-info {
   text-align: left;
   width: 100%;
+}
+
+.mp3-player-directive-all-controls-wrapper {
+  margin-top: 2em;
+}
+
+.mp3-player-directive-other-controls-wrapper {
+  padding-bottom: 0.67em;
+  padding-right: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+      text-decoration: none;
+  }
 }
