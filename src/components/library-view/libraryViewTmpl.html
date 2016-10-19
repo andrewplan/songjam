@@ -1,16 +1,24 @@
 <div
     class="library-view-wrapper"
 >
-    <div class="library-view-library-audio-wrapper">
-        <div>
-          <mp3-player-dir
-              type="library-view"
-              ng-if="recording"
-              ng-repeat="recording in user.recordings"
-              recording="recording"
-          >
-          </mp3-player-dir>
+    <div class="library-view-wrapper-user-info-wrapper">
+        <div class="library-view-wrapper-user-info-wrapper-content-wrapper">
+            <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+            <div class="library-view-wrapper-user-info-wrapper-avatar" alt=""></div>
+            <h1>4 SongJams</h1>
         </div>
+    </div>
+
+    <div class="library-view-wrapper-library-audio-wrapper">
+
+        <mp3-player-dir
+            class="library-view-wrapper-mp3-player-dir"
+            type="library-view"
+            ng-if="recording"
+            ng-repeat="recording in user.recordings"
+            recording="recording"
+        >
+        </mp3-player-dir>
 
     </div>
 

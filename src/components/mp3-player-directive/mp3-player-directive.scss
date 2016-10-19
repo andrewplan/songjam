@@ -22,10 +22,19 @@
 
 .mp3-player-directive-all-controls-wrapper {
   margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mp3-player-directive-player-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mp3-player-directive-other-controls-wrapper {
-  margin-top: 0.5em;
+  // margin-top: 0.5em;
   padding-right: 1em;
   display: flex;
   justify-content: space-between;
