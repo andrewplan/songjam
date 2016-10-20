@@ -15,11 +15,15 @@ function topNavBar() {
                   return mainHtml;
               }
         }
-        , controller: function ( $scope, authService, userService ) {
+        , scope: {
+              songjamSearchQuery: '='
+        }
+        , controller: ( $scope, authService, userService ) => {
               $scope.authService = authService;
               $scope.user = userService.getCurrentUser();
+
           }
-    }
+    };
 }
 
 export default topNavBar;

@@ -7,9 +7,6 @@ function markerDir() {
             , marker: '='
             , waveformWidth: '='
         }
-        , controller: ( $scope ) => {
-              console.log( 'In marker.  bookmark: ', $scope.bookmark, 'duration: ', $scope.duration, 'waveformWidth: ', $scope.waveformWidth );
-        }
         , link: ( scope, elem, attrs ) => {
               scope.$watchGroup( [ 'duration', 'marker', 'bookmark', 'waveformWidth' ], () => {
                   let markerPosition;
@@ -20,7 +17,6 @@ function markerDir() {
                     markerPosition = scope.marker.position;
                   }
                   let markerPositionEm = ( markerPosition / scope.duration ) * scope.waveformWidth;
-                  console.log( markerPositionEm );
                   angular.element( elem[ 0 ] ).css( { 'position': 'absolute', 'left': markerPositionEm + 'em' } );
               }, true );
 

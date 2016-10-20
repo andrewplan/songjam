@@ -1,13 +1,35 @@
+$button-height: 3em;
+@mixin background-and-text-transition( $bg-color, $text-color ) {
+    background-color: $bg-color;
+    color: $text-color;
+}
+
 * {
   font-family: 'Montserrat', sans-serif;
 }
 
-nav, md-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 1px 1px 1px 1px gainsboro;
-  // background-color: white;
+.top-nav-bar-landing-page-wrapper, .top-nav-bar-main-view-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255,255,255,0.0);
+    // color: white;
+    color: #F4511E;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .top-nav-bar-main-view-wrapper-search-bar {
+      width: 25em;
+
+      &-icon {
+          color: #F4511E;
+      }
+
+      input {
+        background-color: rgba(255,255,255,0.1);
+        width: 100%;
+      }
+  }
 
   h1 {
     padding-left: 0.6em;
@@ -15,8 +37,6 @@ nav, md-toolbar {
     font-weight: 900;
     letter-spacing: 1px;
   }
-
-  $button-height: 3em;
 
   #sign-in {
     height: $button-height;
@@ -27,4 +47,10 @@ nav, md-toolbar {
     // border: 1px solid white;
   }
 
+.nav-bar-transition {
+    @include background-and-text-transition( white, black );
+}
+
+.search-icon-transition {
+    @include background-and-text-transition( rgba(255,255,255,0.0), rgb(0, 0, 0) );
 }

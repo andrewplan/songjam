@@ -7,9 +7,6 @@ function markersContainerDir() {
             , recording: '='
             , waveformWidth: '='
         }
-        , controller: ( $scope ) => {
-            console.log( 'In markersContainer.  bookmarks: ', $scope.bookmarks, 'duration: ', $scope.duration, 'waveformWidth: ', $scope.waveformWidth );
-        }
     }
 }
 

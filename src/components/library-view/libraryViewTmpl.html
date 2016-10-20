@@ -2,20 +2,31 @@
     class="library-view-wrapper"
 >
     <div class="library-view-wrapper-user-info-wrapper">
-        <div class="library-view-wrapper-user-info-wrapper-content-wrapper">
-            <h1>{{ user.firstName }} {{ user.lastName }}</h1>
-            <div class="library-view-wrapper-user-info-wrapper-avatar" alt=""></div>
-            <h1>4 SongJams</h1>
+        <top-nav-bar
+            songjam-search-query="songjamSearchQuery"
+            type="main"
+        >
+        </top-nav-bar>
+        <div class="library-view-wraooer-user-info-wrapper-content-flex-wrapper">
+            <div class="library-view-wrapper-user-info-wrapper-content-wrapper">
+                <h1 class="library-view-wrapper-user-info-wrapper-content-wrapper-full-name">
+                  {{ user.firstName }} {{ user.lastName }}
+                </h1>
+                <div class="library-view-wrapper-user-info-wrapper-content-wrapper-avatar" alt=""></div>
+                <h1 class="library-view-wrapper-user-info-wrapper-content-wrapper-songjam-count">
+                  {{ songjamCount }} SongJams
+                </h1>
+            </div>
         </div>
     </div>
 
-    <div class="library-view-wrapper-library-audio-wrapper">
+    <div class="library-view-wrapper-library-audio-wrapper" scroll>
 
         <mp3-player-dir
             class="library-view-wrapper-mp3-player-dir"
             type="library-view"
             ng-if="recording"
-            ng-repeat="recording in user.recordings"
+            ng-repeat="recording in user.recordings | filter: songjamSearchQuery"
             recording="recording"
         >
         </mp3-player-dir>

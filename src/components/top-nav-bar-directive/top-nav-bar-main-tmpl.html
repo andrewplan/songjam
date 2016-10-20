@@ -1,6 +1,19 @@
-<div>
-  <nav>
+<nav
+    class="top-nav-bar-main-view-wrapper"
+    ng-class="{ min:boolChangeClass}"
+>
     <h1 ui-sref="library-view">SONGJAM</h1>
+
+    <md-input-container class="top-nav-bar-main-view-wrapper-search-bar" layout="row" layout-align="center center">
+        <md-icon
+          class="top-nav-bar-main-view-wrapper-search-bar-icon"
+          md-font-icon="search"
+          md-font-set="material-icons"
+        >
+          search
+        </md-icon>
+        <input type="search" ng-model="songjamSearchQuery"></input>
+    </md-input-container>
 
     <div>
         <md-button
@@ -11,17 +24,15 @@
         </md-button>
         <md-menu md-position-mode="target-right target">
             <md-button
-            class="md-icon-button"
-            ng-click="$mdOpenMenu( $event )"
+                class="md-icon-button
+                      top-nav-bar-main-wrapper-avatar-icon-wrapper"
+                ng-click="$mdOpenMenu( $event )"
             >
-                <!-- <md-icon
-                  md-font-icon="account_circle"
-                  md-font-set="material-icons"
-                  md-menu-origin=""
+                <img
+                    alt=""
+                    class="top-nav-bar-main-wrapper-avatar-icon"
+                    src="{{ user.profileImgUrl }}"
                 >
-                  account_circle
-                </md-icon> -->
-                <img src="{{ user.profileImgUrl }}" alt="">
             </md-button>
             <md-menu-content width="2">
                 <md-menu-item>
@@ -45,8 +56,4 @@
 
         </md-menu>
     </div>
-  </nav>
-
-  <md-content></md-content>
-
-</div>
+</nav>
