@@ -11,6 +11,10 @@ function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderServic
     $scope.isLyricEditorActive = false;
     $scope.lyricsErrorMessage = 'No lyrics detected, sorry about that!'
 
+    $scope.lyrics = {
+        lyrics: ''
+    };
+
     let client = new BinaryClient('ws://localhost:9001');
 
     $window = $window || {};
@@ -37,8 +41,8 @@ function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderServic
 
     $scope.openLyricsEditor = () => {
         $scope.isLyricEditorActive = !$scope.isLyricEditorActive;
-        if ( $scope.lyrics === $scope.lyricsErrorMessage ) {
-            $scope.lyrics = 'Type lyrics here';
+        if ( $scope.lyrics.lyrics === $scope.lyricsErrorMessage ) {
+            $scope.lyrics.lyrics = 'Type lyrics here';
         }
     }
 
@@ -52,10 +56,10 @@ function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderServic
                 $scope.$apply( () => {
                     if ( meta.type === 'transcription' ) {
                         if ( data ) {
-                            $scope.lyrics = data;
+                            $scope.lyrics.lyrics = data;
                         }
                         else {
-                            $scope.lyrics = $scope.lyricsErrorMessage;
+                            $scope.lyrics.lyrics = $scope.lyricsErrorMessage;
                         }
                         $scope.isGoogleSpeechActive = false;
                     }
@@ -71,10 +75,10 @@ function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderServic
                             , s3Bucket: $scope.s3Data.Bucket
                             , s3Key: $scope.s3Data.Key
                             , markers: $scope.bookmarks
-                            , notes: $scope.lyrics
+                            , notes: $scope.lyrics.lyrics
                         };
                         recorderService.addRecording( $scope.recordingData );
-                        userService.getCurrentUser();
+                        $state.go( 'library-view' );
                     }
                 } );
             } );

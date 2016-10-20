@@ -81,11 +81,9 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
              if (this.scrollTop > 460) {
                  angular.element(document.getElementsByClassName('top-nav-bar-main-view-wrapper')[0]).addClass( 'nav-bar-transition' );
                  angular.element(document.getElementsByClassName('top-nav-bar-main-view-wrapper-search-bar-icon')[0]).addClass( 'search-icon-transition' );
-                 console.log('Scrolled below header.');
              } else {
                  angular.element(document.getElementsByClassName('top-nav-bar-main-view-wrapper')[0]).removeClass( 'nav-bar-transition' );
                  angular.element(document.getElementsByClassName('top-nav-bar-main-view-wrapper-search-bar-icon')[0]).removeClass( 'search-icon-transition' );
-                 console.log('Header is in view.');
              }
             scope.$apply();
         } );

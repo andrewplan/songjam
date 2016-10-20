@@ -44,7 +44,7 @@
                       recorder-view-wrapper-buttons"
                 id="restart-recording-button"
                 ng-click="restartRecording()"
-                ng-show="lyrics"
+                ng-show="lyrics.lyrics"
             >
                 <md-icon
                     class="recorder-view-wrapper-font-icons"
@@ -111,7 +111,7 @@
                       recorder-view-wrapper-buttons"
                 id="cloud-upload-button"
                 ng-click="uploadToS3()"
-                ng-show="lyrics"
+                ng-show="lyrics.lyrics"
             >
                 <md-icon
                     class="recorder-view-wrapper-font-icons"
@@ -141,7 +141,7 @@
         >
             <div
                 class="recorder-view-content-wrapper-lyrics-wrapper"
-                ng-if="lyrics"
+                ng-if="lyrics.lyrics"
             >
                 <div
                     layout="row"
@@ -165,7 +165,8 @@
                     class="recorder-view-wrapper-content-wrapper-lyrics-wrapper-lyrics-text"
                     ng-show="!isLyricEditorActive"
                 >
-                    <span ng-show="lyrics">{{ lyrics }}</span>
+                    <span ng-show="lyrics.lyrics">{{ lyrics.lyrics }}</span>
+                    <span ng-show="lyrics.errorMessage">{{ lyrics.errorMessage }}</span>
                 </p>
 
                 <md-input-container
@@ -175,7 +176,7 @@
                 >
                     <textarea
                         md-select-on-focus
-                        ng-model="lyrics"
+                        ng-model="lyrics.lyrics"
                     >
                     </textarea>
                 </md-input-container>

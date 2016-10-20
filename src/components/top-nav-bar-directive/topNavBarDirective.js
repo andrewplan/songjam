@@ -22,7 +22,7 @@ function topNavBar() {
               $scope.authService = authService;
               $scope.user = userService.getCurrentUser();
 
-              if ( $state.current.name !== 'library' ) {
+              if ( $state.current.name !== 'library-view' ) {
                   $scope.onLibraryView = false;
               }
               else {
