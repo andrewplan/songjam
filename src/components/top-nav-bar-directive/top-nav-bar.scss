@@ -17,7 +17,6 @@ body, html {
     justify-content: space-between;
     align-items: center;
     background-color: rgba(255,255,255,0.0);
-    // color: white;
     color: #F4511E;
     transition: all 0.2s ease-in-out;
   }
@@ -66,7 +65,6 @@ h1 {
   font-size: 2em;
   font-weight: 900;
   letter-spacing: 1px;
-  transition: 0.2s all ease-in-out;
 
   &:hover {
       cursor: pointer;
@@ -74,7 +72,7 @@ h1 {
 }
 
 #sign-in {
-  height: 3em;
+    height: 3em;
 }
 
 .nav-bar-transition {

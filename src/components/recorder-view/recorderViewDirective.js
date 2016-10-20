@@ -19,6 +19,9 @@ function recorderViewDir () {
                       elem
                           .addClass( 'recording-active' );
                       angular
+                          .element( elem[ 0 ].querySelector( '#bookmark-button' ) )
+                          .addClass( 'md-fab md-primary' );
+                      angular
                           .element( elem[ 0 ].querySelector( '#songjam-heading' ) )
                           .removeClass( 'color-header-recorder-view-default' );
                   } );

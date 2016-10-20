@@ -21,16 +21,16 @@ function topNavBar() {
         , controller: ( $scope, $state, authService, userService ) => {
               $scope.authService = authService;
               $scope.user = userService.getCurrentUser();
-              $scope.onLibraryView = true;
 
               if ( $state.current.name !== 'library' ) {
                   $scope.onLibraryView = false;
               }
+              else {
+                  $scope.onLibraryView = true;
+              }
           }
         , link: ( scope, elem, attrs ) => {
-              // if ( $scope.currentState !== 'library-view' ) {
-              //     $scope.onLibraryView = false;
-              // }
+
         }
     };
 }

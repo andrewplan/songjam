@@ -1,13 +1,15 @@
 import { BinaryClient } from 'binaryjs-client';
 
-function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, recorderService, userService ){
+function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderService, userService ){
 
     $scope.user = userService.getCurrentUser();
     $scope.bookmarks = recorderService.getBookmarks();
 
     $scope.isReadyToRecord = true;
     $scope.isRecording = false;
-    $scope.isRecordingFinished = false;
+    $scope.isGoogleSpeechActive = false;
+    $scope.isLyricEditorActive = false;
+    $scope.lyricsErrorMessage = 'No lyrics detected, sorry about that!'
 
     let client = new BinaryClient('ws://localhost:9001');
 
@@ -33,6 +35,13 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
     });
     $scope.microphone.start();
 
+    $scope.openLyricsEditor = () => {
+        $scope.isLyricEditorActive = !$scope.isLyricEditorActive;
+        if ( $scope.lyrics === $scope.lyricsErrorMessage ) {
+            $scope.lyrics = 'Type lyrics here';
+        }
+    }
+
     $scope.uploadToS3 = () => {
         client.send( {}, { user_id: $scope.user._id, email: $scope.user.email, type: 'upload-to-S3' } );
     };
@@ -46,8 +55,9 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
                             $scope.lyrics = data;
                         }
                         else {
-                            $scope.lyrics = "No lyrics detected -- sorry about that!  Try recording again."
+                            $scope.lyrics = $scope.lyricsErrorMessage;
                         }
+                        $scope.isGoogleSpeechActive = false;
                     }
                     else if ( meta.type === 'mp3PreviewUrl' ) {
                         $scope.audioPreviewUrl = data.url;
@@ -121,6 +131,7 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
                 };
 
                 $scope.stopRecording = () => {
+                    $scope.isGoogleSpeechActive = true;
                     $scope.isReadyToRecord = false;
                     $scope.isRecording = false;
 

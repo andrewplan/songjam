@@ -1,15 +1,30 @@
 <div class="recorder-view-wrapper">
     <top-nav-bar type="main"></top-nav-bar>
     <div class="recorder-view-content-wrapper">
-        <h2>Select the microphone to start recording your next SongJam.</h2>
-        <div ng-hide="audioPreviewUrl">
+        <h2 ng-show="isReadyToRecord">
+            Select the microphone to start recording your next SongJam.
+        </h2>
+        <h2
+            class="recorder-view-wrapper-content-wrapper-bookmarking-instructions"
+            ng-show="isRecording"
+        >
+            Sing something cool?
+            <br/>
+            Bookmark it so SongJam can remember it for you.
+        </h2>
+        <div
+            ng-hide="audioPreviewUrl"
+        >
             <div
               id="waveform-recorder-view"
             >
             </div>
         </div>
 
-        <div ng-if="audioPreviewUrl">
+        <div
+            class="recorder-view-wrapper-content-wrapper-mp3-player-wrapper"
+            ng-if="audioPreviewUrl"
+        >
             <!-- <h2>Preview your SongJam:</h2> -->
             <mp3-player-dir
               audio-preview-url="audioPreviewUrl"
@@ -25,7 +40,9 @@
         >
             <md-button
                 class="md-icon-button
+                      md-fab
                       recorder-view-wrapper-buttons"
+                id="restart-recording-button"
                 ng-click="restartRecording()"
                 ng-show="lyrics"
             >
@@ -40,12 +57,12 @@
             <md-button
                 class="md-icon-button
                       recorder-view-wrapper-buttons"
+                id="stop-button"
                 ng-click="stopRecording()"
                 ng-show="isRecording"
             >
                 <md-icon
                     class="recorder-view-wrapper-font-icons"
-                    id="stop-button"
                     md-font-icon="stop"
                     md-font-set="material-icons"
                 >
@@ -54,7 +71,10 @@
             </md-button>
             <md-button
                 class="md-icon-button
+                      md-fab
+                      md-primary
                       recorder-view-wrapper-buttons"
+                id="bookmark-button"
                 ng-click="addBookmark()"
                 ng-show="isRecording"
             >
@@ -71,12 +91,12 @@
                       md-primary
                       md-icon-button
                       recorder-view-wrapper-buttons"
+                id="record-button"
                 ng-click="startRecording()"
                 ng-show="isReadyToRecord"
             >
                 <md-icon
                     class="recorder-view-wrapper-font-icons"
-                    id="record-button"
                     md-font-icon="mic"
                     md-font-set="material-icons"
                 >
@@ -86,9 +106,11 @@
 
             <md-button
                 class="md-icon-button
+                      md-fab
+                      md-primary
                       recorder-view-wrapper-buttons"
+                id="cloud-upload-button"
                 ng-click="uploadToS3()"
-                flex="5"
                 ng-show="lyrics"
             >
                 <md-icon
@@ -101,12 +123,67 @@
             </md-button>
         </div>
 
-        <div ng-if="lyrics">
-            <h2>Lyrics:</h2>
-            <p>{{ lyrics }}</p>
+        <div
+            class="recorder-view-content-wrapper-google-speech-progress-indicator"
+            ng-if="isGoogleSpeechActive"
+        >
+            <div
+                layout="row"
+                layout-sm="column"
+                layout-align="space-around"
+            >
+                <md-progress-circular md-diameter="96"></md-progress-circular>
+            </div>
+            <h2>Please wait while we retrieve your awesome lyrics from your SongJam.<h2>
+        </div>
+        <div
+            class="recorder-view-content-wrapper-lyrics-wrapper-flex-wrapper"
+        >
+            <div
+                class="recorder-view-content-wrapper-lyrics-wrapper"
+                ng-if="lyrics"
+            >
+                <div
+                    layout="row"
+                    layout-align="center-center"
+                >
+                    <h2>Lyrics</h2>
+                    <md-button
+                        class="md-icon-button"
+                        ng-click="openLyricsEditor()"
+                    >
+                        <md-icon
+                            md-font-icon="mode_edit"
+                            md-font-set="material-icons"
+                        >
+                            mode_edit
+                        </md-icon>
+                    </md-button>
+                </div>
+
+                <p
+                    class="recorder-view-wrapper-content-wrapper-lyrics-wrapper-lyrics-text"
+                    ng-show="!isLyricEditorActive"
+                >
+                    <span ng-show="lyrics">{{ lyrics }}</span>
+                </p>
+
+                <md-input-container
+                    class="recorder-view-wrapper-content-wrapper-lyrics-wrapper-lyrics-editor
+                            md-block"
+                    ng-show="isLyricEditorActive"
+                >
+                    <textarea
+                        md-select-on-focus
+                        ng-model="lyrics"
+                    >
+                    </textarea>
+                </md-input-container>
+            </div>
         </div>
 
-        <!-- <h2>Bookmarks:</h2>mic
+
+        <!-- <h2>Bookmarks:</h2>
         <ul>
           <li ng-repeat="bookmark in bookmarks">{{ bookmark }}</li>
         </ul> -->

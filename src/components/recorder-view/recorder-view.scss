@@ -2,13 +2,40 @@
     height: 100vh;
     padding: 0;
     margin: 0 auto;
-    // display: flex;
-    // justify-content: center;
     text-align: center;
     transition: 0.5s all ease-in-out;
 
-    &-content-wrapper-bottom-row-buttons-wrapper {
-        padding: 0 4em;
+    &-content-wrapper {
+        &-bookmarking-instructions {
+            color: gainsboro;
+        }
+
+        &-bottom-row-buttons-wrapper {
+            margin-top: 2em;
+            padding: 0 4em;
+        }
+
+        &-mp3-player-wrapper {
+            padding: 0 10vh;
+        }
+
+        &-google-speech-progress-indicator {
+            margin-top: 5em;
+        }
+
+        &-lyrics-wrapper {
+            width: 100%;
+            padding: 0 20vh;
+
+            &-lyrics-text {
+                font-size: 1.2em;
+            }
+
+            &-lyrics-editor {
+                padding: 0 20vh;
+                font-family: 'Lato';
+            }
+        }
     }
 
     &-buttons {
@@ -18,6 +45,7 @@
 
     &-font-icons {
         font-size: 36px;
+        color: #F4511E;
     }
 
     #record-button {
