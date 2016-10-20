@@ -15,7 +15,7 @@
         <input type="search" ng-model="songjamSearchQuery"></input>
     </md-input-container>
 
-    <div>
+    <div class="top-nav-bar-main-view-wrapper-right-side-buttons-wrapper record-button">
         <md-button
           class="md-raised md-primary"
           ui-sref="recorder"
@@ -23,20 +23,22 @@
           RECORD
         </md-button>
         <md-menu md-position-mode="target-right target">
-            <md-button
-                class="md-icon-button
-                      top-nav-bar-main-wrapper-avatar-icon-wrapper"
-                ng-click="$mdOpenMenu( $event )"
+            <div
+                class="top-nav-bar-main-view-wrapper-avatar-wrapper"
+                ng-style="{ 'background-image': 'url( {{ user.profileImgUrl }} )', 'background-size': 'cover', 'background-position': 'center' }"
             >
-                <img
-                    alt=""
-                    class="top-nav-bar-main-wrapper-avatar-icon"
-                    src="{{ user.profileImgUrl }}"
+                <md-button
+                    class="md-icon-button
+                          top-nav-bar-main-view-wrapper-avatar-icon-button"
+                    ng-click="$mdOpenMenu( $event )"
                 >
-            </md-button>
+                </md-button>
+            </div>
+
+
             <md-menu-content width="2">
                 <md-menu-item>
-                    <p class="md-title">Signed in as Andrew Plan</p>
+                    <p class="md-title">Signed in as {{ user.firstName }} {{ user.lastName }}</p>
                 </md-menu-item>
 
                 <md-menu-divider></md-menu-divider>
@@ -44,10 +46,10 @@
                 <md-menu-item>
                     <md-button ui-sref="library-view">Library</md-button>
                 </md-menu-item>
-
-                <md-menu-item>
+                
+                <!-- <md-menu-item>
                     <md-button>Account Settings</md-button>
-                </md-menu-item>
+                </md-menu-item> -->
 
                 <md-menu-item>
                     <md-button href="#/" ng-click="authService.logout()">Logout</md-button>
