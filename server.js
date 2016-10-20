@@ -91,6 +91,7 @@ binaryServer.on('connection', function(client) {
           speechClient.recognize( fileName, options, (err, result) => {
             if (err) {
               console.error(err);
+              client.send( result, { type: 'transcription' } );
               return;
             }
 

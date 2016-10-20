@@ -4,7 +4,7 @@ function landingPageCtrl( $scope, authService  ) {
           // the login method in the view
           $scope.authService = authService;
 
-          $scope.mission = "The collaborative voice memo app designed for music creators.";
+          $scope.mission = "The voice memo app designed for music creators.";
       }
       init();
 }

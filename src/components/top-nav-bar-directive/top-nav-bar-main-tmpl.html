@@ -1,10 +1,20 @@
 <nav
     class="top-nav-bar-main-view-wrapper"
-    ng-class="{ min:boolChangeClass}"
+    ng-class="{ min:boolChangeClass }"
 >
-    <h1 ui-sref="library-view">SONGJAM</h1>
+    <h1
+        id="songjam-heading"
+        ui-sref="library-view"
+    >
+        SONGJAM
+    </h1>
 
-    <md-input-container class="top-nav-bar-main-view-wrapper-search-bar" layout="row" layout-align="center center">
+    <md-input-container
+        class="top-nav-bar-main-view-wrapper-search-bar"
+        layout="row"
+        layout-align="center center"
+        ng-show="onLibraryView"
+    >
         <md-icon
           class="top-nav-bar-main-view-wrapper-search-bar-icon"
           md-font-icon="search"
@@ -18,7 +28,7 @@
     <div class="top-nav-bar-main-view-wrapper-right-side-buttons-wrapper record-button">
         <md-button
           class="md-raised md-primary"
-          ui-sref="recorder"
+          ui-sref="recorder-view"
         >
           RECORD
         </md-button>
@@ -46,7 +56,7 @@
                 <md-menu-item>
                     <md-button ui-sref="library-view">Library</md-button>
                 </md-menu-item>
-                
+
                 <!-- <md-menu-item>
                     <md-button>Account Settings</md-button>
                 </md-menu-item> -->

@@ -10,12 +10,11 @@
     >
 
       <md-card-title
-
           layout="row"
-          ui-sref="playback-view( { recording: recording } )"
       >
           <md-card-title-text
               flex="80"
+              ui-sref="playback-view( { recording: recording } )"
           >
               <span class="md-headline">
                   {{ recording.created | date: "MM/dd/yyyy h:mma" }}
@@ -77,38 +76,39 @@
                   class="mp3-player-directive-player-controls"
               >
                 <md-button
-                class="md-icon-button"
-                ng-click="wavesurfer.play()"
+                    class="md-icon-button"
+                    ng-click="wavesurfer.play()"
                 >
-                <md-icon
-                md-font-icon="play_arrow"
-                md-font-set="material-icons"
-                >
-                play_arrow
-              </md-icon>
-              </md-button>
+                    <md-icon
+                        md-font-icon="play_arrow"
+                        md-font-set="material-icons"
+                    >
+                    play_arrow
+                    </md-icon>
+                </md-button>
                 <md-button
-                class="md-icon-button"
-                ng-click="wavesurfer.pause()"
+                    class="md-icon-button"
+                    ng-click="wavesurfer.pause()"
                 >
-                <md-icon
-                md-font-icon="pause"
-                md-font-set="material-icons"
+                    <md-icon
+                        md-font-icon="pause"
+                        md-font-set="material-icons"
+                    >
+                    pause
+                    </md-icon>
+                </md-button>
+                <md-button
+                    class="md-icon-button"
+                    ng-click="wavesurfer.stop()"
                 >
-                pause
-                </md-icon>
-              </md-button>
-              <md-button
-              class="md-icon-button"
-              ng-click="wavesurfer.stop()"
-              >
-                <md-icon
-                  md-font-icon="stop"
-                  md-font-set="material-icons"
-                >
-                  stop
-                </md-icon>
-              </md-button>
+                    <md-icon
+                        md-font-icon="stop"
+                        md-font-set="material-icons"
+                    >
+                    stop
+                    </md-icon>
+                </md-button>
+
         </div>
         <div
             class="mp3-player-directive-other-controls-wrapper"

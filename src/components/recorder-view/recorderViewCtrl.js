@@ -5,6 +5,10 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
     $scope.user = userService.getCurrentUser();
     $scope.bookmarks = recorderService.getBookmarks();
 
+    $scope.isReadyToRecord = true;
+    $scope.isRecording = false;
+    $scope.isRecordingFinished = false;
+
     let client = new BinaryClient('ws://localhost:9001');
 
     $window = $window || {};
@@ -14,8 +18,8 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
       container: '#waveform-recorder-view'
       , barWidth: 4
       , waveColor: '#fc5830'
-      , height: 200
-      , cursorColor: '#FFFFFF'
+      , height: 256
+      , cursorColor: 'rgba( 255, 255, 255, 0.0 )'
     } );
     $scope.microphone = Object.create(WaveSurfer.Microphone);
     $scope.microphone.init({
@@ -29,10 +33,6 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
     });
     $scope.microphone.start();
 
-    $scope.restartRecording = () => {
-        $state.go( $state.current.name, $state.params, { reload: true } );
-    }
-
     $scope.uploadToS3 = () => {
         client.send( {}, { user_id: $scope.user._id, email: $scope.user.email, type: 'upload-to-S3' } );
     };
@@ -42,11 +42,15 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
             stream.on( 'data', data => {
                 $scope.$apply( () => {
                     if ( meta.type === 'transcription' ) {
-                        $scope.lyrics = data;
+                        if ( data ) {
+                            $scope.lyrics = data;
+                        }
+                        else {
+                            $scope.lyrics = "No lyrics detected -- sorry about that!  Try recording again."
+                        }
                     }
                     else if ( meta.type === 'mp3PreviewUrl' ) {
                         $scope.audioPreviewUrl = data.url;
-                        console.log( $scope.audioPreviewUrl );
                     }
                     else if ( meta.type === 's3Data' ) {
                         $scope.s3Data = data;
@@ -68,7 +72,7 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
     } );
 
     client.on('open', () => {
-        let recording = false;
+        // $scope.isRecording = false;
 
         if ( !navigator.getUserMedia )
           navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
@@ -89,7 +93,8 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
             let paused = false;
 
             $scope.startRecording = () => {
-                recording = true;
+                $scope.isRecording = true;
+                $scope.isReadyToRecord = false;
 
                 $window.audioStream = client.createStream( { user_id: $scope.user._id, type: 'audio' } );
 
@@ -100,7 +105,7 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
                 recorder = context.createScriptProcessor(bufferSize, 1, 1);
 
                 recorder.onaudioprocess = ( e ) => {
-                    if( !recording ) return;
+                    if( !$scope.isRecording ) return;
                     console.log ('recording');
 
                     var left = e.inputBuffer.getChannelData(0);
@@ -116,7 +121,9 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
                 };
 
                 $scope.stopRecording = () => {
-                    recording = false;
+                    $scope.isReadyToRecord = false;
+                    $scope.isRecording = false;
+
                     $window.audioStream.end();
                     $window.audioStream = null;
 
@@ -124,6 +131,11 @@ function recorderViewCtrl ($scope, $state, $stateParams, $interval, $window, rec
                     audioInput = null;
                     bufferSize = null;
                     recorder = null;
+                };
+
+                $scope.restartRecording = () => {
+                    $scope.isRecording = false;
+                    $state.go( $state.current.name, $state.params, { reload: true } );
                 };
             };
         }

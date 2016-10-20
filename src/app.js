@@ -21,10 +21,8 @@ import './components/library-view/library-view.scss';
 import libraryViewHtml from './components/library-view/libraryViewTmpl.html'
 import libraryViewCtrl from './components/library-view/libraryViewCtrl'
 
-import './components/recorder-view/recorder-view.scss';
-import recorderViewHtml from './components/recorder-view/recorder-view-tmpl.html'
-import recorderViewCtrl from './components/recorder-view/recorderViewCtrl.js'
 import recorderService from './services/recorderService.js'
+import recorderViewDir from './components/recorder-view/recorderViewDirective'
 
 import './components/playback-view/playback-view.scss';
 import playbackViewHtml from './components/playback-view/playback-view-tmpl.html'
@@ -98,13 +96,26 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
     .directive( 'markersContainerDir', markersContainerDir )
     .directive( 'markerDir', markerDir )
     .directive( 'playerDir', playerDir )
+    .directive( 'recorderViewDir', recorderViewDir )
     .config( function( $httpProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, lockProvider, jwtOptionsProvider, jwtInterceptorProvider ) {
 
-        lockProvider.init({
+        lockProvider.init( {
           clientID: 'QWzoH8reUjNZRsM9pGqlZFEyUjnSoKuX',
           domain: 'songjam.auth0.com'
-          , options: { auth: { redirect: false } }
-        });
+          , options: {
+              autoclose: false
+              , auth: {
+                  redirect: false
+              }
+              , languageDictionary: {
+                  emailInputPlaceholder: "something@youremail.com",
+                  title: "SongJam"
+              }
+              , theme: {
+                  primaryColor: '#F4511E'
+              }
+          }
+        } );
 
         jwtOptionsProvider.config({
           tokenGetter: function() {
@@ -162,11 +173,10 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
                     profile: null
                 }
             } )
-            .state( 'recorder', {
+            .state( 'recorder-view', {
                 url: '/recorder'
                 , parent: 'main-view'
-                , template: recorderViewHtml
-                , controller: recorderViewCtrl
+                , template: '<recorder-view-dir></recorder-view-dir>'
             } )
             .state( 'playback-view', {
                 url: '/playback'
@@ -176,6 +186,5 @@ angular.module( 'songJamApp', [ 'auth0.lock', 'angular-jwt', uiRouter, 'ngMateri
                 , params: {
                     recording: null
                 }
-                // , controller: playbackViewCtrl
             } )
     } );

@@ -1,31 +1,43 @@
 .recorder-view-wrapper {
-    height: 84vh;
-    padding: 0 1.2em;
-    display: flex;
-    justify-content: center;
-    // align-items: center;
-}
+    height: 100vh;
+    padding: 0;
+    margin: 0 auto;
+    // display: flex;
+    // justify-content: center;
+    text-align: center;
+    transition: 0.5s all ease-in-out;
 
-.recorder-record-button {
-    font-size: 48px;
-}
+    &-content-wrapper-bottom-row-buttons-wrapper {
+        padding: 0 4em;
+    }
 
-#save {
-    text-decoration: none;
-    color: grey;
-    cursor: default;
-}
+    &-buttons {
+        height: 36px;
+        width: 36px;
+    }
 
-#save:hover {
-    color: black;
-    cursor: pointer;
+    &-font-icons {
+        font-size: 36px;
+    }
+
+    #record-button {
+        font-size: 36px
+    }
+
 }
 
 #waveform-recorder-view {
-    background-color: rgba(51, 35, 62, 0.06);
-    border-radius: 0.5em;
+    height: 300px;
 }
 
 .markers-container-dir {
     position: relative;
+}
+
+.recording-active {
+    background-color: rgba( 0, 0, 0, 0.77 );
+}
+
+.color-header-recorder-view-default {
+    color: black;
 }

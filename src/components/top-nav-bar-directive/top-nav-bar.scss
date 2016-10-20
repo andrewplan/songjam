@@ -1,4 +1,3 @@
-$button-height: 3em;
 @mixin background-and-text-transition( $bg-color, $text-color ) {
     background-color: $bg-color;
     color: $text-color;
@@ -6,6 +5,11 @@ $button-height: 3em;
 
 * {
   font-family: 'Montserrat', sans-serif;
+}
+
+body, html {
+    height: 100vh;
+    width: 100vw;
 }
 
 .top-nav-bar-landing-page-wrapper, .top-nav-bar-main-view-wrapper {
@@ -62,15 +66,15 @@ h1 {
   font-size: 2em;
   font-weight: 900;
   letter-spacing: 1px;
+  transition: 0.2s all ease-in-out;
+
+  &:hover {
+      cursor: pointer;
+  }
 }
 
 #sign-in {
-  height: $button-height;
-}
-
-#create-account {
-  height: $button-height;
-  // border: 1px solid white;
+  height: 3em;
 }
 
 .nav-bar-transition {
