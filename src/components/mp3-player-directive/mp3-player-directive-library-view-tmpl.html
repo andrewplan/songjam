@@ -1,131 +1,156 @@
-<md-card
-  class="mp3-player-directive-library-view-wrapper
-          md-whiteframe-9dp"
-  layout="row"
->
+<div class="mp3-player-directive-outer-wrapper">
     <div
-        id="card-recording-info"
-        layout-align="start-center"
-
+        class="md-icon-button
+              large-play-button"
+        ng-click="wavesurfer.play()"
     >
+        <md-icon
+            class="large-play-button-icon"
+            md-font-icon="play_circle_filled"
+            md-font-set="material-icons"
+            ng-click="wavesurfer.play()"
+        >
+            play_circle_filled
+        </md-icon>
+        <md-icon
+            class="large-play-button-icon-outline"
+            md-font-icon="play_arrow"
+            md-font-set="material-icons"
+            ng-click="wavesurfer.play()"
+        >
+            play_arrow
 
-      <md-card-title
-          layout="row"
-      >
-          <md-card-title-text
-              flex="80"
-              ui-sref="playback-view( { recording: recording } )"
-          >
-              <span class="md-headline">
-                  {{ recording.created | date: "MM/dd/yyyy h:mma" }}
-              </span>
-              <span>{{ recording.notes | limitTo: 50 }} ...</span>
-          </md-card-title-text>
+        </md-icon>
+    </div>
+    <md-card
+      class="mp3-player-directive-wrapper
+              md-whiteframe-9dp"
+      layout="row"
+    >
+        <div
+            id="card-recording-info"
+            layout-align="start-center"
+        >
 
-          <md-card-actions
-              flex="20"
+          <md-card-title
               layout="row"
-              layout-align="end start"
           >
-              <md-button
-                  class="md-icon-button"
-                  ng-click="deleteRecording( recording )"
+              <md-card-title-text
+                  class="mp3-player-directive-wrapper-title-text-wrapper"
+                  flex="80"
+                  ui-sref="playback-view( { recording: recording } )"
               >
-                    <md-icon
-                      md-font-icon="delete"
-                      md-font-set="material-icons"
-                    >
-                      delete
-                    </md-icon>
-              </md-button>
-          </md-card-actions>
-      </md-card-title>
+                  <span class="md-headline">
+                      {{ recording.created | date: "MM/dd/yyyy h:mma" }}
+                  </span>
+                  <span>{{ recording.notes | limitTo: 50 }} ...</span>
+              </md-card-title-text>
 
-      <md-card-content>
+              <md-card-actions
+                  flex="20"
+                  layout="row"
+                  layout-align="end start"
+              >
+                  <md-button
+                      class="md-icon-button"
+                      ng-click="deleteRecording( recording )"
+                  >
+                        <md-icon
+                          md-font-icon="delete"
+                          md-font-set="material-icons"
+                        >
+                          delete
+                        </md-icon>
+                  </md-button>
+              </md-card-actions>
+          </md-card-title>
 
-          <div class="waveform"></div>
+          <md-card-content>
 
-          <div
-              markers-container-dir
-              class="markers-container-dir"
-              recording="recording"
-              ng-if="duration"
-              duration="duration"
-              waveform-width="waveformWidth"
-          >
-              <span
-                  marker-dir
-                  class="marker-dir"
-                  marker="marker"
-                  duration="duration"
-                  ng-click="wavesurfer.play( marker.position )"
+              <div class="waveform"></div>
+
+              <div
+                  markers-container-dir
+                  class="markers-container-dir"
+                  recording="recording"
                   ng-if="duration"
-                  ng-repeat="marker in recording.markers"
+                  duration="duration"
                   waveform-width="waveformWidth"
               >
-                  ►
-              </span>
+                  <span
+                      marker-dir
+                      class="marker-dir"
+                      marker="marker"
+                      duration="duration"
+                      ng-click="wavesurfer.play( marker.position )"
+                      ng-if="duration"
+                      ng-repeat="marker in recording.markers"
+                      waveform-width="waveformWidth"
+                  >
+                      ►
+                  </span>
+              </div>
+
+              <div
+                  class="mp3-player-directive-all-controls-wrapper"
+                  layout="row"
+                  layout-align="space-between"
+              >
+                  <div
+                      class="mp3-player-directive-player-controls"
+                  >
+                    <md-button
+                        class="md-icon-button"
+                        ng-click="wavesurfer.play()"
+                    >
+                        <md-icon
+                            md-font-icon="play_arrow"
+                            md-font-set="material-icons"
+                        >
+                        play_arrow
+                        </md-icon>
+                    </md-button>
+                    <md-button
+                        class="md-icon-button"
+                        ng-click="wavesurfer.pause()"
+                    >
+                        <md-icon
+                            md-font-icon="pause"
+                            md-font-set="material-icons"
+                        >
+                        pause
+                        </md-icon>
+                    </md-button>
+                    <md-button
+                        class="md-icon-button"
+                        ng-click="wavesurfer.stop()"
+                    >
+                        <md-icon
+                            md-font-icon="stop"
+                            md-font-set="material-icons"
+                        >
+                        stop
+                        </md-icon>
+                    </md-button>
+
+            </div>
+            <div
+                class="mp3-player-directive-other-controls-wrapper"
+                flex="60"
+            >
+                <md-button ng-click="wavesurfer.clearRegions()">
+                    <span>Clear Regions</span>
+                </md-button>
+                <md-button ng-href="{{ recording.s3Location }}" download="">
+                    Download
+                </md-button>
+                <span ng-if="duration">{{ duration | limitTo: 5 }} s</span>
+            </div>
           </div>
 
-          <div
-              class="mp3-player-directive-all-controls-wrapper"
-              layout="row"
-              layout-align="space-between"
-          >
-              <div
-                  class="mp3-player-directive-player-controls"
-              >
-                <md-button
-                    class="md-icon-button"
-                    ng-click="wavesurfer.play()"
-                >
-                    <md-icon
-                        md-font-icon="play_arrow"
-                        md-font-set="material-icons"
-                    >
-                    play_arrow
-                    </md-icon>
-                </md-button>
-                <md-button
-                    class="md-icon-button"
-                    ng-click="wavesurfer.pause()"
-                >
-                    <md-icon
-                        md-font-icon="pause"
-                        md-font-set="material-icons"
-                    >
-                    pause
-                    </md-icon>
-                </md-button>
-                <md-button
-                    class="md-icon-button"
-                    ng-click="wavesurfer.stop()"
-                >
-                    <md-icon
-                        md-font-icon="stop"
-                        md-font-set="material-icons"
-                    >
-                    stop
-                    </md-icon>
-                </md-button>
+          </md-card-content>
 
         </div>
-        <div
-            class="mp3-player-directive-other-controls-wrapper"
-            flex="60"
-        >
-            <md-button ng-click="wavesurfer.clearRegions()">
-                <span>Clear Regions</span>
-            </md-button>
-            <md-button ng-href="{{ recording.s3Location }}" download="">
-                Download
-            </md-button>
-            <span ng-if="duration">{{ duration | limitTo: 5 }} s</span>
-        </div>
-      </div>
 
-      </md-card-content>
-
-    </div>
-
-</md-card>
+    </md-card>
+</div>

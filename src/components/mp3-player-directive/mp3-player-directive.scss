@@ -1,4 +1,4 @@
-.mp3-player-directive-library-view-wrapper {
+.mp3-player-directive-wrapper {
     overflow: scroll;
     transition: all 0.3s ease-in-out;
 
@@ -13,6 +13,11 @@
             cursor: pointer;
             color: #F4511E;
         }
+    }
+
+    &-title-text-wrapper {
+        margin-left: 6em;
+        margin-bottom: 0em;
     }
 }
 
@@ -40,4 +45,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.mp3-player-directive-outer-wrapper {
+    position: relative;
+    margin-bottom: 4em;
+}
+
+.large-play-button {
+    top: -11px;
+    left: 25px;
+    position: absolute;
+}
+
+
+.large-play-button-icon {
+    font-size: 86px;
+    color: #F4511E;
+}
+
+.large-play-button-icon-outline {
+    font-size: 55px;
+    position: absolute;
+    top: 0px;
+    left: 17px;
+    color: white;
 }
