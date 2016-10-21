@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently 'webpack -w -d' 'nodemon server.js'"
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "6.6.0"
   },
   "keywords": [
     "music",
@@ -41,7 +44,6 @@
     "mongoose": "^4.6.3",
     "mongoose-findorcreate": "^0.1.2",
     "node-sass": "^3.10.1",
-    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-auth0": "^0.5.2",
     "sass-loader": "^4.0.2",
