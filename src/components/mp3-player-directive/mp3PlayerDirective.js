@@ -7,6 +7,7 @@ function mp3PlayerDir() {
     return {
         restrict: 'EA'
         , replace: true
+        , template: mp3PlayerDirectiveHtml
         , scope: {
             audioPreviewUrl: '='
             , bookmarks: '='
@@ -22,21 +23,21 @@ function mp3PlayerDir() {
               $scope.waveformWidth;
 
               $scope.deleteRecording = ( recording ) => {
-                recorderService.deleteRecording( recording );
-                $state.reload();
+                  recorderService.deleteRecording( recording );
+                  if ( $state.current.name === 'library-view' ) {
+                      $state.reload();
+                  }
+                  else {
+                      $state.go( 'library-view' );
+                  }
               };
 
               $scope.updateRecording = ( recording ) => {
-                recorderService.updateRecording( recording );
+                  recorderService.updateRecording( recording );
               };
         }
-        , template: mp3PlayerDirectiveHtml
         , link: function( scope, elem, attr, recorderService ) {
             scope.isPlaying = false;
-
-            // if ( attr.type === 'recorder-view' ) {
-            //     elem.css( { 'margin-top': '12vh' } );
-            // }
 
             scope.wavesurfer = WaveSurfer.create( {
                 container: elem[ 0 ].querySelector( '.waveform' )

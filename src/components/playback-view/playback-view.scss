@@ -1,8 +1,34 @@
 .playback-view-wrapper {
-    height: 84vh;
+    height: 100vh;
 
-    #playback-view-recording-dir {
-        height: 84vh;
+    &-content-wrapper {
+        width: 100%;
+        background-color: #24272e;
+
+        &-recording-info-wrapper {
+            width: 100%;
+            height: 57vh;
+            padding: 7vh 10vh 0em 10vh;
+            margin: 0 auto;
+            position: relative;
+
+            &-lyrics-header-wrapper {
+                position: absolute;
+                top: 85%;
+                color: white;
+
+                &-lyrics-edit-icon {
+                    color: white;
+                }
+            }
+        }
     }
+
+    &-lyrics-content-wrapper {
+        padding: 2vh 10vh 0em 10vh;
+        overflow: scroll;
+        font-size: 1.2em;
+    }
+
 
 }

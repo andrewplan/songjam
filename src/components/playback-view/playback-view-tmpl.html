@@ -1,11 +1,50 @@
 <div class="playback-view-wrapper">
-    <mp3-player-dir
-        id="playback-view-recording-dir"
-        recording="recording"
-        type="playback-view"
-    >
-  </mp3-player-dir>
+    <div class="playback-view-wrapper-content-wrapper">
+        <top-nav-bar type="main"></top-nav-bar>
+        <div class="playback-view-wrapper-content-wrapper-recording-info-wrapper">
+            <mp3-player-dir
+                recording="recording"
+                type="playback-view"
+            >
+            </mp3-player-dir>
+            <div
+                class="playback-view-wrapper-content-wrapper-recording-info-wrapper-lyrics-header-wrapper"
+                layout="row"
+                layout-align="center-center"
+            >
+                <h1>Lyrics</h1>
+                <md-button
+                    class="md-icon-button"
+                    ng-click="openLyricsEditor()"
+                >
+                    <md-icon
+                        class="playback-view-wrapper-content-wrapper-recording-info-wrapper-lyrics-header-wrapper-lyrics-edit-icon"
+                        md-font-icon="mode_edit"
+                        md-font-set="material-icons"
+                    >
+                        mode_edit
+                    </md-icon>
+                </md-button>
+            </div>
+        </div>
+    </div>
 
+    <div class="playback-view-wrapper-lyrics-content-wrapper">
+        <p ng-show="!isLyricEditorActive">{{ recording.notes }}</p>
+
+        <md-input-container
+            class="playback-view-wrapper-lyrics-editor
+                    md-block"
+            ng-show="isLyricEditorActive"
+        >
+            <textarea
+                md-select-on-focus
+                ng-model="recording.notes"
+                style="font-size: 1.1em; font-family: 'Montserrat', sans-serif"
+            >
+            </textarea>
+        </md-input-container>
+    </div>
 
 
 </div>
