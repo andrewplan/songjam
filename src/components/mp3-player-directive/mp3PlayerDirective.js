@@ -1,8 +1,6 @@
 import './mp3-player-directive.scss'
 
-import mp3PlayerDirectiveLibraryViewHtml from './mp3-player-directive-library-view-tmpl.html';
-import mp3PlayerDirectivePlaybackViewHtml from './mp3-player-directive-playback-view-tmpl.html';
-import mp3PlayerDirectiveRecorderViewHtml from './mp3-player-directive-recorder-view-tmpl.html';
+import mp3PlayerDirectiveHtml from './mp3-player-directive-tmpl.html';
 import recorderService from '../../services/recorderService.js';
 
 function mp3PlayerDir() {
@@ -32,21 +30,14 @@ function mp3PlayerDir() {
                 recorderService.updateRecording( recording );
               };
         }
-        , template: ( elem, attr ) => {
-              if ( attr.type === "library-view" ) {
-                  return mp3PlayerDirectiveLibraryViewHtml;
-              }
-              else if ( attr.type === "playback-view" ) {
-                  return mp3PlayerDirectivePlaybackViewHtml;
-              }
-              else if ( attr.type === "recorder-view" ) {
-                  return mp3PlayerDirectiveRecorderViewHtml;
-              }
-
-        }
+        , template: mp3PlayerDirectiveHtml
         , link: function( scope, elem, attr, recorderService ) {
             scope.isPlaying = false;
-            
+
+            // if ( attr.type === 'recorder-view' ) {
+            //     elem.css( { 'margin-top': '12vh' } );
+            // }
+
             scope.wavesurfer = WaveSurfer.create( {
                 container: elem[ 0 ].querySelector( '.waveform' )
                 , scrollParent: false

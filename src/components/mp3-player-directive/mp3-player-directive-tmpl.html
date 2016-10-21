@@ -53,12 +53,34 @@
               <md-card-title-text
                   class="mp3-player-directive-wrapper-title-text-wrapper"
                   flex="80"
+                  ng-show="!audioPreviewUrl"
                   ui-sref="playback-view( { recording: recording } )"
               >
-                  <span class="md-headline">
-                      {{ recording.created | date: "MM/dd/yyyy h:mma" }}
+                  <div
+                      class="md-headline"
+                  >
+                      <a
+                        class="mp3-player-directive-wrapper-title-text-wrapper-timestamp-link"
+                      >
+                          {{ recording.created | date: "MM/dd/yyyy h:mma" }}
+                      </a>
+                  </div>
+                  <span
+                      class="mp3-player-directive-wrapper-title-text-wrapper-notes-link"
+                      style="font-size: 1.1em"
+                  >
+                      {{ recording.notes | limitTo: 50 }} ...
                   </span>
-                  <span>{{ recording.notes | limitTo: 50 }} ...</span>
+              </md-card-title-text>
+
+              <md-card-title-text
+                  class="mp3-player-directive-wrapper-title-text-wrapper"
+                  flex="80"
+                  ng-show="audioPreviewUrl"
+              >
+                  <span class="md-headline">
+                      Preview your SongJam:
+                  </span>
               </md-card-title-text>
 
               <md-card-actions
@@ -69,6 +91,7 @@
                   <md-button
                       class="md-icon-button"
                       ng-click="deleteRecording( recording )"
+                      ng-show="!audioPreviewUrl"
                   >
                         <md-icon
                           md-font-icon="delete"
@@ -86,6 +109,7 @@
 
               <div
                   markers-container-dir
+                  bookmarks="bookmarks"
                   class="markers-container-dir"
                   recording="recording"
                   ng-if="duration"
@@ -95,11 +119,23 @@
                   <span
                       marker-dir
                       class="marker-dir"
-                      marker="marker"
                       duration="duration"
+                      marker="marker"
                       ng-click="wavesurfer.play( marker.position )"
-                      ng-if="duration"
+                      ng-if="!audioPreviewUrl"
                       ng-repeat="marker in recording.markers"
+                      waveform-width="waveformWidth"
+                  >
+                      ►
+                  </span>
+                  <span
+                      marker-dir
+                      bookmark="bookmark"
+                      class="marker-dir"
+                      duration="duration"
+                      ng-click="wavesurfer.play( bookmark.position )"
+                      ng-if="audioPreviewUrl"
+                      ng-repeat="bookmark in bookmarks"
                       waveform-width="waveformWidth"
                   >
                       ►
@@ -121,6 +157,7 @@
                         <md-icon
                             md-font-icon="play_arrow"
                             md-font-set="material-icons"
+                            style="color: #F4511E; font-size: 24px"
                         >
                         play_arrow
                         </md-icon>
@@ -132,6 +169,7 @@
                         <md-icon
                             md-font-icon="pause"
                             md-font-set="material-icons"
+                            style="color: #F4511E; font-size: 24px"
                         >
                         pause
                         </md-icon>
@@ -143,6 +181,7 @@
                         <md-icon
                             md-font-icon="stop"
                             md-font-set="material-icons"
+                            style="color: #F4511E; font-size: 24px"
                         >
                         stop
                         </md-icon>
@@ -153,13 +192,27 @@
                 class="mp3-player-directive-other-controls-wrapper"
                 flex="60"
             >
-                <md-button ng-click="wavesurfer.clearRegions()">
-                    <span>Clear Regions</span>
-                </md-button>
-                <md-button ng-href="{{ recording.s3Location }}" download="">
-                    Download
-                </md-button>
-                <span ng-if="duration">{{ duration | limitTo: 5 }} s</span>
+                <a
+                    class="mp3-player-directive-other-links"
+                    ng-click="wavesurfer.clearRegions()"
+                >
+                    <span style="font-size: 1em">CLEAR REGIONS</span>
+                </a>
+
+                <a
+                    class="mp3-player-directive-other-links"
+                    ng-href="{{ recording.s3Location }}"
+                    download=""
+                >
+                    <span style="font-size: 1em">DOWNLOAD</span>
+                </a>
+
+                <span
+                    ng-if="duration"
+                    style="font-size: 1.1em"
+                >
+                    {{ duration | limitTo: 5 }} s
+                </span>
             </div>
           </div>
 
