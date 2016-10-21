@@ -25,6 +25,7 @@ const app = express();
 
 app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
 
+app.use( cors() );
 app.use( json() );
 app.use( express.static( `${ __dirname }` + '/dist' ) );
 app.use( express.static( `${ __dirname }` + '/server/user-audio-previews' ) );
