@@ -53,21 +53,13 @@
 }
 
 .large-play-button {
-    top: -11px;
+  position: absolute;
+  top: -40px;
+  left: 25px;
+}
+
+.large-pause-button {
+    position: absolute;
+    top: -40px;
     left: 25px;
-    position: absolute;
-}
-
-
-.large-play-button-icon {
-    font-size: 86px;
-    color: #F4511E;
-}
-
-.large-play-button-icon-outline {
-    font-size: 55px;
-    position: absolute;
-    top: 0px;
-    left: 17px;
-    color: white;
 }

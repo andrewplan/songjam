@@ -1,27 +1,42 @@
 <div class="mp3-player-directive-outer-wrapper">
-    <div
-        class="md-icon-button
+    <md-button
+        class="md-fab
+              md-primary
               large-play-button"
         ng-click="wavesurfer.play()"
+        ng-show="!isPlaying"
+        style="width: 72px; height: 72px"
     >
-        <md-icon
-            class="large-play-button-icon"
-            md-font-icon="play_circle_filled"
-            md-font-set="material-icons"
-            ng-click="wavesurfer.play()"
-        >
-            play_circle_filled
-        </md-icon>
         <md-icon
             class="large-play-button-icon-outline"
             md-font-icon="play_arrow"
             md-font-set="material-icons"
-            ng-click="wavesurfer.play()"
+            style="font-size: 48px"
         >
             play_arrow
 
         </md-icon>
-    </div>
+    </md-button>
+
+    <md-button
+        class="md-fab
+                md-primary
+                large-pause-button"
+        ng-click="wavesurfer.pause()"
+        ng-show="isPlaying"
+        style="width: 72px; height: 72px"
+        >
+        <md-icon
+            class="large-pause-button-icon"
+            md-font-icon="pause"
+            md-font-set="material-icons"
+            style="font-size: 48px"
+        >
+            pause
+
+        </md-icon>
+    </md-button>
+
     <md-card
       class="mp3-player-directive-wrapper
               md-whiteframe-9dp"

@@ -45,6 +45,8 @@ function mp3PlayerDir() {
 
         }
         , link: function( scope, elem, attr, recorderService ) {
+            scope.isPlaying = false;
+            
             scope.wavesurfer = WaveSurfer.create( {
                 container: elem[ 0 ].querySelector( '.waveform' )
                 , scrollParent: false
@@ -74,6 +76,14 @@ function mp3PlayerDir() {
                       scope.wavesurfer.pause();
                     });
                 }
+            } );
+
+            scope.wavesurfer.on( 'play', () => {
+                scope.isPlaying = true;
+            } );
+
+            scope.wavesurfer.on( 'pause', () => {
+                scope.isPlaying = false;
             } );
 
             scope.wavesurferUrl = scope.audioPreviewUrl || scope.recording.s3Location;
