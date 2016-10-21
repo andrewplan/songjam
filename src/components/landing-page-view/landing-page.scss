@@ -1,18 +1,26 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .landing-page-wrapper {
-  height: 100vh;
-  width: 100%;
-  text-align: center;
-  background-image: url( './bass-player.jpg' );
-  background-size: cover;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    background-image: url( './bass-player.jpg' );
+    background-size: cover;
 }
 
 main {
-  height: 84vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 84vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+md-button {
+    height: 3em;
+}
+
+span {
+    font-size: 1.1em;
 }
