@@ -116,13 +116,20 @@ function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderServic
                 // the sample rate is in context.sampleRate
                 audioInput = context.createMediaStreamSource(e);
                 bufferSize = 2048;
+
+                // script processor node -- generates, processes or analyzes audio directly with JS
+                // arguments:  buffer size, number of input channels, number of output channels
                 recorder = context.createScriptProcessor(bufferSize, 1, 1);
 
+                // e = audio processing event
+                // onaudioprocess = processes audio from input by accessing inputBuffer on audio processing event
                 recorder.onaudioprocess = ( e ) => {
                     if( !$scope.isRecording ) return;
                     console.log ('recording');
 
+                    //returns audio data on inputBuffer as Float32Array
                     var left = e.inputBuffer.getChannelData(0);
+                    // converts the incoming Float32Array audio data to Int16
                     $window.audioStream.write(convertFloat32ToInt16(left));
                 };
 
