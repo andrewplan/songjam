@@ -4,9 +4,10 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const { json } = require( 'body-parser' );
 const cors = require( 'cors' );
-
+const serverConfig = require( './server/configs/server_config.js' );
 const mongoose = require( 'mongoose' );
 const mongoUri = "mongodb://localhost:27017/songjam";
+const port = serverConfig.serverPort;
 
 const googleSpeechConfig = require( './server/configs/googleSpeechConfig' );
 const Speech = require('google-cloud/node_modules/@google-cloud/speech');
@@ -20,7 +21,6 @@ const wav = require( 'wav' );
 const lame = require( 'lame' );
 const outFile = 'demo.wav';
 
-const port = 4000;
 const app = express();
 
 app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
