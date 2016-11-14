@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently 'webpack -w -d' 'nodemon server.js'"
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "6.6.0"
   },
   "keywords": [
     "music",
