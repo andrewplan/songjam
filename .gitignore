@@ -2,5 +2,7 @@ node_modules
 structure.txt
 server/config
 server/configs
+dist/bundle.js
+dist/bundle.js.map
 *.wav
 *.mp3
