@@ -16,7 +16,7 @@ function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderServic
     };
 
     // let client = new BinaryClient('ws://localhost:9001');
-    let client = new BinaryClient('wss://songjam.us:9001');
+    let client = new BinaryClient('wss://songjam.us:9000');
 
     $window = $window || {};
     let audioContext = $window.AudioContext || $window.webkitAudioContext;
