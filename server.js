@@ -4,6 +4,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const { json } = require( 'body-parser' );
 const cors = require( 'cors' );
+const https = require( 'https' );
 const serverConfig = require( './server/configs/server_config.js' );
 const mongoose = require( 'mongoose' );
 const mongoUri = "mongodb://localhost:27017/songjam";
@@ -22,8 +23,9 @@ const lame = require( 'lame' );
 const outFile = 'demo.wav';
 
 const app = express();
-
-app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
+const httpsServer = https.createServer( app )
+httpsServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
+const binaryServer = BinaryServer( { port: 9000, server: httpsServer } );
 
 app.use( cors() );
 app.use( json() );
@@ -34,8 +36,6 @@ require( './server/masterRoutes' )( app );
 
 mongoose.connect( mongoUri );
 mongoose.connection.once( 'open', () => { console.log( `Mongoose listening at ${ mongoUri }`) } );
-
-binaryServer = BinaryServer( { port: 9001 } );
 
 binaryServer.on('connection', function(client) {
   console.log('new connection');
