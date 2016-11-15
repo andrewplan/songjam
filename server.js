@@ -24,15 +24,12 @@ const wav = require( 'wav' );
 const lame = require( 'lame' );
 const outFile = 'demo.wav';
 
-const options = {
-    key: ldKey
-    , cert: ldCert
-};
-
 const app = express();
-const httpsServer = https.createServer( options, app )
-httpsServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
-const binaryServer = BinaryServer( { port: 9000, server: httpsServer } );
+// const httpsServer = https.createServer( options, app )
+// httpsServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
+app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
+// const binaryServer = BinaryServer( { port: 9000, server: httpsServer } );
+const binaryServer = BinaryServer( { port: 9000 } );
 
 app.use( cors() );
 app.use( json() );
