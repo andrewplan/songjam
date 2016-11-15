@@ -14,8 +14,8 @@ const googleSpeechConfig = require( './server/configs/googleSpeechConfig' );
 const Speech = require('google-cloud/node_modules/@google-cloud/speech');
 const projectId = googleSpeechConfig.project_id;
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './server/configs/googleSpeechCredentials.json';
-const ldKey = fs.readFileSync( './../../../etc/letsencrypt/live/songjam.us/privkey.pem' );
-const ldCert = fs.readFileSync( './../../../etc/letsencrypt/live/songjam.us/fullchain.pem' );
+const ldKey = fs.readFileSync( './../../etc/letsencrypt/live/songjam.us/privkey.pem' );
+const ldCert = fs.readFileSync( './../../etc/letsencrypt/live/songjam.us/fullchain.pem' );
 
 const AWS = require( 'aws-sdk' );
 AWS.config.loadFromPath( './server/configs/awsConfig.json' );
@@ -24,12 +24,17 @@ const wav = require( 'wav' );
 const lame = require( 'lame' );
 const outFile = 'demo.wav';
 
+const options = {
+    key: ldKey
+    , cert: ldCert
+};
+
+console.log( options );
+
 const app = express();
-// const httpsServer = https.createServer( options, app )
-// httpsServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
-app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
-// const binaryServer = BinaryServer( { port: 9000, server: httpsServer } );
-const binaryServer = BinaryServer( { port: 9000 } );
+const httpsServer = https.createServer( options, app )
+httpsServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
+const binaryServer = BinaryServer( { port: 9000, server: httpsServer } );
 
 app.use( cors() );
 app.use( json() );
