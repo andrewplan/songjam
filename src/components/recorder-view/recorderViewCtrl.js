@@ -94,7 +94,7 @@ function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderServic
 
         if ( navigator.getUserMedia ) {
           navigator.getUserMedia( { audio: true }, enableRecording, function( e ) {
-            alert('Error capturing audio.');
+            console.log( "the following error occured: ", err.name );
           } );
         } else alert('getUserMedia not supported in this browser.');
 
