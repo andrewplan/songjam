@@ -35,7 +35,7 @@ const app = express();
 // const httpServer = http.createServer( app );
 // httpServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
 app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
-const binaryServer = BinaryServer( { port: 9000, server: httpServer } );
+const binaryServer = BinaryServer( { port: 9000 } );
 
 app.use( cors() );
 app.use( json() );
