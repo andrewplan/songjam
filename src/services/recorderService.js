@@ -15,19 +15,19 @@ function recorderService ( $http ){
     this.addRecording = recording => {
         console.log( 'addRecording is working! recording is ', recording );
         return $http
-                  .post( 'http://localhost:4000/api/recordings', recording )
+                  .post( '/api/recordings', recording )
                   .then( response => { console.log( response.data ); } );
     };
     this.deleteRecording = recording => {
         console.log( 'deleteRecording is working! recording is ', recording );
         return $http
-                  .delete( 'http://localhost:4000/api/recordings/' + recording._id )
+                  .delete( '/api/recordings/' + recording._id )
                   .then( response => { console.log( response.data ); } );
     };
     this.updateRecording = recording => {
         console.log( 'updateRecording is working! recording is ', recording );
         return $http
-                  .put( 'http://localhost:4000/api/recordings/' + recording._id, recording )
+                  .put( '/api/recordings/' + recording._id, recording )
                   .then( response => { console.log( response.data ); } );
     };
 }

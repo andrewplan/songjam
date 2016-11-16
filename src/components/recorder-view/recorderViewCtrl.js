@@ -16,10 +16,11 @@ function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderServic
     };
 
     // let client = new BinaryClient('ws://localhost:9001');
-    let client = new BinaryClient('wss://songjam.us:9000');
+    let client = new BinaryClient('wss://songjam.us:8080');
 
     $window = $window || {};
     let audioContext = $window.AudioContext || $window.webkitAudioContext;
+    //  let client;
 
     $scope.wavesurferMicInput = WaveSurfer.create( {
       container: '#waveform-recorder-view'
@@ -88,7 +89,8 @@ function recorderViewCtrl ($scope, $state, $stateParams, $window, recorderServic
 
     client.on('open', () => {
         // $scope.isRecording = false;
-
+	// client = new BinaryClient('wss://songjam.us:8080');
+        
         if ( !navigator.getUserMedia )
           navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia || navigator.msGetUserMedia;

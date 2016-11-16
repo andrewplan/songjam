@@ -9,7 +9,6 @@
         height: 60vh;
         padding: 0em 0em 2em 0em;
         margin: 0 auto;
-        // background-image: url( './andrew_plan.jpg' );
         background-color: #24272e;
 
         &-content-flex-wrapper {
@@ -30,13 +29,13 @@
                 margin: 0 1em;
             }
             &-avatar {
-              background-image: url( "./andrew_plan.jpg" );
+              // background-image: url( "./andrew_plan.jpg" );
               height: 50vh;
               width: 50vh;
               border-radius: 50%;
-              background-position: center;
-              background-repeat: no-repeat;
-              background-size: cover;
+              // background-position: center;
+              // background-repeat: no-repeat;
+              // background-size: cover;
               padding: 0 2vh 0 2vh;
             }
         }
@@ -45,7 +44,7 @@
     &-library-audio-wrapper {
         height: 90vh;
         width: 100%;
-        margin-top: 10.1vh;
+        margin-top: 92.09px;
         padding: 45vh 10vh 40vh 10vh;
         position: absolute;
         top: 0;

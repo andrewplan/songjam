@@ -12,7 +12,15 @@
                 <h1 class="library-view-wrapper-user-info-wrapper-content-wrapper-full-name">
                   {{ user.firstName }} {{ user.lastName }}
                 </h1>
-                <div class="library-view-wrapper-user-info-wrapper-content-wrapper-avatar" alt=""></div>
+                <div 
+		     class="library-view-wrapper-user-info-wrapper-content-wrapper-avatar"
+		     ng-style="{ 'background-image': 'url( {{ user.profileImgUrl }} )'
+                                 , 'background-position': 'center'
+                                 , 'background-repeat': 'no-repeat'
+                                 , 'background-size': 'cover' }"	 
+		     alt=""
+		>
+		</div>
                 <h1 class="library-view-wrapper-user-info-wrapper-content-wrapper-songjam-count">
                   {{ songjamCount }} SongJams
                 </h1>

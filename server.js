@@ -4,18 +4,20 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const { json } = require( 'body-parser' );
 const cors = require( 'cors' );
-const https = require( 'http' );
+const http = require( 'http' );
+const https = require( 'https' );
 const serverConfig = require( './server/configs/server_config.js' );
 const mongoose = require( 'mongoose' );
-const mongoUri = "mongodb://localhost:27017/songjam";
+const mongoUri = require( './server/configs/mlab-config.js' ).mongoUri;
 const port = serverConfig.serverPort;
 
 const googleSpeechConfig = require( './server/configs/googleSpeechConfig' );
 const Speech = require('google-cloud/node_modules/@google-cloud/speech');
 const projectId = googleSpeechConfig.project_id;
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './server/configs/googleSpeechCredentials.json';
-const ldKey = fs.readFileSync( './../../etc/letsencrypt/live/songjam.us/privkey.pem' );
-const ldCert = fs.readFileSync( './../../etc/letsencrypt/live/songjam.us/fullchain.pem' );
+const ldKey = fs.readFileSync( './privkey.pem' );
+const ldCert = fs.readFileSync( './fullchain.pem' );
+const ca = fs.readFileSync( './chain.pem' );
 
 const AWS = require( 'aws-sdk' );
 AWS.config.loadFromPath( './server/configs/awsConfig.json' );
@@ -27,20 +29,20 @@ const outFile = 'demo.wav';
 const options = {
     key: ldKey
     , cert: ldCert
+    , ca
 };
 
 console.log( options );
 
 const app = express();
-// const httpServer = http.createServer( app );
-// httpServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
-app.listen( port, () => { console.log( `Listening on ${ port }` ) } );
-const binaryServer = BinaryServer( { port: 9000 } );
-
 app.use( cors() );
 app.use( json() );
 app.use( express.static( `${ __dirname }` + '/dist' ) );
 app.use( express.static( `${ __dirname }` + '/server/user-audio-previews' ) );
+
+const httpsServer = https.createServer( options, app );
+httpsServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
+const binaryServer = BinaryServer( { server: httpsServer } );
 
 require( './server/masterRoutes' )( app );
 
@@ -48,7 +50,7 @@ mongoose.connect( mongoUri );
 mongoose.connection.once( 'open', () => { console.log( `Mongoose listening at ${ mongoUri }`) } );
 
 binaryServer.on('connection', function(client) {
-  console.log('new connection');
+  console.log('new binary server connection');
 
   var fileWriter = new wav.FileWriter(outFile, {
     channels: 1,
@@ -125,7 +127,7 @@ binaryServer.on('connection', function(client) {
         .pipe( fs.createWriteStream( path.resolve( __dirname, 'server/user-audio-previews', mp3FileName ) ) )
         .on( 'close', () => {
             console.log( 'Done encoding to mp3' );
-            client.send( { filename: mp3FileName, url: 'http://localhost:4000/' + mp3FileName }, { type: 'mp3PreviewUrl' } );
+            client.send( { filename: mp3FileName, url: 'https://songjam.us/' + mp3FileName }, { type: 'mp3PreviewUrl' } );
           } );
       }
 
