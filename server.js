@@ -4,7 +4,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const { json } = require( 'body-parser' );
 const cors = require( 'cors' );
-const https = require( 'https' );
+const https = require( 'http' );
 const serverConfig = require( './server/configs/server_config.js' );
 const mongoose = require( 'mongoose' );
 const mongoUri = "mongodb://localhost:27017/songjam";
@@ -32,9 +32,9 @@ const options = {
 console.log( options );
 
 const app = express();
-const httpsServer = https.createServer( options, app )
-httpsServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
-const binaryServer = BinaryServer( { port: 9000, server: httpsServer } );
+const httpServer = http.createServer( app );
+httpServer.listen( port, () => { console.log( `Listening on ${ port }` ) } );
+const binaryServer = BinaryServer( { port: 9000, server: httpServer } );
 
 app.use( cors() );
 app.use( json() );
