@@ -6,3 +6,4 @@ dist/bundle.js
 dist/bundle.js.map
 *.wav
 *.mp3
+*.pem
